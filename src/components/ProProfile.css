@@ -1,0 +1,897 @@
+.professional-profile-container {
+  width: 100%;
+}
+
+.professional-profile-container .coverBox {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background-color: #b4b4b4;
+}
+
+.professional-profile-container .coverBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.professional-profile-container .profile-summary {
+  position: relative;
+  max-width: 1400px;
+  min-height: 250px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 3px solid #ccc;
+}
+.professional-profile-container .profile-summary .profile-info {
+  flex: 1;
+}
+
+.professional-profile-container .profile-summary .prson-data {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.professional-profile-container .profile-summary .profile-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid white;
+  position: relative;
+  top: -100px;
+  right: 0;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.professional-profile-container .profile-summary .profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scale: 1.1;
+}
+
+.professional-profile-container .profile-summary .handy-info {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 10px;
+}
+
+.professional-profile-container .profile-summary .handy-info h2 {
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.professional-profile-container
+  .profile-summary
+  .handy-info
+  h2
+  .verified-badge {
+  width: 25px;
+  margin: 0 10px;
+}
+
+.professional-profile-container .profile-summary .handy-info p {
+  font-size: 22px;
+  color: #303030cc;
+}
+
+.professional-profile-container .profile-summary .handy-info span {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.professional-profile-container .profile-summary .handy-info span .star-icon {
+  width: 25px;
+  margin-right: 5px;
+}
+
+.professional-profile-container .profile-summary .action-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  height: 60px;
+  align-self: flex-start;
+}
+
+.professional-profile-container .profile-summary .action-btns button {
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.professional-profile-container .profile-summary .action-btns button:hover {
+  opacity: 0.8;
+}
+
+.professional-profile-container
+  .profile-summary
+  .action-btns
+  button:first-child {
+  width: 40px;
+  color: #40798c;
+  background-color: rgba(102, 102, 102, 0.2);
+}
+
+.professional-profile-container
+  .profile-summary
+  .action-btns
+  button:last-child {
+  width: 120px;
+  background-color: #40798c;
+  color: white;
+}
+
+@media (max-width: 991px) {
+  .professional-profile-container .profile-summary .profile-avatar {
+    width: 150px;
+    height: 150px;
+    top: -100px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .professional-profile-container .profile-summary {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+  }
+
+  .professional-profile-container .profile-summary .profile-avatar {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%) !important;
+    width: 120px;
+    height: 120px;
+    top: -150px;
+  }
+
+  .professional-profile-container .profile-summary .handy-info {
+    width: 100%;
+    align-items: center;
+  }
+
+  .professional-profile-container .profile-summary .action-btns {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    height: 60px;
+  }
+
+  .professional-profile-container .profile-summary .handy-info h2 {
+    font-size: 30px;
+    white-space: nowrap;
+  }
+
+  .professional-profile-container
+    .profile-summary
+    .handy-info
+    h2
+    .verified-badge {
+    width: 20px;
+  }
+
+  .professional-profile-container .profile-summary .handy-info p {
+    font-size: 20px;
+  }
+
+  .professional-profile-container .profile-summary .handy-info span {
+    font-size: 18px;
+  }
+}
+
+.professional-profile-container .profile-wrapper {
+  max-width: 1400px;
+  margin: 20px auto;
+  width: 100%;
+  min-height: calc(100vh);
+  direction: rtl;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  /* overflow-x: hidden; */
+}
+
+.professional-profile-container .main-tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.professional-profile-container .main-tabs button {
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  color: #666;
+  transition: 0.5s;
+}
+
+.professional-profile-container .main-tabs button.active {
+  color: #0e7490;
+}
+
+.professional-profile-container .main-tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background: #0e7490;
+  border-radius: 5px;
+}
+
+.professional-profile-container .about-section {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 110px);
+}
+
+.professional-profile-container .side-tabs {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #ddd;
+}
+.professional-profile-container .side-tabs button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+@media (max-width: 767px) {
+  .professional-profile-container .about-section {
+    flex-direction: column;
+  }
+  .professional-profile-container .side-tabs {
+    width: 100%;
+    flex-direction: row;
+    border: none;
+  }
+  .professional-profile-container .side-tabs button {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
+
+.professional-profile-container .side-tabs button.active {
+  background-color: #e5e7eb;
+  color: #0e7490;
+}
+
+.professional-profile-container .side-content {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.professional-profile-container .basic-info-content {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-right: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.professional-profile-container .basic-info-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+}
+.professional-profile-container .basic-info-content li .icon {
+  font-size: 26px;
+  width: 26px;
+  position: absolute;
+  right: -50px;
+  margin-top: 4px;
+}
+@media (max-width: 767px) {
+  .professional-profile-container .basic-info-content {
+    font-size: 20px;
+  }
+  .professional-profile-container .basic-info-content li .icon {
+    font-size: 25px;
+  }
+}
+.professional-profile-container .basic-info-content li.about-info {
+  width: 70%;
+}
+@media (max-width: 767px) {
+  .professional-profile-container .basic-info-content li.about-info {
+    width: 90%;
+  }
+}
+
+.professional-profile-container .services-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-right: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  list-style: none;
+}
+.professional-profile-container .services-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+}
+.professional-profile-container .services-content li .icon {
+  width: 25px;
+  position: absolute;
+  right: -40px;
+}
+
+.professional-profile-container .work-info-content {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-right: 30px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.professional-profile-container .work-info-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+}
+.professional-profile-container .work-info-content li .icon {
+  font-size: 26px;
+  width: 30px;
+  position: absolute;
+  right: -50px;
+  margin-top: 7px;  
+}
+@media (max-width: 767px) {
+  .professional-profile-container .work-info-content {
+    font-size: 20px;
+  }
+  .professional-profile-container .work-info-content li .icon {
+    font-size: 25px;
+  }
+}
+.professional-profile-container .work-info-content li.about-info {
+  width: 70%;
+}
+
+.professional-profile-container .portfolio-section {
+  width: 100%;
+  padding: 20px;
+}
+.professional-profile-container .portfolio-section .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+@media (max-width: 991px) {
+  .professional-profile-container .portfolio-section .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .professional-profile-container .portfolio-section .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.professional-profile-container .portfolio-section .portfolio-grid .work-item {
+  aspect-ratio: 1 / 1;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.professional-profile-container
+  .portfolio-section
+  .portfolio-grid
+  .work-item
+  img.work-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.professional-profile-container .portfolio-section .portfolio-grid .upload-box {
+  border: 3px dashed rgb(48, 48, 48, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.professional-profile-container .portfolio-section .portfolio-grid .input-file {
+  display: none;
+}
+
+.professional-profile-container
+  .portfolio-section
+  .portfolio-grid
+  img.upload-icon {
+  max-width: 55px;
+  opacity: 0.6;
+}
+
+.professional-profile-container .image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.professional-profile-container .image-modal-content {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.professional-profile-container .image-modal-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.professional-profile-container .close-btn {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.professional-profile-container .reviews-section {
+  /* empty */
+}
+.professional-profile-container .reviews-section .reviews-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.professional-profile-container .reviews-section .rating-summary {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-summary-box {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 150px;
+}
+.professional-profile-container .reviews-section .rating-summary .rating-score {
+  text-align: center;
+  min-width: 100px;
+  min-height: 70px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-score
+  h2 {
+  font-size: 50px;
+  font-weight: 200;
+  color: #303030;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-score
+  .review-stars {
+  /* empty */
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-score
+  .review-stars
+  span {
+  color: #ccc;
+  font-size: 20px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-score
+  .review-stars
+  span.filled {
+  color: #3e7c87;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.professional-profile-container .reviews-section .rating-summary .rating-bars {
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-bars
+  .rating-bar {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-bars
+  .rating-bar
+  span {
+  font-size: 16px;
+  color: #303030;
+  width: 20px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-bars
+  .rating-bar
+  .bar {
+  flex: 1;
+  height: 13px;
+  background: #ddd;
+  border-radius: 10px;
+  margin-left: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.professional-profile-container
+  .reviews-section
+  .rating-summary
+  .rating-bars
+  .rating-bar
+  .bar
+  .fill {
+  height: 100%;
+  background: #3e7c87;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+  overflow-x: hidden;
+}
+
+.professional-profile-container .reviews-section .review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  max-width: 700px;
+  margin: 80px auto 80px;
+  background-color: #f1efef;
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content {
+  /* empty */
+}
+.professional-profile-container .reviews-section .review-card .review-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 60px;
+  padding-bottom: 10px;
+}
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .review-header
+  .review-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .review-header
+  .review-avatar
+  img {
+  width: 100%;
+  object-fit: cover;
+}
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .review-header
+  h4 {
+  font-size: 25px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .rate-and-date {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 50%;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+}
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .rate-and-date
+  span {
+  font-size: 15px;
+  font-family: sans-serif;
+  color: #303030e6;
+}
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .rate-and-date
+  .review-stars {
+  min-width: 90px;
+  font-size: 20px;
+}
+
+.professional-profile-container
+  .reviews-section
+  .review-card
+  .review-card-content
+  .rate-and-date
+  .review-stars
+  .filled {
+  color: #3e7c87;
+  font-size: inherit;
+}
+
+.professional-profile-container .reviews-section .review-card p.comment {
+  color: #000000d9;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .professional-profile-container .reviews-section .review-card {
+    margin: 70px auto 70px;
+  }
+  .professional-profile-container
+    .reviews-section
+    .review-card
+    .review-card-content
+    .review-header {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .professional-profile-container
+    .reviews-section
+    .review-card
+    .review-card-content
+    .review-header
+    h4 {
+    font-size: 25px;
+  }
+  .professional-profile-container
+    .reviews-section
+    .review-card
+    .review-card-content
+    .review-header
+    .review-avatar {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .professional-profile-container
+    .reviews-section
+    .review-card
+    .review-card-content
+    .rate-and-date {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .professional-profile-container .reviews-section .review-card p.comment {
+    font-size: 20px;
+  }
+}
+
+.professional-profile-container .reviews-section .show-all-reviews {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.professional-profile-container .reviews-section .show-all-reviews button {
+  color: #0e7490;
+  background-color: transparent;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  z-index: 1;
+  min-width: 250px;
+  overflow: hidden;
+}
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button::before,
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button::after {
+  transition-duration: 0.3s;
+}
+
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -50%;
+  width: 50%;
+  height: 100%;
+  background-color: #0e7490;
+  border-radius: 0 50px 50px 0;
+  z-index: -1;
+}
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background-color: #0e7490;
+  border-radius: 50px 0 0 50px;
+  z-index: -1;
+}
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button:hover {
+  color: white;
+  transition-duration: 0.3s;
+  transition-delay: 0.2s;
+}
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button:hover::before {
+  right: 0;
+}
+.professional-profile-container
+  .reviews-section
+  .show-all-reviews
+  button:hover::after {
+  left: 0;
+}
+
+.professional-profile-container .reviews-section .no-reviews {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.professional-profile-container .reviews-section .no-reviews span {
+  font-size: 25px;
+  font-weight: bold;
+  color: #303030e6;
+  text-align: center;
+  margin-top: 20px;
+}

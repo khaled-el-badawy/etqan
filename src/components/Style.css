@@ -1,0 +1,220 @@
+.index-container{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  flex-direction: row;
+  box-shadow: none ;
+  border: none ;
+  
+}
+.index-container .image-logo{
+margin-top: 15%;
+}
+ .index-container .index-logo{
+    margin-right: 25%;
+    width: 50%;
+}
+ .index-container .index-title{
+    color: #225262  ;
+    text-align: center;
+    margin-right: 40px;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.5;   
+     
+}
+ .index-container .title-no-break{
+    white-space: nowrap;
+}
+.index-container .index-text{
+  text-align: center;
+  margin-bottom: 20%;
+}
+ .index-container .btn-index-container{
+    color: white;
+    background-color:#40798C ;
+    border-radius: 35px;
+    width: 240px ;
+    padding: 10px 0 12px ;
+    font-size: 22px; 
+    margin: 0 auto ;
+    display: block;
+   text-decoration: none;
+   text-align: center;
+   border: none;
+}
+.index-container .index-button{
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: center;
+  margin-top: -115px;
+  margin-left: 50px;
+  
+}
+ .index-container .index{
+  width: 40%;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+ margin-bottom: 5%;
+ gap: 5%;
+
+}
+
+.index-container .btn-index-container:hover{
+     box-shadow: 2px 2px 5px #A3A9A6 ;  
+     border: 1px solid #40798C ;
+     color: white ;
+
+}
+ .index-container .dropdown {
+  position: relative; /* مهم جداً عشان dropdown-content تظهر بالنسبة للزرار */
+  display: inline-block;
+}
+
+.index-container .dropdown-content {
+  display: flex; /* أو block */
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* تحت الزرار مباشرة */
+  left: 0;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+ .index-container .dropdown-content a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #A3A9A6;
+  font-weight: 500;
+}
+
+.index-container .dropdown-content a:hover {
+  color: #40798C ;
+}
+
+
+
+.index-container .frame-top,
+ .index-container .frame-bottom {
+  position: absolute;
+  height: 4px; /* سمك الإطار */
+  background-color: #40798C;
+  left: 0;
+  z-index: 2;
+}
+
+.index-container .frame-top {
+  top: 0;
+}
+
+.index-container .frame-bottom {
+  bottom: 0;
+}
+
+.index-container .frame-left,
+.index-container .frame-right {
+  position: absolute;
+  width: 4px;
+  background-color: #40798C;
+  top: 0;
+  z-index: 2;
+}
+
+.index-container .frame-left {
+  left: 0;
+}
+
+.index-container .frame-right {
+  right: 0;
+}
+
+
+
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 992px) {
+
+   .index-container {
+    flex-direction: column;
+    align-items: center;
+    height: 94vh;
+    position: relative;
+
+  }
+
+.index-container .index-logo{
+    transform: scale(1.8);
+    margin-top: -1200px;
+    margin-right: -150px;
+}
+  .index-container .index-button{
+    width: 90%;
+    margin: -470px -230px 0 0;
+    gap: 22px;
+  }
+   .index-container .index-title{
+    color: #225262  ;
+    text-align: center;
+    margin-right: -460px;
+    margin-top: -525px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.5; 
+     
+}
+  /* .index-container .index-image{
+    max-width: none;
+    width: 70%;
+    margin-right: 395px;
+  } */
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+
+  .index-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 132vh;
+    position: relative;
+   overflow: visible;
+
+  }
+
+.index-container .index-logo{
+    transform: scale(2.8);
+    margin-top: 15px;
+}
+  .index-container .index-button{
+    width: 90%;
+    margin: -15px -5px 0 0;
+    gap: 22px;
+  }
+   .index-container .index-title{
+    color: #225262  ;
+    text-align: center;
+    margin-right: -100px;
+    margin-top: 25px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.5; 
+     
+}
+  /* .index-container .index-image{
+    max-width: none;
+    width: 85vw;
+    margin-right: 55px;
+  } */
+}

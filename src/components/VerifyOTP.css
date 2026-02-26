@@ -1,0 +1,183 @@
+.VerifyOTP-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  flex-direction: row;
+}
+.VerifyOTP-title {
+  color: #40798c;
+  text-align: center;
+  margin-top: 20px;
+
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+.VerifyOTP-form {
+  width: 50%;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.VerifyOTP-form input {
+  margin: 15px 15px;
+  height: 70px;
+  color: rgb(30, 30, 30);
+  text-align: center;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 26px;
+  font-family: inter;
+}
+.VerifyOTP-form-fields {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-VerifyOTP-container {
+  color: white;
+  background-color: #40798c;
+  padding: 10px 20px;
+  border-radius: 35px;
+  width: 40%;
+  font-size: 20px;
+  margin-right: 30%;
+  margin-top: 15%;
+  border: none;
+}
+
+.VerifyOTP-form button:hover {
+  box-shadow: 2px 2px 5px #a3a9a6;
+  border: 1px solid #40798c;
+}
+
+.resend-otp {
+  cursor: pointer;
+  color: #828181;
+  display: block;
+  margin-top: 40px;
+}
+.resend-otp:hover {
+  color: #75a5b3;
+}
+
+.resend-otp.disabled {
+  cursor: not-allowed;
+  color: #75a5b3;
+}
+
+/* DESKTOP */
+@media (min-width: 993px) {
+  .VerifyOTP-container {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .VerifyOTP-form {
+    width: 60%;
+    margin-right: 70px;
+  }
+
+  .VerifyOTP-form input {
+    width: 70px;
+  }
+
+  .VerifyOTP-image img {
+    width: 40vw;
+    height: 100%;
+    
+  }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 992px) {
+  .VerifyOTP-container {
+    flex-direction: row;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .VerifyOTP-form {
+    width: 50%;
+    height: auto;
+  }
+  .VerifyOTP-container img {
+    width: 45%;
+    height: 130%;
+    object-fit: cover;
+  }
+
+  .VerifyOTP-container input {
+    width: 70px;
+  }
+
+  .btn-VerifyOTP-container {
+    width: 40%;
+    margin: 30px 120px 10px 0;
+    display: block;
+  }
+  .btn-Link {
+    text-decoration: none;
+  }
+  .resend-otp {
+    margin-right: 60px;
+  }
+
+  .VerifyOTP-image img {
+    width: 50vw;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .VerifyOTP-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .VerifyOTP-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .VerifyOTP-form {
+    width: 100%;
+    margin-right: 25px;
+  }
+
+  .VerifyOTP-title {
+    text-align: center;
+    margin-left: 15%;
+  }
+
+  .VerifyOTP-container input {
+    width: 70px;
+  }
+
+  .btn-VerifyOTP-container {
+    width: 40%;
+    margin: 30px 120px 0 0;
+  }
+
+  .VerifyOTP-image img {
+    width: 110%;
+    height: auto;
+    margin: 10px;
+    margin-top: 10%;
+  }
+  .resend-otp {
+    margin-right: 50px;
+  }
+}
