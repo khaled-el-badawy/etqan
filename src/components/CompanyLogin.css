@@ -1,64 +1,48 @@
 .company-login-container {
   display: flex;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
-  flex-direction: row;
 }
-.company-login-container .title {
+
+.company-login-container .Login-form {
+  width: 60%;
+  direction: rtl;
+  /* background-color: goldenrod; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-login-container .login-form-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-login-container .login-form-fields .title {
   color: #40798c;
   text-align: center;
-  margin-top: 20px;
-  margin-right: 7%;
   font-size: 58px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* background-color: rgb(235, 138, 138); */
 }
-.company-login-container .h3 {
-  font-size: 18px;
-  color: #40798c;
-  text-align: center;
-  margin-right: 38%;
-  text-decoration: none;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-.company-login-container .h3:hover {
-  color: #75a5b3;
-}
-.company-login-container .link {
-  text-decoration: none;
-  color: #40798c;
-}
-.company-login-container .link:hover {
-  color: #75a5b3;
-}
-
-.company-login-container .h4 {
-  color: #828181;
-  text-align: center;
-  margin-top: 10%;
-  margin-right: 70px;
-  font-size: 18px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-.company-login-container .login-error-msg {
-  color: rgb(215, 124, 124);
-  font-size: 1.1rem;
-  margin: 0;
-  margin-right: 40px;
-  line-height: 1rem;
-  min-height: 1rem;
-}
-.company-login-container .Login-form {
-  width: 50%;
-  direction: rtl;
+.company-login-container .login-form-fields form {
+  /* background-color: green; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-.company-login-container .Login-form input {
-  margin: 15px 25px;
-  /* width: 50%; */
+.company-login-container .login-form-fields form .field-container {
+  /* background-color: tomato; */
+  /* border: 1px solid #000; */
+  width: 500px;
+  width: 318px;
+}
+.company-login-container .login-form-fields form .field-container input {
+  width: 100%;
   padding: 20px;
   color: rgb(30, 30, 30);
   overflow-y: auto;
@@ -68,38 +52,63 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
-.company-login-container .login-form-fields {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.company-login-container
+  .login-form-fields
+  form
+  .field-container.login-password-field {
+}
+
+.company-login-container .login-error-msg {
+  color: rgb(235, 138, 138);
+  font-size: 1.1rem;
+  line-height: 1rem;
+  min-height: 1rem;
+}
+/* ----------------------------------------------- */
+.company-login-container .forgot-password-link {
+  font-size: 18px;
+  color: #40798c;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.company-login-container .forgot-password-link:hover {
+  color: #75a5b3;
+}
+
+/* ----------------------------------------------- */
+.company-login-container .register-link {
+  color: #828181;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.company-login-container .link {
+  text-decoration: none;
+  color: #40798c;
+}
+
+.company-login-container .link:hover {
+  color: #75a5b3;
 }
 
 .company-login-container .login-password-field {
   position: relative;
   width: 30%;
 }
-
-.company-login-container .login-password-field input {
-  margin: 25px;
+.company-login-container .login-password-field {
   width: 100%;
-  padding: 20px;
-  overflow-y: auto;
-  text-align: right;
-  color: black;
-  border: 1px solid #a3a9a6;
-  border-radius: 30px;
-  box-shadow: 0 2px 5px #40798c;
-  font-size: 20px;
-  position: relative;
 }
+
 .company-login-container input::-ms-reveal {
   display: none;
 }
 
 .company-login-container .password-eye {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 4px);
+  left: 30px;
   transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
@@ -112,10 +121,8 @@
   background-color: #40798c;
   padding: 10px 20px;
   border-radius: 35px;
-  width: 80%;
+  width: 250px;
   font-size: 20px;
-  margin-right: 19%;
-  margin-top: 8%;
   border: none;
 }
 
@@ -123,29 +130,50 @@
   box-shadow: 2px 2px 5px #a3a9a6;
   border: 1px solid #40798c;
 }
+
+/* ----------banner---------------------- */
 .company-login-container .image {
-  width: 40vw;
-  height: auto;
-  object-fit: cover;
-  object-position: left;
+  transform: scale(1.05);
 }
 
-/* DESKTOP */
-@media (min-width: 993px) {
+.company-login-container .image img {
+  width: 40vw;
+  height: 100%;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* TABLET */
+/* @media (min-width: 768px) and (max-width: 992px) { */
+@media (max-width: 991px) {
   .company-login-container {
     flex-direction: row;
-    height: 100vh;
+    /* height: auto; */
+    /* overflow-y: auto; */
   }
 
-  .company-login-container .h3 {
-    margin-top: 5%;
-  }
   .company-login-container .Login-form {
-    width: 100%;
+    width: 50%;
+    height: auto;
   }
 
-  .company-login-container .Login-form input {
+  .company-login-container img {
+    width: 45%;
+    /* height: 130%; */
+    object-fit: cover;
+  }
+
+  .company-login-container .register-link {
+    padding-top: 0;
+    position: relative;
+    text-align: center;
+    padding-bottom: 60px;
+    font-size: 18px;
+  }
+
+  .company-login-container input,
+  .company-login-container .login-password-field input {
     width: 100%;
+    font-size: 20px;
   }
 
   .company-login-container .login-password-field {
@@ -153,139 +181,50 @@
   }
 
   .company-login-container .password-eye {
-    left: 10px;
+    position: absolute;
+    top: calc(50% - 4px);
+    left: 30px;
+    transform: translateY(-50%);
+    font-size: 18px;
   }
 
-  /* ---------------------------------- */
-  .company-login-container .image {
-    transform: scale(1.05);
+  .company-login-container .btn-container Link {
+    width: 50%;
+    margin: 30px 90px 10px 0;
+    display: block;
+    text-decoration: none;
   }
 
   .company-login-container .image img {
-    width: 40vw;
-    height: 100%;
-  }
-  /* ---------------------------------- */
-
-  /* .company-login--container img {
-    max-width: 100%;
-    width: 45vw;
+    width: 50vw;
     height: auto;
-    object-fit: cover;
-    object-position: left;
-    
-  }
-} */
-
-  /* TABLET */
-  @media (min-width: 768px) and (max-width: 992px) {
-    .company-login-container {
-      flex-direction: row;
-      height: auto;
-      overflow-y: auto;
-    }
-
-    .company-login-container .Login-form {
-      width: 50%;
-      height: auto;
-    }
-    .company-login-container img {
-      width: 45%;
-      height: 130%;
-      object-fit: cover;
-    }
-    .company-login-container .h4 {
-      padding-top: 0;
-      position: relative;
-      text-align: center;
-      padding-bottom: 60px;
-      font-size: 18px;
-    }
-
-    .company-login-container input,
-    .company-login-container .login-password-field input {
-      width: 100%;
-      font-size: 20px;
-    }
-
-    .company-login-container .login-password-field {
-      width: 100%;
-    }
-
-    .company-login-container .password-eye {
-      position: absolute;
-      top: 50%;
-      right: 300px;
-      transform: translateY(-50%);
-      font-size: 18px;
-    }
-
-    .company-login-container .btn-container Link {
-      width: 50%;
-      margin: 30px 90px 10px 0;
-      display: block;
-      text-decoration: none;
-    }
-
-    .company-login-container .image img {
-      width: 50vw;
-      height: auto;
-      display: block;
-    }
-  }
-
-  /* MOBILE */
-  @media (max-width: 767px) {
-    .company-login-container {
-      flex-direction: column;
-      align-items: center;
-      height: auto;
-      overflow-y: auto;
-    }
-
-    .company-login-container .Login-form {
-      display: flex;
-      flex-direction: column;
-    }
-    .company-login-container .Login-form {
-      width: 100%;
-      padding: 20px 0;
-    }
-
-    .company-login-container .title {
-      text-align: center;
-    }
-
-    .company-login-container .h4 {
-      margin-top: 30px;
-      margin-right: 40px;
-    }
-
-    .company-login-container input,
-    .company-login-container .login-password-field input {
-      width: 100%;
-      margin: 30px;
-      display: block;
-    }
-
-    .company-login-container .login-password-field {
-      width: 100%;
-    }
-
-    .company-login-container .password-eye {
-      right: 290px;
-    }
-
-    .company-login-container .btn-container {
-      width: 80%;
-      margin: 30px 55px 0 0;
-    }
-
-    .company-login-container .image img {
-      width: 110%;
-      height: auto;
-      margin: 10px;
-      margin-top: 10%;
-    }
+    /* margin: 20px auto; */
+    display: block;
   }
 }
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .company-login-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .company-login-container .Login-form {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .company-login-container input,
+  .company-login-container .login-password-field input {
+    width: 100%;
+    display: block;
+  }
+
+  .company-login-container .image {
+    display: none;
+
+  }
+
