@@ -5,62 +5,43 @@
   overflow: hidden;
 }
 
-.customer-login-container .title {
+.customer-login-container .Login-form {
+  width: 60%;
+  direction: rtl;
+  /* background-color: goldenrod; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-login-container .login-form-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.customer-login-container .login-form-fields .title {
   color: #40798c;
   text-align: center;
-  margin-top: 20px;
-  margin-right: 7%;
   font-size: 58px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* background-color: rgb(235, 138, 138); */
+}
+.customer-login-container .login-form-fields form {
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-.customer-login-container .h3 {
-  font-size: 18px;
-  color: #40798c;
-  text-align: center;
-  margin-right: 35%;
-  text-decoration: none;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+.customer-login-container .login-form-fields form .field-container {
+  /* background-color: tomato; */
+  /* border: 1px solid #000; */
+  width: 500px;
+  width: 318px;
 }
-
-.customer-login-container .h3:hover {
-  color: #75a5b3;
-}
-
-.customer-login-container .link {
-  text-decoration: none;
-  color: #40798c;
-}
-
-.customer-login-container .link:hover {
-  color: #75a5b3;
-}
-
-.customer-login-container .h4 {
-  color: #828181;
-  text-align: center;
-  margin-top: 10%;
-  margin-right: 30px;
-  font-size: 18px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-.customer-login-container .login-error-msg {
-  color: rgb(235, 138, 138);
-  font-size: 1.1rem;
-  margin: 0;
-  margin-right: 40px;
-  line-height: 1rem;
-  min-height: 1rem;
-}
-
-.customer-login-container .Login-form {
-  width: 50%;
-  direction: rtl;
-}
-
-.customer-login-container .Login-form input {
-  margin: 15px 25px;
+.customer-login-container .login-form-fields form .field-container input {
   width: 100%;
   padding: 20px;
   color: rgb(30, 30, 30);
@@ -71,31 +52,53 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
+.customer-login-container
+  .login-form-fields
+  form
+  .field-container.login-password-field {
+}
 
-.customer-login-container .login-form-fields {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.customer-login-container .login-error-msg {
+  color: rgb(235, 138, 138);
+  font-size: 1.1rem;
+  line-height: 1rem;
+  min-height: 1rem;
+}
+/* ----------------------------------------------- */
+.customer-login-container .forgot-password-link {
+  font-size: 18px;
+  color: #40798c;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.customer-login-container .forgot-password-link:hover {
+  color: #75a5b3;
+}
+
+/* ----------------------------------------------- */
+.customer-login-container .register-link {
+  color: #828181;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.customer-login-container .link {
+  text-decoration: none;
+  color: #40798c;
+}
+
+.customer-login-container .link:hover {
+  color: #75a5b3;
 }
 
 .customer-login-container .login-password-field {
   position: relative;
   width: 30%;
 }
-
-.customer-login-container .login-password-field input {
-  margin: 25px;
+.customer-login-container .login-password-field {
   width: 100%;
-  padding: 20px;
-  overflow-y: auto;
-  text-align: right;
-  color: black;
-  border: 1px solid #a3a9a6;
-  border-radius: 30px;
-  box-shadow: 0 2px 5px #40798c;
-  font-size: 20px;
-  position: relative;
 }
 
 .customer-login-container input::-ms-reveal {
@@ -104,7 +107,8 @@
 
 .customer-login-container .password-eye {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 4px);
+  left: 30px;
   transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
@@ -117,10 +121,8 @@
   background-color: #40798c;
   padding: 10px 20px;
   border-radius: 35px;
-  width: 80%;
+  width: 250px;
   font-size: 20px;
-  margin-right: 15%;
-  margin-top: 8%;
   border: none;
 }
 
@@ -129,53 +131,24 @@
   border: 1px solid #40798c;
 }
 
-/* DESKTOP */
-@media (min-width: 993px) {
-  .customer-login-container {
-    flex-direction: row;
-    height: 100vh;
-  }
-
-  .customer-login-container .h3 {
-    margin-top: 5%;
-  }
-
-  .customer-login-container .Login-form {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .customer-login-container .Login-form input {
-    width: 100%;
-  }
-
-  .customer-login-container .login-password-field {
-    width: 100%;
-  }
-
-  .customer-login-container .password-eye {
-    right: 300px;
-  }
-
-  .customer-login-container .image {
-    transform: scale(1.05);
-  }
-
-  .customer-login-container .image img {
-    width: 40vw;
-    height: 100%;
-  }
+/* ----------banner---------------------- */
+.customer-login-container .image {
+  transform: scale(1.05);
 }
 
+.customer-login-container .image img {
+  width: 40vw;
+  height: 100%;
+}
+
+/* ---------------------------------------------------------------------------------- */
 /* TABLET */
-@media (min-width: 768px) and (max-width: 992px) {
+/* @media (min-width: 768px) and (max-width: 992px) { */
+@media (max-width: 991px) {
   .customer-login-container {
     flex-direction: row;
-    height: auto;
-    overflow-y: auto;
+    /* height: auto; */
+    /* overflow-y: auto; */
   }
 
   .customer-login-container .Login-form {
@@ -185,11 +158,11 @@
 
   .customer-login-container img {
     width: 45%;
-    height: 130%;
+    /* height: 130%; */
     object-fit: cover;
   }
 
-  .customer-login-container .h4 {
+  .customer-login-container .register-link {
     padding-top: 0;
     position: relative;
     text-align: center;
@@ -209,8 +182,8 @@
 
   .customer-login-container .password-eye {
     position: absolute;
-    top: 50%;
-    right: 300px;
+    top: calc(50% - 4px);
+    left: 30px;
     transform: translateY(-50%);
     font-size: 18px;
   }
@@ -225,7 +198,7 @@
   .customer-login-container .image img {
     width: 50vw;
     height: auto;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     display: block;
   }
 }
@@ -240,19 +213,8 @@
   }
 
   .customer-login-container .Login-form {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    padding: 20px 0;
-  }
-
-  .customer-login-container .title {
-    text-align: center;
-  }
-
-  .customer-login-container .h4 {
-    margin-top: 30px;
-    margin-right: 40px;
+    height: 100vh;
   }
 
   .customer-login-container input,
@@ -261,23 +223,8 @@
     display: block;
   }
 
-  .customer-login-container .login-password-field {
-    width: 100%;
+  .customer-login-container .image {
+    display: none;
+
   }
 
-  .customer-login-container .password-eye {
-    right: 290px;
-  }
-
-  .customer-login-container .btn-container {
-    width: 80%;
-    margin: 30px 55px 0 0;
-  }
-
-  .customer-login-container .image img {
-    width: 110%;
-    height: auto;
-    margin: 10px;
-    margin-top: 10%;
-  }
-}

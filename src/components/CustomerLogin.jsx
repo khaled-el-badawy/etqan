@@ -44,15 +44,14 @@ function CustomerLogin() {
       navigate("/home");
     }
   };
-    // التحقق من الاسم
+  // التحقق من الاسم
   const handleUsernameChange = (e) => {
     const val = e.target.value;
-    if (/^[a-zA-Zء-ي\s]*$/.test(val)) { 
+    if (/^[a-zA-Zء-ي\s]*$/.test(val)) {
       setUsername(val);
     }
   };
 
-  
   return (
     <div className="customer-login-container">
       <motion.div
@@ -61,19 +60,18 @@ function CustomerLogin() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        <h1 className="title">اهلاً بعودتك</h1>
-
         <div className="login-form-fields">
           <form onSubmit={(e) => e.preventDefault()}>
+            <h1 className="title">اهلاً بعودتك</h1>
             {/* حقل اسم المستخدم */}
             <div className="field-container">
-                <input
-                  type="text"
-                  placeholder="اسم المستخدم"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  required
-                />
+              <input
+                type="text"
+                placeholder="اسم المستخدم"
+                value={username}
+                onChange={handleUsernameChange}
+                required
+              />
               {usernameError && (
                 <p className="login-error-msg">{usernameError}</p>
               )}
@@ -99,27 +97,27 @@ function CustomerLogin() {
             </div>
 
             <h3>
-              <Link to="#" className="h3">
+              <Link to="#" className="forgot-password-link">
                 هل نسيت كلمة السر؟
               </Link>
             </h3>
 
             {/* زر تسجيل الدخول */}
             <Link to="/home">
-         <button
-              type="button"
-              className="btn-container"
-              onClick={handleLogin}
-              disabled={!isFormValid} 
-              style={{
-                pointerEvents: !isFormValid ? "none" : "auto",
-                opacity: !isFormValid ? 0.5 : 1,
-              }}
-            >
-              تسجيل الدخول
-            </button>
+              <button
+                type="button"
+                className="btn-container"
+                onClick={handleLogin}
+                disabled={!isFormValid}
+                style={{
+                  pointerEvents: !isFormValid ? "none" : "auto",
+                  opacity: !isFormValid ? 0.5 : 1,
+                }}
+              >
+                تسجيل الدخول
+              </button>
             </Link>
-            <h4 className="h4">
+            <h4 className="register-link">
               ليس لديك حساب ؟{" "}
               <Link to="/CustomerRegister" className="link">
                 إنشاء حساب
@@ -128,9 +126,9 @@ function CustomerLogin() {
           </form>
         </div>
       </motion.div>
-
+      {/* -------------------------------------------------------------- */}
       <div className="image">
-        <motion.img
+        <img
           src="/images/Frame 19.svg"
           initial={{ x: "20%", y: 0, opacity: 0 }}
           animate={{
@@ -144,7 +142,6 @@ function CustomerLogin() {
             opacity: { duration: 1.8, ease: "easeOut" },
           }}
           style={{
-            
             height: "100%",
             objectFit: "cover",
             display: "block",
