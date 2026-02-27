@@ -257,7 +257,7 @@ function CompanyRegister() {
       
 
       <div className="image">
-        <img
+        <motion.img
           src="/images/Frame 20.svg"
           initial={{ x: "20%", y: 0, opacity: 0 }}
           animate={{

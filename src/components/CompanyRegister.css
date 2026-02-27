@@ -1,7 +1,7 @@
 .company-page-container {
   display: flex;
   height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
   flex-direction: row;
   /* background-color: red; */
 }
@@ -167,8 +167,11 @@
 
 /* ----------banner---------------------- */
 .company-page-container .image {
-  height: 100vh;
-  /* transform: scale(1.05); */
+  height: 100vh ;
+  transform: scale(1.05);
+}
+.company-page-container .image img {
+
 }
 @media (max-width: 1130px) {
   .company-page-container .image {
