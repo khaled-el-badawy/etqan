@@ -128,7 +128,7 @@ function CustomerLogin() {
       </motion.div>
       {/* -------------------------------------------------------------- */}
       <div className="image">
-        <img
+        <motion.img
           src="/images/Frame 19.svg"
           initial={{ x: "20%", y: 0, opacity: 0 }}
           animate={{
