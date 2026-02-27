@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./CompanyRegister.css";
-import { FiEye, FiEyeOff, FiFolder } from "react-icons/fi";
+import { FiEye, FiEyeOff, FiFolderPlus } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -47,14 +47,14 @@ function CompanyRegister() {
       setPhone(val);
     }
   };
-    // التحقق من الباسورد
+  // التحقق من الباسورد
   const [isFocused, setIsFocused] = useState(false); // لتتبع التركيز
 
   // قواعد الباسورد
   const rules = {
-    firstCapital: /^[A-Z]/,        // أول حرف Capital
+    firstCapital: /^[A-Z]/, // أول حرف Capital
     specialChar: /[!@#$%^&*()/\\]/, // رمز خاص
-    minLength: /.{8,}/              // على الأقل 8 أحرف
+    minLength: /.{8,}/, // على الأقل 8 أحرف
   };
 
   const checkRule = (rule) => rule.test(password);
@@ -68,8 +68,8 @@ function CompanyRegister() {
     confirmPassword !== "" &&
     password === confirmPassword;
 
-   const passwordsNotMatch =
-  confirmPassword.length > 0 && password !== confirmPassword;
+  const passwordsNotMatch =
+    confirmPassword.length > 0 && password !== confirmPassword;
   return (
     <div className="company-page-container">
       <motion.div
@@ -78,11 +78,10 @@ function CompanyRegister() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        <h1>مرحباً بك</h1>
-        <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
-
-        <div className="form-fields">
+        
           <form>
+            <h1>مرحباً بك</h1>
+            <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
             <div className="fields-row">
               <div className="field-container">
                 <input
@@ -102,11 +101,9 @@ function CompanyRegister() {
                   onChange={handlePhoneChange}
                   required
                 />
-                <p className="error-msg">
-                  {phone.length > 0 && phone.length < 11
-                    ? "رقم الهاتف يجب أن يكون 11 رقم"
-                    : ""}
-                </p>
+                {phone.length > 0 && phone.length < 11 && (
+                  <p className="error-msg">رقم الهاتف يجب أن يكون 11 رقم</p>
+                )}
               </div>
 
               <div className="field-container">
@@ -117,7 +114,7 @@ function CompanyRegister() {
                   onChange={handleEmailChange}
                   required
                 />
-                <p className="error-msg">{emailError}</p>
+                {emailError && <p className="error-msg">{emailError}</p>}
               </div>
 
               {/* حقل رفع السجل التجاري */}
@@ -142,54 +139,80 @@ function CompanyRegister() {
                   onChange={(e) => setCommercialFile(e.target.files[0])}
                 />
                 {/* أيقونة المجلد */}
-                <div className="folder-wrapper">
-                  <FiFolder className="folder-icon" />
-                  <span className="plus-icon">+</span>
-                </div>
+                
+                  <FiFolderPlus  className="folder-icon" />
+                  
+          
               </div>
 
               <div className="CompanyRegister-field-container CompanyRegister-password-field-container">
-                    <input
-                type={showPassword ? "text" : "password"}
-                placeholder="كلمة السر"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-              />
-              <span className="eye" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FiEye /> : <FiEyeOff />}
-              </span>
-            
-              {isFocused && (
-                <div
-                  className="password-rules"
-                  style={{
-                    position: "absolute",
-                    top: "100%",       
-                    left: 0,
-                    width: "100%",
-                    
-                  }}
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="كلمة السر"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                />
+                <span
+                  className="eye"
+                  onClick={() => setShowPassword(!showPassword)}
                 >
-                       <p style={{ color: checkRule(rules.firstCapital) ? "rgb(114, 114, 243)" : "rgb(235, 138, 138)", margin: 0, fontSize: "0.85rem" }}>
-                      <ul><li>
-                   يجب ان يكون أول حرف Capital
-                    </li></ul>
-                  </p>
-                       <p style={{ color: checkRule(rules.specialChar) ? "rgb(114, 114, 243)" : "rgb(235, 138, 138)", margin: 0, fontSize: "0.85rem" }}>
-                        <ul><li>
-                    يجب أن يحتوي على  !@#$%
-                    </li></ul>
-                  </p>
-                        <p style={{ color: checkRule(rules.minLength) ? "rgb(114, 114, 243)" : "rgb(235, 138, 138)", margin: 0, fontSize: "0.85rem" }}>
-                       <ul><li>
-                   يجب ان يكون على الأقل 8 أحرف
-                     </li></ul>
-                  </p>
-                </div>
-              )}
-            </div>
+                  {showPassword ? <FiEye /> : <FiEyeOff />}
+                </span>
+
+                {isFocused && (
+                  <div
+                    className="password-rules"
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: 0,
+                      width: "100%",
+                    }}
+                  >
+                    <p
+                      style={{
+                        color: checkRule(rules.firstCapital)
+                          ? "rgb(114, 114, 243)"
+                          : "rgb(235, 138, 138)",
+                        margin: 0,
+                        fontSize: "0.85rem",
+                      }}
+                    >
+                      <ul>
+                        <li>يجب ان يكون أول حرف Capital</li>
+                      </ul>
+                    </p>
+                    <p
+                      style={{
+                        color: checkRule(rules.specialChar)
+                          ? "rgb(114, 114, 243)"
+                          : "rgb(235, 138, 138)",
+                        margin: 0,
+                        fontSize: "0.85rem",
+                      }}
+                    >
+                      <ul>
+                        <li>يجب أن يحتوي على !@#$%</li>
+                      </ul>
+                    </p>
+                    <p
+                      style={{
+                        color: checkRule(rules.minLength)
+                          ? "rgb(114, 114, 243)"
+                          : "rgb(235, 138, 138)",
+                        margin: 0,
+                        fontSize: "0.85rem",
+                      }}
+                    >
+                      <ul>
+                        <li>يجب ان يكون على الأقل 8 أحرف</li>
+                      </ul>
+                    </p>
+                  </div>
+                )}
+              </div>
 
               <div className="CompanyRegister-field-container CompanyRegister-password-field-container">
                 <input
@@ -204,24 +227,24 @@ function CompanyRegister() {
                 >
                   {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
                 </span>
-            {passwordsNotMatch && (
-    <p className="password-error-msg">
-      يجب أن تكون كلمة السر مطابقة
-    </p>
+                {passwordsNotMatch && (
+                  <p className="password-error-msg">
+                    يجب أن تكون كلمة السر مطابقة
+                  </p>
                 )}
               </div>
             </div>
 
-             <Link
-         to={isFormValid ? "/CustomerOTP" : "#"}
-         className={`link-button ${!isFormValid ? "disabled" : ""}`}
-         style={{
-           pointerEvents: !isFormValid ? "none" : "auto",
-           opacity: !isFormValid ? 0.5 : 1,
-         }}
-       >
-         تسجيل
-       </Link>
+            <Link
+              to={isFormValid ? "/CustomerOTP" : "#"}
+              className={`link-button ${!isFormValid ? "disabled" : ""}`}
+              style={{
+                pointerEvents: !isFormValid ? "none" : "auto",
+                opacity: !isFormValid ? 0.5 : 1,
+              }}
+            >
+              تسجيل
+            </Link>
 
             <h4 className="h4-login">
               هل لديك حساب ؟{" "}
@@ -230,27 +253,34 @@ function CompanyRegister() {
               </Link>
             </h4>
           </form>
-        </div>
-      </motion.div>
+        
+      
 
-      <motion.img
-        src="/images/Frame 20.svg"
-        initial={{ x: "20%", y: 0, opacity: 0 }}
-        animate={{ x: 0, y: [0, -10, 0], opacity: 1 }}
-        transition={{
-          x: { duration: 1.8, ease: "easeOut" },
-          y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-          opacity: { duration: 1.8, ease: "easeOut" },
-        }}
-        style={{
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-          flexShrink: 0,
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
+      <div className="image">
+        <img
+          src="/images/Frame 20.svg"
+          initial={{ x: "20%", y: 0, opacity: 0 }}
+          animate={{
+            x: 0,
+            y: [0, -10, 0],
+            opacity: 1,
+          }}
+          transition={{
+            x: { duration: 1.8, ease: "easeOut" },
+            y: { duration: 3, ease: "easeInOut", repeat: Infinity },
+            opacity: { duration: 1.8, ease: "easeOut" },
+          }}
+          style={{
+            // height: "100%",
+            // objectFit: "cover",
+            // display: "block",
+            // flexShrink: 0,
+            // position: "relative",
+            // zIndex: 1,
+          }}
+        />
+      </div>
+    </motion.div>
     </div>
   );
 }

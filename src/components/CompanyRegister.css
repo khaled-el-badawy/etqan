@@ -1,12 +1,13 @@
 .company-page-container {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   flex-direction: row;
+  /* background-color: red; */
 }
-.company-page-container h1{
+.company-page-container h1 {
   font-size: 55px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .company-page-container h1,
 .company-page-container h3 {
@@ -31,92 +32,71 @@
   color: #828181;
   text-align: center;
   font-size: 18px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .company-page-container .form-section {
   direction: rtl;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 0;
 }
 .company-page-container .fields-row {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  margin-right: 12%;
-  margin-top: 10px;
-  
+  margin-top: 50px;
 }
 
-.company-page-container .field-container {
+.company-page-container .field-container,
+.company-page-container .CompanyRegister-password-field-container {
+  /* -------------------------- */
   display: flex;
   flex-direction: column;
-  min-width: 150px;
-  min-height: 60px;
+  width: 318px;
+
+  margin: 10px;
+
+  position: relative;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .company-page-container .field-container,
+  .company-page-container .CompanyRegister-password-field-container {
+    width: 250px;
+  }
+}
+.company-page-container .folder-icon,
+.company-page-container .eye {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 25px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  color: #40798c;
 }
 
 .company-page-container .error-msg {
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
-  margin: 0;
-  margin-right: 40px;
-  line-height: 0.4rem;
-  min-height: 0.4rem;
 }
 
 .company-page-container .form-section input {
-  margin: 15px 20px;
-  width: 30%;
+  width: 100%;
   padding: 20px;
   color: rgb(30, 30, 30);
-  overflow-y: auto;
   text-align: right;
   border: 1px solid #a3a9a6;
   border-radius: 30px;
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
-.company-page-container .form-fields {
-  margin-top: 40px;
-}
-
-
-
-.company-page-container .folder-wrapper {
-  position: relative;
-}
-
-.company-page-container .folder-icon {
-  font-size: 22px;
-  color: #40798c;
-  margin-top: -40px;
-  position: absolute;
-  top: -10px;
-  left: 50px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  
-}
-
-.company-page-container .plus-icon {
-  position: absolute;
-  top: -45px;
-  font-size: 20px;
-  background-color: white;
-  color: #40798c;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 55px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  
-}
-
-.company-page-container .file-upload-container input[type="text"] {
-  padding: 20px;
+.company-page-container .file-upload-container input {
+  /* padding: 20px;
   text-align: right;
   color: rgb(30, 30, 30);
   border: 1px solid #a3a9a6;
@@ -124,30 +104,33 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
   direction: rtl;
-  appearance: none;
+  appearance: none; */
 }
 
-.company-page-container .CompanyRegister-password-field-container {
-  position: relative;
-}
 .company-page-container input::-ms-reveal {
   display: none;
 }
-.company-page-container .eye {
-  position: absolute;
-  top: 50%;
-  left: 50px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 20px;
-  color: #40798c;
+.company-page-container .form-fields {
+  min-height: 100vh;
 }
+.company-page-container .form-fields form {
+  /* height: 1000px; */
+  min-height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
 .company-page-container .password-error-msg {
   position: absolute;
-  bottom: -10px;
+  bottom: -35px;
   color: rgb(235, 138, 138);
-   font-size: 0.9rem;
-   margin: 0;
+  font-size: 0.9rem;
+
   margin-right: 40px;
   line-height: 0.4rem;
   min-height: 0.4rem;
@@ -160,10 +143,10 @@
 .company-page-container .link-button {
   display: block;
   text-align: center;
-  text-decoration: none;  
+  text-decoration: none;
   margin: 45px auto;
-  width: 50%;
-  max-width: 250px;
+  width: 250px;
+  max-width: 210px;
   color: white;
   background-color: #40798c;
   padding: 12px;
@@ -176,187 +159,116 @@
   border: 1px solid #40798c;
 }
 
-
 /* DESKTOP */
-@media (min-width: 993px)  {
-  .company-page-container  {
-    flex-direction: row;
-    height: 100vh;
-  }
 
- .company-page-container  .form-section {
-    width: 60%;
-  }
-
-.company-page-container  .form-section input {
-    width: 20vw;
-  }
-
-.company-page-container  img {
-    width: 40%;
-    height: auto;
-    object-fit: cover;
-    object-position: left;
-  }
+.company-page-container .form-section input {
+  
 }
 
+/* ----------banner---------------------- */
+.company-page-container .image {
+  height: 100vh;
+  /* transform: scale(1.05); */
+}
+@media (max-width: 1130px) {
+  .company-page-container .image {
+    height: 150vh;
+  }
+}
+.company-page-container .image img {
+  width: 40vw;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------------- */
+
 /* TABLET */
-@media (min-width: 768px) and (max-width: 992px) {
-  .company-page-container  {
+@media (max-width: 991px) {
+  .company-page-container {
     flex-direction: row;
-    height: auto;
+
     overflow-y: auto;
+    justify-content: space-between;
+  }
+  .company-page-container .form-fields form {
+    min-height: 100vh;
+  }
+  .company-page-container .form-section {
   }
 
-  .company-page-container  .form-section {
-    width: 55%;
-    height: auto;
-  }
-
- .company-page-container  img {
-    width: 45%;
-    height: 130%;
-    object-fit: cover;
-  }
-
- .company-page-container  .form-section,
-  .company-page-container  .h4-login {
-    margin-top: 25px;
-    padding-top: 0;
+  .company-page-container .form-section,
+  .company-page-container .h4-login {
     position: relative;
-    top: -10px;
-    text-align: center;
-    padding-bottom: 60px;
     font-size: 18px;
   }
 
-
-.company-page-container .error-msg {
-    margin-left: 40%;
-  }
-
-  .company-page-container  .form-section input,
- .company-page-container  .password-field input {
-    width: 35vw;
+  .company-page-container .form-section input,
+  .company-page-container .password-field input {
+    /* width: 35vw; */
     font-size: 20px;
   }
 
-.company-page-container  .passwords-row {
+  .company-page-container .passwords-row {
     flex-direction: column;
     gap: 5px;
     margin: 0;
   }
 
-.company-page-container  .password-field {
+  .company-page-container .password-field {
     width: 100%;
   }
 
-
-
- .company-page-container  img {
-    width: 50%;
-    height: auto;
-    display: block;
+  .company-page-container .image img {
+    object-fit: initial;
+    display: none;
   }
 }
 
 /* MOBILE */
 @media (max-width: 767px) {
- .company-page-container  {
+  .company-page-container {
     flex-direction: column;
     align-items: center;
     height: auto;
   }
 
-.company-page-container  .form-fields {
-    display: flex;
-    flex-direction: column;
+  .company-page-container .form-fields {
   }
 
-.company-page-container  .form-section {
+  .company-page-container .form-section {
     width: 100%;
   }
 
-.company-page-container  h1,
- .company-page-container  h3 {
+  .company-page-container h1,
+  .company-page-container h3 {
     margin-left: 0;
     text-align: center;
   }
 
- .company-page-container  .h4-customer-login {
+  .company-page-container .h4-customer-login {
     margin-top: -20px;
   }
 
- .company-page-container .error-msg {
-    margin-right: 18%;
-  }
- .company-page-container  .form-section input,
-.company-page-container  .password-field input {
-    width: 65vw;
-    margin-right: 10%;
+  .company-page-container .form-section input,
+  .company-page-container .password-field input {
+    /* width: 65vw; */
+    /* margin-right: 10%; */
     display: block;
     font-size: 20px;
-    
   }
 
-.company-page-container  .passwords-row {
+  .company-page-container .passwords-row {
     flex-direction: column;
     display: block;
-    
   }
 
-.company-page-container .password-field {
-    width: 100%;
-   
+  .company-page-container .password-field {
   }
-  
- .company-page-container  .eye {
-  position: absolute;
-  top: 50%;
-  left: 20px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 20px;
-  color: #40798c;
-}
 
-.company-page-container  .form-section button {
+  .company-page-container .form-section button {
     width: 60%;
-    margin: 30px 95px 0 0;
   }
-  .company-page-container .folder-icon {
-  font-size: 22px;
-  color: #40798c;
-  margin-top: -40px;
-    position: absolute;
-  top: -10px;
-  left: 15px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  
-}
-
-.company-page-container .plus-icon {
-  position: absolute;
-  top: -45px;
-  font-size: 20px;
-  background-color: white;
-  color: #40798c;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 20px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  
-}
-
- .company-page-container  img {
-    width: 100%;
-    height: auto;
-    margin-top: 10%;
+  .company-page-container .image {
+    display: none;
   }
 }

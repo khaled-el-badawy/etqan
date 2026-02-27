@@ -38,7 +38,6 @@
 .company-login-container .login-form-fields form .field-container {
   /* background-color: tomato; */
   /* border: 1px solid #000; */
-  width: 500px;
   width: 318px;
 }
 .company-login-container .login-form-fields form .field-container input {
@@ -156,12 +155,6 @@
     height: auto;
   }
 
-  .company-login-container img {
-    width: 45%;
-    /* height: 130%; */
-    object-fit: cover;
-  }
-
   .company-login-container .register-link {
     padding-top: 0;
     position: relative;
@@ -225,6 +218,5 @@
 
   .company-login-container .image {
     display: none;
-
   }
-
+}
