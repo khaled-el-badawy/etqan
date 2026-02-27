@@ -1,67 +1,48 @@
 .craftman-login-container {
   display: flex;
-}
-
-.craftman-login-container .login-title {
-  color: #40798c;
-  text-align: center;
-  margin-top: 20px;
-  margin-right: 7%;
-  font-size: 58px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.craftman-login-container .h3 {
-  font-size: 18px;
-  color: #40798c;
-  text-align: center;
-  margin-right: 40%;
-  text-decoration: none;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.craftman-login-container .h3:hover {
-  color: #75a5b3;
-}
-
-.craftman-login-container .link {
-  text-decoration: none;
-  color: #40798c;
-}
-
-.craftman-login-container .link:hover {
-  color: #75a5b3;
-}
-
-.craftman-login-container .h4 {
-  color: #828181;
-  text-align: center;
-  margin-top: 10%;
-  margin-right: 70px;
-  font-size: 18px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.craftman-login-container .login-error-msg {
-  color: rgb(235, 138, 138);
-  font-size: 1.1rem;
-  margin: 0;
-  margin-right: 40px;
-  line-height: 1rem;
-  min-height: 1rem;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .craftman-login-container .Login-form {
-  width: 50%;
+  width: 60%;
   direction: rtl;
+  /* background-color: goldenrod; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.craftman-login-container .login-form-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.craftman-login-container .login-form-fields .title {
+  color: #40798c;
+  text-align: center;
+  font-size: 58px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* background-color: rgb(235, 138, 138); */
+}
+.craftman-login-container .login-form-fields form {
+  /* background-color: green; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: calc(100dvh - 80px);
+  align-items: center;
+  gap: 20px;
 }
 
-.craftman-login-container .Login-form input {
-  margin: 15px 25px;
+.craftman-login-container .login-form-fields form .field-container {
+  /* background-color: tomato; */
+  /* border: 1px solid #000; */
+  width: 500px;
+  width: 318px;
+}
+.craftman-login-container .login-form-fields form .field-container input {
+  width: 100%;
   padding: 20px;
   color: rgb(30, 30, 30);
   overflow-y: auto;
@@ -71,38 +52,63 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
+.craftman-login-container
+  .login-form-fields
+  form
+  .field-container.login-password-field {
+}
 
-.craftman-login-container .login-form-fields {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.craftman-login-container .login-error-msg {
+  color: rgb(235, 138, 138);
+  font-size: 1.1rem;
+  line-height: 1rem;
+  min-height: 1rem;
+}
+/* ----------------------------------------------- */
+.craftman-login-container .forgot-password-link {
+  font-size: 18px;
+  color: #40798c;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.craftman-login-container .forgot-password-link:hover {
+  color: #75a5b3;
+}
+
+/* ----------------------------------------------- */
+.craftman-login-container .register-link {
+  color: #828181;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.craftman-login-container .link {
+  text-decoration: none;
+  color: #40798c;
+}
+
+.craftman-login-container .link:hover {
+  color: #75a5b3;
 }
 
 .craftman-login-container .login-password-field {
   position: relative;
   width: 30%;
 }
-
-.craftman-login-container .login-password-field input {
-  margin: 25px;
+.craftman-login-container .login-password-field {
   width: 100%;
-  padding: 20px;
-  overflow-y: auto;
-  text-align: right;
-  color: black;
-  border: 1px solid #a3a9a6;
-  border-radius: 30px;
-  box-shadow: 0 2px 5px #40798c;
-  font-size: 20px;
-  position: relative;
 }
+
 .craftman-login-container input::-ms-reveal {
   display: none;
 }
+
 .craftman-login-container .password-eye {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 4px);
+  left: 30px;
   transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
@@ -115,10 +121,8 @@
   background-color: #40798c;
   padding: 10px 20px;
   border-radius: 35px;
-  width: 80%;
+  width: 250px;
   font-size: 20px;
-  margin-right: 20%;
-  margin-top: 8%;
   border: none;
 }
 
@@ -127,55 +131,24 @@
   border: 1px solid #40798c;
 }
 
-
+/* ----------banner---------------------- */
 .craftman-login-container .image {
-  overflow: hidden;
-  height: calc(100vh);
+  transform: scale(1.05);
 }
+
 .craftman-login-container .image img {
   width: 40vw;
   height: 100%;
-  object-fit: cover;
-  display: block;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
 
-/* DESKTOP */
-@media (min-width: 993px) {
-  .craftman-login-container .h3 {
-    margin-top: 5%;
-  }
-
-  .craftman-login-container .Login-form {
-    width: 60%;
-  }
-
-  .craftman-login-container .Login-form input {
-    width: 100%;
-  }
-
-  .craftman-login-container .login-password-field {
-    width: 100%;
-  }
-
-  .craftman-login-container .password-eye {
-    right: 300px;
-  }
-
-  .craftman-login-container .image img {
-    width: 40vw;
-    height: 100%;
-  }
-}
-
+/* ---------------------------------------------------------------------------------- */
 /* TABLET */
-@media (min-width: 768px) and (max-width: 992px) {
+/* @media (min-width: 768px) and (max-width: 992px) { */
+@media (max-width: 991px) {
   .craftman-login-container {
     flex-direction: row;
-    height: auto;
-    overflow-y: auto;
+    /* height: auto; */
+    /* overflow-y: auto; */
   }
 
   .craftman-login-container .Login-form {
@@ -185,14 +158,11 @@
 
   .craftman-login-container img {
     width: 45%;
-    height: 130%;
+    /* height: 130%; */
     object-fit: cover;
   }
 
-
- 
-
-  .craftman-login-container .h4 {
+  .craftman-login-container .register-link {
     padding-top: 0;
     position: relative;
     text-align: center;
@@ -212,8 +182,8 @@
 
   .craftman-login-container .password-eye {
     position: absolute;
-    top: 50%;
-    left: 10px;
+    top: calc(50% - 4px);
+    left: 30px;
     transform: translateY(-50%);
     font-size: 18px;
   }
@@ -228,7 +198,7 @@
   .craftman-login-container .image img {
     width: 50vw;
     height: auto;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     display: block;
   }
 }
@@ -243,46 +213,18 @@
   }
 
   .craftman-login-container .Login-form {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    padding: 20px 0;
-  }
-
-  .craftman-login-container .title {
-    text-align: center;
-    margin-left: 40px;
-  }
-
-  
-
-  .craftman-login-container .h4 {
-    margin-top: 30px;
-    margin-right: 40px;
+    height: 100vh;
   }
 
   .craftman-login-container input,
   .craftman-login-container .login-password-field input {
     width: 100%;
-    margin: 30px;
     display: block;
   }
 
-  .craftman-login-container .login-password-field {
-    width: 100%;
+  .craftman-login-container .image {
+    display: none;
+
   }
 
-  .craftman-login-container .password-eye {
-    right: 290px;
-  }
-
-  .craftman-login-container .btn-container {
-    width: 80%;
-    margin: 30px 55px 0 0;
-  }
-
-  .craftman-login-container .image img {
-    width: 100vw;
-    height: auto;
-  }
-}

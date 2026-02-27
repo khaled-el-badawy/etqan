@@ -60,17 +60,16 @@ function Login() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        <h1 className="login-title">اهلاً بعودتك</h1>
-
         <div className="login-form-fields">
           <form onSubmit={(e) => e.preventDefault()}>
+            <h1 className="title">اهلاً بعودتك</h1>
             {/* حقل اسم المستخدم */}
             <div className="field-container">
               <input
                 type="text"
                 placeholder="اسم المستخدم"
                 value={username}
-               onChange={handleUsernameChange}
+                onChange={handleUsernameChange}
                 required
               />
               {usernameError && (
@@ -98,7 +97,7 @@ function Login() {
             </div>
 
             <h3>
-              <Link to="#" className="h3">
+              <Link to="#" className="forgot-password-link">
                 هل نسيت كلمة السر؟
               </Link>
             </h3>
@@ -118,16 +117,16 @@ function Login() {
                 تسجيل الدخول
               </button>
             </Link>
-            <h4 className="h4">
+            <h4 className="register-link">
               ليس لديك حساب ؟{" "}
-              <Link to="/CraftsmanRegister" className="link">
+              <Link to="/CustomerRegister" className="link">
                 إنشاء حساب
               </Link>
             </h4>
           </form>
         </div>
       </motion.div>
-
+      {/* -------------------------------------------------------------- */}
       <div className="image">
         <motion.img
           src="/images/Frame 18.svg"
@@ -142,16 +141,14 @@ function Login() {
             y: { duration: 3, ease: "easeInOut", repeat: Infinity },
             opacity: { duration: 1.8, ease: "easeOut" },
           }}
-          style={
-            {
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-              flexShrink: 0,
-              position: "relative",
-              zIndex: 1,
-            }
-          }
+          style={{
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+            flexShrink: 0,
+            position: "relative",
+            zIndex: 1,
+          }}
         />
       </div>
     </div>
