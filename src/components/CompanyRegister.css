@@ -3,7 +3,6 @@
   height: 100vh;
   overflow: hidden;
   flex-direction: row;
-  /* background-color: red; */
 }
 .company-page-container h1 {
   font-size: 55px;
@@ -95,17 +94,6 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
-.company-page-container .file-upload-container input {
-  /* padding: 20px;
-  text-align: right;
-  color: rgb(30, 30, 30);
-  border: 1px solid #a3a9a6;
-  border-radius: 30px;
-  box-shadow: 0 2px 5px #40798c;
-  font-size: 20px;
-  direction: rtl;
-  appearance: none; */
-}
 
 .company-page-container input::-ms-reveal {
   display: none;
@@ -114,7 +102,6 @@
   min-height: 100vh;
 }
 .company-page-container .form-fields form {
-  /* height: 1000px; */
   min-height: 100vh;
   margin: 0 auto;
 
@@ -162,16 +149,14 @@
 /* DESKTOP */
 
 .company-page-container .form-section input {
-  
 }
 
 /* ----------banner---------------------- */
 .company-page-container .image {
-  height: 100vh ;
+  height: 100vh;
   transform: scale(1.05);
 }
 .company-page-container .image img {
-
 }
 @media (max-width: 1130px) {
   .company-page-container .image {

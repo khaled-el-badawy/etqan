@@ -46,7 +46,7 @@ function CustomerRegister() {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [nationalId, setNationalId] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nationalIdError, setNationalIdError] = useState("");
@@ -70,6 +70,7 @@ function CustomerRegister() {
     }
   };
 
+  // التحقق من البريد الإلكتروني
   const handleEmailChange = (e) => {
     const val = e.target.value;
     setEmail(val);
@@ -82,11 +83,11 @@ function CustomerRegister() {
     }
   };
 
-  const handleNationalIdChange = (e) => {
+  // التحقق من رقم الهاتف
+  const handlePhoneChange = (e) => {
     const val = e.target.value;
     if (/^\d*$/.test(val) && val.length <= 11) {
-      setNationalId(val);
-      setNationalIdError("");
+      setPhone(val);
     }
   };
 
@@ -110,7 +111,7 @@ function CustomerRegister() {
     email.trim() !== "" &&
     emailError === "" &&
     nationalId.trim() !== "" &&
-    nationalId.length === 11 &&
+    phone.length === 11 &&
     Governorate.trim() !== "" &&
     password !== "" &&
     confirmPassword !== "" &&
@@ -127,11 +128,10 @@ function CustomerRegister() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        <h1>مرحباً بك</h1>
-        <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
-
         <div className="form-fields">
           <form>
+            <h1>مرحباً بك</h1>
+            <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
             <div className="fields-row">
               <div className="field-container">
                 <input
@@ -151,22 +151,20 @@ function CustomerRegister() {
                   onChange={handleEmailChange}
                   required
                 />
-                <p className="error-msg">{emailError}</p>
+                {emailError && <p className="error-msg">{emailError}</p>}
               </div>
 
               <div className="field-container">
                 <input
                   type="text"
                   placeholder="رقم الهاتف"
-                  value={nationalId}
-                  onChange={handleNationalIdChange}
+                  value={phone}
+                  onChange={handlePhoneChange}
                   required
                 />
-                <p className="error-msg">
-                  {nationalId.length > 0 && nationalId.length < 11
-                    ? "رقم الهاتف يجب أن يكون 11 رقم"
-                    : ""}
-                </p>
+                {phone.length > 0 && phone.length < 11 && (
+                  <p className="error-msg">رقم الهاتف يجب أن يكون 11 رقم</p>
+                )}
               </div>
 
               <div className="searchable-dropdown">
@@ -315,26 +313,34 @@ function CustomerRegister() {
             </h4>
           </form>
         </div>
-      </motion.div>
 
-      <motion.img
-        src="/images/Frame 19.svg"
-        initial={{ x: "20%", y: 0, opacity: 0 }}
-        animate={{ x: 0, y: [0, -10, 0], opacity: 1 }}
-        transition={{
-          x: { duration: 1.8, ease: "easeOut" },
-          y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-          opacity: { duration: 1.8, ease: "easeOut" },
-        }}
-        style={{
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-          flexShrink: 0,
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
+        <div className="image">
+          <motion.img
+            src="/images/Frame 19.svg"
+            initial={{ x: "20%", y: 0, opacity: 0 }}
+            animate={{
+              x: 0,
+              y: [0, -10, 0],
+              opacity: 1,
+            }}
+            transition={{
+              x: { duration: 1.8, ease: "easeOut" },
+              y: { duration: 3, ease: "easeInOut", repeat: Infinity },
+              opacity: { duration: 1.8, ease: "easeOut" },
+            }}
+            style={
+              {
+                // height: "100%",
+                // objectFit: "cover",
+                // display: "block",
+                // flexShrink: 0,
+                // position: "relative",
+                // zIndex: 1,
+              }
+            }
+          />
+        </div>
+      </motion.div>
     </div>
   );
 }

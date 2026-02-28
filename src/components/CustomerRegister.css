@@ -1,20 +1,18 @@
-
 .customer-register-page-container {
   display: flex;
   height: 100vh;
   overflow: hidden;
   flex-direction: row;
 }
-.customer-register-page-container h1{
+.customer-register-page-container h1 {
   font-size: 55px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .customer-register-page-container h1,
 .customer-register-page-container h3 {
   color: #40798c;
   text-align: center;
-  margin-top: 25px;
-  margin-left: 5%;
+
   text-decoration: none;
 }
 
@@ -34,44 +32,57 @@
 .customer-register-page-container .h4-customer-login {
   color: #828181;
   text-align: center;
-  margin-top: -15px;
+
   font-size: 18px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .customer-register-page-container .form-section {
   direction: rtl;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-direction: row-reverse;
+
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 0;
 }
 
 .customer-register-page-container .fields-row {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  margin-right: 10%;
-  margin-top: 60px;
 }
-
-.customer-register-page-container .field-container {
+/* ------------------------------- */
+.customer-register-page-container .field-container,
+.customer-register-page-container .CompanyRegister-password-field-container {
   display: flex;
   flex-direction: column;
-  min-width: 150px;
-  min-height: 60px;
+  width: 318px;
+
+  margin: 10px;
+
+  position: relative;
 }
+@media (max-width: 991px) {
+  .customer-register-page-container .field-container,
+  .customer-register-page-container .CompanyRegister-password-field-container {
+    width: 250px;
+  }
+}
+/* -------------------------- */
 
 .customer-register-page-container .error-msg {
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
-  margin: 0;
-  margin-right: 40px;
-  line-height: 0.4rem;
-  min-height: 0.4rem;
 }
 
 .customer-register-page-container .form-section input {
-  margin: 15px 20px;
-  width: 30%;
+  width: 100%;
   padding: 20px;
   color: rgb(30, 30, 30);
-  overflow-y: auto;
   text-align: right;
   border: 1px solid #a3a9a6;
   border-radius: 30px;
@@ -80,12 +91,39 @@
 }
 
 .customer-register-page-container .form-fields {
-  margin-top: 40px;
+  display: flex;
+}
+
+.customer-register-page-container .form-fields form {
+  min-height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.customer-register-page-container .field-container,
+.customer-register-page-container .password-field-container,
+.customer-register-page-container .searchable-dropdown {
+  /* -------------------------- */
+  display: flex;
+  flex-direction: column;
+  width: 318px;
+  margin: 10px;
+  position: relative;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .customer-register-page-container .field-container,
+  .customer-register-page-container .password-field-container,
+  .customer-register-page-container .searchable-dropdown {
+    width: 250px;
+  }
 }
 
 .customer-register-page-container .searchable-dropdown input {
-  margin: 15px 20px;
-  width: 30%;
   padding: 20px;
   text-align: right;
   color: rgb(30, 30, 30);
@@ -99,6 +137,8 @@
 
 .customer-register-page-container .dropdown-list {
   position: absolute;
+  top: 100%;
+  right: 0;
   width: 200px;
   max-height: 120px;
   overflow-y: auto;
@@ -124,30 +164,26 @@
   text-align: center;
 }
 
-.customer-register-page-container .password-field-container {
-  position: relative;
-}
-
 .customer-register-page-container .eye {
   position: absolute;
-  top: 50%;
-  left: 50px;   
+  top: calc(50% - 4px);
+  left: 25px;
   transform: translateY(-50%);
   cursor: pointer;
+  user-select: none;
   font-size: 20px;
   color: #40798c;
 }
-
 
 .customer-register-page-container input::-ms-reveal {
   display: none;
 }
 .customer-register-page-container .password-error-msg {
   position: absolute;
-  bottom: -10px;
+  bottom: -35px;
   color: rgb(235, 138, 138);
-   font-size: 0.9rem;
-   margin: 0;
+  font-size: 0.9rem;
+
   margin-right: 40px;
   line-height: 0.4rem;
   min-height: 0.4rem;
@@ -156,10 +192,10 @@
 .customer-register-page-container .link-button {
   display: block;
   text-align: center;
-  text-decoration: none;  
+  text-decoration: none;
   margin: 45px auto;
-  width: 50%;
-  max-width: 250px;
+  width: 250px;
+  max-width: 210px;
   color: white;
   background-color: #40798c;
   padding: 12px;
@@ -173,67 +209,48 @@
   border: 1px solid #40798c;
 }
 
-
 /* DESKTOP */
-@media (min-width: 993px) {
-  .customer-register-page-container {
-    flex-direction: row;
-    height: 100vh;
-  }
 
-  .customer-register-page-container .form-section {
-    width: 60%;
+/* ----------banner---------------------- */
+.customer-register-page-container .image {
+  height: 100vh;
+  transform: scale(1.05);
+}
+.customer-register-page-container .image img {
+}
+@media (max-width: 1130px) {
+  .customer-register-page-container .image {
+    height: 150vh;
   }
-
-  .customer-register-page-container .form-section input {
-    width: 20vw;
-  }
-
-  .customer-register-page-container img {
-    width: 40%;
-    height: 100%;
-  }
+}
+.customer-register-page-container .image img {
+  width: 40vw;
+  height: 100%;
 }
 
 /* TABLET */
-@media (min-width: 768px) and (max-width: 992px) {
+@media (max-width: 991px) {
   .customer-register-page-container {
     flex-direction: row;
-    height: auto;
+
     overflow-y: auto;
+    justify-content: space-between;
   }
-
+  .customer-register-page-container .form-fields form {
+    min-height: 100vh;
+  }
   .customer-register-page-container .form-section {
-    width: 55%;
-    height: auto;
-  }
-
-  .customer-register-page-container img {
-    width: 45%;
-    height: 130%;
-    object-fit: cover;
   }
 
   .customer-register-page-container .form-section,
   .customer-register-page-container .h4-login {
-    margin-top: 25px;
-    padding-top: 0;
     position: relative;
-    top: -10px;
-    text-align: center;
-    padding-bottom: 60px;
     font-size: 18px;
   }
 
-
-  .customer-register-page-container .error-msg {
-    margin-left: 40%;
-  }
-
   .customer-register-page-container .form-section input,
-  .customer-register-page-container .governorate-select,
   .customer-register-page-container .password-field input {
-    width: 35vw;
+    /* width: 35vw; */
     font-size: 20px;
   }
 
@@ -247,13 +264,9 @@
     width: 100%;
   }
 
-
-
-  .customer-register-page-container img {
-    width: 50%;
-    height: auto;
-    margin: 20px auto;
-    display: block;
+  .customer-register-page-container .image img {
+    object-fit: initial;
+    display: none;
   }
 }
 
@@ -266,8 +279,6 @@
   }
 
   .customer-register-page-container .form-fields {
-    display: flex;
-    flex-direction: column;
   }
 
   .customer-register-page-container .form-section {
@@ -284,16 +295,8 @@
     margin-top: -20px;
   }
 
-  .customer-register-page-container .error-msg {
-    margin-right: 18%;
-  }
-    .customer-register-page-container .form-fields{
-   margin-top:-20px;
-    }
   .customer-register-page-container .form-section input,
   .customer-register-page-container .password-field input {
-    width: 65vw;
-    margin-right: 10%;
     display: block;
     font-size: 20px;
   }
@@ -304,27 +307,12 @@
   }
 
   .customer-register-page-container .password-field {
-    width: 100%;
   }
-
-  .customer-register-page-container .eye {
-  position: absolute;
-  top: 50%;
-  left: 20px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 20px;
-  color: #40798c;
-}
 
   .customer-register-page-container .form-section button {
     width: 60%;
-    margin: 30px 95px 0 0;
   }
-
-  .customer-register-page-container img {
-    width: 110%;
-    height: auto;
-    margin-top: 10%;
+  .customer-register-page-container .image {
+    display: none;
   }
 }
