@@ -12,7 +12,7 @@
 .company-page-container h3 {
   color: #40798c;
   text-align: center;
-  margin-top: 5px;
+
   text-decoration: none;
 }
 .company-page-container h3 {
@@ -47,7 +47,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 .company-page-container .field-container,

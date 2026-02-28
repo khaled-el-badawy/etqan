@@ -110,7 +110,7 @@ function CustomerRegister() {
     username.trim() !== "" &&
     email.trim() !== "" &&
     emailError === "" &&
-    nationalId.trim() !== "" &&
+    // nationalId.trim() !== "" &&
     phone.length === 11 &&
     Governorate.trim() !== "" &&
     password !== "" &&

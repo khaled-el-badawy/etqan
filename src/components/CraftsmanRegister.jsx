@@ -82,6 +82,7 @@ function CraftsmanRegister() {
       setEmailError("");
     }
   };
+
   // التحقق من الباسورد
   const [isFocused, setIsFocused] = useState(false); // لتتبع التركيز
 
@@ -99,7 +100,6 @@ function CraftsmanRegister() {
     const val = e.target.value;
     if (/^\d*$/.test(val) && val.length <= 14) {
       setNationalId(val);
-      setNationalIdError("");
     }
   };
 
@@ -125,11 +125,10 @@ function CraftsmanRegister() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-
         <div className="form-fields">
           <form>
-        <h1>مرحباً بك</h1>
-        <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
+            <h1>مرحباً بك</h1>
+            <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
             <div className="fields-row">
               <div className="field-container">
                 <input
@@ -160,11 +159,9 @@ function CraftsmanRegister() {
                   onChange={handleNationalIdChange}
                   required
                 />
-                <p className="error-msg">
-                  {nationalId.length > 0 && nationalId.length < 14
-                    ? "الرقم القومي يجب أن يكون 14 رقم"
-                    : ""}
-                </p>
+                {nationalId.length > 0 && nationalId.length < 14 && (
+                  <p className="error-msg">الرقم القومي يجب أن يكون 14 رقم</p>
+                )}
               </div>
 
               <div className="field-container" ref={jobDropdownRef}>

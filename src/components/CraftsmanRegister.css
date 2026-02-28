@@ -72,11 +72,8 @@
 .craftsman-page-container .error-msg {
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
-  margin: 0;
-  margin-right: 40px;
-  line-height: 0.4rem;
-  min-height: 0.4rem;
 }
+
 
 .craftsman-page-container .form-section input {
   width: 100%;
@@ -88,8 +85,37 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
+
 .craftsman-page-container .form-fields {
-  margin-top: 40px;
+  display: flex;
+}
+
+.craftsman-page-container .form-fields form {
+  min-height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.craftsman-page-container .field-container,
+.craftsman-page-container .password-field-container,
+.craftsman-page-container .searchable-dropdown {
+  /* -------------------------- */
+  display: flex;
+  flex-direction: column;
+  width: 318px;
+  position: relative;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .craftsman-page-container .field-container,
+  .craftsman-page-container .password-field-container,
+  .craftsman-page-container .searchable-dropdown {
+    width: 250px;
+  }
 }
 
 .craftsman-page-container .searchable-dropdown input {
@@ -106,6 +132,8 @@
 
 .craftsman-page-container .dropdown-list {
   position: absolute;
+  top: 100%;
+right: 0;
   width: 200px;
   max-height: 120px;
   overflow-y: auto;
@@ -148,12 +176,8 @@
   display: none;
 }
 .craftsman-page-container .password-error-msg {
-  position: absolute;
-  bottom: -35px;
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
-
-  margin-right: 40px;
 }
 /* .craftsman-page-container .passwords-row {
   display: flex;

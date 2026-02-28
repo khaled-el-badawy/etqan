@@ -136,6 +136,8 @@
 
 .customer-register-page-container .dropdown-list {
   position: absolute;
+  top: 100%;
+  right: 0;
   width: 200px;
   max-height: 120px;
   overflow-y: auto;

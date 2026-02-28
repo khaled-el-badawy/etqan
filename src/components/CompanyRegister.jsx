@@ -78,7 +78,7 @@ function CompanyRegister() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        
+        <div className="form-fields">
           <form>
             <h1>مرحباً بك</h1>
             <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
@@ -139,10 +139,8 @@ function CompanyRegister() {
                   onChange={(e) => setCommercialFile(e.target.files[0])}
                 />
                 {/* أيقونة المجلد */}
-                
-                  <FiFolderPlus  className="folder-icon" />
-                  
-          
+
+                <FiFolderPlus className="folder-icon" />
               </div>
 
               <div className="CompanyRegister-field-container CompanyRegister-password-field-container">
@@ -253,34 +251,35 @@ function CompanyRegister() {
               </Link>
             </h4>
           </form>
-        
-      
+        </div>
 
-      <div className="image">
-        <motion.img
-          src="/images/Frame 20.svg"
-          initial={{ x: "20%", y: 0, opacity: 0 }}
-          animate={{
-            x: 0,
-            y: [0, -10, 0],
-            opacity: 1,
-          }}
-          transition={{
-            x: { duration: 1.8, ease: "easeOut" },
-            y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-            opacity: { duration: 1.8, ease: "easeOut" },
-          }}
-          style={{
-            // height: "100%",
-            // objectFit: "cover",
-            // display: "block",
-            // flexShrink: 0,
-            // position: "relative",
-            // zIndex: 1,
-          }}
-        />
-      </div>
-    </motion.div>
+        <div className="image">
+          <motion.img
+            src="/images/Frame 20.svg"
+            initial={{ x: "20%", y: 0, opacity: 0 }}
+            animate={{
+              x: 0,
+              y: [0, -10, 0],
+              opacity: 1,
+            }}
+            transition={{
+              x: { duration: 1.8, ease: "easeOut" },
+              y: { duration: 3, ease: "easeInOut", repeat: Infinity },
+              opacity: { duration: 1.8, ease: "easeOut" },
+            }}
+            style={
+              {
+                // height: "100%",
+                // objectFit: "cover",
+                // display: "block",
+                // flexShrink: 0,
+                // position: "relative",
+                // zIndex: 1,
+              }
+            }
+          />
+        </div>
+      </motion.div>
     </div>
   );
 }
