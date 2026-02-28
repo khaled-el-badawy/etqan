@@ -4,15 +4,15 @@
   overflow: hidden;
   flex-direction: row;
 }
-.craftsman-page-container h1{
-   font-size: 55px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.craftsman-page-container h1 {
+  font-size: 55px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .craftsman-page-container h1,
 .craftsman-page-container h3 {
   color: #40798c;
   text-align: center;
-  margin-top: 5px;
+
   text-decoration: none;
 }
 .craftsman-page-container h3 {
@@ -29,31 +29,46 @@
 .craftsman-page-container .h4-craftsman-login {
   color: #828181;
   text-align: center;
-  margin-top: -15px;
   font-size: 18px;
-  margin-left: 3%;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .craftsman-page-container .form-section {
   direction: rtl;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.craftsman-page-container .fields-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 12%;
-  margin-top: 10px;
+  flex-direction: row-reverse;
+  flex-direction: row-reverse;
+
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 0;
 }
 
-.craftsman-page-container .field-container {
+/* .craftsman-page-container .field-container {
   display: flex;
   flex-direction: column;
   min-width: 150px;
   min-height: 60px;
+} */
+
+.craftsman-page-container .fields-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
+.craftsman-page-container .field-container,
+.craftsman-page-container .CompanyRegister-password-field-container {
+  display: flex;
+  flex-direction: column;
+  width: 318px;
+
+  margin: 10px;
+
+  position: relative;
+}
+/* //------------------------ */
 .craftsman-page-container .error-msg {
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
@@ -64,11 +79,9 @@
 }
 
 .craftsman-page-container .form-section input {
-  margin: 15px 20px;
-  width: 30%;
+  width: 100%;
   padding: 20px;
   color: rgb(30, 30, 30);
-  overflow-y: auto;
   text-align: right;
   border: 1px solid #a3a9a6;
   border-radius: 30px;
@@ -80,8 +93,6 @@
 }
 
 .craftsman-page-container .searchable-dropdown input {
-  margin: 15px 20px;
-  width: 30%;
   padding: 20px;
   text-align: right;
   color: rgb(30, 30, 30);
@@ -120,44 +131,42 @@
   text-align: center;
 }
 
-
-.craftsman-page-container .password-field-container {
+/* .craftsman-page-container .password-field-container {
   position: relative;
+} */
+.craftsman-page-container .eye {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 25px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  color: #40798c;
 }
 .craftsman-page-container input::-ms-reveal {
   display: none;
 }
-.craftsman-page-container .eye {
-  position: absolute;
-  top: 50%;
-  left: 50px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 20px;
-  color: #40798c;
-}
 .craftsman-page-container .password-error-msg {
   position: absolute;
-  bottom: -10px;
+  bottom: -35px;
   color: rgb(235, 138, 138);
-   font-size: 0.9rem;
-   margin: 0;
+  font-size: 0.9rem;
+
   margin-right: 40px;
-  line-height: 0.4rem;
-  min-height: 0.4rem;
 }
-.craftsman-page-container .passwords-row {
+/* .craftsman-page-container .passwords-row {
   display: flex;
   gap: 80px;
-}
+} */
 
 .craftsman-page-container .link-button {
   display: block;
   text-align: center;
-  text-decoration: none;  
+  text-decoration: none;
   margin: 45px auto;
-  width: 50%;
-  max-width: 250px;
+  width: 250px;
+  max-width: 210px;
   color: white;
   background-color: #40798c;
   padding: 12px;
@@ -171,98 +180,83 @@
 }
 
 /* DESKTOP */
-@media (min-width: 993px) {
-  .craftsman-page-container {
-    flex-direction: row;
-    height: 100vh;
-  }
 
- .craftsman-page-container .form-section {
-    width: 60%;
+/* ----------banner---------------------- */
+.craftsman-page-container .image {
+  height: 100vh;
+  transform: scale(1.05);
+}
+.craftsman-page-container .image img {
+}
+@media (max-width: 1130px) {
+  .craftsman-page-container .image {
+    height: 150vh;
   }
-
-  .craftsman-page-container .form-section input {
-    width: 20vw;
-  }
-
- .craftsman-page-container img {
-    width: 40%;
-    height: 100%;
-  }
+}
+.craftsman-page-container .image img {
+  width: 40vw;
+  height: 100%;
 }
 
 /* TABLET */
-@media (min-width: 768px) and (max-width: 992px) {
+@media (max-width: 991px) {
   .craftsman-page-container {
     flex-direction: row;
-    height: auto;
+
     overflow-y: auto;
+    justify-content: space-between;
   }
-
+  .craftsman-page-container .form-fields form {
+    min-height: 100vh;
+  }
   .craftsman-page-container .form-section {
-    width: 55%;
-    height: auto;
   }
 
-  .craftsman-page-container img {
-    width: 45%;
-    height: 130%;
-    object-fit: cover;
-  }
-
- .craftsman-page-container .form-section,
+  .craftsman-page-container .form-section,
   .craftsman-page-container .h4-login {
-    margin-top: 25px;
-    padding-top: 0;
     position: relative;
-    top: -10px;
-    text-align: center;
-    padding-bottom: 60px;
     font-size: 18px;
   }
 
-
- .craftsman-page-container.error-msg {
-    margin-left: 40%;
-  }
-
   .craftsman-page-container .form-section input,
- .craftsman-page-container .password-field input {
-    width: 35vw;
+  .craftsman-page-container .password-field input {
+    /* width: 35vw; */
     font-size: 20px;
   }
 
- .craftsman-page-container .passwords-row {
+  .craftsman-page-container .passwords-row {
     flex-direction: column;
     gap: 5px;
     margin: 0;
   }
 
- .craftsman-page-container .password-field {
+  .craftsman-page-container .password-field {
     width: 100%;
   }
 
+  .craftsman-page-container .image img {
+    object-fit: initial;
+    display: none;
+  }
 }
 
 /* MOBILE */
 @media (max-width: 767px) {
- .craftsman-page-container {
+  .craftsman-page-container {
     flex-direction: column;
     align-items: center;
     height: auto;
   }
 
-.craftsman-page-container .form-fields {
-    display: flex;
-    flex-direction: column;
+  .craftsman-page-container .form-fields {
   }
 
-.craftsman-page-container .form-section {
+  .craftsman-page-container .form-section {
     width: 100%;
   }
 
- .craftsman-page-container h1,
- .craftsman-page-container h3 {
+  .craftsman-page-container h1,
+  .craftsman-page-container h3 {
     margin-left: 0;
     text-align: center;
   }
@@ -271,47 +265,24 @@
     margin-top: -20px;
   }
 
-  .craftsman-page-container.error-msg {
-    margin-right: 18%;
-  }
-   .craftsman-page-container .form-fields{
-   margin-top:-20px;
-    }
- .craftsman-page-container .form-section input,
- .craftsman-page-container .password-field input {
-    width: 65vw;
-    margin-right: 10%;
+  .craftsman-page-container .form-section input,
+  .craftsman-page-container .password-field input {
     display: block;
     font-size: 20px;
   }
 
- .craftsman-page-container .passwords-row {
+  .craftsman-page-container .passwords-row {
     flex-direction: column;
     display: block;
   }
 
- .craftsman-page-container.password-field {
-    width: 100%;
+  .craftsman-page-container .password-field {
   }
 
- .craftsman-page-container .eye {
-  position: absolute;
-  top: 50%;
-  left: 20px;   
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 20px;
-  color: #40798c;
-}
-
- .craftsman-page-container .form-section button {
+  .craftsman-page-container .form-section button {
     width: 60%;
-    margin: 30px 95px 0 0;
   }
-
-  .craftsman-page-container img {
-    width: 110%;
-    height: auto;
-    margin-top: 10%;
+  .craftsman-page-container .image {
+    display: none;
   }
 }

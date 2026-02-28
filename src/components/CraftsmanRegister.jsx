@@ -7,11 +7,27 @@ import { Link } from "react-router-dom";
 function CraftsmanRegister() {
   // قائمة المهن
   const jobsList = [
-    "حداد","نجارة","فني تكييفات","سباكة","كهرباء",
-    "سيراميك","فني كاميرات","عامل بناء","نقاش","فني غاز",
-    "سواق نقل","تكسير وإزالة","الومنتال","منجد","أمن وأنظمة ذكية","محارة",
-    "تنظيف","استشارات هندسية","رش مبيدات","صيانة اجهزة كهربائية",
-    "فني تركيب دش"
+    "حداد",
+    "نجارة",
+    "فني تكييفات",
+    "سباكة",
+    "كهرباء",
+    "سيراميك",
+    "فني كاميرات",
+    "عامل بناء",
+    "نقاش",
+    "فني غاز",
+    "سواق نقل",
+    "تكسير وإزالة",
+    "الومنتال",
+    "منجد",
+    "أمن وأنظمة ذكية",
+    "محارة",
+    "تنظيف",
+    "استشارات هندسية",
+    "رش مبيدات",
+    "صيانة اجهزة كهربائية",
+    "فني تركيب دش",
   ];
 
   const [selectedJob, setSelectedJob] = useState("");
@@ -22,7 +38,10 @@ function CraftsmanRegister() {
   // إغلاق القائمة عند الضغط خارجها
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (jobDropdownRef.current && !jobDropdownRef.current.contains(event.target)) {
+      if (
+        jobDropdownRef.current &&
+        !jobDropdownRef.current.contains(event.target)
+      ) {
         setShowJobDropdown(false);
       }
     };
@@ -30,9 +49,7 @@ function CraftsmanRegister() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const filteredJobs = jobsList.filter((j) =>
-    j.includes(jobSearchTerm)
-  );
+  const filteredJobs = jobsList.filter((j) => j.includes(jobSearchTerm));
 
   // الحقول
   const [username, setUsername] = useState("");
@@ -48,7 +65,7 @@ function CraftsmanRegister() {
   // التحقق من الاسم
   const handleUsernameChange = (e) => {
     const val = e.target.value;
-    if (/^[a-zA-Zء-ي\s]*$/.test(val)) { 
+    if (/^[a-zA-Zء-ي\s]*$/.test(val)) {
       setUsername(val);
     }
   };
@@ -57,21 +74,25 @@ function CraftsmanRegister() {
   const handleEmailChange = (e) => {
     const val = e.target.value;
     setEmail(val);
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; 
-    setEmailError(val && !emailRegex.test(val) ? "البريد الإلكتروني غير صالح" : "");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (val && !emailRegex.test(val)) {
+      setEmailError("البريد الإلكتروني غير صالح");
+    } else {
+      setEmailError("");
+    }
   };
   // التحقق من الباسورد
   const [isFocused, setIsFocused] = useState(false); // لتتبع التركيز
 
   // قواعد الباسورد
   const rules = {
-    firstCapital: /^[A-Z]/,        // أول حرف Capital
+    firstCapital: /^[A-Z]/, // أول حرف Capital
     specialChar: /[!@#$%^&*()/\\]/, // رمز خاص
-    minLength: /.{8,}/              // على الأقل 8 أحرف
+    minLength: /.{8,}/, // على الأقل 8 أحرف
   };
 
   const checkRule = (rule) => rule.test(password);
-
 
   // التحقق من الرقم القومي
   const handleNationalIdChange = (e) => {
@@ -104,11 +125,11 @@ function CraftsmanRegister() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        <h1>مرحباً بك</h1>
-        <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
 
         <div className="form-fields">
           <form>
+        <h1>مرحباً بك</h1>
+        <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
             <div className="fields-row">
               <div className="field-container">
                 <input
@@ -128,7 +149,7 @@ function CraftsmanRegister() {
                   onChange={handleEmailChange}
                   required
                 />
-                <p className="error-msg">{emailError}</p>
+                {emailError && <p className="error-msg">{emailError}</p>}
               </div>
 
               <div className="field-container">
@@ -182,49 +203,77 @@ function CraftsmanRegister() {
                 </div>
               </div>
 
-           <div className="field-container password-field-container" style={{ position: "relative" }}>
-  <input
-    type={showPassword ? "text" : "password"}
-    placeholder="كلمة السر"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    onFocus={() => setIsFocused(true)}
-    onBlur={() => setIsFocused(false)}
-  />
-  <span className="eye" onClick={() => setShowPassword(!showPassword)}>
-    {showPassword ? <FiEye /> : <FiEyeOff />}
-  </span>
+              <div
+                className="field-container password-field-container"
+                style={{ position: "relative" }}
+              >
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="كلمة السر"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                />
+                <span
+                  className="eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FiEye /> : <FiEyeOff />}
+                </span>
 
-  {isFocused && (
-    <div
-      className="password-rules"
-      style={{
-        position: "absolute",
-        top: "100%",       
-        left: 0,
-        width: "100%",
-        
-      }}
-    >
-           <p style={{ color: checkRule(rules.firstCapital) ? "rgb(114, 114, 243)" : "rgb(235, 138, 138)", margin: 0, fontSize: "0.85rem" }}>
-          <ul><li>
-       يجب ان يكون أول حرف Capital
-        </li></ul>
-      </p>
-           <p style={{ color: checkRule(rules.specialChar) ? "rgb(114, 114, 243)" : "rgb(235, 138, 138)", margin: 0, fontSize: "0.85rem" }}>
-            <ul><li>
-        يجب أن يحتوي على  !@#$%
-        </li></ul>
-      </p>
-            <p style={{ color: checkRule(rules.minLength) ? "rgb(114, 114, 243)" : "rgb(235, 138, 138)", margin: 0, fontSize: "0.85rem" }}>
-           <ul><li>
-       يجب ان يكون على الأقل 8 أحرف
-         </li></ul>
-      </p>
-    </div>
-  )}
-</div>
-                
+                {isFocused && (
+                  <div
+                    className="password-rules"
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: 0,
+                      width: "100%",
+                    }}
+                  >
+                    <p
+                      style={{
+                        color: checkRule(rules.firstCapital)
+                          ? "rgb(114, 114, 243)"
+                          : "rgb(235, 138, 138)",
+                        margin: 0,
+                        fontSize: "0.85rem",
+                      }}
+                    >
+                      <ul>
+                        <li>يجب ان يكون أول حرف Capital</li>
+                      </ul>
+                    </p>
+                    <p
+                      style={{
+                        color: checkRule(rules.specialChar)
+                          ? "rgb(114, 114, 243)"
+                          : "rgb(235, 138, 138)",
+                        margin: 0,
+                        fontSize: "0.85rem",
+                      }}
+                    >
+                      <ul>
+                        <li>يجب أن يحتوي على !@#$%</li>
+                      </ul>
+                    </p>
+                    <p
+                      style={{
+                        color: checkRule(rules.minLength)
+                          ? "rgb(114, 114, 243)"
+                          : "rgb(235, 138, 138)",
+                        margin: 0,
+                        fontSize: "0.85rem",
+                      }}
+                    >
+                      <ul>
+                        <li>يجب ان يكون على الأقل 8 أحرف</li>
+                      </ul>
+                    </p>
+                  </div>
+                )}
+              </div>
 
               <div className="field-container password-field-container">
                 <input
@@ -247,16 +296,16 @@ function CraftsmanRegister() {
               </div>
             </div>
 
-                  <Link
-  to={isFormValid ? "/CustomerOTP" : "#"}
-  className={`link-button ${!isFormValid ? "disabled" : ""}`}
-  style={{
-    pointerEvents: !isFormValid ? "none" : "auto",
-    opacity: !isFormValid ? 0.5 : 1,
-  }}
->
-  تسجيل
-</Link>
+            <Link
+              to={isFormValid ? "/CustomerOTP" : "#"}
+              className={`link-button ${!isFormValid ? "disabled" : ""}`}
+              style={{
+                pointerEvents: !isFormValid ? "none" : "auto",
+                opacity: !isFormValid ? 0.5 : 1,
+              }}
+            >
+              تسجيل
+            </Link>
 
             <h4 className="h4-craftsman-login">
               هل لديك حساب ؟{" "}
@@ -266,26 +315,34 @@ function CraftsmanRegister() {
             </h4>
           </form>
         </div>
-      </motion.div>
 
-      <motion.img
-        src="/images/Frame 18.svg"
-        initial={{ x: "20%", y: 0, opacity: 0 }}
-        animate={{ x: 0, y: [0, -10, 0], opacity: 1 }}
-        transition={{
-          x: { duration: 1.8, ease: "easeOut" },
-          y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-          opacity: { duration: 1.8, ease: "easeOut" }
-        }}
-        style={{
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-          flexShrink: 0,
-          position: "relative",
-          zIndex: 1
-        }}
-      />
+        <div className="image">
+          <motion.img
+            src="/images/Frame 18.svg"
+            initial={{ x: "20%", y: 0, opacity: 0 }}
+            animate={{
+              x: 0,
+              y: [0, -10, 0],
+              opacity: 1,
+            }}
+            transition={{
+              x: { duration: 1.8, ease: "easeOut" },
+              y: { duration: 3, ease: "easeInOut", repeat: Infinity },
+              opacity: { duration: 1.8, ease: "easeOut" },
+            }}
+            style={
+              {
+                // height: "100%",
+                // objectFit: "cover",
+                // display: "block",
+                // flexShrink: 0,
+                // position: "relative",
+                // zIndex: 1,
+              }
+            }
+          />
+        </div>
+      </motion.div>
     </div>
   );
 }
