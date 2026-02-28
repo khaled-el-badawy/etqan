@@ -45,86 +45,91 @@ function CompanyOTP() {
 
   return (
     <div className="company-OTP-container">
-      <motion.div 
-        className="CompanyOTP-form"
-        initial={{ y: 60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-      >
-        <h3 className="CompanyOTP-title">
-          يرجى تفقد بريدك الإلكتروني وكتابة رمز التحقق
-          <br />
-          الذي أرسلناه للتو لإتمام تفعيل الحساب
-        </h3>
-
-        <div className="CompanyOTP-form-fields">
-          <form>
-            <div className="otp-row">
-              {otp.map((val, index) => (
-                <motion.input
-                  key={index}
-                  id={`otp-${index}`}
-                  type="text"
-                  maxLength="1"
-                  value={val}
-                  onChange={(e) => handleChange(e.target.value, index)}
-                  required
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 * index, duration: 0.5, ease:"easeOut" }}
-                />
-              ))}
-            </div>
-
-            <Link
-              to={isOtpComplete ? "/home" : "#"}
-              className={`btn-Link ${!isOtpComplete ? "disabled" : ""}`}
-              style={{
-                pointerEvents: !isOtpComplete ? "none" : "auto",
-                opacity: !isOtpComplete ? 0.5 : 1,
-              }}
+      <motion.div
+              className="CustomerOTP-form"
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
             >
-              <button type="button" className="btn-CompanyOTP-container">تأكيد</button>
-            </Link>
-          </form>
-
-          <div>
-            <span
-              className={`resend-otp ${timer > 0 ? "disabled" : ""}`}
-              onClick={() => {
-                if (timer === 0) handleResend();
-              }}
-            >
-              إعادة إرسال الرمز ({timer > 0 ? (timer < 10 ? `0${timer} `: timer) : "60 : 00"})
-            </span>
-          </div>
-        </div>
-      </motion.div>
-
-      <div className="CompanyOTP-image">
-        <motion.img 
-          src="/images/Frame 20.svg" 
-          initial={{ x: "20%", y: 0, opacity: 0 }}
-          animate={{
-            x: 0,
-            y: [0, -10, 0],
-            opacity: 1
-          }}
-          transition={{
-            x: { duration: 1.8, ease: "easeOut" },
-            y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-            opacity: { duration: 1.8, ease: "easeOut" }
-          }}
-          style={{       
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-            flexShrink: 0,
-            position: "relative",
-            zIndex: 1
-          }}
-        />
-      </div> 
+              <div className="CustomerOTP-form-fields">
+                <form>
+                  <h3 className="CustomerOTP-title">
+                    يرجى تفقد بريدك الإلكتروني وكتابة رمز التحقق
+                    <br />
+                    الذي أرسلناه للتو لإتمام تفعيل الحساب
+                  </h3>
+                  <div className="otp-row">
+                    {otp.map((val, index) => (
+                      <motion.input
+                        key={index}
+                        id={`otp-${index}`}
+                        type="text"
+                        maxLength="1"
+                        value={val}
+                        onChange={(e) => handleChange(e.target.value, index)}
+                        required
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.2 * index,
+                          duration: 0.5,
+                          ease: "easeOut",
+                        }}
+                      />
+                    ))}
+                  </div>
+      
+                  <Link
+                    to={isOtpComplete ? "/home" : "#"}
+                    className={`btn-Link ${!isOtpComplete ? "disabled" : ""}`}
+                    style={{
+                      pointerEvents: !isOtpComplete ? "none" : "auto",
+                      opacity: !isOtpComplete ? 0.5 : 1,
+                    }}
+                  >
+                    <button type="button" className="btn-CustomerOTP-container">
+                      تأكيد
+                    </button>
+                  </Link>
+                  <div>
+                    <span
+                      className={`resend-otp ${timer > 0 ? "disabled" : ""}`}
+                      onClick={() => {
+                        if (timer === 0) handleResend();
+                      }}
+                    >
+                      إعادة إرسال الرمز (
+                      {timer > 0 ? (timer < 10 ? `0${timer} ` : timer) : "60 : 00"})
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </motion.div>
+      
+            <div className="image">
+              <motion.img
+                src="/images/Frame 20.svg"
+                initial={{ x: "20%", y: 0, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  y: [0, -10, 0],
+                  opacity: 1,
+                }}
+                transition={{
+                  x: { duration: 1.8, ease: "easeOut" },
+                  y: { duration: 3, ease: "easeInOut", repeat: Infinity },
+                  opacity: { duration: 1.8, ease: "easeOut" },
+                }}
+                style={{
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                  flexShrink: 0,
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              />
+            </div> 
     </div> 
   );
 }

@@ -5,18 +5,18 @@
   overflow: hidden;
   flex-direction: row;
 }
-.VerifyOTP-title {
+
+.VerifyOTP-container .VerifyOTP-title {
   color: #40798c;
   text-align: center;
   margin-top: 20px;
-
   font-size: 36px;
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 1.5;
 }
 
-.VerifyOTP-form {
+.VerifyOTP-container .VerifyOTP-form {
   width: 50%;
   direction: rtl;
   display: flex;
@@ -24,7 +24,7 @@
   justify-content: center;
 }
 
-.VerifyOTP-form input {
+.VerifyOTP-container .VerifyOTP-form input {
   margin: 15px 15px;
   height: 70px;
   color: rgb(30, 30, 30);
@@ -35,14 +35,15 @@
   font-size: 26px;
   font-family: inter;
 }
-.VerifyOTP-form-fields {
+
+.VerifyOTP-container .VerifyOTP-form-fields {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.btn-VerifyOTP-container {
+.VerifyOTP-container .btn-VerifyOTP-container {
   color: white;
   background-color: #40798c;
   padding: 10px 20px;
@@ -54,22 +55,23 @@
   border: none;
 }
 
-.VerifyOTP-form button:hover {
+.VerifyOTP-container .VerifyOTP-form button:hover {
   box-shadow: 2px 2px 5px #a3a9a6;
   border: 1px solid #40798c;
 }
 
-.resend-otp {
+.VerifyOTP-container .resend-otp {
   cursor: pointer;
   color: #828181;
   display: block;
   margin-top: 40px;
 }
-.resend-otp:hover {
+
+.VerifyOTP-container .resend-otp:hover {
   color: #75a5b3;
 }
 
-.resend-otp.disabled {
+.VerifyOTP-container .resend-otp.disabled {
   cursor: not-allowed;
   color: #75a5b3;
 }
@@ -81,19 +83,18 @@
     height: 100vh;
   }
 
-  .VerifyOTP-form {
+  .VerifyOTP-container .VerifyOTP-form {
     width: 60%;
     margin-right: 70px;
   }
 
-  .VerifyOTP-form input {
+  .VerifyOTP-container .VerifyOTP-form input {
     width: 70px;
   }
 
-  .VerifyOTP-image img {
+  .VerifyOTP-container .VerifyOTP-image img {
     width: 40vw;
     height: 100%;
-    
   }
 }
 
@@ -105,10 +106,11 @@
     overflow-y: auto;
   }
 
-  .VerifyOTP-form {
+  .VerifyOTP-container .VerifyOTP-form {
     width: 50%;
     height: auto;
   }
+
   .VerifyOTP-container img {
     width: 45%;
     height: 130%;
@@ -119,19 +121,21 @@
     width: 70px;
   }
 
-  .btn-VerifyOTP-container {
+  .VerifyOTP-container .btn-VerifyOTP-container {
     width: 40%;
     margin: 30px 120px 10px 0;
     display: block;
   }
-  .btn-Link {
+
+  .VerifyOTP-container .btn-Link {
     text-decoration: none;
   }
-  .resend-otp {
+
+  .VerifyOTP-container .resend-otp {
     margin-right: 60px;
   }
 
-  .VerifyOTP-image img {
+  .VerifyOTP-container .VerifyOTP-image img {
     width: 50vw;
     height: auto;
     margin: 20px auto;
@@ -148,16 +152,14 @@
     overflow-y: auto;
   }
 
-  .VerifyOTP-form {
+  .VerifyOTP-container .VerifyOTP-form {
     display: flex;
     flex-direction: column;
-  }
-  .VerifyOTP-form {
     width: 100%;
     margin-right: 25px;
   }
 
-  .VerifyOTP-title {
+  .VerifyOTP-container .VerifyOTP-title {
     text-align: center;
     margin-left: 15%;
   }
@@ -166,18 +168,19 @@
     width: 70px;
   }
 
-  .btn-VerifyOTP-container {
+  .VerifyOTP-container .btn-VerifyOTP-container {
     width: 40%;
     margin: 30px 120px 0 0;
   }
 
-  .VerifyOTP-image img {
+  .VerifyOTP-container .VerifyOTP-image img {
     width: 110%;
     height: auto;
     margin: 10px;
     margin-top: 10%;
   }
-  .resend-otp {
+
+  .VerifyOTP-container .resend-otp {
     margin-right: 50px;
   }
 }
