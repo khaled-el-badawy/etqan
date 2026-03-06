@@ -5,7 +5,7 @@ const Service = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const servicesData = [
-    { id: 1, title: "سباكة", icon: "/images/services/file_000000000cd8722fbb7c798d142b8a1c-removebg-preview.png", link: "/plumbing-page", delay: "100" },
+    { id: 1, title: "سباك", icon: "/images/services/service1.svg", link: "/carpentry-page", delay: "200" },
     { id: 2, title: "نجارة", icon: "/images/services/service2.svg", link: "/carpentry-page", delay: "200" },
     { id: 3, title: "كهرباء", icon: "/images/services/service3.svg", link: "/electricity-page", delay: "300" },
     { id: 4, title: "حداد", icon: "/images/services/service4.svg", link: "/smith-page", delay: "400" },
@@ -20,7 +20,7 @@ const Service = () => {
     { id: 13, title: "الومنتال", icon: "/images/services/service13.svg", link: "/alumetal-page", delay: "100" },
     { id: 14, title: "تكسير وإزالة", icon: "/images/services/service14.svg", link: "/demolition-page", delay: "200" },
     { id: 15, title: "سواق نقل", icon: "/images/services/service15.svg", link: "/driver-page", delay: "300" },
-    { id: 16, title: "صيانة اجهزة كهربائية", icon: "/images/services/service16.svg", link: "/appliance-page", delay: "400" },
+    { id: 16, title: "صيانة أجهزة كهربائية", icon: "/images/services/service16.svg", link: "/appliance-page", delay: "400" },
     { id: 17, title: "رش مبيدات", icon: "/images/services/service17.svg", link: "/pesticide-page", delay: "100" },
     { id: 18, title: "استشارات هندسية", icon: "/images/services/service18.svg", link: "/engineering-page", delay: "200" },
     { id: 18, title: " تنظيف", icon: "/images/services/service19.svg", link: "/engineering-page", delay: "200" },

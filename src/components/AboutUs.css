@@ -376,7 +376,7 @@
 }
 .about-page .features-container { 
   grid-template-columns: 1fr;
-  margin-right: 70px;
+  /* margin-right: 70px; */
  }
   .about-page .features-outer-wrapper {
   padding: 40px 5%; 

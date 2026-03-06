@@ -1,0 +1,255 @@
+.invoice-container {
+  direction: rtl;
+  background-color: #fcfcfc;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+}
+
+.invoice-container .invoice-hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(60deg, #75a5b3 22%, #ffffff 80%);
+  padding: 60px 20px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.invoice-container .hero-center-text {
+  text-align: center;
+  z-index: 2;
+}
+
+.invoice-container .hero-center-text h1 {
+  color: #1b5e60;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.invoice-container .invoice-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.invoice-container .hero-img-side {
+  position: absolute;
+  left: 40px;
+}
+
+.invoice-container .hero-img-side img {
+  width: 260px;
+  display: block;
+}
+
+.invoice-container .users-data-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.invoice-container .user-info-card {
+  background: #fff;
+  margin-left: 15%;
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.invoice-container .user-card {
+  background: #fff;
+  margin-right: 15%;
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.invoice-container .card-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #76a1ab;
+}
+
+.invoice-container .card-fields {
+  padding: 20px;
+}
+
+.invoice-container .field {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 8px 20px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  background-color: #fdfdfd;
+}
+
+.invoice-container .details-section {
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #171717;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-container .details-header {
+  background: #76a1ab;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 26px;
+}
+
+.invoice-container .invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.invoice-container .invoice-table th {
+  padding: 15px;
+  background: #ccc;
+  color: #333;
+  font-size: 20px;
+}
+
+.invoice-container .invoice-table td {
+  padding: 15px;
+  border-bottom: 1px solid #171717;
+}
+
+.invoice-container .pricing-summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.invoice-container .pricing-left .price-item {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.invoice-container .pricing-right-box {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-container .box-title {
+  background: #76a1ab;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.invoice-container .details-box {
+  margin: 20px;
+}
+
+.invoice-container .box-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.invoice-container .total-final {
+  background: #76a1ab;
+  color: white;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.invoice-container .payment-area {
+  text-align: center;
+}
+
+.invoice-container .pay-title-btn {
+  background: #76a1ab;
+  color: white;
+  border: none;
+  padding: 12px 80px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.invoice-container .pay-methods-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.invoice-container .pay-methods-grid button {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 12px 40px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .invoice-container .hero-img-side {
+    position: static;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .invoice-container .invoice-hero {
+    flex-direction: column;
+  }
+
+  .invoice-container .users-data-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .invoice-container .user-info-card {
+    width: 100%;
+  }
+
+  .invoice-container .pricing-summary {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-container .pay-methods-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .invoice-container .pay-methods-grid button {
+    width: 100%;
+  }
+}

@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Login from "./components/Login";
 import CraftsmanRegister from "./components/CraftsmanRegister";
 import VerifyOTP from "./components/VerifyOTP";
@@ -16,13 +21,19 @@ import HandyOrdersPage from "./components/HandyOrdersPage";
 import Service from "./components/Service";
 import Products from "./components/Products";
 import ProProfile from "./components/ProProfile";
+import OrderDetails from "./components/OrderDetails";
+import Faturuh from "./components/Faturuh";
+import Clientprofile from "./components/Clientprofile";
+
 import ContactUs from "./components/ContactUs";
+
+import PageNotFound from "./components/PageNotFound";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function AppWrapper() {
   const location = useLocation();
@@ -42,7 +53,7 @@ function AppWrapper() {
     "/CustomerOTP",
     "/CompanyRegister",
     "/CompanyLogin",
-    "/CompanyOTP"
+    "/CompanyOTP",
   ];
 
   const hideFooterRoutes = [
@@ -57,7 +68,6 @@ function AppWrapper() {
     "/CompanyRegister",
     "/CompanyLogin",
     "/CompanyOTP",
-    "/home"
   ];
 
   const showNavbar = !hideNavbarRoutes.includes(location.pathname);
@@ -84,11 +94,18 @@ function AppWrapper() {
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/Products" element={<Products />} />
-        <Route path="/ProProfile" element={<ProProfile />} />
-        <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/OrderDetails" element={<OrderDetails />} />
+        <Route path="/Faturuh" element={<Faturuh/>} />
+        <Route path="/Clientprofile" element={<Clientprofile/>} />
 
+        {/* <Route path="/ProProfile" element={<ProProfile />} /> */}
+        <Route path="/ProProfile/:id" element={<ProProfile />} />
+        
+        <Route path="/contactUs" element={<ContactUs />} />
+        {/* // الصفحة الافتراضية لعدم وجود مسار */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {showFooter && <Footer/>}
+      {showFooter && <Footer />}
     </>
   );
 }

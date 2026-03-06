@@ -30,6 +30,7 @@
   color: #828181;
   text-align: center;
   font-size: 18px;
+  margin-top: -30px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .craftsman-page-container .form-section {
@@ -68,10 +69,27 @@
 
   position: relative;
 }
+
+
 /* //------------------------ */
+
+
 .craftsman-page-container .error-msg {
-  color: rgb(235, 138, 138);
+ color: rgb(235, 138, 138);
   font-size: 0.9rem;
+}
+.craftsman-page-container .field-container select {
+  width: 100%;
+  padding: 20px;
+  color: rgb(118, 116, 116);
+  text-align: right;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 20px;
+  -webkit-appearance: none; /* لإزالة شكل السهم الافتراضي في سفاري */
+  -moz-appearance: none; /* لإزالة شكل السهم الافتراضي في Firefox */
+  appearance: none;
 }
 
 
@@ -208,7 +226,7 @@ right: 0;
 /* ----------banner---------------------- */
 .craftsman-page-container .image {
   height: 100vh;
-  transform: scale(1.05);
+ 
 }
 .craftsman-page-container .image img {
 }

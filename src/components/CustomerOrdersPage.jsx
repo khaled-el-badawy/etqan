@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./CustomerOrdersPage.css";
-
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaUserLarge } from "react-icons/fa6";
 
@@ -16,9 +16,9 @@ const orders = [
     id: 1,
     service: "اصلاح تلفزيون",
     client: "احمد محمد",
-    phone: "01066452001",
+    phone: "01234567890",
     status: "completed",
-    image: "/images/tv-player-entertainment-svgrepo-com 1.png",
+    image: "/images/tv-player-entertainment-svgrepo-com 1.svg",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const orders = [
     client: "محمد احمد",
     phone: "01066452001",
     status: "inProgress",
-    image: "/images/broken-cable-electrician-svgrepo-com 1.png",
+    image: "/images/broken-cable-electrician-svgrepo-com 1.svg",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const orders = [
     client: "احمد محمد",
     phone: "01066452001",
     status: "pending",
-    image: "/images/paint-bucket-svgrepo-com 1.png",
+    image: "/images/paint-bucket-svgrepo-com 1.svg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const orders = [
     client: "محمد ايمن",
     phone: "01066478901",
     status: "canceled",
-    image: "/images/air-conditioning-air-conditioner-svgrepo-com 1.png",
+    image: "/images/air-conditioning-air-conditioner-svgrepo-com 1.svg",
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const orders = [
     client: "مصطفي بكر",
     phone: "01066478901",
     status: "inProgress",
-    image: "/images/saw-svgrepo-com 2.png",
+    image: "/images/saw-svgrepo-com 2.svg",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const orders = [
     client: "اكرامي كامل",
     phone: "01066478901",
     status: "canceled",
-    image: "/images/plumbing-plumber-svgrepo-com 1.png",
+    image: "/images/plumbing-plumber-svgrepo-com 1.svg",
   },
 ];
 
@@ -160,27 +160,26 @@ function OrderCard({ order }) {
 
       {order.status === "completed" && (
         <div className="btnBox">
-          <button>تقييم الخدمة</button>
-          <button>فاتورة</button>
+          <Link to={`/Clientprofile`} className="link">تقييم الخدمة</Link>
+          <Link to={`/Faturuh`} className="link">فاتورة</Link>
         </div>
       )}
-
       {order.status === "inProgress" && (
         <div className="btnBox">
-          <button>تتبع الطلب</button>
-          <button>اتصال</button>
+          <Link to={`#`} className="link">تتبع الطلب</Link>
+          <Link to={`#`} className="link">اتصال</Link>
         </div>
       )}
 
       {order.status === "pending" && (
         <div className="btnBox">
-          <button>تفاصيل</button>
+          <Link to={`/OrderDetails`} className="link">تفاصيل</Link>
         </div>
       )}
 
       {order.status === "canceled" && (
         <div className="btnBox">
-          <button>إعادة الطلب</button>
+          <Link to={`/ProProfile`} className="link">إعادة الطلب</Link>
         </div>
       )}
     </div>

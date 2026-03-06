@@ -52,11 +52,6 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
-.craftman-login-container
-  .login-form-fields
-  form
-  .field-container.login-password-field {
-}
 
 .craftman-login-container .login-error-msg {
   color: rgb(235, 138, 138);
@@ -132,9 +127,7 @@
 }
 
 /* ----------banner---------------------- */
-.craftman-login-container .image {
-  transform: scale(1.05);
-}
+
 
 .craftman-login-container .image img {
   width: 40vw;
@@ -227,4 +220,4 @@
     display: none;
 
   }
-
+}

@@ -28,7 +28,8 @@ const Navbar = () => {
       <div className="container">
         <div className="nav-icons-area">
           <div className="nav-icons">
-            <NavLink to="/ProProfile" className="user-circle-link">
+            {/*  رقم البروفايل مؤقتاً لحين ربط الباك اند */}
+            <NavLink to={`/ProProfile/1`} className="user-circle-link">
               <div className="user-circle">
                 <FaUserCircle className="icon" />
               </div>

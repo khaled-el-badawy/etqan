@@ -103,20 +103,26 @@ function CraftsmanRegister() {
     }
   };
 
-  const isFormValid =
-    username.trim() !== "" &&
-    email.trim() !== "" &&
-    emailError === "" &&
-    nationalId.trim() !== "" &&
-    nationalId.length === 14 &&
-    selectedJob.trim() !== "" &&
-    password !== "" &&
-    confirmPassword !== "" &&
-    password === confirmPassword;
+  
+
+const isFormValid =
+  username.trim() !== "" &&
+  email.trim() !== "" &&
+  emailError === "" &&
+  age !== "" &&
+  age >= 18 &&
+  maritalStatus !== "" &&
+  nationalId.trim() !== "" &&
+  nationalId.length === 14 &&
+  selectedJob.trim() !== "" &&
+  password !== "" &&
+  confirmPassword !== "" &&
+  password === confirmPassword;
 
   const passwordsNotMatch =
     confirmPassword.length > 0 && password !== confirmPassword;
-
+   const [age, setAge] = useState("");
+const [maritalStatus, setMaritalStatus] = useState("");
   return (
     <div className="craftsman-page-container">
       <motion.div
@@ -150,7 +156,37 @@ function CraftsmanRegister() {
                 />
                 {emailError && <p className="error-msg">{emailError}</p>}
               </div>
+       {/* العمر */}
+<div className="field-container">
+  <input
+    type="number"
+    placeholder="العمر"
+    value={age}
+    onChange={(e) => setAge(e.target.value)}
+    min="18"
+    required
+  />
+  {age && age < 18 && (
+    <p className="error-msg">يجب ألا يقل العمر عن 18 سنة</p>
+  )}
+</div>
 
+{/* الحالة الاجتماعية */}
+<div className="field-container">
+  <select
+    value={maritalStatus}
+    onChange={(e) => setMaritalStatus(e.target.value)}
+    required
+  >
+    <option value=""  >
+      الحالة الاجتماعية
+    </option>
+    <option value="اعزب">أعزب</option>
+    <option value="متزوج">متزوج</option>
+    <option value="مطلق">مطلق</option>
+    <option value="ارمل">أرمل</option>
+  </select>
+</div>
               <div className="field-container">
                 <input
                   type="text"
@@ -294,7 +330,7 @@ function CraftsmanRegister() {
             </div>
 
             <Link
-              to={isFormValid ? "/CustomerOTP" : "#"}
+              to={isFormValid ? "/Verify-otp" : "#"}
               className={`link-button ${!isFormValid ? "disabled" : ""}`}
               style={{
                 pointerEvents: !isFormValid ? "none" : "auto",

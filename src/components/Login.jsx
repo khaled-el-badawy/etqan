@@ -119,7 +119,7 @@ function Login() {
             </Link>
             <h4 className="register-link">
               ليس لديك حساب ؟{" "}
-              <Link to="/CustomerRegister" className="link">
+              <Link to="/CraftsmanRegister" className="link">
                 إنشاء حساب
               </Link>
             </h4>

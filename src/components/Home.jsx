@@ -52,69 +52,47 @@ const AnimatedNumber = ({ target, isFloat = false }) => {
 };
    const HeroSection = () => {
      return (
-       <section className="hero-section">
-         <div className="container hero-container">
-           <div
-             className="hero-images-wrapper"
-             data-aos="fade-left"
-             data-aos-duration="1200"
-           >
-             <div className="hero-svg-wrapper">
+         <section className="hero-section">
+           <div className="container hero-container">
+             <div className="hero-images-wrapper" data-aos="fade-left" data-aos-duration="1200">
+               {/* <img src="/images/hero/hero1.svg" alt="hero1" className="hero-svg svg-main" />
+               <img src="/images/hero/hero2.svg" alt="hero2" className="hero-svg svg-sub1" />
+               <img src="/images/hero/hero3.svg" alt="hero3" className="hero-svg svg-sub2" />
+               <img src="/images/hero/hero4.svg" alt="hero4" className="hero-svg svg-item1" />
+               <img src="/images/hero/hero5.svg" alt="hero5" className="hero-svg svg-item2" /> */}
                <img
                  src="/public/images/hero/Frame 7.svg"
                  alt="hero4"
                  className="hero-svg"
                />
              </div>
-           </div>
-           <div
-             className="hero-text"
-             data-aos="fade-up"
-             data-aos-duration="1000"
-           >
-             <h1>خدمات حرفية موثوقة في مكان واحد</h1>
-             <p className="no-break">
-               نوفر لك منصة تجمع أفضل الحرفيين في مختلف المجالات،لتسهيل
-               <br/>
-               الوصول إلى خدمات عالية الجودة بطريقة آمنة وسريعة، مع ضمان
-               <br/>
-               
-               تجربة استخدام سهلة وموثوقة
-             </p>
-           </div>
-         </div>
-         <div
-           className="stats-bar"
-           data-aos="zoom-in"
-           data-aos-duration="1000"
-           data-aos-delay="400"
-         >
-           <div className="container stats-container">
-             <div className="stat-item">
-               <h3>
-                 +<AnimatedNumber target={500} />
-               </h3>
-               <p>حرفي معتمد</p>
-             </div>
-             <div className="divider"></div>
-             <div className="stat-item">
-               <h3>
-                 +<AnimatedNumber target={1300} />
-               </h3>
-               <p>عميل راضي</p>
-             </div>
-             <div className="divider context-divider"></div>
-             <div className="stat-item">
-               <h3>
-                 <AnimatedNumber target={4.8} isFloat={true} />{" "}
-                 <FaStar style={{ color: "#F69654", marginRight: "5px" }} />
-               </h3>
-               <p>تقييم العملاء</p>
+             <div className="hero-text" data-aos="fade-up" data-aos-duration="1000">
+               <h1>خدمات حرفية موثوقة في مكان واحد</h1>
+               <p className="no-break">نوفر لك منصة تجمع أفضل الحرفيين في مختلف المجالات،لتسهيل
+               <br />الوصول إلى خدمات عالية الجودة بطريقة آمنة وسريعة، مع ضمان
+               <br/>تجربة استخدام سهلة وموثوقة</p>
              </div>
            </div>
-         </div>
-       </section>
-     );
+           <div className="stats-bar" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+             <div className="container stats-container">
+               <div className="stat-item">
+                 <h3>+<AnimatedNumber target={500} /></h3>
+                 <p>حرفي معتمد</p>
+               </div>
+               <div className="divider"></div>
+               <div className="stat-item">
+                 <h3>+<AnimatedNumber target={1300} /></h3>
+                 <p>عميل راضي</p>
+               </div>
+               <div className="divider context-divider"></div>
+               <div className="stat-item">
+                 <h3><AnimatedNumber target={4.8} isFloat={true} /> <FaStar style={{ color: '#F69654', marginRight: '5px' }} /></h3>
+                 <p>تقييم العملاء</p>
+               </div>
+             </div>
+           </div>
+         </section>
+         );
 };
 
          // 3. Main Services (الخدمات الرئيسية)
@@ -138,7 +116,7 @@ const MainServices = () => {
                    <h3>{service.title}</h3>
                    <p>{service.description}</p>
                  </div>
-                 <Link to="/Service" className="service-btn"> عرض <FaArrowLeft className="arrow-icon" /></Link>
+                 <a href={service.link} className="service-btn"> عرض <FaArrowLeft className="arrow-icon" /></a>
                </div>
              ))}
            </div>
@@ -151,12 +129,12 @@ const MainServices = () => {
 
          const craftsmenData = [
          {id: 1, name: 'محمد طه', job: 'نجار', rate: 4.9, img: '/images/user/user1.svg' },
-         {id: 2, name: 'عمرو صبري', job: 'كهربائي', rate: 4.8, img: '/images/user/user2.svg' },
-         {id: 3, name: 'محمود علي', job: 'حداد', rate: 4.8, img: '/images/user/user3.svg' },
-         {id: 4, name: 'محمد مصطفى', job: 'سباك', rate: 4.5, img: '/images/user/user4.svg' },
+         {id: 2, name: 'عمر احمد', job: 'كهربائي', rate: 4.8, img: '/images/user/user2.svg' },
+         {id: 3, name: 'محمد علي', job: 'حداد', rate: 4.8, img: '/images/user/user3.svg' },
+         {id: 4, name: 'محمد خالد', job: 'سباك', rate: 4.5, img: '/images/user/user4.svg' },
          {id: 5, name: 'وليد محمد', job: 'كهربائي', rate: 4.7, img: '/images/user/user5.svg' },
          {id: 6, name: 'علي حسن', job: 'نقاش', rate: 4.6, img: '/images/user/user6.jfif' },
-         {id: 7, name: 'سعد محمود', job: 'نجار', rate: 4.7, img: '/images/user/user7.jfif' },
+         {id: 7, name: 'سعد محمد', job: 'نجار', rate: 4.7, img: '/images/user/user7.jfif' },
          ];
 
 const TopCraftsmen = () => {
@@ -268,54 +246,6 @@ const ContactUs = () => {
          );
 };
 
-const Footer = () => {
-  return (
-     <footer className="home-footer">
-               <div className="home-footer-container">
-                 <div className="home-footer-section logo-info">
-                   <div className="home-footer-logo">
-                     <img src="/images/Logo2.svg" alt="ETQAN Logo" className="large-logo" />
-                   </div>
-                   <p className="home-footer-desc">
-                     <span className='no-break'>
-                       منصة متكاملة تجمع الحرفيين <br />والعملاء في مكان واحد.
-                     </span> </p>
-                 </div>
-                 <div className="home-footer-section">
-                   <h3 className='home-footer-link-h3'>الصفحة الرئيسية</h3>
-                   <ul className='home-footer-link'>
-                     <li><Link to="#about">من نحن</Link></li>
-                     <li><Link to="#services">الخدمات</Link></li>
-                     <li><Link to="#orders">الطلبات</Link></li>
-                     <li><Link to="#contact">تواصل معنا</Link></li>
-                   </ul>
-                 </div>
-                 <div className="home-footer-section">
-                   <h3 className='home-footer-contact-h3'>اتصل بنا</h3>
-                   <ul className="contact-info">
-                     <li><FaEnvelope /> <span className="contact-span">ETQAN@gmail.com</span></li>
-                     <li><FaPhoneAlt /> <span dir="ltr">+20 100 000 0000</span></li>
-                   </ul>
-                   <div className="social-icons">
-                     <Link to="#" className='social-link'><FaLinkedinIn /></Link>
-                     <Link to="#" className='social-link'><FaInstagram /></Link>
-                     <Link to="#" className='social-link'><FaTwitter /></Link>
-                     <Link to="#" className='social-link'><FaFacebookF /></Link>
-                   </div>
-                 </div>
-                 <div className="home-footer-section policies-section">
-                   <ul className='home-footer-ul'>
-                     <li><Link to="#" className='home-footer-link'>سياسة الخصوصية</Link></li>
-                     <li><Link to="#" className='home-footer-link'>الشروط والأحكام</Link></li>
-                   </ul>
-                 </div>
-               </div>
-               <div className="home-footer-bottom">
-                 <p>ETQAN 2026 - جميع الحقوق محفوظة ©</p>
-               </div>
-    </footer>
-  );
-};
 
 
 // التجميع النهائي لصفحة Home
@@ -337,7 +267,6 @@ const Home = () => {
            <TopCraftsmen />
            <Testimonials />
         <ContactUs />
-        <Footer/>
         </div>
          </div>
   );
