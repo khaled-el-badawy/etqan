@@ -31,6 +31,7 @@
   color: #828181;
   text-align: center;
   font-size: 18px;
+  margin-top: -30px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .company-page-container .form-section {
@@ -43,11 +44,11 @@
   padding: 50px 0;
 }
 .company-page-container .fields-row {
-  display: flex;
+ display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  /* margin-top: 50px; */
+  gap: 10px;
 }
 
 .company-page-container .field-container,
@@ -67,7 +68,7 @@
     width: 250px;
   }
 }
-.company-page-container .folder-icon,
+
 .company-page-container .eye {
   position: absolute;
   top: calc(50% - 4px);
@@ -79,9 +80,63 @@
   color: #40798c;
 }
 
+
+.company-page-container .folder-wrapper {
+  position: relative;
+}
+
+.company-page-container .folder-icon {
+  font-size: 24px;
+  color: #40798c;
+  margin-top: -20px;
+  position: absolute;
+  top: -15px;
+  left: 30px;   
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+}
+
+.company-page-container .plus-icon {
+  position: absolute;
+  top: -30px;
+  font-size: 22px;
+  background-color: white;
+  color: #40798c;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 36px;   
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+}
+
+
+
+
+.company-page-container .phone-errors {
+  color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 5px -10px;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+
 .company-page-container .error-msg {
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
 }
 
 .company-page-container .form-section input {
@@ -112,19 +167,40 @@
   gap: 20px;
 }
 
-.company-page-container .password-error-msg {
-  position: absolute;
-  bottom: -35px;
-  color: rgb(235, 138, 138);
-  font-size: 0.9rem;
 
-  margin-right: 40px;
-  line-height: 0.4rem;
-  min-height: 0.4rem;
-}
 .company-page-container .passwords-row {
   display: flex;
   gap: 80px;
+}
+
+.CompanyRegister-password-field-container {
+  position: relative; 
+}
+
+.company-page-container .password-error-msg {
+   color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+   position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+
+.password-rules {
+  position: absolute;
+  top: 100%; 
+  right: 0;
+  width: 100%;
+  /* margin-top: 4px; */
+   color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 5px -10px;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */ 
 }
 
 .company-page-container .link-button {
@@ -146,6 +222,7 @@
   border: 1px solid #40798c;
 }
 
+
 /* DESKTOP */
 
 .company-page-container .form-section input {
@@ -154,17 +231,16 @@
 /* ----------banner---------------------- */
 .company-page-container .image {
   height: 100vh;
-  transform: scale(1.05);
+  
 }
-.company-page-container .image img {
-}
+
 @media (max-width: 1130px) {
   .company-page-container .image {
     height: 150vh;
   }
 }
 .company-page-container .image img {
-  width: 40vw;
+  width: 34vw;
   height: 100%;
 }
 
@@ -181,9 +257,7 @@
   .company-page-container .form-fields form {
     min-height: 100vh;
   }
-  .company-page-container .form-section {
-  }
-
+ 
   .company-page-container .form-section,
   .company-page-container .h4-login {
     position: relative;
@@ -217,11 +291,10 @@
   .company-page-container {
     flex-direction: column;
     align-items: center;
-    height: auto;
+    height: 140vh;
   }
 
-  .company-page-container .form-fields {
-  }
+ 
 
   .company-page-container .form-section {
     width: 100%;
@@ -253,8 +326,9 @@
   .company-page-container .password-field {
   }
 
-  .company-page-container .form-section button {
+  .company-page-container .link-button{
     width: 60%;
+     margin-top: 15px;
   }
   .company-page-container .image {
     display: none;

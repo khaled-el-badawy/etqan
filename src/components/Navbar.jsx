@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import {
   FaUserCircle,
   FaBell,
@@ -10,6 +10,8 @@ import "./Navbar.css";
 import {Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const ordersRef = useRef(null);
+const servicesRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [notification, setNotification] = useState(0);
@@ -23,23 +25,47 @@ const Navbar = () => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      (ordersRef.current && !ordersRef.current.contains(event.target)) &&
+      (servicesRef.current && !servicesRef.current.contains(event.target))
+    ) {
+      setActiveDropdown(null); // يغلق كل القوائم
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
   return (
     <nav className="navbar">
       <div className="container">
         <div className="nav-icons-area">
           <div className="nav-icons">
-            <NavLink to="/ProProfile" className="user-circle-link">
+            {/*  رقم البروفايل مؤقتاً لحين ربط الباك اند */}
+            <NavLink to={`/ProProfile/1`} className="user-circle-link">
               <div className="user-circle">
                 <FaUserCircle className="icon" />
               </div>
             </NavLink>
+
+      
             <div className="icon-wrapper">
               <FaBell className="icon" />
+
               <span className="notification-dot">
                 {notification > 0 ? notification : "2"}
               </span>
+              
             </div>
+            
           </div>
+         
           <div className="mobile-menu-icon" onClick={toggleMenu}>
             {isOpen ? <FaTimes /> : <FaBars />}
           </div>
@@ -56,7 +82,7 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li className="dropdown">
+          <li className="dropdown" ref={ordersRef}>
             <button
               className="dropbtn"
               onClick={() => toggleDropdown("orders")}
@@ -87,7 +113,7 @@ const Navbar = () => {
             )}
           </li>
 
-          <li className="dropdown">
+          <li className="dropdown" ref={servicesRef}>
             <button
               className="dropbtn"
               onClick={() => toggleDropdown("services")}

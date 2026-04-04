@@ -24,82 +24,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /*  */
 }
+
 .home-page-wrapper .hero-images-wrapper .hero-svg-wrapper {
   width: 500px;
   height: 300px;
-  /*  */
   position: relative;
   transition: 0.3s ease;
-   
 }
 
 .home-page-wrapper .hero-svg-wrapper .hero-svg {
   width: 100%;
-
   position: absolute;
 }
 
-/* .home-page-wrapper .svg-main {
-  width: 200px;
-  height: 340px;
-  position: absolute;
-  top: 0; 
-  right: 0;
-
-  z-index: 5;
-  position: relative;
-  left: 160px;
-  clip-path: inset(0 0 0 3%);
+.home-page-wrapper .hero-svg-wrapper:hover {
+  transform: scale(1.05);
 }
-.home-page-wrapper .svg-sub1 {
-  width: 120px;
-
-   margin-bottom: 23%;
-  z-index: 2;
-  right: 220px; 
-}
-
-.home-page-wrapper .svg-sub2 {
-  width: 380px;
-  height: 130px;
-  bottom: 0;
-  
-  right: 140px;
-  z-index: 3; 
-}
-.home-page-wrapper .svg-item1 {
-  width: 110px;
-   left: 18%;
-  z-index: 1; 
-}
-.home-page-wrapper .svg-item2 {
-  width: 60px;
-  
-   top: 70px;
-  right: 63%;
-  z-index: 1;
-  position: absolute; 
-} */
 
 .home-page-wrapper .hero-text {
-  width: 60%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  flex: 1;
+  text-align: right;
 }
 
 .home-page-wrapper .hero-text h1 {
   color: #75a5b3;
-  margin-top: 50px;
-  /* margin-right: 80px; */
+  margin-bottom: 20px;
+  margin-right: 80px;
   font-weight: 500;
   line-height: 1.8;
-  font-size: 44px;
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .home-page-wrapper .hero-text p {
@@ -109,9 +63,11 @@
   line-height: 1.7;
   margin-bottom: 50px;
 }
+
 .home-page-wrapper .no-break {
-  white-space: wrap;
+  white-space: nowrap;
 }
+
 .home-page-wrapper .stats-bar {
   background-image: url("/images/background.svg");
   background-repeat: no-repeat;
@@ -151,25 +107,25 @@
 .home-page-wrapper .stat-item h3,
 .home-page-wrapper .stat-item h3 span {
   font-size: 46px;
-  font-family: 'inter';
+  font-family: inter;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-
   box-shadow: none;
   border: none;
   padding: 0;
 }
+
 .home-page-wrapper .stat-item h3 svg {
   box-shadow: none;
   border: none;
 }
+
 .home-page-wrapper .stat-item p {
   font-size: 30px;
   color: white;
   margin-top: 10px;
-
   box-shadow: none;
   border: none;
 }
@@ -179,7 +135,8 @@
   height: 80px;
   background-color: #d9d9d9;
 }
-/* 3. Main Services ( الخدمات الرئيسية) */
+
+/* 2. ////////////////////Main Services ( الخدمات الرئيسية)/////////////////// */
 .home-page-wrapper .services-section {
   padding: 80px 5%;
   text-align: center;
@@ -189,9 +146,9 @@
 
 .home-page-wrapper .services-main-title {
   color: #40798c;
-  font-size: 44px;
+  font-size: 40px;
   font-weight: bold;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-top: 10%;
   margin-bottom: 5%;
   background-color: transparent;
 }
@@ -236,7 +193,6 @@
   width: 30px;
   height: 30px;
   object-fit: contain;
-
   box-shadow: none;
   border: none;
 }
@@ -274,10 +230,7 @@
 }
 
 .home-page-wrapper .service-card:hover {
-  transition:
-    transform 0.3s ease-out,
-    box-shadow 0.3s ease-out;
-
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   transform: translateY(-15px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   border-color: #40798c;
@@ -287,7 +240,7 @@
   color: #40798c;
 }
 
-/* 4. Top Craftsmen ( أفضل الحرفيين) */
+/* 3. ////////////////////Top Craftsmen ( أفضل الحرفيين) /////////////////*/
 
 .home-page-wrapper {
   display: flex;
@@ -298,6 +251,7 @@
 .home-page-wrapper > *:not(.footer) {
   flex: 1;
 }
+
 .home-page-wrapper .etqan-section-wrapper {
   width: 100%;
   padding: 30px 0;
@@ -337,11 +291,11 @@
   margin-right: 0;
   margin-left: 0;
   padding: 10px 80px 50px;
-
   box-shadow: none;
   border: none;
   position: relative;
 }
+
 .home-page-wrapper .swiper-slide {
   box-shadow: none;
   border: none;
@@ -351,10 +305,12 @@
 .home-page-wrapper .swiper-button-prev svg {
   display: none;
 }
+
 .home-page-wrapper .swiper-button-next,
 .home-page-wrapper .swiper-button-prev {
   background-image: none;
 }
+
 .home-page-wrapper .swiper-button-next ::after,
 .home-page-wrapper .swiper-button-prev ::after {
   content: none;
@@ -375,14 +331,17 @@
   transition: 0.3s ease;
   position: absolute;
 }
+
 .home-page-wrapper .swiper-button-next {
   left: 10px;
   right: auto;
 }
+
 .home-page-wrapper .swiper-button-prev {
   right: 10px;
   left: auto;
 }
+
 .home-page-wrapper .swiper-button-next::before {
   content: "←";
   font-size: 32px;
@@ -391,6 +350,7 @@
   transform: none;
   line-height: 1;
 }
+
 .home-page-wrapper .swiper-button-prev::before {
   content: "→";
   font-size: 30px;
@@ -399,10 +359,10 @@
   transform: none;
   line-height: 1;
 }
+
 .home-page-wrapper .swiper-pagination-bullet {
   background: rgba(255, 255, 255, 0.5);
   opacity: 1;
-
   box-shadow: none;
   border: none;
   position: absolute;
@@ -412,10 +372,10 @@
   background: #fff;
   width: 18px;
   border-radius: 5px;
-
   box-shadow: none;
   border: none;
 }
+
 .home-page-wrapper .craft-card-figma {
   display: flex;
   flex-direction: column;
@@ -423,6 +383,7 @@
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+
   box-shadow: none;
   border: none;
 }
@@ -438,7 +399,6 @@
   height: 110px;
   position: relative;
   margin-bottom: 10px;
-
   box-shadow: none;
   border: none;
 }
@@ -450,19 +410,15 @@
   object-fit: cover;
   border: 2px solid rgba(214, 203, 203, 0.566);
   transition: 0.4s ease;
-
   box-shadow: none;
-  border: none;
 }
 
 .home-page-wrapper .img-container-figma img:hover {
   border: 2px solid #a9d1db;
-
   box-shadow: none;
-  border: none;
 }
 
-.home-page-wrapper .rating-badge-figma {
+.rating-badge-figma {
   position: absolute;
   bottom: -50px;
   left: 40%;
@@ -478,20 +434,20 @@
   direction: ltr;
 }
 
-.home-page-wrapper .gold-star {
+.gold-star {
   color: #f1c40f;
   box-shadow: none;
   border: none;
 }
-.home-page-wrapper .craft-name-figma {
+.craft-name-figma {
   color: #f8f6f6;
   font-size: 26px;
-  margin-right: 10px;
+  margin-right: 40px;
   margin-top: 20%;
   box-shadow: none;
   border: none;
 }
-.home-page-wrapper .craft-job-figma {
+.craft-job-figma {
   color: #ffffff;
   font-size: 22px;
   display: flex;
@@ -502,7 +458,7 @@
   border: none;
 }
 
-.home-page-wrapper .cross-tools-icon {
+.cross-tools-icon {
   position: relative;
   display: inline-block;
   width: 27px;
@@ -523,6 +479,7 @@
   box-shadow: none;
   border: none;
 }
+
 .home-page-wrapper .hammer-small {
   left: 0;
   top: 0;
@@ -535,9 +492,9 @@
   transform: rotate(8deg) translateX(7px);
 }
 
-/* 5. Testimonials ( آراء العملاء) */
+/* 4. ////////////////////Testimonials ( آراء العملاء) ////////////*/
 
-.home-page-wrapper .testimonials-main-wrapper {
+.testimonials-main-wrapper {
   padding: 80px 0;
   background-color: #fff;
   display: flex;
@@ -545,7 +502,7 @@
   overflow-x: clip;
 }
 
-.home-page-wrapper .white-section {
+.white-section {
   background-color: #f9f9f9;
   width: 94%;
   height: 540px;
@@ -556,13 +513,12 @@
   overflow: hidden;
 }
 
-.home-page-wrapper .testimonials-title {
+.testimonials-title {
   text-align: center;
   color: #40798c;
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 40px;
-
   box-shadow: none;
   border: none;
 }
@@ -570,7 +526,6 @@
 .home-page-wrapper .inner-content {
   position: relative;
   min-height: 400px;
-
   box-shadow: none;
   border: none;
 }
@@ -580,7 +535,6 @@
   bottom: 0;
   left: 0;
   z-index: 1;
-
   box-shadow: none;
   border: none;
 }
@@ -606,6 +560,7 @@
   box-shadow: none;
   border: none;
 }
+
 .home-page-wrapper .mySwiper {
   max-width: 80%;
   margin-right: 0;
@@ -643,7 +598,6 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 15px;
-
   box-shadow: none;
   border: none;
 }
@@ -660,19 +614,21 @@
   font-size: 1rem;
   color: #333;
 }
+
 .home-page-wrapper .reviewer-meta {
   box-shadow: none;
   border: none;
 }
+
 .home-page-wrapper h4 {
   box-shadow: none;
   border: none;
 }
+
 .home-page-wrapper .stars {
   color: #ffc107;
   font-size: 10px;
   margin-top: 4px;
-
   box-shadow: none;
   border: none;
 }
@@ -681,7 +637,6 @@
   color: black;
   font-size: 18px;
   margin-top: 10px;
-
   box-shadow: none;
   border: none;
 }
@@ -692,22 +647,23 @@
   border-radius: 5px;
 }
 
-/*6. Contact Us ( تواصل معنا)*/
+/*5. ////////////////Contact Us ( تواصل معنا)///////////*/
 .home-page-wrapper .contact-section {
-  padding: 80px 10%;
-  margin-bottom: 80px;
+  padding: 80px 10% 0;
+  margin-bottom: 0;
   background-color: #ffffff;
   direction: rtl;
-  overflow-x: clip;
+  overflow: visible;
 }
 
 .home-page-wrapper .contact-container {
   max-width: 1700px;
-  margin-top: -50px;
+  margin: -50px auto -80px;
   background-color: #f9f9f9;
   border-radius: 20px;
   padding: 50px 40px;
   position: relative;
+  z-index: 10;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 1s ease-out forwards;
 }
@@ -719,7 +675,6 @@
   font-weight: bold;
   margin-bottom: 40px;
   margin-left: 180px;
-
   box-shadow: none;
   border: none;
 }
@@ -728,14 +683,12 @@
   display: flex;
   align-items: center;
   gap: 40px;
-
   box-shadow: none;
   border: none;
 }
 
 .home-page-wrapper .contact-form-side {
   flex: 1;
-
   box-shadow: none;
   border: none;
 }
@@ -746,7 +699,6 @@
   gap: 20px;
   width: 70%;
   direction: rtl;
-
   box-shadow: none;
   border: none;
 }
@@ -762,6 +714,7 @@
   outline: none;
   box-shadow: 1px 1px #a9d1db;
 }
+
 .home-page-wrapper .send-btn {
   background-color: #40798c;
   color: #fff;
@@ -786,7 +739,6 @@
   position: relative;
   height: 380px;
   display: block;
-
   box-shadow: none;
   border: none;
 }
@@ -831,393 +783,510 @@
   right: 233px;
   z-index: 1;
 }
+
 .home-page-wrapper .home-footer {
   background-color: #40798c;
   color: #ffffff;
-  height: 460px;
-  direction: ltr;
-  font-family: "Cairo", sans-serif;
-  margin-top: -200px;
+  padding-top: 120px;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
 }
 
-.home-page-wrapper .home-footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 0 40px;
-  gap: 30px;
+/*////////////////////////// كود شاشة حجم 1224 ///////// */
 
-  box-shadow: none;
-  border: none;
-}
+@media screen and (max-width: 1224px) {
+  .home-page-wrapper .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding: 40px 20px;
+  }
 
-.home-page-wrapper .home-footer-section {
-  flex: 1;
-  min-width: 180px;
-  direction: rtl;
-  text-align: right;
+  .home-page-wrapper .hero-images-wrapper {
+    width: 100%;
+    min-height: 350px;
+    order: -1;
+    display: flex;
+    justify-content: center;
+    transform: scale(0.9);
+  }
 
-  box-shadow: none;
-  border: none;
-}
+  .home-page-wrapper .svg-main {
+    width: 200px;
+    height: 340px;
+    z-index: 5;
+    position: relative;
+    left: 160px;
+    clip-path: inset(0 0 0 3%);
+  }
 
-.home-page-wrapper .large-logo {
-  width: 280px;
-  height: auto;
-  margin-top: 50%;
-  filter: brightness(0) invert(1);
+  .home-page-wrapper .svg-sub1 {
+    width: 120px;
+    margin-bottom: 13%;
+    z-index: 2;
+    right: 44%;
+  }
 
-  box-shadow: none;
-  border: none;
-}
+  .home-page-wrapper .svg-sub2 {
+    width: 380px;
+    height: 130px;
+    bottom: 1px;
+    right: 35%;
+    z-index: 3;
+  }
 
-.home-page-wrapper .home-footer-logo {
-  box-shadow: none;
-  border: none;
-  margin-right: 60%;
-}
+  .home-page-wrapper .svg-item1 {
+    width: 110px;
+    left: 30%;
+    z-index: 1;
+  }
 
-.home-page-wrapper .home-footer-desc {
-  font-size: 26px;
-  color: white;
-  margin-top: 30px;
-  margin-right: 50%;
+  .home-page-wrapper .svg-item2 {
+    width: 60px;
+    top: 70px;
+    right: 60%;
+    z-index: 1;
+    position: absolute;
+  }
 
-  box-shadow: none;
-  border: none;
-}
-.home-page-wrapper .no-break {
-  white-space: wrap;
+  .home-page-wrapper .hero-text {
+    width: 100%;
+    text-align: center;
+  }
 
-  box-shadow: none;
-  border: none;
-}
-.home-page-wrapper .home-footer-h3 {
-  margin-top: 50%;
-}
-.home-page-wrapper .home-footer-section .home-footer-link-h3 {
-  font-size: 26px;
-  margin-top: 130px;
-  font-weight: 700;
-  color: white;
-  white-space: nowrap;
-  display: inline-block;
-  margin-right: 40px;
-}
-.home-page-wrapper .home-footer-section .home-footer-contact-h3 {
-  font-size: 26px;
-  margin-top: 130px;
-  font-weight: 700;
-  margin-right: 100px;
-  color: white;
-}
+  .home-page-wrapper .hero-text h1 {
+    margin-right: 0;
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 1.5;
+  }
 
-.home-page-wrapper .home-footer-section ul {
-  list-style: none;
-  padding: 0;
-}
+  .home-page-wrapper .hero-text p {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    width: 90%;
+  }
 
-.home-page-wrapper .home-footer-section ul li {
-  margin-bottom: 15px;
-  color: white;
-  box-shadow: none;
-  border: none;
-}
+  .home-page-wrapper .no-break {
+    white-space: normal;
+  }
 
-.home-page-wrapper .home-footer-link li :link {
-  box-shadow: none;
-  border: none;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-  font-size: 24px;
-  margin-right: 20%;
-  text-decoration: none;
-}
-.home-page-wrapper .home-footer-section ul li :link:hover {
-  color: #a9d1db;
-}
+  .home-page-wrapper .stats-bar {
+    margin-top: -35px;
+    height: auto;
+    padding: 60px 20px;
+    background-size: cover;
+  }
 
-.home-page-wrapper .contact-info li {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  box-shadow: none;
-  border: none;
-  flex-direction: row-reverse;
-  margin-left: 30%;
-}
+  .home-page-wrapper .stats-container {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 
-.home-page-wrapper .social-icons {
-  display: flex;
-  gap: 12px;
-  margin-top: 40px;
-  box-shadow: none;
-  border: none;
-}
+  .home-page-wrapper .contact-form-side {
+    flex: 1.5;
+    padding: 0 20px;
+  }
 
-.home-page-wrapper .social-icons :link {
-  color: #40798c;
-  background: #ffffff;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: 0.3s;
-  font-size: 20px;
-  text-decoration: none;
-  box-shadow: none;
-  border: none;
-}
-.home-page-wrapper .social-link {
-  color: #40798c;
-}
-.home-page-wrapper .social-icons :link:hover {
-  color: #a9d1db;
-  margin-top: -5px;
-}
-.home-page-wrapper .home-footer-ul {
-  margin-top: 65%;
-  margin-left: 25%;
-}
-.home-page-wrapper .home-footer-link {
-  font-size: 24px;
-  text-decoration: none;
+  .home-page-wrapper .contact-form {
+    width: 95% !important;
+    gap: 25px;
+  }
 
-  box-shadow: none;
-  border: none;
-  color: white;
-}
-.home-page-wrapper .home-footer-ul :hover {
-  color: #a9d1db;
-}
-.home-page-wrapper .home-footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  font-size: 0.9rem;
+  .home-page-wrapper .contact-form input,
+  .home-page-wrapper .contact-form textarea {
+    padding: 18px 20px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
 
-  box-shadow: none;
-  border: none;
-}
-.home-page-wrapper .home-footer-bottom p {
-  box-shadow: none;
-  border: none;
-  font-size: 20px;
+  .home-page-wrapper .send-btn {
+    width: 60%;
+    padding: 15px 0;
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  .home-page-wrapper .contact-main-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .home-page-wrapper .image-circle.large {
+    position: absolute;
+    width: 150px;
+    height: 280px;
+    top: 20%;
+    right: -20px;
+    overflow: hidden;
+    border-radius: 70px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+
+  .home-page-wrapper .image-circle.small {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    bottom: -8%;
+    right: 40%;
+    overflow: hidden;
+    border-radius: 0 70px 0 70px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+  }
+
+  .home-page-wrapper .decoration-dot {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #a9d1db;
+    border-radius: 50%;
+    top: 60%;
+    right: 60%;
+    z-index: 1;
+  }
 }
 
-@media (max-width: 1024px) {
+/* ///////////////////(768px)////////////////// */
+@media screen and (max-width: 768px) {
   .home-page-wrapper .hero-container {
     flex-direction: column;
     text-align: center;
   }
-  .home-page-wrapper .hero-text {
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .home-page-wrapper .hero-images-wrapper {
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .home-page-wrapper .hero-images-wrapper .hero-svg-wrapper {
-    width: 100%;
 
-    position: relative;
-    transition: 0.3s ease;
-  }
-  .home-page-wrapper .hero-images-wrapper .hero-svg-wrapper .hero-svg {
-    height: 100%;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-/*    وضع الهاتف   */
-@media screen and (max-width: 768px) {
-  .home-page-wrapper .hero-section
-  {
-padding-top: 40px;
-  }
- 
-  .home-page-wrapper .hero-container {
-    margin: 0 auto;
-  }
-
-  /*  2. Hero Section ( الهيرو والإحصائيات) */
-  .home-page-wrapper .hero-text {
-    font-size: 25px;
-  }
   .home-page-wrapper .hero-text h1 {
-    font-size: 30px;
-  }
-  .home-page-wrapper .hero-text p {
-    width: 90%;
-    min-height: 300px;
-    font-size: 20px;
+    margin-right: 0;
+    text-align: center;
   }
 
-  .home-page-wrapper .hero-images-wrapper {
-    width: 100%;
-
-    padding: 0 20px;
+  .home-page-wrapper .svg-main {
+    width: 200px;
+    height: 340px;
+    z-index: 5;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    right: -25%;
+    clip-path: inset(0 0 0 3%);
   }
-  .home-page-wrapper .hero-images-wrapper .hero-svg-wrapper {
-    width: 100%;
 
-    position: relative;
-    transition: 0.3s ease;
+  .home-page-wrapper .svg-sub1 {
+    width: 120px;
+    margin-bottom: 18%;
+    z-index: 2;
+    right: 40%;
   }
-  .home-page-wrapper .hero-images-wrapper .hero-svg-wrapper .hero-svg {
-    width: 100%;
 
+  .home-page-wrapper .svg-sub2 {
+    width: 380px;
+    height: 130px;
+    bottom: 1px;
+    right: 28%;
+    z-index: 3;
+  }
+
+  .home-page-wrapper .svg-item1 {
+    width: 110px;
+    left: 25%;
+    z-index: 1;
+  }
+
+  .home-page-wrapper .svg-item2 {
+    width: 60px;
+    top: 70px;
+    right: 60%;
+    z-index: 1;
     position: absolute;
-    top: 0;
-    left: 0;
   }
- 
+
+  .home-page-wrapper .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-page-wrapper .hero-text h1 {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .home-page-wrapper .no-break {
+    white-space: normal;
+  }
 
   .home-page-wrapper .stats-bar {
+    top: 20px;
+  }
+
+  .home-page-wrapper .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  .home-page-wrapper .service-card {
+    width: 92%;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: auto;
+    padding: 35px 25px;
+  }
+
+  .home-page-wrapper .testimonial-card {
+    width: 100%;
+    max-width: 280px;
     height: auto;
-    min-height: 500px;
-    background-size: cover;
-    padding: 120px 20px 60px;
-    margin-top: -200px;
+    min-height: 240px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .home-page-wrapper .contact-section {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 5;
+  }
+
+  .home-page-wrapper .contact-container {
+    min-height: 850px;
+    height: auto;
+    padding: 40px 20px 20px;
+    margin-bottom: -80px;
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .home-page-wrapper .contact-content-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .home-page-wrapper .contact-form-side {
+    order: 1;
+    width: 100%;
+  }
+
+  .home-page-wrapper .contact-images-side {
+    order: 2;
+    width: 100%;
+    height: 380px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .home-page-wrapper .image-circle.large {
+    position: absolute;
+    width: 130px;
+    height: 240px;
+    top: -10px;
+    right: 20%;
+    transform: translateX(50%);
+    z-index: 2;
+  }
+
+  .home-page-wrapper .image-circle.small {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    bottom: -230px;
+    right: 13%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+
+  .home-page-wrapper .decoration-dot {
+    width: 60px;
+    height: 60px;
+    background-color: #a9d1db;
+    border-radius: 50%;
+    top: 70px;
+    right: 40%;
+    z-index: 1;
+  }
+
+  .home-page-wrapper .home-footer {
+    padding-top: 100px;
+    margin-top: 0;
+  }
+}
+
+.home-page-wrapper .etqan-swiper .swiper-pagination {
+  bottom: 10px !important;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.home-page-wrapper .craft-card-figma {
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 480px) {
+  .home-page-wrapper .hero-text h1 {
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
+
+  .home-page-wrapper .hero-text p {
+    font-size: 19px;
+  }
+
+  .home-page-wrapper .svg-main {
+    width: 120px;
+    height: 340px;
+    z-index: 5;
+    position: relative;
+    right: -30%;
+    clip-path: inset(0 0 0 3%);
+  }
+
+  .home-page-wrapper .svg-sub1 {
+    width: 80px;
+    margin-bottom: 25%;
+    z-index: 2;
+    right: 40%;
+  }
+
+  .home-page-wrapper .svg-sub2 {
+    width: 280px;
+    height: 90px;
+    bottom: 65px;
+    right: 22%;
+    z-index: 3;
+  }
+
+  .home-page-wrapper .svg-item1 {
+    width: 110px;
+    left: 7%;
+    top: 130px;
+    z-index: 1;
+  }
+
+  .home-page-wrapper .svg-item2 {
+    width: 50px;
+    top: 70px;
+    right: 65%;
+    z-index: 1;
+    position: absolute;
+  }
+
+  .home-page-wrapper .stats-bar {
+    height: 850px;
+    padding: 40px 0;
   }
 
   .home-page-wrapper .stats-container {
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
+    margin-top: 180px;
   }
+
   .home-page-wrapper .stat-item h3 {
-    font-size: 3rem;
+    font-size: 38px;
   }
+
   .home-page-wrapper .stat-item p {
-    font-size: 1.8rem;
+    font-size: 40px;
   }
+
   .home-page-wrapper .divider {
     display: none;
   }
 
-  /* 3. Main Services ( الخدمات الرئيسية) */
-  .home-page-wrapper .services-section {
-    padding: 50px 20px;
-  }
-  .home-page-wrapper .services-grid {
-    grid-template-columns: 1fr;
-  }
-  .home-page-wrapper .service-card {
-    min-height: auto;
-    padding: 35px 25px;
-  }
-  /* 4. Top Craftsmen ( أفضل الحرفيين) */
-  .home-page-wrapper .swiper-button-next,
-  .home-page-wrapper .swiper-button-prev {
-    display: none;
-  }
-  .home-page-wrapper .etqan-swiper {
-    width: 95%;
-    padding: 10px 15px 40px;
-  }
-  .home-page-wrapper .etqan-blue-card {
-    width: 100%;
-    border-radius: 0;
-    height: auto;
-    padding: 30px 0;
+  .home-page-wrapper .services-main-title {
+    font-size: 28px;
+    margin-top: 15%;
   }
 
-  /*5. Contact Us ( تواصل معنا)*/
+  .home-page-wrapper .service-card {
+    padding: 25px 20px;
+    min-height: auto;
+  }
+
+  .home-page-wrapper .service-content h3 {
+    font-size: 22px;
+  }
+
+  .home-page-wrapper .testimonial-card {
+    width: 240px;
+    height: 250px;
+    padding: 15px;
+  }
+
   .home-page-wrapper .contact-section {
-    padding: 40px 5%;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   .home-page-wrapper .contact-container {
-    padding: 30px 20px;
-  }
-  .home-page-wrapper .contact-content-wrapper {
-    flex-direction: column;
-    gap: 50px;
+    height: 100px;
+    padding: 30px 15px 80px;
+    margin-bottom: -90px;
+    border-radius: 15px;
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
   }
 
-  .home-page-wrapper .contact-form-side {
-    width: 100%;
-    order: 1;
-    margin-right: 80px;
+  .home-page-wrapper .contact-form {
+    width: 100% !important;
+    gap: 15px;
+  }
+
+  .home-page-wrapper .contact-form input,
+  .home-page-wrapper .contact-form textarea {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .home-page-wrapper .send-btn {
+    width: 80%;
+    padding: 12px;
+    font-size: 18px;
   }
 
   .home-page-wrapper .contact-images-side {
     width: 100%;
-    height: auto;
-    order: 2;
-    position: static;
+    height: 320px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    position: relative;
   }
 
   .home-page-wrapper .image-circle.large {
-    position: static;
     width: 110px;
-    height: 200px;
-    border-radius: 50%px;
+    height: 230px;
+    top: 0;
+    right: 19%;
+    transform: translateX(50%);
+    z-index: 2;
   }
 
   .home-page-wrapper .image-circle.small {
-    position: static;
-    width: 160px;
-    height: 80px;
-    margin-top: 110px;
-    border-radius: 0 50px 0 50px;
+    width: 200px;
+    height: 90px;
+    bottom: -290px;
+    right: -9%;
+    transform: translateX(-50%);
+    z-index: 3;
   }
 
   .home-page-wrapper .decoration-dot {
-    top: 20%;
+    top: 120px;
     right: 50%;
-  }
-
-  .home-page-wrapper .send-btn {
-    width: 100%;
-    margin-right: 20px;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* 6. Footer Section ( الفوتر) */
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .footer-section {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .footer-section ul li a:hover {
-    color: #75a5b3;
-  }
-
-  .large-logo {
-    margin: 0 auto 15px;
   }
 }

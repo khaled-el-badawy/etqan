@@ -6,30 +6,33 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("");
 
   // رسائل الخطأ لكل حقل
-  const [usernameError, setUsernameError] = useState("");
+  const [emailError, setEmailError] = useState(""); 
   const [passwordError, setPasswordError] = useState("");
 
   const navigate = useNavigate();
 
   // التحقق من صحة الفورم
-  const isFormValid = username.trim() !== "" && password.trim() !== "";
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const isFormValid =
+  emailRegex.test(email) && password.trim() !== "";
 
   const handleLogin = () => {
-    const storedUsername = localStorage.getItem("username");
+    const storedEmail = localStorage.getItem("email"); 
     const storedPassword = localStorage.getItem("password");
 
     let valid = true;
 
-    // تحقق من اسم المستخدم
-    if (username !== storedUsername) {
-      setUsernameError("اسم المستخدم غير صحيح");
+    // تحقق من البريد الإلكتروني
+    if (email !== storedEmail) {
+      setEmailError("البريد الإلكتروني غير صحيح");
       valid = false;
     } else {
-      setUsernameError("");
+      setEmailError("");
     }
 
     // تحقق من كلمة السر
@@ -44,11 +47,17 @@ function Login() {
       navigate("/home");
     }
   };
-      // التحقق من الاسم
-  const handleUsernameChange = (e) => {
+
+  // التحقق من البريد الإلكتروني
+  const handleEmailChange = (e) => {
     const val = e.target.value;
-    if (/^[a-zA-Zء-ي\s]*$/.test(val)) { 
-      setUsername(val);
+    setEmail(val);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (val && !emailRegex.test(val)) {
+      setEmailError("البريد الإلكتروني غير صالح");
+    } else {
+      setEmailError("");
     }
   };
 
@@ -63,17 +72,18 @@ function Login() {
         <div className="login-form-fields">
           <form onSubmit={(e) => e.preventDefault()}>
             <h1 className="title">اهلاً بعودتك</h1>
-            {/* حقل اسم المستخدم */}
+            
+             {/* حقل البريد الإلكتروني */}
             <div className="field-container">
               <input
-                type="text"
-                placeholder="اسم المستخدم"
-                value={username}
-                onChange={handleUsernameChange}
+                type="email"
+                placeholder="البريد الإلكتروني"
+                value={email}
+                onChange={handleEmailChange}
                 required
               />
-              {usernameError && (
-                <p className="login-error-msg">{usernameError}</p>
+              {emailError && (
+                <p className="login-error-msg">{emailError}</p>
               )}
             </div>
 
@@ -97,7 +107,7 @@ function Login() {
             </div>
 
             <h3>
-              <Link to="#" className="forgot-password-link">
+              <Link to="/CraftsmanForgotPassword" className="forgot-password-link">
                 هل نسيت كلمة السر؟
               </Link>
             </h3>
@@ -119,7 +129,7 @@ function Login() {
             </Link>
             <h4 className="register-link">
               ليس لديك حساب ؟{" "}
-              <Link to="/CustomerRegister" className="link">
+              <Link to="/CraftsmanRegister" className="link">
                 إنشاء حساب
               </Link>
             </h4>
@@ -143,7 +153,7 @@ function Login() {
           }}
           style={{
             height: "100%",
-            objectFit: "cover",
+            // objectFit: "cover",
             display: "block",
             flexShrink: 0,
             position: "relative",

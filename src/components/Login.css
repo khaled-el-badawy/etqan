@@ -12,12 +12,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .craftman-login-container .login-form-fields {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 .craftman-login-container .login-form-fields .title {
   color: #40798c;
@@ -32,7 +34,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
 }
 
 .craftman-login-container .login-form-fields form .field-container {
@@ -40,6 +42,7 @@
   /* border: 1px solid #000; */
   width: 500px;
   width: 318px;
+  position: relative;
 }
 .craftman-login-container .login-form-fields form .field-container input {
   width: 100%;
@@ -52,17 +55,17 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
-.craftman-login-container
-  .login-form-fields
-  form
-  .field-container.login-password-field {
-}
 
 .craftman-login-container .login-error-msg {
   color: rgb(235, 138, 138);
-  font-size: 1.1rem;
-  line-height: 1rem;
-  min-height: 1rem;
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
 }
 /* ----------------------------------------------- */
 .craftman-login-container .forgot-password-link {
@@ -99,6 +102,7 @@
 }
 .craftman-login-container .login-password-field {
   width: 100%;
+  
 }
 
 .craftman-login-container input::-ms-reveal {
@@ -132,9 +136,7 @@
 }
 
 /* ----------banner---------------------- */
-.craftman-login-container .image {
-  transform: scale(1.05);
-}
+
 
 .craftman-login-container .image img {
   width: 40vw;
@@ -227,4 +229,4 @@
     display: none;
 
   }
-
+}

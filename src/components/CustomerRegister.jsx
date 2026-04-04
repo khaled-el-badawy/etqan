@@ -6,42 +6,18 @@ import { Link } from "react-router-dom";
 
 function CustomerRegister() {
   const governorates = [
-    "القاهرة",
-    "الجيزة",
-    "الإسكندرية",
-    "الدقهلية",
-    "الشرقية",
-    "الغربية",
-    "المنوفية",
-    "البحيرة",
-    "كفر الشيخ",
-    "الفيوم",
-    "بني سويف",
-    "المنيا",
-    "أسيوط",
-    "سوهاج",
-    "قنا",
-    "الأقصر",
-    "أسوان",
-    "البحر الأحمر",
-    "الوادي الجديد",
-    "مطروح",
-    "شمال سيناء",
-    "جنوب سيناء",
-    "الإسماعيلية",
-    "السويس",
-    "بورسعيد",
-    "دمياط",
-    "القليوبية",
+    "القاهرة","الجيزة","الإسكندرية","الدقهلية","الشرقية","الغربية",
+    "المنوفية","البحيرة","كفر الشيخ","الفيوم","بني سويف","المنيا",
+    "أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر",
+    "الوادي الجديد","مطروح","شمال سيناء","جنوب سيناء","الإسماعيلية",
+    "السويس","بورسعيد","دمياط","القليوبية"
   ];
-  const jobDropdownRef = useRef(null);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const [Governorate, setGovernorate] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
-
   const dropdownRef = useRef(null);
 
   const [username, setUsername] = useState("");
@@ -49,7 +25,6 @@ function CustomerRegister() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [nationalIdError, setNationalIdError] = useState("");
   const [emailError, setEmailError] = useState("");
 
   // قفل القائمة لما نضغط بره
@@ -63,62 +38,59 @@ function CustomerRegister() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // الاسم
   const handleUsernameChange = (e) => {
     const val = e.target.value;
-    if (/^[a-zA-Zء-ي\s]*$/.test(val)) {
-      setUsername(val);
-    }
+    if (/^[a-zA-Z\u0600-\u06FF\s]*$/.test(val)) setUsername(val);
   };
 
-  // التحقق من البريد الإلكتروني
+  // البريد الإلكتروني
   const handleEmailChange = (e) => {
     const val = e.target.value;
     setEmail(val);
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (val && !emailRegex.test(val)) {
-      setEmailError("البريد الإلكتروني غير صالح");
-    } else {
-      setEmailError("");
-    }
+    if (val && !emailRegex.test(val)) setEmailError("البريد الإلكتروني غير صالح");
+    else setEmailError("");
   };
 
-  // التحقق من رقم الهاتف
+  // رقم الهاتف
   const handlePhoneChange = (e) => {
     const val = e.target.value;
-    if (/^\d*$/.test(val) && val.length <= 11) {
-      setPhone(val);
-    }
+    if (!/^\d*$/.test(val)) return;
+    if (val.length > 11) return;
+    setPhone(val);
   };
 
   const filteredGovernorates = governorates.filter((gov) =>
-    gov.includes(searchTerm),
+    gov.includes(searchTerm)
   );
-  // التحقق من الباسورد
-  const [isFocused, setIsFocused] = useState(false); // لتتبع التركيز
 
   // قواعد الباسورد
+  const [isFocused, setIsFocused] = useState(false);
   const rules = {
-    firstCapital: /^[A-Z]/, // أول حرف Capital
-    specialChar: /[!@#$%^&*()/\\]/, // رمز خاص
-    minLength: /.{8,}/, // على الأقل 8 أحرف
+    firstCapital: /^[A-Z]/,
+    specialChar: /[!@#$%^&*()/\\]/,
+    minLength: /.{8,}/,
   };
-
   const checkRule = (rule) => rule.test(password);
+
+  const passwordsNotMatch = confirmPassword.length > 0 && password !== confirmPassword;
+
+  // التحقق من رقم الهاتف كامل الشروط
+  const isPhoneValid =
+    phone.length === 11 &&
+    phone[0] === "0" &&
+    ["010", "011", "012", "015"].includes(phone.substring(0, 3));
 
   const isFormValid =
     username.trim() !== "" &&
     email.trim() !== "" &&
     emailError === "" &&
-    // nationalId.trim() !== "" &&
-    phone.length === 11 &&
+    isPhoneValid &&
     Governorate.trim() !== "" &&
     password !== "" &&
     confirmPassword !== "" &&
     password === confirmPassword;
-
-  const passwordsNotMatch =
-    confirmPassword.length > 0 && password !== confirmPassword;
 
   return (
     <div className="customer-register-page-container">
@@ -142,7 +114,6 @@ function CustomerRegister() {
                   required
                 />
               </div>
-
               <div className="field-container">
                 <input
                   type="email"
@@ -153,7 +124,6 @@ function CustomerRegister() {
                 />
                 {emailError && <p className="error-msg">{emailError}</p>}
               </div>
-
               <div className="field-container">
                 <input
                   type="text"
@@ -162,9 +132,19 @@ function CustomerRegister() {
                   onChange={handlePhoneChange}
                   required
                 />
-                {phone.length > 0 && phone.length < 11 && (
-                  <p className="error-msg">رقم الهاتف يجب أن يكون 11 رقم</p>
-                )}
+                {(phone.length > 0 && phone.length < 11) ||
+                phone[0] !== "0" ||
+                (phone.length >= 3 &&
+                  !["010", "011", "012", "015"].includes(phone.substring(0, 3))) ? (
+                  <ul className="phone-errors">
+                    {phone.length > 0 && phone.length < 11 && <li>رقم الهاتف يجب أن يكون 11 رقم</li>}
+                    {phone.length >= 1 && phone[0] !== "0" && <li>رقم الهاتف يجب أن يبدأ بالرقم 0</li>}
+                    {phone.length >= 3 &&
+                      !["010", "011", "012", "015"].includes(phone.substring(0, 3)) && (
+                        <li>رقم الهاتف يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015</li>
+                      )}
+                  </ul>
+                ) : null}
               </div>
 
               <div className="searchable-dropdown">
@@ -180,7 +160,6 @@ function CustomerRegister() {
                   }}
                   onFocus={() => setShowDropdown(true)}
                 />
-
                 {showDropdown && searchTerm && (
                   <ul className="dropdown-list">
                     {filteredGovernorates.length > 0 ? (
@@ -203,6 +182,7 @@ function CustomerRegister() {
                 )}
               </div>
 
+              {/* كلمة السر */}
               <div className="field-container password-field-container">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -212,62 +192,14 @@ function CustomerRegister() {
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                 />
-                <span
-                  className="eye"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
+                <span className="eye" onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <FiEye /> : <FiEyeOff />}
                 </span>
-
                 {isFocused && (
-                  <div
-                    className="password-rules"
-                    style={{
-                      position: "absolute",
-                      top: "100%",
-                      left: 0,
-                      width: "100%",
-                    }}
-                  >
-                    <p
-                      style={{
-                        color: checkRule(rules.firstCapital)
-                          ? "rgb(114, 114, 243)"
-                          : "rgb(235, 138, 138)",
-                        margin: 0,
-                        fontSize: "0.85rem",
-                      }}
-                    >
-                      <ul>
-                        <li>يجب ان يكون أول حرف Capital</li>
-                      </ul>
-                    </p>
-                    <p
-                      style={{
-                        color: checkRule(rules.specialChar)
-                          ? "rgb(114, 114, 243)"
-                          : "rgb(235, 138, 138)",
-                        margin: 0,
-                        fontSize: "0.85rem",
-                      }}
-                    >
-                      <ul>
-                        <li>يجب أن يحتوي على !@#$%</li>
-                      </ul>
-                    </p>
-                    <p
-                      style={{
-                        color: checkRule(rules.minLength)
-                          ? "rgb(114, 114, 243)"
-                          : "rgb(235, 138, 138)",
-                        margin: 0,
-                        fontSize: "0.85rem",
-                      }}
-                    >
-                      <ul>
-                        <li>يجب ان يكون على الأقل 8 أحرف</li>
-                      </ul>
-                    </p>
+                  <div className="password-rules">
+                    <p style={{ color: checkRule(rules.firstCapital) ? "rgb(114,114,243)" : "rgb(235,138,138)" }}>• يجب أن يبدأ بحرف Capital</p>
+                    <p style={{ color: checkRule(rules.specialChar) ? "rgb(114,114,243)" : "rgb(235,138,138)" }}>• يجب أن يحتوي على !@#$%</p>
+                    <p style={{ color: checkRule(rules.minLength) ? "rgb(114,114,243)" : "rgb(235,138,138)" }}>• يجب أن يكون على الأقل 8 أحرف</p>
                   </div>
                 )}
               </div>
@@ -279,21 +211,13 @@ function CustomerRegister() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-
-                <span
-                  className="eye"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
+                <span className="eye" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
                   {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
                 </span>
-
-                {passwordsNotMatch && (
-                  <p className="password-error-msg">
-                    يجب أن تكون كلمة السر مطابقة
-                  </p>
-                )}
+                {passwordsNotMatch && <p className="password-error-msg">يجب أن تكون كلمة السر مطابقة</p>}
               </div>
             </div>
+
             <Link
               to={isFormValid ? "/CustomerOTP" : "#"}
               className={`link-button ${!isFormValid ? "disabled" : ""}`}
@@ -306,10 +230,7 @@ function CustomerRegister() {
             </Link>
 
             <h4 className="h4-customer-login">
-              هل لديك حساب ؟{" "}
-              <Link to="/CustomerLogin" className="Link">
-                تسجيل الدخول
-              </Link>
+              هل لديك حساب ؟ <Link to="/CustomerLogin" className="Link">تسجيل الدخول</Link>
             </h4>
           </form>
         </div>
@@ -318,26 +239,8 @@ function CustomerRegister() {
           <motion.img
             src="/images/Frame 19.svg"
             initial={{ x: "20%", y: 0, opacity: 0 }}
-            animate={{
-              x: 0,
-              y: [0, -10, 0],
-              opacity: 1,
-            }}
-            transition={{
-              x: { duration: 1.8, ease: "easeOut" },
-              y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-              opacity: { duration: 1.8, ease: "easeOut" },
-            }}
-            style={
-              {
-                // height: "100%",
-                // objectFit: "cover",
-                // display: "block",
-                // flexShrink: 0,
-                // position: "relative",
-                // zIndex: 1,
-              }
-            }
+            animate={{ x: 0, y: [0, -10, 0], opacity: 1 }}
+            transition={{ x: { duration: 1.8, ease: "easeOut" }, y: { duration: 3, ease: "easeInOut", repeat: Infinity }, opacity: { duration: 1.8, ease: "easeOut" } }}
           />
         </div>
       </motion.div>

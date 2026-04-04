@@ -32,6 +32,7 @@
 .customer-register-page-container .h4-customer-login {
   color: #828181;
   text-align: center;
+  margin-top: -30px;
   font-size: 18px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -49,10 +50,11 @@
 }
 
 .customer-register-page-container .fields-row {
-  display: flex;
+display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 /* ------------------------------- */
 .customer-register-page-container .field-container,
@@ -73,9 +75,25 @@
 }
 /* -------------------------- */
 
+.customer-register-page-container .phone-errors  {
+  color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 5px -10px;
+    margin: 0 40px -10px;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
 .customer-register-page-container .error-msg {
   color: rgb(235, 138, 138);
   font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
 }
 
 .customer-register-page-container .form-section input {
@@ -178,14 +196,15 @@
   display: none;
 }
 .customer-register-page-container .password-error-msg {
-  position: absolute;
-  bottom: -35px;
-  color: rgb(235, 138, 138);
+   color: rgb(235, 138, 138);
   font-size: 0.9rem;
-
-  margin-right: 40px;
-  /* line-height: 0.4rem;
-  min-height: 0.4rem; */
+  /* margin: 0; */
+  margin: 0 40px -10px;
+   position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
 }
 
 .customer-register-page-container .link-button {
@@ -213,7 +232,6 @@
 /* ----------banner---------------------- */
 .customer-register-page-container .image {
   height: 100vh;
-  transform: scale(1.05);
 }
 .customer-register-page-container .image img {
 }
@@ -274,11 +292,10 @@
   .customer-register-page-container {
     flex-direction: column;
     align-items: center;
-    height: auto;
+    height: 140vh;
   }
 
-  .customer-register-page-container .form-fields {
-  }
+  
 
   .customer-register-page-container .form-section {
     width: 100%;
@@ -291,7 +308,7 @@
   }
 
   .customer-register-page-container .h4-customer-login {
-    margin-top: -20px;
+    margin-top: -30px;
   }
 
   .customer-register-page-container .form-section input,
@@ -308,8 +325,9 @@
   .customer-register-page-container .password-field {
   }
 
-  .customer-register-page-container .form-section button {
+  .customer-register-page-container .link-button {
     width: 60%;
+    margin-top: 15px;
   }
   .customer-register-page-container .image {
     display: none;

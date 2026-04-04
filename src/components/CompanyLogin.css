@@ -32,13 +32,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
 }
 
 .company-login-container .login-form-fields form .field-container {
   /* background-color: tomato; */
   /* border: 1px solid #000; */
   width: 318px;
+  position: relative;
 }
 .company-login-container .login-form-fields form .field-container input {
   width: 100%;
@@ -51,17 +52,18 @@
   box-shadow: 0 2px 5px #40798c;
   font-size: 20px;
 }
-.company-login-container
-  .login-form-fields
-  form
-  .field-container.login-password-field {
-}
+
 
 .company-login-container .login-error-msg {
   color: rgb(235, 138, 138);
-  font-size: 1.1rem;
-  line-height: 1rem;
-  min-height: 1rem;
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+     position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
 }
 /* ----------------------------------------------- */
 .company-login-container .forgot-password-link {
@@ -131,9 +133,7 @@
 }
 
 /* ----------banner---------------------- */
-.company-login-container .image {
-  transform: scale(1.05);
-}
+
 
 .company-login-container .image img {
   width: 40vw;

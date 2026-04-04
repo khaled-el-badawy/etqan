@@ -1,0 +1,177 @@
+.CraftsmanCode-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+}
+.CraftsmanCode-container .CraftsmanCode-title {
+  color: #40798c;
+  text-align: center;
+  /* margin-top: 20px; */
+
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+.CraftsmanCode-container .CraftsmanCode-form {
+  width: 100%;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.CraftsmanCode-container .CraftsmanCode-form input {
+  /* margin: 15px 15px; */
+  width: 70px;
+  height: 70px;
+  color: rgb(30, 30, 30);
+  text-align: center;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 26px;
+  font-family: inter;
+}
+
+/* 
+ */
+
+.CraftsmanCode-container .CraftsmanCode-form-fields {
+  /* margin-top: 50px; */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: tomato; */
+}
+.CraftsmanCode-container .CraftsmanCode-form-fields form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  /* background-color: green; */
+}
+.CraftsmanCode-container .CraftsmanCode-form-fields form .otp-row {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 15px;
+}
+
+.CraftsmanCode-container .btn-Link {
+  text-decoration: none;
+}
+.CraftsmanCode-container .btn-CraftsmanCode-container {
+  color: white;
+  background-color: #40798c;
+  border-radius: 35px;
+  width: 240px;
+  padding: 10px 0 12px;
+  font-size: 22px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  border: none;
+  border: 1px solid transparent;
+  box-shadow: 2px 2px 5px #a3a9a6;
+  position: relative;
+  top: 0;
+  transition: 0.1s;
+}
+
+.CraftsmanCode-container .CraftsmanCode-form button:hover {
+  border: 1px solid #40798c;
+  top: 2px;
+  box-shadow: 0px 0px 5px #a3a9a6;
+  color: white;
+}
+
+.CraftsmanCode-container .resend-otp {
+  cursor: pointer;
+  color: #828181;
+  display: block;
+  /* margin-top: 40px; */
+}
+
+.CraftsmanCode-container .resend-otp:hover {
+  color: #75a5b3;
+}
+
+.CraftsmanCode-container .resend-otp.disabled {
+  cursor: not-allowed;
+  color: #75a5b3;
+}
+
+/* DESKTOP */
+
+/* ----------banner---------------------- */
+
+
+.CraftsmanCode-container .image img {
+  width: 40vw;
+  height: 100%;
+}
+
+/* TABLET */
+@media (max-width: 991px) {
+  .CraftsmanCode-container .CustomerOTP-form {
+    width: 100%;
+    height: auto;
+  }
+
+  .CraftsmanCode-container .image {
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .CraftsmanCode-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .CraftsmanCode-container .CustomerOTP-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* margin-right: 25px; */
+  }
+  .CraftsmanCode-container .CraftsmanCode-form-fields form .otp-row {
+    width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  /* gap: 15px; */
+  gap:initial;
+  justify-content: space-evenly;
+}
+
+  .CraftsmanCode-container .CraftsmanCode-title {
+    width: 80%;
+    font-size: 30px;
+    line-height: 1.9;
+    text-align: center;
+    /* margin-left: 15%; */
+  }
+
+  .CraftsmanCode-container input {
+    width: 70px;
+  }
+
+  .CraftsmanCode-container .btn-CraftsmanCode-container {
+    /* width: 40%; */
+    /* margin: 30px 120px 0 0; */
+  }
+
+  .CraftsmanCode-container .image img {
+    display: none;
+}
+}

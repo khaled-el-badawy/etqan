@@ -8,68 +8,70 @@ function CompanyRegister() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // الحقول
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  // التحقق من الاسم
+  const fileInputRef = useRef(null);
+  const [commercialFile, setCommercialFile] = useState(null);
+
+
+  // اسم الشركة
   const handleUsernameChange = (e) => {
     const val = e.target.value;
-    if (/^[a-zA-Zء-ي\s]*$/.test(val)) {
+    if (/^[a-zA-Z\u0600-\u06FF\s]*$/.test(val)) {
       setUsername(val);
     }
   };
 
-  // التحقق من البريد الإلكتروني
+  // البريد الالكتروني
   const handleEmailChange = (e) => {
     const val = e.target.value;
     setEmail(val);
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (val && !emailRegex.test(val)) {
-      setEmailError("البريد الإلكتروني غير صالح");
-    } else {
-      setEmailError("");
-    }
+    setEmailError(val && !emailRegex.test(val) ? "البريد الإلكتروني غير صالح" : "");
   };
 
-  const fileInputRef = useRef(null);
-  const [commercialFile, setCommercialFile] = useState(null);
-
-  // التحقق من رقم الهاتف
+  // رقم الهاتف
   const handlePhoneChange = (e) => {
     const val = e.target.value;
-    if (/^\d*$/.test(val) && val.length <= 11) {
-      setPhone(val);
-    }
+    if (!/^\d*$/.test(val)) return;
+    if (val.length > 11) return;
+    setPhone(val);
   };
-  // التحقق من الباسورد
-  const [isFocused, setIsFocused] = useState(false); // لتتبع التركيز
 
-  // قواعد الباسورد
+  const [isFocused, setIsFocused] = useState(false);
+
   const rules = {
-    firstCapital: /^[A-Z]/, // أول حرف Capital
-    specialChar: /[!@#$%^&*()/\\]/, // رمز خاص
-    minLength: /.{8,}/, // على الأقل 8 أحرف
+    firstCapital: /^[A-Z]/,
+    specialChar: /[!@#$%^&*()/\\]/,
+    minLength: /.{8,}/,
   };
 
   const checkRule = (rule) => rule.test(password);
+
+  const passwordsNotMatch = confirmPassword.length > 0 && password !== confirmPassword;
+  
+  // التحقق من رقم الهاتف كامل الشروط
+  const isPhoneValid =
+    phone.length === 11 &&
+    phone[0] === "0" &&
+    ["010", "011", "012", "015"].includes(phone.substring(0, 3));
+
   const isFormValid =
     username.trim() !== "" &&
     email.trim() !== "" &&
     emailError === "" &&
-    phone.length === 11 &&
+    isPhoneValid &&
     commercialFile !== null &&
     password !== "" &&
     confirmPassword !== "" &&
     password === confirmPassword;
 
-  const passwordsNotMatch =
-    confirmPassword.length > 0 && password !== confirmPassword;
   return (
     <div className="company-page-container">
       <motion.div
@@ -82,7 +84,9 @@ function CompanyRegister() {
           <form>
             <h1>مرحباً بك</h1>
             <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
+
             <div className="fields-row">
+              {/* اسم الشركة */}
               <div className="field-container">
                 <input
                   type="text"
@@ -93,6 +97,7 @@ function CompanyRegister() {
                 />
               </div>
 
+              {/* رقم الهاتف */}
               <div className="field-container">
                 <input
                   type="text"
@@ -101,11 +106,30 @@ function CompanyRegister() {
                   onChange={handlePhoneChange}
                   required
                 />
-                {phone.length > 0 && phone.length < 11 && (
-                  <p className="error-msg">رقم الهاتف يجب أن يكون 11 رقم</p>
-                )}
+
+                {/* رسائل الخطأ للهاتف */}
+                {(phone.length > 0 && phone.length < 11) ||
+                phone[0] !== "0" ||
+                (phone.length >= 3 &&
+                  !["010", "011", "012", "015"].includes(phone.substring(0, 3))) ? (
+                  <ul className="phone-errors">
+                    {phone.length > 0 && phone.length < 11 && (
+                      <li>رقم الهاتف يجب أن يكون 11 رقم</li>
+                    )}
+                    {phone.length >= 1 && phone[0] !== "0" && (
+                      <li>رقم الهاتف يجب أن يبدأ بالرقم 0</li>
+                    )}
+                    {phone.length >= 3 &&
+                      !["010", "011", "012", "015"].includes(
+                        phone.substring(0, 3)
+                      ) && (
+                        <li>رقم الهاتف يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015</li>
+                      )}
+                  </ul>
+                ) : null}
               </div>
 
+              {/* البريد الالكتروني */}
               <div className="field-container">
                 <input
                   type="email"
@@ -117,20 +141,17 @@ function CompanyRegister() {
                 {emailError && <p className="error-msg">{emailError}</p>}
               </div>
 
-              {/* حقل رفع السجل التجاري */}
+              {/* رفع السجل التجاري */}
               <div
                 className="field-container file-upload-container"
                 onClick={() => fileInputRef.current.click()}
               >
-                {/* حقل لعرض اسم الملف */}
                 <input
                   type="text"
                   placeholder="السجل التجاري"
                   value={commercialFile ? commercialFile.name : ""}
                   readOnly
                 />
-
-                {/* ملف مخفي لاختيار الملفات */}
                 <input
                   type="file"
                   accept=".pdf,.jpg,.png"
@@ -138,11 +159,13 @@ function CompanyRegister() {
                   style={{ display: "none" }}
                   onChange={(e) => setCommercialFile(e.target.files[0])}
                 />
-                {/* أيقونة المجلد */}
-
-                <FiFolderPlus className="folder-icon" />
+                <div className="folder-wrapper">
+                  <FiFolderPlus className="folder-icon" />
+                  <span className="plus-icon">+</span>
+                </div>
               </div>
 
+              {/* كلمة السر */}
               <div className="CompanyRegister-field-container CompanyRegister-password-field-container">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -160,58 +183,39 @@ function CompanyRegister() {
                 </span>
 
                 {isFocused && (
-                  <div
-                    className="password-rules"
-                    style={{
-                      position: "absolute",
-                      top: "100%",
-                      left: 0,
-                      width: "100%",
-                    }}
-                  >
+                  <div className="password-rules">
                     <p
                       style={{
                         color: checkRule(rules.firstCapital)
-                          ? "rgb(114, 114, 243)"
-                          : "rgb(235, 138, 138)",
-                        margin: 0,
-                        fontSize: "0.85rem",
+                          ? "rgb(114,114,243)"
+                          : "rgb(235,138,138)",
                       }}
                     >
-                      <ul>
-                        <li>يجب ان يكون أول حرف Capital</li>
-                      </ul>
+                      • يجب أن يبدأ بحرف Capital
                     </p>
                     <p
                       style={{
                         color: checkRule(rules.specialChar)
-                          ? "rgb(114, 114, 243)"
-                          : "rgb(235, 138, 138)",
-                        margin: 0,
-                        fontSize: "0.85rem",
+                          ? "rgb(114,114,243)"
+                          : "rgb(235,138,138)",
                       }}
                     >
-                      <ul>
-                        <li>يجب أن يحتوي على !@#$%</li>
-                      </ul>
+                      • يجب أن يحتوي على !@#$%
                     </p>
                     <p
                       style={{
                         color: checkRule(rules.minLength)
-                          ? "rgb(114, 114, 243)"
-                          : "rgb(235, 138, 138)",
-                        margin: 0,
-                        fontSize: "0.85rem",
+                          ? "rgb(114,114,243)"
+                          : "rgb(235,138,138)",
                       }}
                     >
-                      <ul>
-                        <li>يجب ان يكون على الأقل 8 أحرف</li>
-                      </ul>
+                      • يجب أن يكون على الأقل 8 أحرف
                     </p>
                   </div>
                 )}
               </div>
 
+              {/* تأكيد كلمة السر */}
               <div className="CompanyRegister-field-container CompanyRegister-password-field-container">
                 <input
                   type={showConfirmPassword ? "text" : "password"}
@@ -221,7 +225,9 @@ function CompanyRegister() {
                 />
                 <span
                   className="eye"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onClick={() =>
+                    setShowConfirmPassword(!showConfirmPassword)
+                  }
                 >
                   {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
                 </span>
@@ -233,16 +239,17 @@ function CompanyRegister() {
               </div>
             </div>
 
-            <Link
-              to={isFormValid ? "/CustomerOTP" : "#"}
-              className={`link-button ${!isFormValid ? "disabled" : ""}`}
-              style={{
-                pointerEvents: !isFormValid ? "none" : "auto",
-                opacity: !isFormValid ? 0.5 : 1,
-              }}
-            >
-              تسجيل
-            </Link>
+            {/* زر التسجيل */}
+              <Link
+                        to={isFormValid ? "/CompanyOTP" : "#"}
+                        className={`link-button ${!isFormValid ? "disabled" : ""}`}
+                        style={{
+                          pointerEvents: !isFormValid ? "none" : "auto",
+                          opacity: !isFormValid ? 0.5 : 1,
+                        }}
+                      >
+                        تسجيل
+                      </Link>
 
             <h4 className="h4-login">
               هل لديك حساب ؟{" "}
@@ -253,10 +260,11 @@ function CompanyRegister() {
           </form>
         </div>
 
+        {/* صورة جانبية */}
         <div className="image">
           <motion.img
             src="/images/Frame 20.svg"
-            initial={{ x: "20%", y: 0, opacity: 0 }}
+            initial={{ x: "20%", opacity: 0 }}
             animate={{
               x: 0,
               y: [0, -10, 0],
@@ -265,18 +273,8 @@ function CompanyRegister() {
             transition={{
               x: { duration: 1.8, ease: "easeOut" },
               y: { duration: 3, ease: "easeInOut", repeat: Infinity },
-              opacity: { duration: 1.8, ease: "easeOut" },
+              opacity: { duration: 1.8 },
             }}
-            style={
-              {
-                // height: "100%",
-                // objectFit: "cover",
-                // display: "block",
-                // flexShrink: 0,
-                // position: "relative",
-                // zIndex: 1,
-              }
-            }
           />
         </div>
       </motion.div>

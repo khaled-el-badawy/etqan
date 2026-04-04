@@ -279,7 +279,8 @@
   margin: 15px 0;
 }
 
-.customer-orders-container .customer-order-card .btnBox button {
+
+.customer-orders-container .customer-order-card .btnBox .link {
   height: 100%;
   border-radius: 10px;
   border: #40798c solid 2px;
@@ -287,15 +288,18 @@
   font-size: 20px;
   cursor: pointer;
   background: none;
+  
+  text-decoration: none;
+  text-align: center;
 }
 
-.customer-orders-container .customer-order-card .btnBox button:first-child {
+.customer-orders-container .customer-order-card .btnBox .link:first-child {
   width: 50%;
   background-color: #40798c;
   color: white;
 }
 
-.customer-orders-container .customer-order-card .btnBox button:last-child {
+.customer-orders-container .customer-order-card .btnBox .link:last-child {
   flex: 1;
   background-color: white;
   color: #40798c;

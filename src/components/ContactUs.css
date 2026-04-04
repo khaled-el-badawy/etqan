@@ -29,7 +29,7 @@
   width: auto;
    min-height: 550px;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   }
   
   .contactus-page-container .hero-text {
@@ -186,17 +186,141 @@
 
 
 
-@media (max-width: 900px) {
-   .contactus-page-container .contact-card {
-    flex-direction: column;
+
+
+/* ======= Hero Section Responsive ======= */
+
+/* تابلت */
+@media (max-width: 1024px) {
+  .contactus-page-container .hero-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
   }
 
-    .contactus-page-container .contact-image,
-   .contactus-page-container .contact-form {
+  .contactus-page-container .hero-text {
+    margin-top: 20px;
+    flex: none;
+  }
+
+  .contactus-page-container .hero-title {
+    font-size: 32px;
+    line-height: 1.4;
+  }
+
+  .contactus-page-container .hero-image img {
+    /* max-width: 50%; */
+    min-height: auto;
+    height: auto;
+    bottom: 0;
+  }
+
+  .contactus-page-container .icons-container {
+    margin-right: 0;
+    margin-top: -120px;
+    justify-content: center;
+  }
+
+  .contactus-page-container .contact-information h1 {
+    margin: 150px 0;
+    text-align: center;
+    font-size: 36px;
+  }
+
+}
+
+/* موبايل */
+@media (max-width: 767px) {
+  .contactus-page-container .hero-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .contactus-page-container .hero-text {
+    margin-top: 15px;
+    flex: none;
+  }
+
+  .contactus-page-container .hero-title {
+    font-size: 28px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .contactus-page-container .hero-image img {
+    max-width: 90%;
+    min-height: auto;
+    height: auto;
+    bottom: 0;
+  }
+
+  .contactus-page-container .contact-card {
+    flex-direction: column;
+    min-height: auto;
+    height: auto;
+  }
+
+  .contactus-page-container .contact-image,
+  .contactus-page-container .contact-form {
     width: 100%;
   }
 
-    .contactus-page-container .contact-form {
-    padding: 30px;
+  .contactus-page-container .contact-form {
+    padding: 20px;
   }
+
+  .contactus-page-container .contact-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  .contactus-page-container .contact-wrapper {
+    margin-top: -30px;
+    }
+  .contactus-page-container .contact-form input,
+  .contactus-page-container .contact-form textarea {
+    font-size: 18px;
+    padding: 12px;
+    width: 95%;
+  }
+  .contactus-page-container .contact-image,
+  .contactus-page-container .contact-form {
+    width: 100%;
+  }
+
+  .contactus-page-container .contact-form {
+    padding: 20px;
+  }
+
+  .contactus-page-container .contact-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  .contactus-page-container .contact-wrapper {
+    margin-top: -30px;
+    }
+  .contactus-page-container .contact-form input,
+  .contactus-page-container .contact-form textarea {
+    font-size: 18px;
+    padding: 12px;
+    width: 95%;
+  }
+
+  .contactus-page-container .contact-form button {
+    width: 180px;
+    font-size: 18px;
+  }
+    .contactus-page-container  .contact-information h1{
+    margin: 150px 0;
+
+    }
+
+  .contactus-page-container  .icon-wrapper {
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
 }

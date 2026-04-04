@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import "./Style.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 function Index() {
+  const customerRef = useRef(null);
+const craftsmanRef = useRef(null);
+const companyRef = useRef(null);
   // الحالة لكل Dropdown عشان نتحكم في ظهورها عند الضغط
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (name) => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        (customerRef.current && !customerRef.current.contains(event.target)) &&
+        (craftsmanRef.current && !craftsmanRef.current.contains(event.target)) &&
+        (companyRef.current && !companyRef.current.contains(event.target))
+      ) {
+        setOpenDropdown(null); // يغلق كل القوائم
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="index-container">
@@ -82,9 +103,10 @@ function Index() {
             </h3>
           </div>
 
-          <div className="index-buttons">
+           <div className="index-buttons">
             {/* زرار عميل */}
             <motion.div
+              ref={customerRef}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1.8, ease: "easeInOut" }}
@@ -107,6 +129,7 @@ function Index() {
 
             {/* زرار حرفي */}
             <motion.div
+              ref={craftsmanRef}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 1.8, ease: "easeInOut" }}
@@ -129,6 +152,7 @@ function Index() {
 
             {/* زرار شركة */}
             <motion.div
+              ref={companyRef}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 1.8, ease: "easeInOut" }}
@@ -146,6 +170,7 @@ function Index() {
                     <Link to="/CompanyLogin">تسجيل دخول</Link>
                   </div>
                 )}
+            
               </div>
             </motion.div>
           </div>

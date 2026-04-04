@@ -64,14 +64,13 @@
   font-size: 20px;
   cursor: pointer;
 }
+.navbar .nav-icons :hover{
+   color: #40798c;
+ 
+}
 .navbar .nav-icons-area{
   margin-right: 70px; 
   
-}
-
-
-.navbar .nav-icons :hover {
-  color: #40798c;
 }
 
 .navbar .mobile-menu-icon {
@@ -118,7 +117,7 @@
   margin: 0;
   padding: 0;
 }
-.navbar button{
+.navbar .logout-btn button{
    color: white;
   background-color: #40798c;
   padding: 10px 10px;
@@ -127,7 +126,7 @@
   font-size: 16px;
   border: none;
 }
-.navbar button:hover{
+.navbar .logout-btn :hover{
    background: #40798c;
   box-shadow: 2px 2px 5px #a3a9a6;
 }
@@ -165,6 +164,7 @@ position: relative;
   flex-direction: row-reverse;
 }
 
+
 .navbar .dropbtn svg {
   width: 20px;
   height: 15px;
@@ -172,8 +172,7 @@ position: relative;
 }
 
 .navbar .nav-links a:hover,
-.navbar .nav-links a.active,
-.navbar .dropbtn:hover {
+.navbar .nav-links a.active{
   color: #40798c;
 }
 
@@ -190,6 +189,7 @@ position: relative;
   z-index: 1000;
   margin-top: 15px;
 }
+
 
 .navbar .dropdown-content li a {
   font-size: 18px;
