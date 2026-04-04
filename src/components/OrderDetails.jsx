@@ -41,11 +41,7 @@ function OrderDetails() {
     topRef.current.scrollIntoView({ behavior: "smooth" });
     // إعادة توجيه لصفحة تتبع الطلب بعد دقيقة (60000ms)
     setTimeout(() => {
-<<<<<<< HEAD
       window.location.href = "/CustomerOrdersPage"; 
-=======
-      window.location.href = "/CustomerOrdersPage"; // عدلي الرابط حسب مسار صفحة تتبع الطلب
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     }, 2000);
   };
 

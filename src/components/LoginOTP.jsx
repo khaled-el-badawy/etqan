@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./VerifyOTP.css";
+import "./LoginOTP.css";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-function VerifyOTP() {
+function LoginOTP() {
   const { role } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ function VerifyOTP() {
   const currentImage = images[role] || images.craftsman;
 
   // الدالة المعدلة للتحقق والانتقال للصفحة الجديدة
-  const handleVerify = async () => {
-    const enteredOtp = otp.join("");
+   const handleLogin = async() => {
+   const enteredOtp = otp.join("");
 
     try {
       const response = await fetch("/api/verify-otp", {
@@ -40,7 +40,7 @@ function VerifyOTP() {
       const data = await response.json();
 
       if (data.success) {
-        navigate(`/new-password/${role}`);
+        navigate("/home");
       } else {
         setError("رمز التحقق غير صحيح");
       }
@@ -87,16 +87,16 @@ function VerifyOTP() {
   };
 
   return (
-    <div className="VerifyOTP-container">
+    <div className="LoginOTP-container">
       <motion.div
-        className="VerifyOTP-form"
+        className="LoginOTP-form"
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
       >
-        <div className="VerifyOTP-form-fields">
+        <div className="LoginOTP-form-fields">
           <form>
-            <h3 className="VerifyOTP-title">
+            <h3 className="LoginOTP-title">
               يرجى تفقد بريدك الإلكتروني وكتابة رمز التحقق
               <br />
               الذي أرسلناه للتو لإتمام {type === "reset" ? "تغيير كلمة المرور" : "تفعيل الحساب"}
@@ -127,8 +127,8 @@ function VerifyOTP() {
 
             <button
               type="button"
-              className="btn-VerifyOTP-container"
-              onClick={handleVerify}
+              className="btn-LoginOTP-container"
+              onClick={handleLogin}
               disabled={!isOtpComplete}
               style={{
                 pointerEvents: !isOtpComplete ? "none" : "auto",
@@ -176,4 +176,4 @@ function VerifyOTP() {
   );
 }
 
-export default VerifyOTP;
+export default LoginOTP;

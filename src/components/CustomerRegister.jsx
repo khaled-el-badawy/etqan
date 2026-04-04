@@ -219,7 +219,7 @@ function CustomerRegister() {
             </div>
 
             <Link
-              to={isFormValid ? "/CustomerOTP" : "#"}
+              to={isFormValid ? "/login-otp/customer" : "#"}
               className={`link-button ${!isFormValid ? "disabled" : ""}`}
               style={{
                 pointerEvents: !isFormValid ? "none" : "auto",
@@ -230,7 +230,7 @@ function CustomerRegister() {
             </Link>
 
             <h4 className="h4-customer-login">
-              هل لديك حساب ؟ <Link to="/CustomerLogin" className="Link">تسجيل الدخول</Link>
+              هل لديك حساب ؟ <Link to="/login/customer" className="Link">تسجيل الدخول</Link>
             </h4>
           </form>
         </div>

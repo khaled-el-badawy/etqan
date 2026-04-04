@@ -241,7 +241,7 @@ function CompanyRegister() {
 
             {/* زر التسجيل */}
               <Link
-                        to={isFormValid ? "/CompanyOTP" : "#"}
+                        to={isFormValid ? "/login-otp/company" : "#"}
                         className={`link-button ${!isFormValid ? "disabled" : ""}`}
                         style={{
                           pointerEvents: !isFormValid ? "none" : "auto",
@@ -253,7 +253,7 @@ function CompanyRegister() {
 
             <h4 className="h4-login">
               هل لديك حساب ؟{" "}
-              <Link to="/CompanyLogin" className="Link">
+              <Link to="/login/company" className="Link">
                 تسجيل الدخول
               </Link>
             </h4>

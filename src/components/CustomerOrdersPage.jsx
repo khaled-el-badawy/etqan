@@ -179,11 +179,7 @@ function OrderCard({ order }) {
 
       {order.status === "canceled" && (
         <div className="btnBox">
-<<<<<<< HEAD
           <Link to={`/ProProfile/1`} className="link">إعادة الطلب</Link>
-=======
-          <Link to={`/ProProfile`} className="link">إعادة الطلب</Link>
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
         </div>
       )}
     </div>

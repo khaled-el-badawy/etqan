@@ -330,11 +330,7 @@
 .professional-profile-container .basic-info-content li {
   display: flex;
   align-items: flex-start;
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   gap: 20px;
   position: relative;
 }
@@ -1077,43 +1073,28 @@
   color: #40798c;
 }
 
-<<<<<<< HEAD
 .password-field{
-=======
-.password-field {
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   position: relative;
   width: 80%;
   background-color: tomato;
 }
 .password-field input {
   width: 100% !important;
-<<<<<<< HEAD
   
 
-=======
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none;
 }
-<<<<<<< HEAD
 .professional-profile-container .error-msg{
-=======
-.professional-profile-container .error-msg {
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   color: red;
   font-size: 15px;
   font-weight: bold;
   text-align: center;
   width: 80%;
 }
-<<<<<<< HEAD
 .professional-profile-container .error-msg.password{
-=======
-.professional-profile-container .error-msg.password {
->>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   position: absolute;
   width: 90%;
   left: 40%;

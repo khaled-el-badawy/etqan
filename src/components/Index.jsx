@@ -121,7 +121,7 @@ const companyRef = useRef(null);
                 {openDropdown === "customer" && (
                   <div className="dropdown-content">
                     <Link to="/CustomerRegister">إنشاء حساب</Link>
-                    <Link to="/CustomerLogin">تسجيل دخول</Link>
+                    <Link to="/login/customer">تسجيل دخول</Link>
                   </div>
                 )}
               </div>
@@ -144,7 +144,7 @@ const companyRef = useRef(null);
                 {openDropdown === "craftsman" && (
                   <div className="dropdown-content">
                     <Link to="/CraftsmanRegister">إنشاء حساب</Link>
-                    <Link to="/Login">تسجيل دخول</Link>
+                    <Link to="/login/craftsman">تسجيل دخول</Link>
                   </div>
                 )}
               </div>
@@ -167,7 +167,7 @@ const companyRef = useRef(null);
                 {openDropdown === "company" && (
                   <div className="dropdown-content">
                     <Link to="/CompanyRegister">إنشاء حساب</Link>
-                    <Link to="/CompanyLogin">تسجيل دخول</Link>
+                    <Link to="/login/company">تسجيل دخول</Link>
                   </div>
                 )}
             
