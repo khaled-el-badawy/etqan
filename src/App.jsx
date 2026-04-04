@@ -121,8 +121,8 @@ const showFooter = !hideNavbar;
 
 function App() {
   return (
-    <Router>
-            <CartProvider>
+    <Router >
+      <CartProvider>
         <AppWrapper />
       </CartProvider>
     </Router>
