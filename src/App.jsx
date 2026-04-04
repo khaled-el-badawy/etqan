@@ -67,6 +67,7 @@ function AppWrapper() {
     "/CompanyRegister",
     "/CompanyLogin",
     "/CompanyOTP",
+<<<<<<< HEAD
     "/CraftsmanForgotPassword",
     "/craftsmanCode",
     "/CraftsmanNewPassword",
@@ -77,6 +78,8 @@ function AppWrapper() {
     "/CompanyCode",
     "/CompanyNewPassword",
     
+=======
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   ];
 
   const hideFooterRoutes = [
@@ -91,6 +94,7 @@ function AppWrapper() {
     "/CompanyRegister",
     "/CompanyLogin",
     "/CompanyOTP",
+<<<<<<< HEAD
     "/CraftsmanForgotPassword",
     "/craftsmanCode",
     "/CraftsmanNewPassword",
@@ -100,6 +104,8 @@ function AppWrapper() {
     "/CompanyForgotPassword",
     "/CompanyCode",
     "/CompanyNewPassword",
+=======
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   ];
 
   const showNavbar = !hideNavbarRoutes.includes(location.pathname);
@@ -138,7 +144,10 @@ function AppWrapper() {
         <Route path="/Service" element={<Service />} />
         <Route path="/Artisans" element={<Artisans />} />
         <Route path="/Products" element={<Products />} />
+<<<<<<< HEAD
         <Route path="/CartPage" element={<CartPage />} />
+=======
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
         <Route path="/OrderDetails" element={<OrderDetails />} />
         <Route path="/Faturuh" element={<Faturuh/>} />
         <Route path="/Clientprofile" element={<Clientprofile/>} />

@@ -104,6 +104,7 @@ const maritalDropdownRef = useRef(null);
     setPhone(val);
   };
 
+<<<<<<< HEAD
   const rules={
     firstCapital:/^[A-Z]/,
     specialChar:/[!@#$%^&*()/\\]/,
@@ -137,6 +138,28 @@ const maritalDropdownRef = useRef(null);
     confirmPassword!=="" &&
     password===confirmPassword;
 
+=======
+  
+
+const isFormValid =
+  username.trim() !== "" &&
+  email.trim() !== "" &&
+  emailError === "" &&
+  age !== "" &&
+  age >= 18 &&
+  maritalStatus !== "" &&
+  nationalId.trim() !== "" &&
+  nationalId.length === 14 &&
+  selectedJob.trim() !== "" &&
+  password !== "" &&
+  confirmPassword !== "" &&
+  password === confirmPassword;
+
+  const passwordsNotMatch =
+    confirmPassword.length > 0 && password !== confirmPassword;
+   const [age, setAge] = useState("");
+const [maritalStatus, setMaritalStatus] = useState("");
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   return (
     <div className="craftsman-page-container">
 
@@ -174,6 +197,7 @@ const maritalDropdownRef = useRef(null);
                 />
                 {emailError && <p className="error-msg">{emailError}</p>}
               </div>
+<<<<<<< HEAD
                   {/* العمر */}
               <div className="field-container">
                 <input
@@ -214,6 +238,39 @@ const maritalDropdownRef = useRef(null);
                 )}
               </div>
                    {/* الرقم القومي */}
+=======
+       {/* العمر */}
+<div className="field-container">
+  <input
+    type="number"
+    placeholder="العمر"
+    value={age}
+    onChange={(e) => setAge(e.target.value)}
+    min="18"
+    required
+  />
+  {age && age < 18 && (
+    <p className="error-msg">يجب ألا يقل العمر عن 18 سنة</p>
+  )}
+</div>
+
+{/* الحالة الاجتماعية */}
+<div className="field-container">
+  <select
+    value={maritalStatus}
+    onChange={(e) => setMaritalStatus(e.target.value)}
+    required
+  >
+    <option value=""  >
+      الحالة الاجتماعية
+    </option>
+    <option value="اعزب">أعزب</option>
+    <option value="متزوج">متزوج</option>
+    <option value="مطلق">مطلق</option>
+    <option value="ارمل">أرمل</option>
+  </select>
+</div>
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
               <div className="field-container">
                 <input
                   type="text"
@@ -393,7 +450,11 @@ const maritalDropdownRef = useRef(null);
 
             {/* زرار تسجيل */}
             <Link
+<<<<<<< HEAD
               to={isFormValid ? "/CompanyOTP" : "#"}
+=======
+              to={isFormValid ? "/Verify-otp" : "#"}
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
               className={`link-button ${!isFormValid ? "disabled" : ""}`}
               style={{
                 pointerEvents: !isFormValid ? "none" : "auto",

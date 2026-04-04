@@ -66,7 +66,11 @@ const handiesData = [
     //     title: "تشطيبات",
     //     cover: "/images/work (4).png",
     //     images: [
+<<<<<<< HEAD
     //       "/images/work (5).png",
+=======
+    //       "/images/work (3).png",
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     //       "/images/work (4).png",
     //       "/images/work (6).png",
     //     ],
@@ -208,15 +212,24 @@ const handiesData = [
     //     cover: "/images/work (6).png",
     //     images: [
     //       "/images/work (1).png",
+<<<<<<< HEAD
     //       "/images/work (5).png",
+=======
+    //       "/images/work (3).png",
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     //       "/images/work (2).png",
     //     ],
     //   },
     //   {
     //     id: 2,
     //     title: "إضاءة",
+<<<<<<< HEAD
     //     cover: "/images/work (5).png",
     //     images: ["/images/work (5).png", "/images/work (5).png"],
+=======
+    //     cover: "/images/work (3).png",
+    //     images: ["/images/work (3).png", "/images/work (3).png"],
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     //   },
     // ],
     // -------------------------------------------------
@@ -488,7 +501,11 @@ function ProfileSection({ handy, editMode, setEditMode }) {
               <option value="أعزب">أعزب</option>
               <option value="ارمل">ارمل</option>
               <option value="مطلق">مطلق</option>
+<<<<<<< HEAD
               {/* <option value="مطلق">افضل عدم الإجابة</option> */}
+=======
+              <option value="مطلق">افضل عدم الإجابة</option>
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
             </select>
             <input
               type="email"

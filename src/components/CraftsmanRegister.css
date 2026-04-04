@@ -30,7 +30,11 @@
   color: #828181;
   text-align: center;
   font-size: 18px;
+<<<<<<< HEAD
   margin-top: -20px;
+=======
+  margin-top: -30px;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .craftsman-page-container .form-section {
@@ -76,6 +80,7 @@
 
 /* //------------------------ */
 
+<<<<<<< HEAD
 .craftsman-page-container .field-container {
   display: flex;
   flex-direction: column;
@@ -83,8 +88,11 @@
   min-height: 70px;
   
 }
+=======
+
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 .craftsman-page-container .error-msg {
-  color: rgb(235, 138, 138);
+ color: rgb(235, 138, 138);
   font-size: 0.9rem;
   /* margin: 0; */
   margin: 0 40px -10px;
@@ -93,6 +101,19 @@
   right: 0;
   /* line-height: 1.2rem;
   min-height: 1.0rem; */
+}
+.craftsman-page-container .field-container select {
+  width: 100%;
+  padding: 20px;
+  color: rgb(118, 116, 116);
+  text-align: right;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 20px;
+  -webkit-appearance: none; /* لإزالة شكل السهم الافتراضي في سفاري */
+  -moz-appearance: none; /* لإزالة شكل السهم الافتراضي في Firefox */
+  appearance: none;
 }
 
 
@@ -256,6 +277,10 @@ right: 0;
 /* ----------banner---------------------- */
 .craftsman-page-container .image {
   height: 100vh;
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 .craftsman-page-container .image img {
 }

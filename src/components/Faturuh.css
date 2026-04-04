@@ -1,17 +1,29 @@
 .invoice-container {
   direction: rtl;
+<<<<<<< HEAD
   /* background-color: #fcfcfc; */
   padding: 20px;
   font-family: 'Arial', sans-serif;
+=======
+  background-color: #fcfcfc;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   min-height: 100vh;
 }
 
 .invoice-container .invoice-hero {
   position: relative;
   display: flex;
+<<<<<<< HEAD
   justify-content: center;  
   align-items: center;
   background: linear-gradient(60deg, #75A5B3 22%,  #ffffff 80%);
+=======
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(60deg, #75a5b3 22%, #ffffff 80%);
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   padding: 60px 20px;
   border-radius: 20px;
   margin-bottom: 40px;
@@ -19,6 +31,7 @@
 }
 
 .invoice-container .hero-center-text {
+<<<<<<< HEAD
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -29,6 +42,15 @@
 .invoice-container .hero-center-text h1 {
   color: #24505E;
   font-size: 55px;
+=======
+  text-align: center;
+  z-index: 2;
+}
+
+.invoice-container .hero-center-text h1 {
+  color: #1b5e60;
+  font-size: 35px;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   margin-bottom: 10px;
 }
 
@@ -38,11 +60,14 @@
   gap: 5px;
   font-weight: bold;
   color: #333;
+<<<<<<< HEAD
   width: fit-content;
   align-self: flex-start;
   text-align: right;
   font-size: 25px;
   margin-right: 10px;
+=======
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 
 .invoice-container .hero-img-side {
@@ -54,9 +79,12 @@
   width: 260px;
   display: block;
 }
+<<<<<<< HEAD
 .invoice-container .users-data-grid span{
   font-size: 25px;
 }
+=======
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 
 .invoice-container .users-data-grid {
   display: flex;
@@ -65,6 +93,7 @@
   margin-bottom: 40px;
 }
 
+<<<<<<< HEAD
 
 
 .invoice-container .user-info-card {
@@ -73,6 +102,25 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+=======
+.invoice-container .user-info-card {
+  background: #fff;
+  margin-left: 15%;
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.invoice-container .user-card {
+  background: #fff;
+  margin-right: 15%;
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   border: 1px solid #e0e0e0;
 }
 
@@ -84,11 +132,17 @@
   padding: 12px;
   color: white;
   font-weight: bold;
+<<<<<<< HEAD
   background-color: #75A5B3;
+=======
+  font-size: 20px;
+  background-color: #76a1ab;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 
 .invoice-container .card-fields {
   padding: 20px;
+<<<<<<< HEAD
   /* background-color: #cccc; */
   font-size: 19px;
   
@@ -103,10 +157,18 @@
 .invoice-container .field {
   display: flex;
   align-items: center; 
+=======
+}
+
+.invoice-container .field {
+  display: flex;
+  justify-content: space-between;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   border: 1px solid #ddd;
   border-radius: 25px;
   padding: 8px 20px;
   margin-bottom: 8px;
+<<<<<<< HEAD
   /* background-color: #f0f0f0; */
 }
 
@@ -122,6 +184,10 @@
   flex: 1;
   text-align: center;
   font-weight: bold;
+=======
+  font-size: 16px;
+  background-color: #fdfdfd;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 
 .invoice-container .details-section {
@@ -130,6 +196,7 @@
   overflow: hidden;
   margin-bottom: 30px;
   border-bottom: 1px solid #171717;
+<<<<<<< HEAD
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
@@ -142,6 +209,20 @@
 }
 
 .invoice-table {
+=======
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-container .details-header {
+  background: #76a1ab;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 26px;
+}
+
+.invoice-container .invoice-table {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   width: 100%;
   border-collapse: collapse;
   text-align: center;
@@ -149,11 +230,17 @@
 
 .invoice-container .invoice-table th {
   padding: 15px;
+<<<<<<< HEAD
   background: #cccccc;
   color: #333;
   border-bottom: 1px solid #171717;
   font-size: 20px;
   font-weight: bold;
+=======
+  background: #ccc;
+  color: #333;
+  font-size: 20px;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 
 .invoice-container .invoice-table td {
@@ -168,6 +255,7 @@
   align-items: flex-start;
 }
 
+<<<<<<< HEAD
 .invoice-container .pricing-left  {
   display: flex;
   flex-direction: column;
@@ -221,14 +309,43 @@ background: #f0f0f0;
   padding: 10px;
   border-radius: 5px 5px 0 0;
   margin-bottom: 10px;
+=======
+.invoice-container .pricing-left .price-item {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.invoice-container .pricing-right-box {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-container .box-title {
+  background: #76a1ab;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 250px;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   display: flex;
   justify-content: center;
 }
 
+<<<<<<< HEAD
+=======
+.invoice-container .details-box {
+  margin: 20px;
+}
+
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 .invoice-container .box-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
+<<<<<<< HEAD
   font-size: 16px;
   padding: 5px 10px;
   border-bottom: 1px solid #171717;
@@ -248,6 +365,21 @@ background: #f0f0f0;
 }
 
 /* --- 5. الأزرار --- */
+=======
+  font-size: 14px;
+}
+
+.invoice-container .total-final {
+  background: #76a1ab;
+  color: white;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 .invoice-container .payment-area {
   text-align: center;
 }
@@ -266,7 +398,10 @@ background: #f0f0f0;
   display: flex;
   justify-content: center;
   gap: 20px;
+<<<<<<< HEAD
   align-items: center;
+=======
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 }
 
 .invoice-container .pay-methods-grid button {
@@ -275,6 +410,7 @@ background: #f0f0f0;
   padding: 12px 40px;
   border-radius: 12px;
   font-weight: bold;
+<<<<<<< HEAD
   width: 230px;
 }
 
@@ -302,10 +438,19 @@ background: #f0f0f0;
   }
   .invoice-container .invoice-meta-info{
     text-align: right;
+=======
+}
+
+@media (max-width: 1024px) {
+  .invoice-container .hero-img-side {
+    position: static;
+    margin-bottom: 20px;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   }
 }
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
   
   .invoice-container .invoice-hero {
     flex-direction: column ; 
@@ -355,14 +500,28 @@ background: #f0f0f0;
     flex-direction: column ; 
     align-items: center;
     gap: 20px;
+=======
+  .invoice-container .invoice-hero {
+    flex-direction: column;
+  }
+
+  .invoice-container .users-data-grid {
+    flex-direction: column;
+    align-items: center;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   }
 
   .invoice-container .user-info-card {
     width: 100%;
+<<<<<<< HEAD
     max-width: 550px; 
   }
 
  
+=======
+  }
+
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   .invoice-container .pricing-summary {
     flex-direction: column;
     align-items: center;
@@ -371,6 +530,7 @@ background: #f0f0f0;
 }
 
 @media (max-width: 480px) {
+<<<<<<< HEAD
   .invoice-container .invoice-hero {
     flex-direction: column ; 
     gap: 20px;
@@ -420,3 +580,14 @@ background: #f0f0f0;
     width: 210px;
   }
 }
+=======
+  .invoice-container .pay-methods-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .invoice-container .pay-methods-grid button {
+    width: 100%;
+  }
+}
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da

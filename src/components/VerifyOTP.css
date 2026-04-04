@@ -17,7 +17,11 @@
 }
 
 .VerifyOTP-container .CustomerOTP-form {
+<<<<<<< HEAD
   width: 100%;
+=======
+  width: 50%;
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   direction: rtl;
   display: flex;
   flex-direction: column;
@@ -111,8 +115,15 @@
 /* DESKTOP */
 
 /* ----------banner---------------------- */
+<<<<<<< HEAD
 
 
+=======
+.VerifyOTP-container .image {
+  transform: scale(1.05);
+}
+
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 .VerifyOTP-container .image img {
   width: 40vw;
   height: 100%;

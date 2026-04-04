@@ -5,7 +5,11 @@ import { FaEnvelope, FaPhoneAlt, FaLinkedinIn, FaInstagram, FaTwitter, FaFaceboo
 
 const Footer = () => {
   const location = useLocation();
+<<<<<<< HEAD
  const coloredPages = ["/HandyOrdersPage", "/CustomerOrdersPage","/AboutUs","/contactUs","/OrderDetails","/Faturuh","/CartPage"];
+=======
+ const coloredPages = ["/HandyOrdersPage", "/CustomerOrdersPage","/AboutUs","/contactUs","/OrderDetails","/Faturuh"];
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 const isColoredPage = coloredPages.includes(location.pathname);
   return (
  <footer className={`footer ${isColoredPage ? "footer-colored" : ""}`}>

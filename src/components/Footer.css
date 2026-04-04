@@ -1,5 +1,6 @@
 /* الأكواد الأصلية التي أرسلتها بدون تغيير حرف واحد */
 .footer {
+<<<<<<< HEAD
   background-color: #40798c ; 
   color: #ffffff;
   margin-top: 50px;
@@ -9,6 +10,17 @@
 }
 
 .footer-container {
+=======
+  background-color: #40798c;
+  color: #ffffff;
+  margin-top: 50px;
+  padding-bottom: 5px;
+  direction: ltr;
+  font-family: "Cairo", sans-serif;
+}
+
+.footer .footer-container {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -17,6 +29,7 @@
   padding: 0 40px;
   gap: 30px;
 }
+<<<<<<< HEAD
 
 .footer-section {
   flex: 1;
@@ -201,11 +214,198 @@
  .footer-colored {
     background-color: #75A5B3 ;
   }
+=======
+
+.footer .footer-section {
+  flex: 1;
+  min-width: 180px;
+  direction: rtl;
+  text-align: right;
+}
+
+.footer .large-logo {
+  width: 280px;
+  height: auto;
+  margin-top: 50%;
+  margin-right: -30px;
+  filter: brightness(0) invert(1);
+}
+
+.footer .footer-logo {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  margin-right: 60%;
+}
+
+.footer .footer-desc {
+  font-size: 26px;
+  color: white;
+  margin-top: 30px;
+  margin-right: 50%;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .no-break {
+  white-space: nowrap;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .footer-h3,
+.footer .footer-link-h3 {
+  margin-top: 50%;
+}
+
+.footer .footer-section .footer-link-h3 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.footer .footer-section .footer-contact-h3 {
+  font-size: 26px;
+  margin-top: 130px;
+  font-weight: 700;
+  margin-right: 100px;
+  color: white;
+}
+
+.footer .footer-section ul {
+  list-style: none;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .footer-section ul li a {
+  margin-bottom: 15px;
+  color: white;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .footer-link li :link {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 24px;
+  margin-right: 20%;
+  text-decoration: none;
+}
+
+.footer .footer-section ul li a:hover {
+  color: #a9d1db;
+}
+
+.footer .contact-info li {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  flex-direction: row-reverse;
+  gap: 12px;
+  margin-left: 30%;
+}
+
+.footer .contact-info svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.footer .social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .social-icons :link {
+  color: #40798c;
+  background: #ffffff;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .social-link {
+  color: #40798c;
+}
+
+.footer .social-icons :link:hover {
+  color: #a9d1db;
+  margin-top: -5px;
+}
+
+.footer .footer-ul {
+  margin-top: 65%;
+  margin-left: 25%;
+}
+
+.footer .footer-link {
+  font-size: 24px;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  color: white;
+}
+
+.footer .footer-ul :hover {
+  color: #a9d1db;
+}
+
+.footer .footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.footer .footer-bottom p {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  font-size: 20px;
+}
+
+.footer .footer-colored {
+  background-color: #75a5b3;
+}
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
 
 /* ============================================================ */
 /* 1. وضع اللابتوب (1024px) */
 /* ============================================================ */
 @media screen and (max-width: 1024px) {
+<<<<<<< HEAD
   .footer-container {
     padding: 0 20px;
     gap: 20px;
@@ -219,17 +419,38 @@
     text-align: center;
   }
   .footer-desc {
+=======
+  .footer .footer-container {
+    padding: 0 20px;
+    gap: 20px;
+  }
+  .footer .large-logo {
+    width: 220px;
+    margin-top: 30%;
+  }
+  .footer .footer-logo {
+    margin-right: 0;
+    text-align: center;
+  }
+  .footer .footer-desc {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     margin-right: 0;
     font-size: 20px;
     text-align: center;
   }
+<<<<<<< HEAD
   .footer-section .footer-link-h3,
   .footer-section .footer-contact-h3 {
+=======
+  .footer .footer-section .footer-link-h3,
+  .footer .footer-section .footer-contact-h3 {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     margin-right: 0;
     margin-top: 30%;
     width: 100%;
     text-align: center;
   }
+<<<<<<< HEAD
   .footer-ul {
     margin-left: 0;
     text-align: center;
@@ -239,6 +460,17 @@
     justify-content: center;
   }
   .social-icons {
+=======
+  .footer .footer-ul {
+    margin-left: 0;
+    text-align: center;
+  }
+  .footer .contact-info li {
+    margin-left: 0;
+    justify-content: center;
+  }
+  .footer .social-icons {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     justify-content: center;
   }
 }
@@ -247,15 +479,24 @@
 /* 2. وضع التابلت (768px) */
 /* ============================================================ */
 @media screen and (max-width: 768px) {
+<<<<<<< HEAD
   .footer-container {
     flex-direction: column; /* تحويل العناصر تحت بعض */
     align-items: center;
   }
   .footer-section {
+=======
+  .footer .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .footer-section {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     width: 100%;
     min-width: unset;
     text-align: center;
   }
+<<<<<<< HEAD
   .large-logo {
     margin-top: 40px;
     width: 200px;
@@ -269,6 +510,21 @@
     margin-top: 10px;
   }
   .footer-link li :link {
+=======
+  .footer .large-logo {
+    margin-top: 40px;
+    width: 200px;
+  }
+  .footer .footer-section .footer-link-h3,
+  .footer .footer-section .footer-contact-h3 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+  .footer .footer-ul {
+    margin-top: 10px;
+  }
+  .footer .footer-link li :link {
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
     margin-right: 0;
   }
 }
@@ -278,6 +534,7 @@
 /* ============================================================ */
 @media screen and (max-width: 480px) {
   .footer {
+<<<<<<< HEAD
     padding-top: 120px; /* تعويض تداخل حاوية التواصل */
   }
   .footer-desc {
@@ -302,3 +559,25 @@
 
 
 
+=======
+    padding-top: 120px;
+  }
+  .footer .footer-desc {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .footer .footer-section .footer-link-h3,
+  .footer .footer-section .footer-contact-h3 {
+    font-size: 22px;
+  }
+  .footer .footer-link {
+    font-size: 20px;
+  }
+  .footer .contact-info li {
+    font-size: 16px;
+  }
+  .footer .footer-bottom p {
+    font-size: 16px;
+  }
+}
+>>>>>>> 5b2035b123794d80ec46b350fd1cb90d42b428da
