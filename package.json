@@ -2,7 +2,7 @@
   "name": "etqan",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://khaled-el-badawy.github.io/index",
+  "homepage": "https://khaled-el-badawy.github.io/etqan",
   "type": "module",
   "scripts": {
     "dev": "vite",
