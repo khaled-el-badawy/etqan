@@ -74,6 +74,7 @@
   .customer-orders-container .hero-banner {
     flex-direction: column-reverse;
     padding: 20px;
+    min-height: initial;
   }
 
   .customer-orders-container .hero-banner .hero-content {

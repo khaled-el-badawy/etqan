@@ -17,6 +17,7 @@ import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
 import CustomerOrdersPage from "./components/CustomerOrdersPage";
 import HandyOrdersPage from "./components/HandyOrdersPage";
+import CompanyOrdersPage from "./components/CompanyOrdersPage";
 import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
@@ -96,6 +97,7 @@ const showFooter = !hideNavbar;
         <Route path="/home" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/HandyOrdersPage" element={<HandyOrdersPage />} />
+        <Route path="/CompanyOrdersPage" element={<CompanyOrdersPage />} />
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/Artisans" element={<Artisans />} />

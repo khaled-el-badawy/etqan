@@ -1,7 +1,7 @@
 
 
 /* The container of order pages.*/
-.handy-page-container {
+.company-orders-page-container {
   max-width: 1400px;
   /* max-width: 1100px; */
 
@@ -14,7 +14,7 @@
 /* =========================
    HERO SECTION STYLES
 ========================= */
-.handy-page-container .hero-banner {
+.company-orders-page-container .hero-banner {
   background-color: rgba(64, 121, 140, 0.69);
   padding: 50px;
   margin-top: 50px;
@@ -27,52 +27,52 @@
   min-height: 442.078px;
 }
 
-.handy-page-container .hero-banner .hero-content {
+.company-orders-page-container .hero-banner .hero-content {
   text-align: center;
   width: 70%;
 }
 
-.handy-page-container .hero-banner .hero-content h1 {
+.company-orders-page-container .hero-banner .hero-content h1 {
   font-size: 48px;
   white-space: nowrap;
   color: #ffffff;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.handy-page-container .hero-banner .hero-image {
+.company-orders-page-container .hero-banner .hero-image {
   max-width: 40%;
   min-width: 300px;
 }
 
-.handy-page-container .hero-banner .hero-image img {
+.company-orders-page-container .hero-banner .hero-image img {
   width: 100%;
 }
 
 /*tablet*/
 @media (max-width: 991px) {
-  .handy-page-container .hero-banner {
+  .company-orders-page-container .hero-banner {
     flex-direction: column-reverse;
     padding: 20px;
   }
 }
 /* HERO MOBILE */
 @media (max-width: 768px) {
-  .handy-page-container .hero-banner {
+  .company-orders-page-container .hero-banner {
     flex-direction: column-reverse;
     padding: 20px;
     min-height: initial;
   }
 
-  .handy-page-container .hero-banner .hero-content {
+  .company-orders-page-container .hero-banner .hero-content {
     width: 100%;
     text-align: center;
   }
 
-  .handy-page-container .hero-banner .hero-content h1 {
+  .company-orders-page-container .hero-banner .hero-content h1 {
     font-size: 20px;
   }
 
-  .handy-page-container .hero-banner .hero-image {
+  .company-orders-page-container .hero-banner .hero-image {
     max-width: 90%;
     min-width: auto;
     margin-top: 20px;
@@ -88,12 +88,12 @@
 /* =========================
    SECTION TITLE STYLES
 ========================= */
-.handy-page-container .orders-section {
+.company-orders-page-container .orders-section {
   /* max-width: 1100px; */
   margin: 0 auto;
 }
 
-.handy-page-container .orders-section h2 {
+.company-orders-page-container .orders-section h2 {
   color: #40798c;
   font-size: 46px;
   margin: 20px 0;
@@ -104,12 +104,12 @@
    TABS STYLES
 ========================= */
 
-.handy-page-container .tabs {
+.company-orders-page-container .tabs {
   display: flex;
   gap: 10px;
 }
 
-.handy-page-container .tabs button {
+.company-orders-page-container .tabs button {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -121,18 +121,18 @@
   font-weight: bold;
 }
 
-.handy-page-container .tabs button:hover {
+.company-orders-page-container .tabs button:hover {
   background-color: #e0e0e0;
 }
 
-.handy-page-container .tabs button.active {
+.company-orders-page-container .tabs button.active {
   background-color: #40798c;
   color: white;
 }
 
 /* TABS MOBILE */
 @media (max-width: 768px) {
-  .handy-page-container .tabs {
+  .company-orders-page-container .tabs {
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -142,7 +142,7 @@
    ORDERS GRID
 ========================= */
 
-.handy-page-container .orders-grid {
+.company-orders-page-container .orders-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -152,7 +152,7 @@
 }
 
 @media (max-width: 768px) {
-  .handy-page-container .orders-grid {
+  .company-orders-page-container .orders-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
@@ -161,7 +161,7 @@
    ORDER CARD
 ========================= */
 
-.handy-page-container .order-card {
+.company-orders-page-container .order-card {
   background-color: #f5f5f5;
   box-shadow: 0 3px 4px #00000025;
   border: 1px solid #ccc;
@@ -178,7 +178,7 @@
 
 /* TITLE */
 
-.handy-page-container .order-card .order-title {
+.company-orders-page-container .order-card .order-title {
   color: #40798c;
   font-size: 28px;
    font-family: 'Beiruti';
@@ -187,14 +187,14 @@
 
 /* DETAILS */
 
-.handy-page-container .order-card .order-info {
+.company-orders-page-container .order-card .order-info {
   display: flex;
   flex-direction: column;
   min-height: 110px;
   
   font-size: 20px;
 }
-.handy-page-container .order-card .order-info p {
+.company-orders-page-container .order-card .order-info p {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -202,7 +202,7 @@
 
 /* BUTTONS */
 
-.handy-page-container .order-card .btnBox {
+.company-orders-page-container .order-card .btnBox {
   display: flex;
   flex-direction: column;
   height: 100px;
@@ -213,7 +213,7 @@
   margin: 15px 0;
 }
 
-.handy-page-container .order-card .btnBox button {
+.company-orders-page-container .order-card .btnBox button {
   width: 100%;
   padding: 5px;
   border-radius: 10px;
@@ -224,25 +224,25 @@
   background: none;
   transition: .3s;
 }
-.handy-page-container .order-card .btnBox button:hover:not(.completed-btn) {
+.company-orders-page-container .order-card .btnBox button:hover:not(.completed-btn) {
   opacity: 0.7;
 }
-.handy-page-container .order-card .btnBox button.accept-btn {
+.company-orders-page-container .order-card .btnBox button.accept-btn {
   background-color: #37c20d35;
   color: #1e600a;
 }
-.handy-page-container .order-card .btnBox button.reject-btn {
+.company-orders-page-container .order-card .btnBox button.reject-btn {
   background-color: #de3d3d35;
   color: #ba2c2c;
 }
 
-.handy-page-container .order-card .btnBox button.completed-btn {
+.company-orders-page-container .order-card .btnBox button.completed-btn {
   background-color: #37c20d15;
   color: #1e600a50;
   cursor: not-allowed;
   border: #00000025 solid 2px;
 }
-.handy-page-container .order-card .btnBox button.in-progress-btn {
+.company-orders-page-container .order-card .btnBox button.in-progress-btn {
   background-color: #37c20d35;
   color: #1e600a;
 }
