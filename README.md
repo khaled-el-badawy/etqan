@@ -37,15 +37,12 @@
 <table>
   <tr>
     <td width="33%" align="center">
-      <img src="readme-assets/electrician-ladder.png" alt="الحرفيون" width="180"/><br/><br/>
       <b>🔧 الحرفيون (Craftsmen)</b>
     </td>
     <td width="33%" align="center">
-      <img src="readme-assets/services-collage.png" alt="العملاء" width="220"/><br/><br/>
       <b>👤 العملاء (Customers)</b>
     </td>
     <td width="33%" align="center">
-      <img src="readme-assets/craftwork-collage.png" alt="الشركات" width="200"/><br/><br/>
       <b>🏢 الشركات (Companies)</b>
     </td>
   </tr>
@@ -68,7 +65,7 @@
 
 ---
 
-## 🚀 الخدمات الأساسية
+## ⚒️ الخدمات الأساسية
 
 <table>
   <tr>
@@ -81,9 +78,6 @@
       <p>ربط العملاء بالشركات لإدارة مشاريع البناء والتشطيب المتكامل.</p>
       <h3>⭐ نظام التقييم والموثوقية</h3>
       <p>ضمان جودة الخدمات المقدمة من خلال مراجعات حقيقية من عملاء سابقين.</p>
-    </td>
-    <td width="45%" align="center">
-      <img src="readme-assets/services-collage.png" alt="خدمات إتقان" width="350"/>
     </td>
   </tr>
 </table>
@@ -168,20 +162,8 @@
 
 ---
 
-## 📸 لقطات من المنصة
-
-<p align="center">
-  <img src="readme-assets/craftwork-collage.png" alt="نجارة وكهرباء" width="350"/>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="readme-assets/services-collage.png" alt="خدمات المنصة" width="350"/>
-</p>
-
----
-
 <p align="center">
   <img src="readme-assets/etqan-logo.png" alt="ETQAN Logo" width="300"/>
   <br/><br/>
-  <b>✨ كل شيء بإتقان ✨</b>
-  <br/><br/>
-  صُنع بـ ❤️ بواسطة فريق إتقان
+  صُنع بواسطة فريق إتقان
 </p>
