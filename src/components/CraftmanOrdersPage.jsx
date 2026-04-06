@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./HandyOrdersPage.css";
+import "./CraftmanOrdersPage.css";
 import { FaUser, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 /* =======================
    Orders Data
 ======================= */
 
-const handyOrders = [
+const CraftmanOrders = [
   {
     id: 1,
     service: "صيانة  الاسلاك والتوصيلات",
-    client: "ابراهيم به",
+    clientName: "ابراهيم به",
     location: "المنصورة - أحمد ماهر",
     date: "اليوم",
     status: "pending",
@@ -20,7 +20,7 @@ const handyOrders = [
   {
     id: 2,
     service: "تركيب السخانات الكهربائية",
-    client: "ابراهيم به",
+    clientName: "ابراهيم به",
     location: "المنصورة - أحمد ماهر",
     date: "13 - 1 - 2026",
     status: "completed",
@@ -28,7 +28,7 @@ const handyOrders = [
   {
     id: 3,
     service: "معالجة انقطاع الكهرباء",
-    client: "احمد علي",
+    clientName: "احمد علي",
     location: "المنصورة - الترعة",
     date: "12 - 2 - 2026",
     status: "pending",
@@ -36,7 +36,7 @@ const handyOrders = [
   {
     id: 4,
     service: "إصلاح لوحات التوزيع",
-    client: "محمد علي",
+    clientName: "محمد علي",
     location: "المنصورة - المشاية",
     date: "8 - 1 - 2026",
     status: "completed",
@@ -44,7 +44,7 @@ const handyOrders = [
   {
     id: 5,
     service: "صيانة  الاسلاك والتوصيلات",
-    client: "اكرامي كامل",
+    clientName: "اكرامي كامل",
     location: "المنصورة - الجلاء",
     date: "21 - 2 - 2026",
     status: "inProgress",
@@ -52,7 +52,7 @@ const handyOrders = [
   {
     id: 6,
     service: "إصلاح الدوائر  الكهربية",
-    client: "صلاح مصطفى",
+    clientName: "صلاح مصطفى",
     location: "المنصورة - قناة السويس",
     date: "5 - 2 - 2026",
     status: "inProgress",
@@ -60,7 +60,7 @@ const handyOrders = [
   {
     id: 7,
     service: "معالجة ضعف التيار",
-    client: "احمد وائل",
+    clientName: "احمد وائل",
     location: "المنصورة - حي الجامعة",
     date: "19 - 2 - 2026",
     status: "completed",
@@ -68,7 +68,7 @@ const handyOrders = [
   {
     id: 8,
     service: "تركيب وحدات إضاءة",
-    client: "احمد وائل",
+    clientName: "احمد وائل",
     location: "المنصورة - حي الجامعة",
     date: "27 - 12 - 2025",
     status: "completed",
@@ -76,7 +76,7 @@ const handyOrders = [
   {
     id: 9,
     service: "إصلاح لوحات التوزيع",
-    client: "احمد وائل",
+    clientName: "احمد وائل",
     location: "المنصورة - حي الجامعة",
     date: "اليوم",
     status: "pending",
@@ -84,7 +84,7 @@ const handyOrders = [
   {
     id: 10,
     service: "تركيب أجراس كهربائية",
-    client: "احمد وائل",
+    clientName: "احمد وائل",
     location: "المنصورة - حي الجامعة",
     date: "اليوم",
     status: "pending",
@@ -92,7 +92,7 @@ const handyOrders = [
   {
     id: 11,
     service: "صيانة  الاسلاك والتوصيلات",
-    client: "احمد وائل",
+    clientName: "احمد وائل",
     location: "المنصورة - حي الجامعة",
     date: "8 - 11 - 2025",
     status: "completed",
@@ -100,7 +100,7 @@ const handyOrders = [
   {
     id: 12,
     service: "إصلاح الدوائر الكهربية",
-    client: "احمد وائل",
+    clientName: "احمد وائل",
     location: "المنصورة - حي الجامعة",
     date: "23 - 1 - 2026",
     status: "completed",
@@ -177,7 +177,7 @@ function OrderCard({ order }) {
       <div className="order-info">
         <p>
           <FaUser className="icon" />
-          <span>العميل: {order.client}</span>
+          <span>العميل: {order.clientName}</span>
         </p>
         <p>
           <FaMapMarkerAlt className="icon" />
@@ -230,10 +230,10 @@ function OrdersGrid({ orders }) {
    Main Section
 ======================= */
 
-function HandyOrdersSection() {
+function CraftmanOrdersSection() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const filteredOrders = handyOrders.filter((orders) => {
+  const filteredOrders = CraftmanOrders.filter((orders) => {
     if (activeFilter === "all") return true;
     return orders.status === activeFilter;
   });
@@ -265,9 +265,9 @@ const OrdersPage = () => {
   }, []);
 
   return (
-    <div className="handy-page-container">
+    <div className="craftman-page-container">
       <HeroBanner />
-      <HandyOrdersSection />
+      <CraftmanOrdersSection />
     </div>
   );
 };

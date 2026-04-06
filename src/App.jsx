@@ -16,14 +16,14 @@ import CompanyRegister from "./components/CompanyRegister";
 import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
 import CustomerOrdersPage from "./components/CustomerOrdersPage";
-import HandyOrdersPage from "./components/HandyOrdersPage";
+import CraftmanOrdersPage from "./components/CraftmanOrdersPage";
 import CompanyOrdersPage from "./components/CompanyOrdersPage";
 import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
 import CartPage from "./components/CartPage";
 import { CartProvider } from "./components/CartContext";
-import ProProfile from "./components/ProProfile";
+import CraftmanProfile from "./components/CraftmanProfile";
 import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
@@ -44,31 +44,30 @@ function AppWrapper() {
 
   // الصفحات اللي مش عايزين فيها Navbar/Footer
 
-const isLoginPage = location.pathname.startsWith("/login");
-const isForgotPage = location.pathname.startsWith("/forgot-password");
-const isVerifyPage = location.pathname.startsWith("/verify-otp");
-const isNewPage = location.pathname.startsWith("/new-password");
+  const isLoginPage = location.pathname.startsWith("/login");
+  const isForgotPage = location.pathname.startsWith("/forgot-password");
+  const isVerifyPage = location.pathname.startsWith("/verify-otp");
+  const isNewPage = location.pathname.startsWith("/new-password");
 
-//  صفحات ثابتة
-const hideRoutes = [
-  "/",
-  "/index",
-  "/CraftsmanRegister",
-  "/CustomerRegister",
-  "/CompanyRegister",
- 
-];
+  //  صفحات ثابتة
+  const hideRoutes = [
+    "/",
+    "/index",
+    "/CraftsmanRegister",
+    "/CustomerRegister",
+    "/CompanyRegister",
+  ];
 
-//  الشرط النهائي
-const hideNavbar =
-  isLoginPage ||
-  isForgotPage ||
-  isVerifyPage ||
-  isNewPage ||
-  hideRoutes.includes(location.pathname);
+  //  الشرط النهائي
+  const hideNavbar =
+    isLoginPage ||
+    isForgotPage ||
+    isVerifyPage ||
+    isNewPage ||
+    hideRoutes.includes(location.pathname);
 
-const showNavbar = !hideNavbar;
-const showFooter = !hideNavbar;
+  const showNavbar = !hideNavbar;
+  const showFooter = !hideNavbar;
 
   return (
     <>
@@ -83,12 +82,8 @@ const showFooter = !hideNavbar;
         <Route path="/login-otp/:role" element={<LoginOTP />} />
 
         <Route path="/forgot-password/:role" element={<ForgotPassword />} />
-      
+
         <Route path="/new-password/:role" element={<NewPassword />} />
-
-        
-
-  
 
         <Route path="/CraftsmanRegister" element={<CraftsmanRegister />} />
         <Route path="/verify-otp/:role" element={<VerifyOTP />} />
@@ -96,7 +91,7 @@ const showFooter = !hideNavbar;
         <Route path="/CompanyRegister" element={<CompanyRegister />} />
         <Route path="/home" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/HandyOrdersPage" element={<HandyOrdersPage />} />
+        <Route path="/CraftmanOrdersPage" element={<CraftmanOrdersPage />} />
         <Route path="/CompanyOrdersPage" element={<CompanyOrdersPage />} />
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
         <Route path="/Service" element={<Service />} />
@@ -107,7 +102,7 @@ const showFooter = !hideNavbar;
         <Route path="/Faturuh" element={<Faturuh />} />
         <Route path="/Clientprofile" element={<Clientprofile />} />
 
-        <Route path="/ProProfile/:id" element={<ProProfile />} />
+        <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
         <Route path="/contactUs" element={<ContactUs />} />
 
         {/* صفحة 404 */}

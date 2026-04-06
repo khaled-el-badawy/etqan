@@ -66,7 +66,7 @@
   scale: 1.1;
 }
 
-.professional-profile-container .profile-summary .handy-info {
+.professional-profile-container .profile-summary .craftman-info {
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
   padding: 10px;
 }
 
-.professional-profile-container .profile-summary .handy-info h2 {
+.professional-profile-container .profile-summary .craftman-info h2 {
   font-size: 30px;
   display: flex;
   align-items: center;
@@ -83,19 +83,19 @@
 
 .professional-profile-container
   .profile-summary
-  .handy-info
+  .craftman-info
   h2
   .verified-badge {
   width: 25px;
   margin: 0 10px;
 }
 
-.professional-profile-container .profile-summary .handy-info p {
+.professional-profile-container .profile-summary .craftman-info p {
   font-size: 25px;
   color: #303030cc;
 }
 
-.professional-profile-container .profile-summary .handy-info span {
+.professional-profile-container .profile-summary .craftman-info span {
   font-size: 25px;
   font-weight: bold;
   color: #000;
@@ -103,7 +103,7 @@
   align-items: center;
   gap: 5px;
 }
-.professional-profile-container .profile-summary .handy-info span .star-icon {
+.professional-profile-container .profile-summary .craftman-info span .star-icon {
   width: 25px;
   margin-right: 5px;
 }
@@ -175,7 +175,7 @@
     top: -150px;
   }
 
-  .professional-profile-container .profile-summary .handy-info {
+  .professional-profile-container .profile-summary .craftman-info {
     width: 100%;
     align-items: center;
   }
@@ -187,24 +187,24 @@
     height: 60px;
   }
 
-  .professional-profile-container .profile-summary .handy-info h2 {
+  .professional-profile-container .profile-summary .craftman-info h2 {
     font-size: 30px;
     white-space: nowrap;
   }
 
   .professional-profile-container
     .profile-summary
-    .handy-info
+    .craftman-info
     h2
     .verified-badge {
     width: 20px;
   }
 
-  .professional-profile-container .profile-summary .handy-info p {
+  .professional-profile-container .profile-summary .craftman-info p {
     font-size: 20px;
   }
 
-  .professional-profile-container .profile-summary .handy-info span {
+  .professional-profile-container .profile-summary .craftman-info span {
     font-size: 18px;
   }
 }

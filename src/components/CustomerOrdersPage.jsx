@@ -11,7 +11,7 @@ import { FaUserLarge } from "react-icons/fa6";
    Orders Data
 ======================= */
 
-const orders = [
+const CustomerOrders = [
   {
     id: 1,
     service: "اصلاح تلفزيون",
@@ -160,26 +160,38 @@ function OrderCard({ order }) {
 
       {order.status === "completed" && (
         <div className="btnBox">
-          <Link to={`/Clientprofile`} className="link">تقييم الخدمة</Link>
-          <Link to={`/Faturuh`} className="link">فاتورة</Link>
+          <Link to={`/Clientprofile`} className="link">
+            تقييم الخدمة
+          </Link>
+          <Link to={`/Faturuh`} className="link">
+            فاتورة
+          </Link>
         </div>
       )}
       {order.status === "inProgress" && (
         <div className="btnBox">
-          <Link to={`#`} className="link">تتبع الطلب</Link>
-          <Link to={`#`} className="link">اتصال</Link>
+          <Link to={`#`} className="link">
+            تتبع الطلب
+          </Link>
+          <Link to={`#`} className="link">
+            اتصال
+          </Link>
         </div>
       )}
 
       {order.status === "pending" && (
         <div className="btnBox">
-          <Link to={`/OrderDetails`} className="link">تفاصيل</Link>
+          <Link to={`/OrderDetails`} className="link">
+            تفاصيل
+          </Link>
         </div>
       )}
 
       {order.status === "canceled" && (
         <div className="btnBox">
-          <Link to={`/ProProfile/1`} className="link">إعادة الطلب</Link>
+          <Link to={`/CraftmanProfile/1`} className="link">
+            إعادة الطلب
+          </Link>
         </div>
       )}
     </div>
@@ -190,10 +202,10 @@ function OrderCard({ order }) {
    Orders Grid
 ======================= */
 
-function OrdersGrid({ orders }) {
+function OrdersGrid({ CustomerOrders }) {
   return (
     <div className="orders-grid">
-      {orders.map((order) => (
+      {CustomerOrders.map((order) => (
         <OrderCard key={order.id} order={order} />
       ))}
     </div>
@@ -207,7 +219,7 @@ function OrdersGrid({ orders }) {
 function OrdersSection() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const filteredOrders = orders.filter((order) => {
+  const filteredOrders = CustomerOrders.filter((order) => {
     if (activeFilter === "all") return true;
     return order.status === activeFilter;
   });
@@ -221,7 +233,7 @@ function OrdersSection() {
         setActiveFilter={setActiveFilter}
       />
 
-      <OrdersGrid orders={filteredOrders} />
+      <OrdersGrid CustomerOrders={filteredOrders} />
     </section>
   );
 }

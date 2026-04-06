@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 // styles
-import "./ProProfile.css";
+import "./CraftmanProfile.css";
 // icons
 import {
   MdModeEdit,
@@ -233,9 +233,9 @@ const handiesData = [
 /* =======================
    Profile Summary
 ======================= */
-function ProfileSummary({ handy, setEditMode }) {
+function ProfileSummary({ craftman, setEditMode }) {
   // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
-  const allRatings = handy.reviews?.map((review) => review.rating) || [];
+  const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
       ? allRatings.reduce((acc, curr) => acc + curr, 0) / allRatings.length
@@ -244,7 +244,7 @@ function ProfileSummary({ handy, setEditMode }) {
   return (
     <>
       <div className="coverBox" data-aos="fade-down">
-        <img src={handy.cover} alt="cover" />
+        <img src={craftman.cover} alt="cover" />
       </div>
 
       <section className="profile-summary">
@@ -252,23 +252,23 @@ function ProfileSummary({ handy, setEditMode }) {
           <div className="prson-data">
             {/* avatar لازم يكون هنا داخل prson-data */}
             <div className="profile-avatar" data-aos="fade-up">
-              <img src={handy.avatar} alt={handy.name} />
+              <img src={craftman.avatar} alt={craftman.name} />
             </div>
 
-            <div className="handy-info" data-aos="fade-left">
+            <div className="craftman-info" data-aos="fade-left">
               <h2>
-                {handy.verified && (
+                {craftman.verified && (
                   <img
                     src="/images/Verification.png"
                     alt="Verified"
                     className="verified-badge"
-                    style={{ display: handy.verified ? "block" : "none" }}
+                    style={{ display: craftman.verified ? "block" : "none" }}
                   />
                 )}
-                {handy.name}
+                {craftman.name}
               </h2>
 
-              <p>{handy.job}</p>
+              <p>{craftman.job}</p>
               <span>
                 <img src="/images/star.png" alt="Star" className="star-icon" />{" "}
                 {avgRating.toFixed(1)}
@@ -295,7 +295,7 @@ function ProfileSummary({ handy, setEditMode }) {
 /* =======================
    Profile Section
 ======================= */
-function ProfileSection({ handy, editMode, setEditMode }) {
+function ProfileSection({ craftman, editMode, setEditMode }) {
   // هتتحكم في التبويبات الرئيسية (عن الحرفي - الأعمال - التقييمات)
   const [activeMainTab, setActiveMainTab] = useState("about");
   // هتتحكم في التبويبات الجانبية في قسم عن الحرفي
@@ -389,15 +389,15 @@ function ProfileSection({ handy, editMode, setEditMode }) {
 
   //-------------------------------------------------------------
   // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
-  const allRatings = handy.reviews?.map((review) => review.rating) || [];
+  const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
       ? allRatings.reduce((acc, curr) => acc + curr, 0) / allRatings.length
       : 0;
 
   const displayedReviews = showAllReviews
-    ? handy.reviews
-    : handy.reviews?.slice(0, 3);
+    ? craftman.reviews
+    : craftman.reviews?.slice(0, 3);
 
   const renderSideContent = () => {
     switch (activeSideTab) {
@@ -406,19 +406,19 @@ function ProfileSection({ handy, editMode, setEditMode }) {
           <ul className="basic-info-content">
             <li className="about-info">
               <FaUser className="icon" />
-              {handy.about.aboutInfo}
+              {craftman.about.aboutInfo}
             </li>
             <li className="experience">
               <MdAccessTime className="icon" />
-              {handy.about.experience}
+              {craftman.about.experience}
             </li>
             <li className="area">
               <MdLocationPin className="icon" />
-              {handy.about.area}
+              {craftman.about.area}
             </li>
             <li className="completed-orders">
               <MdWork className="icon" />
-              {`عدد الطلبات المنفذة : ${handy.about.completedOrders} طلب`}
+              {`عدد الطلبات المنفذة : ${craftman.about.completedOrders} طلب`}
             </li>
           </ul>
         );
@@ -426,7 +426,7 @@ function ProfileSection({ handy, editMode, setEditMode }) {
       case "services":
         return (
           <ul className="services-content">
-            {handy.services.map((service, index) => {
+            {craftman.services.map((service, index) => {
               return (
                 <>
                   <li key={index}>
@@ -444,19 +444,19 @@ function ProfileSection({ handy, editMode, setEditMode }) {
           <ul className="work-info-content">
             <li>
               <BsPin className="icon" />
-              {`نطاق الخدمة : ${handy.workInfo.area}`}
+              {`نطاق الخدمة : ${craftman.workInfo.area}`}
             </li>
             <li>
               <MdAccessTime className="icon" />
-              {`ساعات العمل : ${handy.workInfo.workingHours}`}
+              {`ساعات العمل : ${craftman.workInfo.workingHours}`}
             </li>
             <li>
               <ImSpinner3 className="icon" />
-              {`سرعة الاستجابة : ${handy.workInfo.speedOfResponse}`}
+              {`سرعة الاستجابة : ${craftman.workInfo.speedOfResponse}`}
             </li>
             <li>
               <AiOutlineExclamationCircle className="icon" />
-              {`خدمة الطوارئ : ${handy.workInfo.emergencyService}`}
+              {`خدمة الطوارئ : ${craftman.workInfo.emergencyService}`}
             </li>
           </ul>
         );
@@ -698,7 +698,7 @@ function ProfileSection({ handy, editMode, setEditMode }) {
                   className="upload-icon"
                 />
               </label>
-              {handy.worksCategories.map((category) => (
+              {craftman.worksCategories.map((category) => (
                 <div
                   key={category.id}
                   className="work-category-item"
@@ -765,7 +765,7 @@ function ProfileSection({ handy, editMode, setEditMode }) {
             </label>
 
             {/* images map */}
-            {handy.worksImages.map((image, index) => (
+            {craftman.worksImages.map((image, index) => (
               <div
                 key={index}
                 className="work-item"
@@ -812,14 +812,14 @@ function ProfileSection({ handy, editMode, setEditMode }) {
 
               <div className="rating-bars">
                 {[5, 4, 3, 2, 1].map((star, index) => {
-                  const count = handy.reviews
-                    ? handy.reviews.filter((review) => review.rating === star)
+                  const count = craftman.reviews
+                    ? craftman.reviews.filter((review) => review.rating === star)
                         .length
                     : 0;
 
                   const percent =
-                    handy.reviews && handy.reviews.length > 0
-                      ? (count / handy.reviews.length) * 100
+                    craftman.reviews && craftman.reviews.length > 0
+                      ? (count / craftman.reviews.length) * 100
                       : 0;
 
                   return (
@@ -842,7 +842,7 @@ function ProfileSection({ handy, editMode, setEditMode }) {
           <hr />
 
           {/* ================= Reviews List ================= */}
-          {handy.reviews && handy.reviews.length > 0 ? (
+          {craftman.reviews && craftman.reviews.length > 0 ? (
             displayedReviews.map((review, index) => {
               return (
                 <div
@@ -886,7 +886,7 @@ function ProfileSection({ handy, editMode, setEditMode }) {
               <span>لا توجد تقييمات حتى الآن</span>
             </p>
           )}
-          {handy.reviews.length > 3 && (
+          {craftman.reviews.length > 3 && (
             <div className="show-all-reviews">
               <button onClick={() => setShowAllReviews(!showAllReviews)}>
                 {showAllReviews ? <FaArrowUp /> : <FaArrowDown />}
@@ -937,18 +937,18 @@ const ProfilePage = () => {
     });
   }, []);
 
-  const handy = handiesData.find((e) => e.id === Number(id));
+  const craftman = handiesData.find((e) => e.id === Number(id));
 
-  if (!handy) return <p>Not Found</p>;
+  if (!craftman) return <p>Not Found</p>;
 
   return (
     <div className="professional-profile-container">
       {/* مرر setEditMode */}
-      <ProfileSummary handy={handy} setEditMode={setEditMode} />
+      <ProfileSummary craftman={craftman} setEditMode={setEditMode} />
 
       {/* مرر editMode */}
       <ProfileSection
-        handy={handy}
+        craftman={craftman}
         editMode={editMode}
         setEditMode={setEditMode}
       />
