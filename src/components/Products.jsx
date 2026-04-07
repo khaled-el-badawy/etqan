@@ -41,7 +41,7 @@ export default function Products() {
   ];
 
   const brands = [
-    {id: 1, name: "Makita", image: "/images/images 1.svg" },
+       {id: 1, name: "Makita", image: "/images/images 1.svg" },
     {id: 2, name: "DeWALT", image: "/images/download-removebg-preview (1) 1.svg" },
     {id: 3, name: "Milwaukee ", image: "/images/download (1) 1.svg" },
     {id: 4, name: "metabo", image: "/images/download (12) 1.svg" },
