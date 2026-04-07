@@ -22,7 +22,6 @@ import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
 import CartPage from "./components/CartPage";
-import { CartProvider } from "./components/CartContext";
 import ProProfile from "./components/ProProfile";
 import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
@@ -122,9 +121,7 @@ const showFooter = !hideNavbar;
 function App() {
   return (
     <Router>
-      <CartProvider>
         <AppWrapper />
-      </CartProvider>
     </Router>
   );
 }
