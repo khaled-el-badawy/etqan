@@ -33,27 +33,23 @@
   white-space: nowrap;
   color: #40798c;
   line-height: 1.5;
-  
 }
 
 .customer-orders-container .hero-banner .hero-content p {
   font-size: 42px;
   color: #40798c;
-  
 }
 
 .customer-orders-container .hero-banner .hero-image {
   max-width: 40%;
   min-width: 300px;
-  
 }
 
 .customer-orders-container .hero-banner .hero-image img {
   width: 100%;
-  
 }
 
-@media (max-width:1100px) {
+@media (max-width: 1100px) {
   .customer-orders-container .hero-banner .hero-content h1 {
     font-size: 40px;
   }
@@ -92,7 +88,7 @@
 
   .customer-orders-container .hero-banner .hero-image {
     max-width: 90%;
-    
+
     min-width: auto;
     margin-top: 20px;
   }
@@ -113,7 +109,7 @@
   color: #40798c;
   font-size: 48px;
   margin: 20px 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 /* =========================
@@ -234,7 +230,7 @@
   font-size: 28px;
   margin-bottom: 20px;
   text-align: right;
-  font-family: 'Beiruti';
+  font-family: "Beiruti";
   font-weight: 700;
 }
 
@@ -280,7 +276,6 @@
   margin: 15px 0;
 }
 
-
 .customer-orders-container .customer-order-card .btnBox .link {
   height: 100%;
   border-radius: 10px;
@@ -294,14 +289,138 @@
   text-align: center;
 }
 
+
 .customer-orders-container .customer-order-card .btnBox .link:first-child {
   width: 50%;
   background-color: #40798c;
   color: white;
 }
+.customer-orders-container .customer-order-card .btnBox .link:first-child:hover {
+  background-color: #305f6e;
+} 
 
 .customer-orders-container .customer-order-card .btnBox .link:last-child {
   flex: 1;
   background-color: white;
   color: #40798c;
+}
+.customer-orders-container .customer-order-card .btnBox .link:last-child:hover {
+  background-color: #eaeaea;
+}
+
+/* modal */
+.order-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.704);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-modal-overlay .modal-content {
+  background-color: white;
+
+  width: 600px;
+  min-height: 500px;
+  min-height: 500px;
+  padding: 20px 35px;
+  border-radius: 15px;
+}
+.order-modal-overlay .modal-content .modal-header {
+  display: flex;
+  
+}
+.order-modal-overlay .modal-content .modal-header img.modal-icon {
+  width: 30px;
+}
+.order-modal-overlay .modal-content .modal-header h3 {
+  color: #40798c;
+  font-size: 26px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+
+.order-modal-overlay .modal-content .modal-progress {
+  /* background-color: rgba(179, 146, 39, 0.733); */
+  margin: 10px auto;
+  width: 90%;
+
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* -------------------- */
+  gap: 50px;
+}
+.order-modal-overlay .modal-content .modal-progress::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  width: 2px;
+  height: 90%;
+  background-color: #28a745;
+
+  transform: translateY(-50%);
+}
+
+.order-modal-overlay .modal-content .modal-progress .step {
+  /* border: 1px solid black; */
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+}
+.order-modal-overlay .modal-content .modal-progress .step span {
+  position: relative;
+  right: -14px;
+}
+.order-modal-overlay .modal-content .modal-progress .step .img-container {
+  background-color: #28a745;
+  width: fit-content;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-modal-overlay
+  .modal-content
+  .modal-progress
+  .step
+  .img-container
+  img.check-icon {
+  width: 10px;
+}
+.order-modal-overlay .modal-content .modal-progress .step span {
+}
+
+.order-modal-overlay .modal-content button {
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #40798c;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  width: 150px;
+  height: 40px;
+  
+  align-self: end;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-modal-overlay .modal-content button:hover {
+  background-color: #305f6e;
 }

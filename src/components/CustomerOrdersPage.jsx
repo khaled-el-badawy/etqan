@@ -17,7 +17,8 @@ const CustomerOrders = [
     service: "اصلاح تلفزيون",
     client: "احمد محمد",
     phone: "01234567890",
-    status: "completed",
+    status: "inProgress",
+    currentStep: 1,
     image: "/images/tv-player-entertainment-svgrepo-com 1.svg",
   },
   {
@@ -26,6 +27,8 @@ const CustomerOrders = [
     client: "محمد احمد",
     phone: "01066452001",
     status: "inProgress",
+    currentStep: 3,
+
     image: "/images/broken-cable-electrician-svgrepo-com 1.svg",
   },
   {
@@ -33,7 +36,8 @@ const CustomerOrders = [
     service: "دهان",
     client: "احمد محمد",
     phone: "01066452001",
-    status: "pending",
+    status: "inProgress",
+    currentStep: 2,
     image: "/images/paint-bucket-svgrepo-com 1.svg",
   },
   {
@@ -42,6 +46,7 @@ const CustomerOrders = [
     client: "محمد ايمن",
     phone: "01066478901",
     status: "canceled",
+    currentStep: 5,
     image: "/images/air-conditioning-air-conditioner-svgrepo-com 1.svg",
   },
   {
@@ -50,6 +55,8 @@ const CustomerOrders = [
     client: "مصطفي بكر",
     phone: "01066478901",
     status: "inProgress",
+    currentStep: 2,
+
     image: "/images/saw-svgrepo-com 2.svg",
   },
   {
@@ -58,6 +65,7 @@ const CustomerOrders = [
     client: "اكرامي كامل",
     phone: "01066478901",
     status: "canceled",
+    currentStep: 5,
     image: "/images/plumbing-plumber-svgrepo-com 1.svg",
   },
 ];
@@ -130,7 +138,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
    Order Card
 ======================= */
 
-function OrderCard({ order }) {
+function OrderCard({ order, setSelectedOrder }) {
   return (
     <div className="customer-order-card" data-aos="fade-up">
       <span className={`status ${order.status}`}>
@@ -170,9 +178,9 @@ function OrderCard({ order }) {
       )}
       {order.status === "inProgress" && (
         <div className="btnBox">
-          <Link to={`#`} className="link">
+          <button className="link" onClick={() => setSelectedOrder(order)}>
             تتبع الطلب
-          </Link>
+          </button>
           <Link to={`#`} className="link">
             اتصال
           </Link>
@@ -202,11 +210,15 @@ function OrderCard({ order }) {
    Orders Grid
 ======================= */
 
-function OrdersGrid({ CustomerOrders }) {
+function OrdersGrid({ CustomerOrders, setSelectedOrder }) {
   return (
     <div className="orders-grid">
       {CustomerOrders.map((order) => (
-        <OrderCard key={order.id} order={order} />
+        <OrderCard
+          key={order.id}
+          order={order}
+          setSelectedOrder={setSelectedOrder}
+        />
       ))}
     </div>
   );
@@ -218,6 +230,8 @@ function OrdersGrid({ CustomerOrders }) {
 
 function OrdersSection() {
   const [activeFilter, setActiveFilter] = useState("all");
+  //for modal
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   const filteredOrders = CustomerOrders.filter((order) => {
     if (activeFilter === "all") return true;
@@ -227,17 +241,84 @@ function OrdersSection() {
   return (
     <section className="orders-section">
       <h2 data-aos="fade-left">طلباتك</h2>
-
+      {/*  tabs for filtering orders */}
       <OrdersTabs
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
       />
-
-      <OrdersGrid CustomerOrders={filteredOrders} />
+      {/*  grid of orders */}
+      <OrdersGrid
+        CustomerOrders={filteredOrders}
+        setSelectedOrder={setSelectedOrder}
+      />
+      {/*  modal for order tracking */}
+      <OrderTrackingModal
+        order={selectedOrder}
+        onClose={() => setSelectedOrder(null)}
+      />
     </section>
   );
 }
 
+// Steps for order tracking (for future use in the modal)
+const steps = [
+  "تم ارسال الطلب",
+  "تم قبول الطلب",
+  "تم معاينة المشكلة",
+  "جاري تنفيذ الخدمة",
+  "تم الانتهاء",
+];
+
+//pop up component will be added here later
+function OrderTrackingModal({ order, onClose }) {
+  useEffect(() => {
+    if (!order) return;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [order]);
+
+  if (!order) return null;
+
+  return (
+    <div className="order-modal-overlay">
+      <div className="modal-content" data-aos="fade-up">
+        <div className="modal-header" data-aos="fade-up">
+          <img src="images/orderModalIcon.svg" alt="" className="modal-icon" />
+          <h3>تابع تفاصيل طلبك</h3>
+        </div>
+        <div className="modal-progress">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className={`step ${index < order.currentStep ? "active" : ""}`}
+              data-aos="fade-up"
+            >
+              <span>
+                {index <= order.currentStep ? (
+                  <div className="img-container">
+                    <img
+                      src="images/check-icon.svg"
+                      alt="Check"
+                      className="check-icon"
+                    />
+                  </div>
+                ) : (
+                  <div className="img-container"></div>
+                )}
+              </span>
+              {step}
+            </div>
+          ))}
+        </div>
+        <button onClick={onClose}>تم</button>
+      </div>
+    </div>
+  );
+}
 /* =======================
    Page Export
 ======================= */
