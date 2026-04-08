@@ -4,11 +4,9 @@
     background-color: #fff;
 }
 
-
 .artisans-page .top-section {
     padding: 20px;
     text-align: center;
-
 }
 
 .artisans-page .hero-image {
@@ -17,8 +15,9 @@
     height: auto;
     margin-bottom: 30px;
 }
-.artisans-page .artisans-line{
-    width: 90%  ;
+
+.artisans-page .artisans-line {
+    width: 90%;
     border: none;
     border-bottom: 3px solid #000;
     margin: 20px auto;
@@ -44,11 +43,12 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     outline: none;
     font-size: 1.1rem;
-    
 }
-.artisans-page .search-input::placeholder{
+
+.artisans-page .search-input::placeholder {
     color: #40798C;
 }
+
 .artisans-page .search-icon-box {
     position: absolute;
     left: 20px;
@@ -61,11 +61,10 @@
     width: 22px;
 }
 
-
 .artisans-page .artisans-main-wrapper {
-    background-color:#f1f1f3c7; 
+    background-color: #f1f1f3c7;
     padding: 80px 20px;
-    border-radius: 40px; 
+    border-radius: 40px;
     width: 95%;
     margin: auto;
 }
@@ -77,51 +76,51 @@
 
 .artisans-page .artisans-grid {
     display: grid;
-    gap: 30px;
+    gap: 40px;
     grid-template-columns: repeat(3, 1fr);
+    
+    margin-top: 50px; 
 }
-
 .artisans-page .artisan-card {
-    background : #ffffff;
+    background: #ffffff;
     border-radius: 20px;
-    padding: 40px 20px;
+    padding: 60px 20px 40px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: 0.3s ease;
     cursor: pointer;
+    position: relative;
+    overflow: visible ; 
+    margin-top: 20px; 
 }
 
+.artisans-page .artisan-img-wrapper {
+    position: relative;
+    margin-top: -110px; 
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+.artisans-page .artisan-img-wrapper img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%; 
+    border: 5px solid #fff; 
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
 .artisans-page .artisan-card:hover {
     transform: translateY(-10px);
     border: 3px solid #a9d1db;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    
-   
 }
 
 .artisans-page .card-link {
-    text-decoration: none ; 
-    color: inherit ;        
-    display: block;                
-}
-
-
-.artisans-page .card-link h3, 
-.card-link p, 
-.card-link span {
     text-decoration: none;
-}
-
-.artisans-page .card-link:hover {
-    text-decoration: none;
-}
-
-.artisans-page .artisan-img-wrapper img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 20px;
+    color: inherit;
+    display: block;
 }
 
 .artisans-page .artisan-info h3 {
@@ -131,6 +130,7 @@
     margin: 0;
     padding-bottom: 10px;
 }
+
 .artisans-page .rating {
     display: flex;
     justify-content: center;
@@ -140,13 +140,13 @@
     margin-top: 10px;
     font-size: 40px;
 }
-.artisans-page .star-icon{
+
+.artisans-page .star-icon {
     color: #F69654;
     font-size: 40px;
     align-items: center;
     padding-right: 20px;
 }
-
 
 .artisans-page .load-more-container {
     text-align: center;
@@ -170,28 +170,27 @@
     margin-top: -5px;
 }
 
-
 @media (max-width: 1024px) {
-    .artisans-page  .artisans-grid {
+    .artisans-page .artisans-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 }
 
-
 @media (max-width: 768px) {
-    .artisans-page  .artisans-grid {
+    .artisans-page .artisans-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     .artisans-page .artisan-card {
-        padding: 30px 15px;
+        padding: 60px 15px 30px; 
     }
 }
 
 @media (max-width: 480px) {
-    .artisans-page  .artisans-grid {
-        grid-template-columns: 1fr;  }
-        .artisans-page .search-input {
+    .artisans-page .artisans-grid {
+        grid-template-columns: 1fr;
+    }
+    .artisans-page .search-input {
         font-size: 0.9rem;
     }
     .artisans-page .artisan-info h3 {

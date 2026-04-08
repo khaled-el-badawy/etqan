@@ -20,6 +20,7 @@ const Footer = () => {
     "/OrderDetails",
     "/Faturuh",
     "/CartPage",
+   
   ];
   const isColoredPage = coloredPages.includes(location.pathname);
   return (

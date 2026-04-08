@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Products.css";
 import { FaShoppingCart, FaHeart, FaMapMarkerAlt } from "react-icons/fa";
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 export default function Products() {
   const navigate = useNavigate();
@@ -21,6 +20,11 @@ export default function Products() {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  const [favorites, setFavorites] = useState(() => {
+  const saved = localStorage.getItem("favorites");
+  return saved ? JSON.parse(saved) : [];
+});
 
   const products = [
     { id: 1, name: "شنيور شحن DeWalt احترافي مع شنطة وبطارية وشاحن ", price: "7938", oldPrice: "9000", rating: "4.9", reviews: "24", discount: "19%", image: "images/download-removebg-preview 3.svg" },
@@ -104,6 +108,21 @@ export default function Products() {
     setTimeout(() => navigate("/CartPage"), 2000);
   };
 
+  const toggleFavorite = (product) => {
+  let updatedFavorites = [...favorites];
+
+  const exists = updatedFavorites.find(item => item.id === product.id);
+
+  if (exists) {
+    updatedFavorites = updatedFavorites.filter(item => item.id !== product.id);
+  } else {
+    updatedFavorites.push(product);
+  }
+
+  setFavorites(updatedFavorites);
+  localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+};
+
   // ================== فلترة البحث ==================
   const filteredProducts = [...products, ...offers].filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -123,8 +142,22 @@ export default function Products() {
       <div className="shop-topbar">
         <div className="topbar-content">
           <div className="topbar-icons">
-            <Link to="/CartPage"><FaShoppingCart className="icon" /></Link>
-            <FaHeart className="icon" />
+            <FaShoppingCart
+  onClick={() => navigate("/CartPage")}
+  style={{
+    cursor: "pointer",
+    fontSize: "28px",
+    color: cart.length > 0 ? "#40798c" : "#ccc"
+  }}
+/>
+            <FaHeart
+  onClick={() => navigate("/FavoritesPage")}
+  style={{
+    cursor: "pointer",
+    fontSize: "28px",
+    color: favorites.length > 0 ? "rgb(243, 72, 72)" : "#ccc"
+  }}
+/>
           </div>
           <div className="search-container">
             <input
@@ -221,7 +254,25 @@ export default function Products() {
                       <span className="discount">{product.discount}</span>
                       <div className="product-image"><img src={product.image} alt={product.name} /></div>
                     </div>
-                    <h3 className="product-title">{product.name}</h3>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <h3 className="product-title" style={{ margin: 0 }}>
+                               {product.name}
+                            </h3>
+                     <FaHeart
+                        onClick={() => {
+                          toggleFavorite(product);
+                          navigate("/FavoritesPage");
+                        }}
+                               style={{
+                                 cursor: "pointer",
+                                 fontSize: "24px",
+                                 marginTop: "-15px",
+                           color: favorites.some(item => item.id === product.id) ? "rgb(243, 72, 72)" : "#ccc"
+                               }}
+                              />
+                           
+                            </div>
+                    
                     <div className="price-rating-row">
                       <div className="price-box">
                         <span className="new-price">{product.price} جنيه</span>
@@ -244,7 +295,14 @@ export default function Products() {
         <h2 className="brands-section-title" data-aos="fade-right">تسوق حسب العلامة التجارية</h2>
         <div className="brands" data-aos="fade-up">
           {brands.map((brand, index) => (
-            <div key={index} className="brand-box"><img src={brand.image} alt={brand.name} /></div>
+            <div
+  key={index}
+  className="brand-box"
+  onClick={() => navigate("/Brands")}
+  style={{ cursor: "pointer" }}
+>
+  <img src={brand.image} alt={brand.name} />
+</div>
           ))}
         </div>
 
@@ -259,7 +317,24 @@ export default function Products() {
                     <span className="discount">{offer.discount}</span>
                     <div className="offers-image"><img src={offer.image} alt={offer.name} /></div>
                   </div>
-                  <h3 className="offers-title">{offer.name}</h3>
+                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <h3 className="product-title" style={{ margin: 0 }}>
+                               {offer.name}
+                            </h3>
+                     <FaHeart
+                      onClick={() => {
+                        toggleFavorite(offer);
+                        navigate("/FavoritesPage");
+                      }}
+                               style={{
+                                 cursor: "pointer",
+                                 fontSize: "24px",
+                                 marginTop: "-15px",
+                           color: favorites.some(item => item.id === offer.id) ? "rgb(243, 72, 72)" : "#ccc"
+                               }}
+                              />
+                           
+                            </div>
                   <div className="price-rating-row">
                     <div className="price-box">
                       <span className="new-price">{offer.price} جنيه</span>

@@ -21,7 +21,9 @@ import CompanyOrdersPage from "./components/CompanyOrdersPage";
 import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
+import FavoritesPage from "./components/FavoritesPage";
 import CartPage from "./components/CartPage";
+import Brands from "./components/Brands";
 import CraftmanProfile from "./components/CraftmanProfile";
 import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
@@ -96,7 +98,9 @@ function AppWrapper() {
         <Route path="/Service" element={<Service />} />
         <Route path="/Artisans" element={<Artisans />} />
         <Route path="/Products" element={<Products />} />
+        <Route path="/FavoritesPage" element={<FavoritesPage />} />
         <Route path="/CartPage" element={<CartPage />} />
+        <Route path="/Brands" element={<Brands />} />
         <Route path="/OrderDetails" element={<OrderDetails />} />
         <Route path="/Faturuh" element={<Faturuh />} />
         <Route path="/Clientprofile" element={<Clientprofile />} />
