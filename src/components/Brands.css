@@ -1,0 +1,374 @@
+.brands-header-icon{
+  margin-top: 40px;
+  width: 35%;
+  
+}
+.brands-page-container .brands-header{
+/* background: linear-gradient(60deg, #75A5B3 22%, #FFFFFF 100%); */
+/* background-color: #eaf3f5 ; */
+  padding: 0;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  }
+
+
+  .brands-page-container .brands-header {
+    display: flex;
+    flex-direction: column;
+   
+    /* width: 100%;
+    text-align: center;
+    margin-right: -120px; */
+  }
+  .brands-page-container .hero-title  {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #40798c;
+  font-size: 40px;
+    line-height: 1.5;
+    margin-top: 50px;
+    text-align: right;
+    /* margin-right: 90px; */
+   
+  }
+
+  .brands-page-container .hero-text  {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   color: #333;
+  font-size: 26px;
+  text-align: right;
+   margin: 20px 0 0 300px;
+
+   
+  
+  }
+
+  .brands-page-container .hero-back-to-shop-btn{
+  text-decoration: none;
+background:#4f7f87;
+color:white;
+border:none;
+padding:12px;
+border-radius:8px;
+cursor:pointer;
+width: 20%;
+font-size: 20px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: 400;
+margin: 3% 0 0 38%;
+/* margin-left:-90px; */
+
+}
+.brands-page-container .hero-back-to-shop-btn:hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
+} 
+
+.search-section {
+    /* padding: 40px 0; */
+    position: relative;
+    z-index: 100;
+    margin: 20px 0 0; 
+    
+}
+
+
+
+
+
+
+
+
+
+ .search-wrapper {
+  display: flex;
+  
+
+ 
+  overflow: hidden;
+  width: 600px;
+  margin: auto;
+  direction: rtl;
+  text-align: right;
+
+   background: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.135);
+    align-items: center;
+    border: 2px solid transparent; 
+    transition: all 0.3s ease-in-out;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 18px 20px;
+    font-size: 1.2rem;
+    font-family: "El Messiri", sans-serif;
+    background: transparent;
+    /* text-align: right; */
+}
+
+.search-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.search-btn img {
+  width: 50px;
+  height: 24px;
+}
+
+
+.brands-page-container .empty-favorites {
+  text-align: center;
+  padding: 100px; 
+  margin-top: 40px; 
+  color: #40798c;
+  font-size: 26px;
+  font-weight: 300;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.brands-page-container .empty-favorites h2 {
+  margin-top: -20px;
+   font-size: 42px;
+}
+.brands-page-container .empty-favorites p {
+  color:#343333;
+  margin-top: 25px;
+}
+
+.brands-page-container .add-cart-btn{
+text-decoration: none;
+background:#4f7f87;
+color:white;
+border:none;
+padding:10px 8px;
+border-radius:8px;
+cursor:pointer;
+margin-right:110px;
+
+}
+.brands-page-container .add-cart-btn:hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
+}
+
+.brands-page-container .back-to-shop-btn:hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
+} 
+
+
+
+
+
+
+
+   .brands-page-container .initialbrands-cards-container{
+   display: grid;
+    grid-template-columns: repeat(4, 280px);
+   justify-content: center;
+   column-gap: 100px;
+  /* background-color: #f1f1f3c7; */
+   }
+
+ .brands-page-container .discount{
+position:absolute;
+top: 10px;
+left:10px;
+background:#5f8790;
+color:white;
+font-size:16px;
+padding:15px ;
+border-radius:50%;
+}
+
+
+ .brands-page-container .initialBrands-card{
+width: 280px;
+background:#fff;
+border-radius:14px;
+padding:20px;
+margin-top: 60px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+text-align:center;
+position:relative;
+direction: rtl;
+
+
+
+
+
+}
+
+
+.brands-page-container .initialBrands-image{
+height:140px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.brands-page-container .initialBrands-image img{
+max-width:155px;
+object-fit:contain;
+margin-right: -45px;
+}
+
+
+
+.brands-page-container .initialBrands-title{
+font-size:15px;
+text-align: right;
+color:#333;
+width: 180px;
+line-height: 1.7;
+}
+
+.brands-page-container .price-box{
+display:flex;
+flex-direction: column;
+align-items: flex-start;
+font-family: "Inter";
+}
+
+.brands-page-container .new-price{
+font-size:20px;
+font-weight:bold;
+}
+
+.brands-page-container .old-price{
+color:#888;
+text-decoration:line-through;
+font-size: 18px;
+
+}
+
+
+ .brands-page-container .price-rating-row{
+ display:flex;
+justify-content:space-between;
+align-items: center;
+color:#555;
+
+}
+
+.brands-page-container .rating{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  background: #F5F6F9;
+  margin-top: -25px;
+}
+
+.brands-page-container .reviews{
+  color: #777;
+}
+
+.brands-page-container .rating-number{
+  font-weight: 500;
+}
+
+.brands-page-container .star{
+  display: flex;
+  align-items: center;
+}
+
+
+.brands-page-container .remove-btn:hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
+
+
+}
+.brands-page-container .cart-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.brands-page-container .quantity-control{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.brands-page-container .quantity-control button{
+  background:#40798c;
+  color:#fff;
+  border:none;
+  padding:4px 10px;
+  border-radius:6px;
+  cursor:pointer;
+ 
+}
+.brands-page-container .quantity-control button :hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
+ 
+}
+
+.brands-page-container .quantity-control span{
+  font-weight:bold;
+   font-size: 18px;
+   font-family: "Inter";
+}
+
+.brands-page-container .brands-success-message{
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e6f9ec;
+  color: #1e7e34;
+  border: 1px solid #1e7e34;
+  padding: 25px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 9999;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

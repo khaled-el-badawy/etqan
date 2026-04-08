@@ -222,6 +222,10 @@ border-radius:8px;
 cursor:pointer;
 
 }
+.cart-page-container .remove-btn:hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
+
+}
 .cart-page-container .cart-actions{
   display: flex;
   justify-content: space-between;
