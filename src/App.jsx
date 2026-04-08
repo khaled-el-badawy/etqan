@@ -22,7 +22,7 @@ import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
 import CartPage from "./components/CartPage";
-import ProProfile from "./components/ProProfile";
+import CraftmanProfile from "./components/CraftmanProfile";
 import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
