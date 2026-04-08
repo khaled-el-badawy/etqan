@@ -70,21 +70,9 @@ padding:30px;
   text-align:right;
 }
 
- .location{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-size:20px;
-  direction: rtl;
-}
 
- .location-icon{
-  color:#444;
-}
 
-.location :hover{
-   color: #40798c;
-}
+
 
 /* ================= Slider ================= */
 
@@ -321,8 +309,8 @@ cursor:pointer;
 }
 
 .products-page-container .brand-box img{
-max-width:150px;
-max-height:50px;
+max-width:160px;
+max-height:100px;
 object-fit:contain;
 }
 
@@ -493,5 +481,54 @@ background:#3a7a7f;
 color:white;
 }
 
+.limit-alert {
+  position: fixed; /* يثبت في أعلى الصفحة */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffdddd; /* خلفية حمراء فاتحة */
+  color: #a70000; 
+  border: 1px solid #a70000;
+  padding: 25px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 9999; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  animation: slideDown 0.3s ease-out;
+}
 
+/* حركة بسيطة للظهور */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.success-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e6f9ec;
+  color: #1e7e34;
+  border: 1px solid #1e7e34;
+  padding: 25px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 9999;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
 

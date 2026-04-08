@@ -22,8 +22,7 @@ import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
 import CartPage from "./components/CartPage";
-import { CartProvider } from "./components/CartContext";
-import CraftmanProfile from "./components/CraftmanProfile";
+import ProProfile from "./components/ProProfile";
 import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
@@ -117,9 +116,7 @@ function AppWrapper() {
 function App() {
   return (
     <Router>
-      <CartProvider>
         <AppWrapper />
-      </CartProvider>
     </Router>
   );
 }
