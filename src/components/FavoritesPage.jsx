@@ -98,65 +98,71 @@ const handleAddToCart = (item) => {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return (
-    <div className="favorites-page-container">
-          {showSuccessMessage && (
-        <div className="success-alert">تمت إضافة المنتج إلى السلة</div>
-      )}
+ return (
+  <div className="favorites-page-container">
 
-      {showLimitMessage && (
-        <div className="limit-alert">تم الوصول للحد الأقصى 5 قطع لكل منتج</div>
-      )}
+    {showSuccessMessage && (
+      <div className="success-alert">تمت إضافة المنتج إلى السلة</div>
+    )}
 
-      
+    {showLimitMessage && (
+      <div className="limit-alert">تم الوصول للحد الأقصى 5 قطع لكل منتج</div>
+    )}
+
+    {/* لو المفضلة فاضية */}
+    {favorites.length === 0 ? (
+      <div className="empty-favorites" data-aos="fade-up">
+        <h2>المفضلة فارغة</h2>
+        <p>لم يتم إضافة أي منتجات بعد. تصفح المتجر لإختيار ما يعجبك</p>
+        <button
+          onClick={() => navigate("/products")}
+          className="back-to-shop-btn"
+        >
+          العودة إلي المتجر
+        </button>
+      </div>
+    ) : (
+      <>
+        {/* الهيدر */}
         <div className="favorites-header">
-          <h1 className="hero-title"data-aos="fade-right"> إدارة اختياراتك بعناية</h1>
-              <p className="hero-text" data-aos="fade-right"> قم بمراجعة المنتجات التي اخترتها، أضف ما تحتاجه إلى السلة "
-                  <br /> " أو احذف غير المرغوب 
-               
-                 مع تنظيم واضح يساعدك على اتخاذ قرار الشراء بثقة </p>
-   
+          <h1 className="hero-title" data-aos="fade-right">
+            إدارة اختياراتك بعناية
+          </h1>
+          <p className="hero-text" data-aos="fade-right">
+            قم بمراجعة المنتجات التي اخترتها، أضف ما تحتاجه إلى السلة
+            <br />
+            أو احذف غير المرغوب مع تنظيم واضح يساعدك على اتخاذ قرار الشراء بثقة
+          </p>
+
           <button
             onClick={() => navigate("/products")}
-                  className="hero-back-to-shop-btn"
-                  data-aos="fade-up"
+            className="hero-back-to-shop-btn"
+            data-aos="fade-up"
           >
             العودة إلي المتجر
           </button>
         </div>
-          
-         <section className="search-section">
-  <div className="container">
-    <div className="search-wrapper">
-      
-      <input 
-        type="text" 
-        placeholder="ابحث عن المنتج" 
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-input"
-      />
 
-      <button className="search-btn">
-        <img src="/images/services/searchicon.svg" alt="search" />
-      </button>
+        {/* السيرش */}
+        <section className="search-section">
+          <div className="container">
+            <div className="search-wrapper">
+              <input
+                type="text"
+                placeholder="ابحث عن المنتج"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
 
-    </div>
-  </div>
-</section>
+              <button className="search-btn">
+                <img src="/images/services/searchicon.svg" alt="search" />
+              </button>
+            </div>
+          </div>
+        </section>
 
-      {filteredFavorites.length === 0 ? (
-        <div className="empty-favorites" data-aos="fade-up">
-          <h2>المفضلة فارغة</h2>
-          <p>لم يتم إضافة أي منتجات بعد. تصفح المتجر لإختيار ما يعجبك.</p>
-          <button
-            onClick={() => navigate("/products")}
-            className="back-to-shop-btn"
-          >
-            العودة إلي المتجر
-          </button>
-        </div>
-      ) : (
+        {/* الكاردات */}
         <div className="initialFavorites-cards-container" data-aos="fade-up">
           {filteredFavorites.map((item) => (
             <div key={item.id} className="initialFavorites-card">
@@ -164,7 +170,9 @@ const handleAddToCart = (item) => {
                 <span className="discount">{item.discount}</span>
                 <img src={item.image} alt={item.name} />
               </div>
+
               <h3 className="initialFavorites-title">{item.name}</h3>
+
               <div className="price-rating-row">
                 <div className="price-box">
                   <span className="new-price">{item.price} جنيه</span>
@@ -174,27 +182,29 @@ const handleAddToCart = (item) => {
                   ⭐ {item.rating} ({item.reviews})
                 </div>
               </div>
-                  <div className="cart-actions">
-                        <button
+
+              <div className="cart-actions">
+                <button
                   className="add-cart-btn"
                   onClick={() => handleAddToCart(item)}
                 >
-                 إضافة إلى السلة
+                  إضافة إلى السلة
                 </button>
+
                 <button
                   className="remove-btn"
                   onClick={() => removeFromFavorites(item.id)}
                 >
                   🗑 حذف
                 </button>
-              
               </div>
             </div>
           ))}
         </div>
-      )}
-    </div>
-  );
+      </>
+    )}
+  </div>
+);
 };
 
 export default FavoritesPage;
