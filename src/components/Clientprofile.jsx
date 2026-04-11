@@ -3,7 +3,7 @@ import './ClientProfile.css';
 import { FaStar, FaStarHalfAlt, FaRegStar, FaEdit, FaExclamationTriangle, FaTimes } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import { FiEye,FiEyeOff } from 'react-icons/fi';
 const ClientProfile = () => {
   const [activeTab, setActiveTab] = useState('about');
   
@@ -64,6 +64,7 @@ const ClientProfile = () => {
       setActiveTab('about'); // العودة لصفحة العميل بعد الحفظ الناجح
     }
   };
+  
   // --------------------------------------------------
 
   useEffect(() => {
@@ -98,6 +99,20 @@ const ClientProfile = () => {
       </div>
     );
   };
+    //  عشان نتحكم في اظهار كلمة السر أو اخفائها في نموذج تعديل الملف الشخصي
+    const [password, setPassword] = useState("");
+    const [showCurrentPassword, setShowPassword] = useState(false);
+    //  عشان نتحكم في اظهار كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
+    const [newPassword, setNewPassword] = useState("");
+    const [showNewPassword, setShowNewPassword] = useState(false);
+    //  عشان نتحكم في اظهار تأكيد كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
+    /////////////////////////////////
+    // عشان نتحقق إذا كانت كلمة السر الجديدة وتأكيدها متطابقين ولا لأ
+    const passwordsNotMatch =
+      confirmPassword.length > 0 && newPassword !== confirmPassword;
 
   // دالة لتنظيف البيانات وإغلاق المودال
   const handleCloseModals = () => {
@@ -333,14 +348,61 @@ const ClientProfile = () => {
                   onChange={handleInputChange}
                 />
                 
-                <input 
-                  type="password" 
-                  name="password"
-                  placeholder="تغيير كلمه السر" 
-                  className="form-input"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                />
+                <div className="form-group password">
+            <div className="input-password">
+              <input
+                type={showCurrentPassword ? "text" : "password"}
+                placeholder="كلمة السر الحالية"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className="input-password-eye"
+                onClick={() => setShowPassword(!showCurrentPassword)}
+              >
+                {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
+              </span>
+            </div>
+
+            {/*  */}
+
+            <div className="input-password">
+              <input
+                type={showNewPassword ? "text" : "password"}
+                placeholder="كلمة السر الجديدة"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <span
+                className="input-password-eye"
+                onClick={() => setShowNewPassword(!showNewPassword)}
+              >
+                {showNewPassword ? <FiEye /> : <FiEyeOff />}
+              </span>
+            </div>
+
+            {/*  */}
+
+            <div className="input-password">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="تأكيد كلمة السر"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <span
+                className="input-password-eye"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {passwordsNotMatch ? <FiEye /> : <FiEyeOff />}
+              </span>
+              {passwordsNotMatch && (
+                <p className="password error-msg">
+                  يجب أن تكون كلمة السر مطابقة
+                </p>
+              )}
+            </div>
+          </div>
                 
                 <div className="form-buttons">
                     <button type="submit" className="btn-save">حفظ</button>

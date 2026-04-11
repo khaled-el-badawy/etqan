@@ -57,8 +57,10 @@ padding:30px;
 }
  .search-container{
   flex:1;
-  display:flex;
+  display: flex;
   justify-content:center;
+  align-items: center;
+  margin-left: 80px;
 }
 
  .search-container input{
@@ -68,11 +70,29 @@ padding:30px;
   border:1px solid #ddd;
   outline:none;
   text-align:right;
+  
+
+}
+ .rating-btn{
+background: linear-gradient(90deg, #87c0ca, #40798c);
+color: white;
+border: none;
+border-radius: 12px;
+font-size: 19px;
+padding: 8px 20px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+ }
+
+.rating-btn:hover{
+  box-shadow: 2px 2px 5px #a3a9a6;
 }
 
-
-
-
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px; 
+}
 
 /* ================= Slider ================= */
 
@@ -240,15 +260,15 @@ color:#555;
 .products-page-container .rating{
   display: flex;
   align-items: center;
+  padding: 0 15px;
   gap: 5px;
   font-size: 14px;
   background: #F5F6F9;
+  /* color: #777; */
   margin-top: -25px;
 }
 
-.products-page-container .reviews{
-  color: #777;
-}
+
 
 .products-page-container .rating-number{
   font-weight: 500;
@@ -414,15 +434,14 @@ color:#555;
 .products-page-container .rating{
   display: flex;
   align-items: center;
+  padding: 0 15px;
   gap: 5px;
   font-size: 14px;
   background: #F5F6F9;
   margin-top: -25px;
 }
 
-.products-page-container .reviews{
-  color: #777;
-}
+
 
 .products-page-container .rating-number{
   font-weight: 500;
@@ -532,3 +551,117 @@ color:white;
   }
 }
 
+/* ================= MODAL OVERLAY ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ================= MODAL BOX ================= */
+.modal-box {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 15px;
+  padding: 25px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= CLOSE BUTTON ================= */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+  
+}
+
+.close-btn:hover {
+  color: rgb(218, 44, 44);
+}
+
+/* ================= TITLE ================= */
+.modal-box h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #40798C;
+  font-size: 34px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* ================= INPUT ================= */
+.modal-box input {
+  width: 100%;
+  padding: 18px 15px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.modal-box input:focus {
+  border-color: #40798c;
+}
+
+
+
+
+/* ================= STARS ================= */
+.stars-row  {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+ 
+}
+
+
+/* ================= SUBMIT BUTTON ================= */
+.submit-btn {
+  width: 50%;
+  padding: 12px;
+  margin: 15px auto 0 auto;
+  display: block;
+  border: none;
+  border-radius: 8px;
+  background: #40798c;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+.submit-btn:hover {
+  box-shadow: 2px 2px 5px #a3a9a6;
+}
+
+
+
+/* ================= ANIMATION ================= */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

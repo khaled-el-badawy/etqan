@@ -18,6 +18,7 @@ import AboutUs from "./components/AboutUs";
 import CustomerOrdersPage from "./components/CustomerOrdersPage";
 import CraftmanOrdersPage from "./components/CraftmanOrdersPage";
 import CompanyOrdersPage from "./components/CompanyOrdersPage";
+import Company from "./components/Company";
 import Service from "./components/Service";
 import Artisans from "./components/Artisans";
 import Products from "./components/Products";
@@ -94,6 +95,7 @@ function AppWrapper() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/CraftmanOrdersPage" element={<CraftmanOrdersPage />} />
         <Route path="/CompanyOrdersPage" element={<CompanyOrdersPage />} />
+        <Route path="/Company" element={<Company/>} />
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/Artisans" element={<Artisans />} />

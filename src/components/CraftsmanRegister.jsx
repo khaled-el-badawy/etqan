@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect } from "react";
 import "./CraftsmanRegister.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -5,9 +6,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
 function CraftsmanRegister() {
-
   const navigate = useNavigate();
-
   const jobsList = [
     "حداد","نجارة","فني تكييفات","سباكة","كهرباء","سيراميك","فني كاميرات",
     "عامل بناء","نقاش","فني غاز","سواق نقل","تكسير وإزالة","الومنتال",

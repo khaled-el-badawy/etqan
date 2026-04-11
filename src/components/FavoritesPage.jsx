@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FavoritesPage.css";
@@ -10,7 +11,6 @@ const initialFavorites = [
     oldPrice: 120,
     discount: "-20%",
     rating: 4.5,
-    reviews: 10,
     image: "/images/product1.png",
   },
   {
@@ -20,7 +20,6 @@ const initialFavorites = [
     oldPrice: 250,
     discount: "-20%",
     rating: 4.8,
-    reviews: 8,
     image: "/images/product2.png",
   },
   {
@@ -30,7 +29,6 @@ const initialFavorites = [
     oldPrice: 350,
     discount: "-15%",
     rating: 4.2,
-    reviews: 12,
     image: "/images/product3.png",
   },
   {
@@ -40,7 +38,6 @@ const initialFavorites = [
     oldPrice: 180,
     discount: "-15%",
     rating: 4.0,
-    reviews: 5,
     image: "/images/product4.png",
   },
 ];
@@ -91,7 +88,13 @@ const handleAddToCart = (item) => {
   setShowSuccessMessage(true);
   setTimeout(() => setShowSuccessMessage(false), 2000);
 
-  setTimeout(() => navigate("/CartPage"), 2000);
+  if (!sessionStorage.getItem("cameFromFavorites")) {
+    sessionStorage.setItem("cameFromFavorites", "true");
+
+    setTimeout(() => {
+      navigate("/CartPage");
+    }, 2000);
+  }
 };
 
   const filteredFavorites = favorites.filter((item) =>
@@ -102,49 +105,89 @@ const handleAddToCart = (item) => {
   <div className="favorites-page-container">
 
     {showSuccessMessage && (
-      <div className="success-alert">تمت إضافة المنتج إلى السلة</div>
+      <div className="success-alert" data-aos="fade-up">
+        تمت إضافة المنتج إلى السلة
+      </div>
     )}
 
     {showLimitMessage && (
-      <div className="limit-alert">تم الوصول للحد الأقصى 5 قطع لكل منتج</div>
+      <div className="limit-alert" data-aos="fade-up">
+        تم الوصول للحد الأقصى 5 قطع لكل منتج
+      </div>
     )}
 
     {/* لو المفضلة فاضية */}
     {favorites.length === 0 ? (
       <div className="empty-favorites" data-aos="fade-up">
-        <h2>المفضلة فارغة</h2>
-        <p>لم يتم إضافة أي منتجات بعد. تصفح المتجر لإختيار ما يعجبك</p>
+        <h2>لم يتم حفظ أي منتجات بعد</h2>
+        <p>يمكنك إضافة المنتجات التي تهمك إلى المفضلة للرجوع إليها في أي وقت أثناء التسوق</p>
         <button
           onClick={() => navigate("/products")}
           className="back-to-shop-btn"
         >
-          العودة إلي المتجر
+          ابدأ التسوق
         </button>
       </div>
     ) : (
       <>
         {/* الهيدر */}
-        <div className="favorites-header">
-          <h1 className="hero-title" data-aos="fade-right">
-            إدارة اختياراتك بعناية
-          </h1>
-          <p className="hero-text" data-aos="fade-right">
-            قم بمراجعة المنتجات التي اخترتها، أضف ما تحتاجه إلى السلة
+<div className="fav-header" >
+
+
+           
+                {/* الصورة */}
+             <div className="fav-image" data-aos="fade-right">
+      <img src="/images/tools.png" alt="tools" />
+             </div>
+             {/* النص */}
+    <div className="fav-text" data-aos="fade-left">
+
+      
+
+      <h1>
+        إدارة اختياراتك بعناية
+      </h1>
+
+      <p>
+       قم بمراجعة المنتجات التي اخترتها، أضف ما تحتاجه إلى السلة
             <br />
             أو احذف غير المرغوب مع تنظيم واضح يساعدك على اتخاذ قرار الشراء بثقة
-          </p>
+      </p>
 
-          <button
-            onClick={() => navigate("/products")}
-            className="hero-back-to-shop-btn"
-            data-aos="fade-up"
-          >
-            العودة إلي المتجر
-          </button>
-        </div>
+      <div className="buttons">
+        <button
+          className="btn-primary"
+          onClick={() => {
+            favorites.forEach((item) => handleAddToCart(item));
+            setTimeout(() => navigate("/CartPage"), 2000);
+          }}
+        >
+          إضافة الكل إلى السلة
+        </button>
+
+        <button
+          className="btn-outline"
+          onClick={() => navigate("/products")}
+        >
+          متابعة التسوق
+        </button>
+      </div>
+
+      <div className="stats">
+        <span>❤️ {favorites.length} منتجات</span>
+        <span>🔥 خصومات تصل إلى 60%</span>
+        <span>⭐ تقييمات عالية</span>
+      </div>
+
+    </div>
+
+ 
+
+  </div>
+
 
         {/* السيرش */}
-        <section className="search-section">
+        <section className="search-section" data-aos="fade-up">
           <div className="container">
             <div className="search-wrapper">
               <input
@@ -179,14 +222,17 @@ const handleAddToCart = (item) => {
                   <span className="old-price">{item.oldPrice} جنيه</span>
                 </div>
                 <div className="rating">
-                  ⭐ {item.rating} ({item.reviews})
+                  ⭐ {item.rating}
                 </div>
               </div>
 
               <div className="cart-actions">
                 <button
                   className="add-cart-btn"
-                  onClick={() => handleAddToCart(item)}
+                  onClick={() => {
+                    handleAddToCart(item);
+                    navigate("/CartPage");
+                  }}
                 >
                   إضافة إلى السلة
                 </button>

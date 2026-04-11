@@ -1,11 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./CartPage.css";
-
+const initialCartPage = [
+  {
+    id: 1,
+    name: "منتج 1",
+    price: 100,
+    oldPrice: 120,
+    discount: "-20%",
+    rating: 4.5,
+    image: "/images/product1.png",
+  },
+  {
+    id: 2,
+    name: "منتج 2",
+    price: 200,
+    oldPrice: 250,
+    discount: "-20%",
+    rating: 4.8,
+    image: "/images/product2.png",
+  },
+  {
+    id: 3,
+    name: "منتج 3",
+    price: 300,
+    oldPrice: 350,
+    discount: "-15%",
+    rating: 4.2,
+    image: "/images/product3.png",
+  },
+  {
+    id: 4,
+    name: "منتج 4",
+    price: 150,
+    oldPrice: 180,
+    discount: "-15%",
+    rating: 4.0,
+    image: "/images/product4.png",
+  },
+];
 const CartPage = () => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
+    return savedCart ? JSON.parse(savedCart) : initialCartPage;
   });
 
   const navigate = useNavigate();
@@ -74,9 +111,14 @@ const CartPage = () => {
             <h1>سلة التسوق</h1>
             <div className="hero-text" data-aos="fade-up">
               <p>"خطوة أخيرة قبل تأكيد طلبك"</p>
-                <button onClick={() => navigate("/products")} className="hero-back-to-shop-btn">
-            العودة إلي المتجر
+              <div className="hero-buttons">
+                <button onClick={() => navigate("/products")} className="back-to-shop-btn">
+             متابعة التسوق
           </button>
+                <button onClick={() => navigate("/FavoritesPage")} className="back-to-Favorites-btn">
+              عرض المفضلة
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -87,8 +129,8 @@ const CartPage = () => {
         <div className="empty-cart" data-aos="fade-up">
           <h2>سلة التسوق فارغة</h2>
           <p>لم يتم إضافة أي منتجات بعد. تصفح المتجر لإكتشاف عروضنا واختيار ما يناسبك</p>
-          <button onClick={() => navigate("/products")} className="back-to-shop-btn">
-            العودة إلي المتجر
+          <button onClick={() => navigate("/products")} className="continue-shopping-btn">
+           ابدأ التسوق
           </button>
         </div>
       ) : (
@@ -108,7 +150,7 @@ const CartPage = () => {
                     <span className="new-price">{item.price} جنيه</span>
                     <span className="old-price">{item.oldPrice} جنيه</span>
                   </div>
-                  <div className="rating">⭐ {item.rating} ({item.reviews})</div>
+                  <div className="rating">⭐ {item.rating} </div>
                 </div>
                 <div className="cart-actions">
                   <div className="quantity-control">

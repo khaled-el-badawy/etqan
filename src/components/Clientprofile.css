@@ -330,13 +330,26 @@
   margin: 0 auto;
 }
 
-.form-input {
+.form-input ,
+.input-password input {
   width: 100%;
   padding: 12px 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background: #fdfdfd;
   text-align: right;
+  
+  
+}
+ .input-password-eye {
+  position: absolute;
+  /* top: calc(50% - 4px); */
+  left: 230px;
+  /* transform: translateY(-50%); */
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  color: #40798c;
 }
 
 .form-buttons {

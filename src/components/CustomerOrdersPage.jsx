@@ -18,7 +18,7 @@ const CustomerOrders = [
     client: "احمد محمد",
     phone: "01234567890",
     status: "completed",
-    currentStep: 1,
+    currentStep: 0,
     image: "/images/tv-player-entertainment-svgrepo-com 1.svg",
   },
   {
@@ -27,8 +27,7 @@ const CustomerOrders = [
     client: "محمد احمد",
     phone: "01066452001",
     status: "inProgress",
-    currentStep: 3,
-
+    currentStep: 500,
     image: "/images/broken-cable-electrician-svgrepo-com 1.svg",
   },
   {
