@@ -367,7 +367,6 @@
   cursor: pointer;
 }
 
-/* --- NEW MODALS --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -383,10 +382,10 @@
 }
 
 .modal-content {
-  background: white !important;
-  opacity: 1 !important;
+  background: white ;
+  opacity: 1 ;
   padding: 30px;
-  border-radius: 15px !important;
+  border-radius: 15px ;
   width: 100%;
   max-width: 850px;
   text-align: center;
@@ -448,7 +447,7 @@
 }
 
 .modal-textarea:focus {
-  border: 3px solid #75A5B3 !important;
+  border: 3px solid #75A5B3 ;
   outline: none;
   box-shadow: 0 0 5px rgba(64, 121, 140, 0.3);
 }
@@ -471,7 +470,7 @@
   background-color: #75A5B3;
 }
 
-/* --- ADDED: Validation & Error Styles --- */
+
 .input-group-wrapper {
   width: 100%;
   display: flex;
@@ -491,23 +490,23 @@
 }
 
 .input-error {
-  border: 1.5px solid #d9534f !important;
-  background-color: #fff8f8 !important;
+  border: 1.5px solid #d9534f ;
+  background-color: #fff8f8 ;
 }
 
-/* --- ADDED: Eye Icon Styles --- */
+
 .password-wrapper {
   position: relative;
 }
 
 .password-wrapper .form-input {
-  padding-left: 45px; /* مساحة للعين على اليسار */
+  padding-left: 45px; 
 }
 
 .eye-icon {
   position: absolute;
   left: 15px;
-  top: 13px; /* توسيط العين داخل الحقل */
+  top: 13px; 
   color: #999;
   cursor: pointer;
   font-size: 18px;
@@ -520,12 +519,10 @@
   color: #40798C;
 }
 
-/* في حالة وجود رسالة خطأ نضبط مكان العين لتظل داخل الإنبوت */
 .input-group-wrapper.password-wrapper .eye-icon {
   top: 23px;
 }
 
-/* --- Media Queries --- */
 @media (max-width: 1024px) {
   .profile-identity-wrapper, .reviews-section-card, .about-content-card, .edit-details-card {
     max-width: 92%;
