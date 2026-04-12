@@ -330,26 +330,15 @@
   margin: 0 auto;
 }
 
-.form-input ,
-.input-password input {
+.form-input {
   width: 100%;
   padding: 12px 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background: #fdfdfd;
   text-align: right;
-  
-  
-}
- .input-password-eye {
-  position: absolute;
-  /* top: calc(50% - 4px); */
-  left: 230px;
-  /* transform: translateY(-50%); */
-  cursor: pointer;
-  user-select: none;
-  font-size: 20px;
-  color: #40798c;
+  direction: rtl;
+  transition: border-color 0.3s;
 }
 
 .form-buttons {
@@ -378,7 +367,6 @@
   cursor: pointer;
 }
 
-/* --- NEW MODALS --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -394,10 +382,10 @@
 }
 
 .modal-content {
-  background: white !important; /* لون أبيض معتم */
-  opacity: 1 !important;
+  background: white ;
+  opacity: 1 ;
   padding: 30px;
-  border-radius: 15px !important;
+  border-radius: 15px ;
   width: 100%;
   max-width: 850px;
   text-align: center;
@@ -453,15 +441,17 @@
   direction: rtl;
   background: #f9f9f9;
 }
-.modal-textarea::placeholder{
+
+.modal-textarea::placeholder {
   color: #75A5B3;
 }
-/* تغيير لون الإطار عند الضغط للكتابة */
+
 .modal-textarea:focus {
-  border:3px solid #75A5B3 !important; 
-  outline: none; 
-  box-shadow: 0 0 5px rgba(64, 121, 140, 0.3); 
+  border: 3px solid #75A5B3 ;
+  outline: none;
+  box-shadow: 0 0 5px rgba(64, 121, 140, 0.3);
 }
+
 .modal-submit-btn {
   background-color: #40798C;
   width: 200px;
@@ -480,14 +470,15 @@
   background-color: #75A5B3;
 }
 
-/* --- ADDED: Validation Styles for Personal Data --- */
+
 .input-group-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 5px;
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  position: relative;
 }
 
 .error-msg {
@@ -495,85 +486,114 @@
   font-size: 12px;
   font-weight: bold;
   margin-right: 5px;
+  margin-top: 2px;
 }
 
 .input-error {
-  border: 1px solid #d9534f !important;
-  background-color: #fff8f8 !important;
+  border: 1.5px solid #d9534f ;
+  background-color: #fff8f8 ;
 }
 
-/* --- Media Queries --- */
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .form-input {
+  padding-left: 45px; 
+}
+
+.eye-icon {
+  position: absolute;
+  left: 15px;
+  top: 13px; 
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon:hover {
+  color: #40798C;
+}
+
+.input-group-wrapper.password-wrapper .eye-icon {
+  top: 23px;
+}
+
 @media (max-width: 1024px) {
   .profile-identity-wrapper, .reviews-section-card, .about-content-card, .edit-details-card {
-      max-width: 92%;
+    max-width: 92%;
   }
 }
 
 @media (max-width: 768px) {
   .rating-summary-box {
-      flex-direction: column-reverse;
-      gap: 30px;
-      text-align: center;
+    flex-direction: column-reverse;
+    gap: 30px;
+    text-align: center;
   }
   .bars-side {
-      width: 100%;
-      max-width: 100%;
+    width: 100%;
+    max-width: 100%;
   }
   .review-card-item, .history-item-row {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
   }
   .user-meta, .history-user-info {
-      width: 100%;
-      justify-content: center;
-      flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
   }
   .identity-content {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
   .profile-identity-wrapper {
-      margin-top: -80px;
+    margin-top: -80px;
   }
   .review-btns {
-      width: 100%;
-      justify-content: center;
+    width: 100%;
+    justify-content: center;
   }
   .personal-data-form {
-      width: 100%;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .profile-header {
-      height: 180px;
+    height: 180px;
   }
   .main-avatar {
-      width: 110px;
-      height: 110px;
+    width: 110px;
+    height: 110px;
   }
   .client-name {
-      font-size: 20px;
+    font-size: 20px;
   }
   .big-score {
-      font-size: 45px;
+    font-size: 45px;
   }
   .review-btns, .form-buttons {
-      flex-direction: column;
-      width: 100%;
+    flex-direction: column;
+    width: 100%;
   }
   .btn-edit-rev, .btn-complain, .btn-save, .btn-cancel {
-      justify-content: center;
-      width: 100%;
+    justify-content: center;
+    width: 100%;
   }
   .edit-nav-tab {
-      margin: 0 auto 20px;
+    margin: 0 auto 20px;
   }
   .modal-content {
-      padding: 20px;
+    padding: 20px;
   }
   .interactive-stars-row {
-      font-size: 28px;
+    font-size: 28px;
   }
 }
