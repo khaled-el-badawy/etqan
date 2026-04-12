@@ -56,7 +56,7 @@ const filteredName = artisansData.filter((item) =>
         <div className="container">
           <div className="artisans-grid">
             {filteredName.map((item) => (
-              <Link to={`/ProProfile/${item.id}`} key={item.id} className="card-link">
+              <Link to={`/CraftmanProfile/${item.id}`} key={item.id} className="card-link">
                 <div className="artisan-card" data-aos="fade-up">
                   <div className="artisan-img-wrapper">
                     <img src={item.img} alt={item.name} />
