@@ -105,7 +105,7 @@ const handleAddToCart = (item) => {
   <div className="favorites-page-container">
 
     {showSuccessMessage && (
-      <div className="success-alert" >
+      <div className="favorites-page-success-alert" >
         تمت إضافة المنتج إلى السلة
       </div>
     )}
