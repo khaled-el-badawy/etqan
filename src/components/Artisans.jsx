@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './Artisans.css';
 import AOS from 'aos';
@@ -43,7 +43,8 @@ const filteredName = artisansData.filter((item) =>
 
         <div className="search-section" data-aos="zoom-in">
           <div className="search-wrapper">
-            <input type="text" placeholder="ابحث عن السعر..." className="search-input" />
+            <input type="text" placeholder="ابحث عن السعر..."  value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)} className="search-input" />
             <div className="search-icon-box">
               <img src="/images/Artisans/Artisanssearchicon.svg" alt="search" />
             </div>
