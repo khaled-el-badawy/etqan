@@ -10,21 +10,21 @@ import 'aos/dist/aos.css';
 const ClientProfile = () => {
   const [activeTab, setActiveTab] = useState('about');
   
-  // حالات التحكم في النوافذ المنبثقة
+
   const [showRateModal, setShowRateModal] = useState(false);
   const [showComplainModal, setShowComplainModal] = useState(false);
   
-  // حالات تخزين التقييمات والشكاوى
+
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [complainText, setComplainText] = useState("");
 
-  // حالات إظهار/إخفاء كلمات السر
+ 
   const [showPass, setShowPass] = useState(false);
   const [showNewPass, setShowNewPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
 
-  // بيانات الملف الشخصي
+
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
@@ -46,36 +46,32 @@ const ClientProfile = () => {
     e.preventDefault();
     let newErrors = {};
 
-    // التحقق من البريد الإلكتروني
+
     if (!formData.email) {
       newErrors.email = "ادخل البريد الالكتروني";
     } else if (!formData.email.endsWith("@gmail.com")) {
       newErrors.email = "البريد الإلكتروني يجب أن ينتهي بـ @gmail.com";
     }
 
-    // التحقق من الهاتف
     if (!formData.phone) {
       newErrors.phone = "ادخل رقم الهاتف";
     } else if (formData.phone.length !== 11) {
       newErrors.phone = "رقم الهاتف يجب أن يكون 11 رقم";
     }
 
-    // التحقق من المحافظة
+  
     if (!formData.city) {
       newErrors.city = "ادخل المحافظه";
     }
 
-    // التحقق من كلمة السر الحالية
     if (!formData.password) {
       newErrors.password = "ادخل كلمت السر";
     }
 
-    // التحقق من كلمة السر الجديدة
     if (!formData.newPassword) {
       newErrors.newPassword = "ادخل كلمت السر الجديده";
     }
 
-    // التحقق من تأكيد كلمة السر
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = "ادخل التاكيد";
     } else if (formData.confirmPassword !== formData.newPassword) {
@@ -87,7 +83,7 @@ const ClientProfile = () => {
     } else {
       alert("تم حفظ البيانات بنجاح");
       
-      // تصفير الحقول بعد الضغط على OK
+      
       setFormData({
         email: '',
         phone: '',
