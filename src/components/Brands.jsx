@@ -87,7 +87,7 @@ const brandsConfig = {
 
   BOSCH: {
     header: "/images/download(4)removebg.svg",
-    style: [{ marginTop:"20%"}],
+    style: { paddingTop:"4%"},
     products: [
       {
         id: 9,
@@ -321,6 +321,7 @@ const brandsConfig = {
   },
   metabo: {
     header: "/images/Metabo_Logo_2024.svg",
+     style: { paddingTop:"3%"},
     products: [
       {
         id: 33,
@@ -398,58 +399,311 @@ const brandsConfig = {
   },
   Snapon: {
     header: "/images/images (1) 1.svg",
+     style: { paddingTop:"2%"},
     products: [
       {
-        id: 13,
-        name: "DeWalt Drill",
+        id: 41,
+        name: "مفك هواء ثقيل من سناب-أون ",
         price: 7000,
         oldPrice: 8000,
         discount: "12%",
         rating: 4.9,
-        image: "/images/images (1) 1.svg",
-      }
+        image: "/images/image41.jpg",
+      },
+      {
+        id: 42,
+        name: "سناب أون 14.4V مثقاب لاسلكي أحمر",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image42.jpg",
+      },
+      {
+        id: 43,
+        name: "مفتاح ربط لاسلكي ببطارية ليثيوم أيون14.4 فولت ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image43.jpg",
+      },
+      {
+        id: 44,
+        name: "مجموعة مطحنة الهواء اللاسلكية 14.4 فولت ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image44.jpg",
+      },
+      {
+        id: 45,
+        name: "مجموعة مزيل المسامير 15 قطعة SAE",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image45.jpg",
+      },
+      {
+        id: 46,
+        name: "صندوق عدة أصلي من شركة Snap-On",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image46.jpg",
+      },
+      {
+        id: 47,
+        name: "طقم كماشة 3 قطع من سناب-أون ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image47.jpg",
+      },
+      {
+        id: 48,
+        name: "محول بطارية TPDL من سناب-أون ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image48.jpg",
+      },
     ]
   },
   RYOBI: {
     header: "/images/download (1) 2.svg",
     products: [
       {
-        id: 4,
-        name: "DeWalt Drill",
+        id: 49,
+        name: " بطارية ليثيوم أيون 4.0 أمبير",
         price: 7000,
         oldPrice: 8000,
         discount: "12%",
         rating: 4.9,
-        image: "/images/download-removebg-preview (1) 1.svg",
-      }
+        image: "/images/image49.jpg",
+      },
+      {
+        id: 50,
+        name: "فيتة قياس 25 قدم من ريوبي",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image50.jpg",
+      },
+      {
+        id: 51,
+        name: " ضاغط لاسلكي 18 فولت ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image51.jpg",
+      },
+      {
+        id: 52,
+        name: "  أداة المنشار الدائري",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image52.jpg",
+      },
+      {
+        id: 53,
+        name: " أداة منفاخ ورشة عمل مدمجة لاسلكية ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image53.jpg",
+      },
+      {
+        id: 54,
+        name: " أداة تثبيت المسامير اللاسلكية Ryobi 18V ONE",
+        price: 9300,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.4,
+        image: "/images/image54.jpg",
+      },
+      {
+        id: 55,
+        name: " بطارية لاسلكية متغير السرعة النفاثة مروحة ورقة منفاخ ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "11%",
+        rating: 4.9,
+        image: "/images/image55.jpg",
+      },
+      {
+        id: 56,
+        name: "أداة صنفرة المدار العشوائي 18 فولت",
+        price: 3764,
+        oldPrice:  4011,
+        discount: "6%",
+        rating: 4.6,
+        image: "/images/image56.jpg",
+      },
     ]
   },
   KNIPEX: {
     header: "/images/download(5)removebg.svg",
     products: [
       {
-        id: 4,
-        name: "DeWalt Drill",
+        id: 57,
+        name: " كماشة إلكترونيات ، نصائح نصف مستديرة ",
         price: 7000,
         oldPrice: 8000,
         discount: "12%",
         rating: 4.9,
-        image: "/images/download-removebg-preview (1) 1.svg",
-      }
+        image: "/images/image57.jpg",
+      },
+      {
+        id: 58,
+        name: "مفتاح ربط كماشة KNIPEX 86 03 250 SBA",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image58.jpg",
+      },
+      {
+        id: 59,
+        name: "مقصات الكابلات ، حافة القطع المزدوجة",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image59.jpg",
+      },
+      {
+        id: 60,
+        name: " كماشة الجمع عالية الرافعة المالية",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image60.jpg",
+      },
+      {
+        id: 61,
+        name: "Knipex طويلة الأنف كماشة نصف جولة نصائح",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image61.jpg",
+      },
+      {
+        id: 62,
+        name: "كماشة دائرية خارجية دقيقة مقاس 5 بوصات ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image62.jpg",
+      },
+      {
+        id: 63,
+        name: "كماشة ذات أنف طويل مع قاطع، متعددة المكونات",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image63.jpg",
+      },
+      {
+        id: 64,
+        name: "مقصات سندان Knipex Tools 94 55 200",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image64.jpg",
+      },
     ]
   },
   BAHCO: {
     header: "/images/download_-removebg-preview 1.svg",
     products: [
       {
-        id: 4,
-        name: "DeWalt Drill",
+        id: 65,
+        name: "مقص تحوط باهكو ذو حافة مسننة",
         price: 7000,
         oldPrice: 8000,
         discount: "12%",
         rating: 4.9,
-        image: "/images/download-removebg-preview (1) 1.svg",
-      }
+        image: "/images/image65.jpg",
+      },
+      {
+        id: 66,
+        name: " إسفين تقسيم صناعي 7.1/2 بوصة 9.2OZ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image66.jpg",
+      },
+      {
+        id: 67,
+        name: " باهكو صندوق خشبي 6 قطعة",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image67.jpg",
+      },
+      {
+        id: 68,
+        name: "باهكو 23 بوصة التحوط Shear P51 ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image68.jpg",
+      },
+      {
+        id: 69,
+        name: "باهكو 24 بوصة تجاوز لوبر P16-60",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image69.jpg",
+      },
+      {
+        id: 70,
+        name: "مقص الحديقة Bahco P75 مع شفرات عمودية  ",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image70.jpg",
+      },
+      {
+        id: 71,
+        name: "منشار خلفي ProfCut مقاس 12 بوصة",
+        price: 7000,
+        oldPrice: 8000,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image71.jpg",
+      },
+      {
+        id: 72,
+        name: "باهكو - سائق البندق BAHCOFIT 6.0 × 150 مم",
+        price: 3193,
+        oldPrice: 4290,
+        discount: "12%",
+        rating: 4.9,
+        image: "/images/image72.jpg",
+      },
     ]
   },
 };
@@ -463,7 +717,8 @@ const selectedBrand = location.state?.brand;
 
 const brandData = selectedBrand ? brandsConfig[selectedBrand] : null;
 
-const brandProducts = brandData?.products || [];
+  const brandProducts = brandData?.products || [];
+  const [searchTerm, setSearchTerm] = useState("");
 
   /* ================= FAVORITES ================= */
   const [favorites, setFavorites] = useState(() => {
@@ -510,30 +765,34 @@ const brandProducts = brandData?.products || [];
 if (!brandData) {
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      ⚠️ لم يتم العثور على البراند
+       لم يتم العثور على البراند
     </div>
   );
-}
+  }
+const filteredProducts = brandProducts.filter((item) =>
+  item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  item.price.toString().includes(searchTerm)
+);
   return (
     <div className="brands-page-container">
 
       {/* BACK BUTTON */}
       <button
         onClick={() => navigate("/products")}
-        className="back-to-shop-btn"
+        className="back-to-shop-btn" data-aos="fade-left"
       >
         العودة إلي المتجر
       </button>
 
-      {/* HEADER (نفس الديزاين بالظبط) */}
-      <div className="brands-header">
+   
+      <div className="brands-header" style={brandData.style} data-aos="fade-up">
         <img
           src={brandData.header}
           className="brands-header-icon"
           alt="brand"
         />
 
-        <div className="stats">
+        <div className="stats" data-aos="fade-up">
           <span>⚒️ +{brandProducts.length} عدد المنتجات</span>
           <span>🔥 خصومات تصل إلى 60%</span>
           <span>⭐ {averageRating.toFixed(1)} تقييمات</span>
@@ -543,10 +802,12 @@ if (!brandData) {
       {/* SEARCH (بدون تغيير) */}
       <section className="search-section">
         <div className="container">
-          <div className="search-wrapper">
+          <div className="search-wrapper" data-aos="fade-up">
             <input
               type="text"
               placeholder="ابحث عن المنتج"
+              value={searchTerm}
+              onChange={(e)=>setSearchTerm(e.target.value)}
             />
           </div>
         </div>
@@ -555,8 +816,8 @@ if (!brandData) {
       {/* CARDS (نفس التصميم تمامًا) */}
       <div className="initialbrands-cards-container">
 
-        {brandProducts.map((item) => (
-          <div key={item.id} className="initialBrands-card">
+        {filteredProducts.map((item) => (
+          <div key={item.id} className="initialBrands-card" data-aos="fade-up">
 
             <div className="initialBrands-image">
               <span className="discount">{item.discount}</span>
