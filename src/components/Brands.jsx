@@ -779,30 +779,30 @@ const filteredProducts = brandProducts.filter((item) =>
       {/* BACK BUTTON */}
       <button
         onClick={() => navigate("/products")}
-        className="back-to-shop-btn"
+        className="back-to-shop-btn" data-aos="fade-left"
       >
         العودة إلي المتجر
       </button>
 
    
-      <div className="brands-header" style={brandData.style}>
+      <div className="brands-header" style={brandData.style} data-aos="fade-up">
         <img
           src={brandData.header}
           className="brands-header-icon"
           alt="brand"
         />
 
-        <div className="stats">
+        <div className="stats" data-aos="fade-up">
           <span>⚒️ +{brandProducts.length} عدد المنتجات</span>
           <span>🔥 خصومات تصل إلى 60%</span>
           <span>⭐ {averageRating.toFixed(1)} تقييمات</span>
         </div>
       </div>
 
-      {/* SEARCH (بدون تغيير) */}
+     
       <section className="search-section">
         <div className="container">
-          <div className="search-wrapper">
+          <div className="search-wrapper" data-aos="fade-up">
             <input
               type="text"
               placeholder="ابحث عن المنتج"
@@ -813,8 +813,8 @@ const filteredProducts = brandProducts.filter((item) =>
         </div>
       </section>
 
-      {/* CARDS (نفس التصميم تمامًا) */}
-      <div className="initialbrands-cards-container">
+    
+      <div className="initialbrands-cards-container" data-aos="fade-up">
 
         {filteredProducts.map((item) => (
           <div key={item.id} className="initialBrands-card">

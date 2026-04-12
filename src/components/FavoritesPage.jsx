@@ -105,13 +105,13 @@ const handleAddToCart = (item) => {
   <div className="favorites-page-container">
 
     {showSuccessMessage && (
-      <div className="success-alert" data-aos="fade-up">
+      <div className="favorites-page-success-alert" >
         تمت إضافة المنتج إلى السلة
       </div>
     )}
 
     {showLimitMessage && (
-      <div className="limit-alert" data-aos="fade-up">
+      <div className="limit-alert" >
         تم الوصول للحد الأقصى 5 قطع لكل منتج
       </div>
     )}

@@ -170,7 +170,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
   </div>
 )}
       {showSuccessMessage && (
-        <div className="success-alert">تمت إضافة المنتج إلى السلة</div>
+        <div className="success-alert-products">تمت إضافة المنتج إلى السلة</div>
       )}
 
       {showLimitMessage && (

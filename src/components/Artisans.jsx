@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './Artisans.css';
 import AOS from 'aos';
@@ -11,6 +11,7 @@ const Artisans = () => {
       once: true,
     });
   }, []);
+   const [searchTerm, setSearchTerm] = useState("");
 
   const artisansData = [
     { id: 1, name: 'أحمد علي', price: '150 ج', rate: '4.9', img: '/images/Artisans/Artisans1.svg' },
@@ -19,11 +20,15 @@ const Artisans = () => {
     { id: 4, name: 'علي محمد', price: '300 ج', rate: '4.9', img: '/images/Artisans/Artisans4.svg' },
     { id: 5, name: 'محمد ابراهيم', price: '310 ج', rate: '4.9', img: '/images/Artisans/Artisans5.svg' },
     { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-    { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans7.svg' },
-    { id: 6, name: ' ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-    { id: 6, name: ' شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+    { id: 7, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans7.svg' },
+    { id: 8, name: ' ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+    { id: 9, name: ' شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
   ];
-
+  
+const filteredName = artisansData.filter((item) =>
+  item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  item.price.toString().includes(searchTerm)
+);
   return (
     <div className="artisans-page">
    
@@ -35,7 +40,8 @@ const Artisans = () => {
 
         <div className="search-section" data-aos="zoom-in">
           <div className="search-wrapper">
-            <input type="text" placeholder="ابحث عن السعر..." className="search-input" />
+            <input type="text" placeholder="ابحث عن السعر..." value={searchTerm}
+              onChange={(e)=>setSearchTerm(e.target.value)}className="search-input" />
             <div className="search-icon-box">
               <img src="/images/Artisans/Artisanssearchicon.svg" alt="search" />
             </div>
@@ -47,8 +53,8 @@ const Artisans = () => {
       <section className="artisans-main-wrapper">
         <div className="container">
           <div className="artisans-grid">
-            {artisansData.map((item) => (
-              <Link to={`/ProProfile/${item.id}`} key={item.id} className="card-link">
+            {filteredName.map((item) => (
+              <Link to={`/CraftmanProfile/${item.id}`} key={item.id} className="card-link">
                 <div className="artisan-card" data-aos="fade-up">
                   <div className="artisan-img-wrapper">
                     <img src={item.img} alt={item.name} />
