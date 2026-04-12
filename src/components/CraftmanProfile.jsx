@@ -507,7 +507,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               maxLength={11}
             />
             {phoneError && <p className="phone error-msg">{phoneError}</p>}
-            <input type="text" id="address" placeholder="المنطقة" />
+            <input type="text" id="address" placeholder="المحافظة" />
           </div>
           {/*  */}
           <div className="form-group middle">

@@ -1,71 +1,101 @@
 import React, { useEffect, useState } from 'react';
 import './ClientProfile.css';
-import { FaStar, FaStarHalfAlt, FaRegStar, FaEdit, FaExclamationTriangle, FaTimes } from 'react-icons/fa';
+import { 
+  FaStar, FaStarHalfAlt, FaRegStar, FaEdit, 
+  FaExclamationTriangle, FaTimes, FaEye, FaEyeSlash 
+} from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FiEye,FiEyeOff } from 'react-icons/fi';
+
 const ClientProfile = () => {
   const [activeTab, setActiveTab] = useState('about');
   
-  // حالات التحكم في النوافذ المنبثقة (Modals)
+
   const [showRateModal, setShowRateModal] = useState(false);
   const [showComplainModal, setShowComplainModal] = useState(false);
   
-  // حالات تخزين البيانات المدخلة لتصفيرها لاحقاً
+
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [complainText, setComplainText] = useState("");
 
-  // --- الجزء الجديد: حالات التحقق لبيانات الملف الشخصي ---
+ 
+  const [showPass, setShowPass] = useState(false);
+  const [showNewPass, setShowNewPass] = useState(false);
+  const [showConfirmPass, setShowConfirmPass] = useState(false);
+
+
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
     city: '',
-    password: ''
+    password: '',
+    newPassword: '',
+    confirmPassword: ''
   });
 
-  const [errors, setErrors] = useState({
-    email: '',
-    phone: ''
-  });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    // مسح الخطأ بمجرد البدء في الكتابة
     if (errors[name]) setErrors({ ...errors, [name]: '' });
   };
 
   const handleSavePersonalData = (e) => {
     e.preventDefault();
-    let emailErr = "";
-    let phoneErr = "";
+    let newErrors = {};
 
-    // التحقق من الجميل (إجباري ينتهي بـ @gmail.com)
-    if (!formData.email.endsWith("@gmail.com")) {
-      emailErr = "البريد الإلكتروني غير صحيح (يجب أن ينتهي بـ @gmail.com)";
+
+    if (!formData.email) {
+      newErrors.email = "ادخل البريد الالكتروني";
+    } else if (!formData.email.endsWith("@gmail.com")) {
+      newErrors.email = "البريد الإلكتروني يجب أن ينتهي بـ @gmail.com";
     }
 
-    // التحقق من الهاتف (إجباري 11 رقم)
-    if (formData.phone.length !== 11) {
-      phoneErr = "رقم الهاتف غير صحيح (يجب أن يكون 11 رقم)";
+    if (!formData.phone) {
+      newErrors.phone = "ادخل رقم الهاتف";
+    } else if (formData.phone.length !== 11) {
+      newErrors.phone = "رقم الهاتف يجب أن يكون 11 رقم";
     }
 
-    // التحقق من وجود حقول فارغة
-    const hasEmptyFields = !formData.email || !formData.phone || !formData.city || !formData.password;
+  
+    if (!formData.city) {
+      newErrors.city = "ادخل المحافظه";
+    }
 
-    if (emailErr || phoneErr) {
-      setErrors({ email: emailErr, phone: phoneErr });
-      alert("البيانات غير صحيحة");
-    } else if (hasEmptyFields) {
-      alert("يرجى ملء جميع البيانات أولاً");
+    if (!formData.password) {
+      newErrors.password = "ادخل كلمت السر";
+    }
+
+    if (!formData.newPassword) {
+      newErrors.newPassword = "ادخل كلمت السر الجديده";
+    }
+
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = "ادخل التاكيد";
+    } else if (formData.confirmPassword !== formData.newPassword) {
+      newErrors.confirmPassword = "كلمت السر غير صحيحة";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
     } else {
       alert("تم حفظ البيانات بنجاح");
-      setActiveTab('about'); // العودة لصفحة العميل بعد الحفظ الناجح
+      
+      
+      setFormData({
+        email: '',
+        phone: '',
+        city: '',
+        password: '',
+        newPassword: '',
+        confirmPassword: ''
+      });
+      
+      setActiveTab('about'); 
     }
   };
-  
-  // --------------------------------------------------
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -85,36 +115,18 @@ const ClientProfile = () => {
     { id: 4, name: "علي محمود", job: "فني كاميرات", icon: "/images/Client profile/Client icon4.svg" },
   ];
 
-  // دالة رسم النجوم التفاعلية
-  const renderInteractiveStars = () => {
-    return (
-      <div className="interactive-stars-row">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <FaStar
-            key={star}
-            className={star <= selectedRating ? "star-active" : "star-inactive"}
-            onClick={() => setSelectedRating(star)}
-          />
-        ))}
-      </div>
-    );
-  };
-    //  عشان نتحكم في اظهار كلمة السر أو اخفائها في نموذج تعديل الملف الشخصي
-    const [password, setPassword] = useState("");
-    const [showCurrentPassword, setShowPassword] = useState(false);
-    //  عشان نتحكم في اظهار كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
-    const [newPassword, setNewPassword] = useState("");
-    const [showNewPassword, setShowNewPassword] = useState(false);
-    //  عشان نتحكم في اظهار تأكيد كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
-    /////////////////////////////////
-    // عشان نتحقق إذا كانت كلمة السر الجديدة وتأكيدها متطابقين ولا لأ
-    const passwordsNotMatch =
-      confirmPassword.length > 0 && newPassword !== confirmPassword;
+  const renderInteractiveStars = () => (
+    <div className="interactive-stars-row">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <FaStar
+          key={star}
+          className={star <= selectedRating ? "star-active" : "star-inactive"}
+          onClick={() => setSelectedRating(star)}
+        />
+      ))}
+    </div>
+  );
 
-  // دالة لتنظيف البيانات وإغلاق المودال
   const handleCloseModals = () => {
     setShowRateModal(false);
     setShowComplainModal(false);
@@ -155,7 +167,6 @@ const ClientProfile = () => {
         </div>
       )}
 
-      {/* --- 1. صفحة عن العميل --- */}
       {activeTab === 'about' && (
         <div className="about-content-card" data-aos="fade-up">
             <div className="history-label-box">السجلات السابقه</div>
@@ -182,7 +193,6 @@ const ClientProfile = () => {
         </div>
       )}
 
-      {/* --- 2. صفحة التقييمات --- */}
       {activeTab === 'reviews' && (
         <div className="reviews-section-card" data-aos="zoom-in">
           <div className="rating-header-row">
@@ -236,85 +246,59 @@ const ClientProfile = () => {
         </div>
       )}
 
-      {/* --- MODALS (التحسينات المطلوبة) --- */}
-      
-      {/* نافذة التقييم */}
-{showRateModal && (
-  <div className="modal-overlay">
-    <div className="modal-content" data-aos="zoom-in">
-      <button className="close-modal" onClick={handleCloseModals}><FaTimes /></button>
-      <h3>قيم الخدمة</h3>
-      
-      {renderInteractiveStars()}
-      
-      <textarea 
-        placeholder="اكتب تقييمك..." 
-        className="modal-textarea"
-        value={reviewText}
-        onChange={(e) => setReviewText(e.target.value)}
-      ></textarea>
-      
-      <button 
-  className="modal-submit-btn" 
-  onClick={() => {
-    const isStarsEmpty = selectedRating === 0;
-    const isTextEmpty = reviewText.trim() === "";
+      {showRateModal && (
+        <div className="modal-overlay">
+          <div className="modal-content" data-aos="zoom-in">
+            <button className="close-modal" onClick={handleCloseModals}><FaTimes /></button>
+            <h3>قيم الخدمة</h3>
+            {renderInteractiveStars()}
+            <textarea 
+              placeholder="اكتب تقييمك..." 
+              className="modal-textarea"
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+            ></textarea>
+            <button className="modal-submit-btn" onClick={() => {
+              if (selectedRating === 0 || reviewText.trim() === "") {
+                alert("من فضلك أكمل التقييم");
+              } else {
+                alert("تم إرسال تقييمك بنجاح");
+                handleCloseModals(); 
+              }
+            }}>إرسال</button>
+          </div>
+        </div>
+      )}
 
-    if (isStarsEmpty && isTextEmpty) {
-      alert("من فضلك اختر عدد النجوم واكتب تقييمك");
-    } else if (isStarsEmpty) {
-      alert("من فضلك اختار عدد النجوم");
-    } else if (isTextEmpty) {
-      alert("من فضلك اكتب تقييمك");
-    } else {
-      alert("تم إرسال تقييمك بنجاح");
-      handleCloseModals(); 
-    }
-  }}
->
-  إرسال
-</button>
-    </div>
-  </div>
-)}
+      {showComplainModal && (
+        <div className="modal-overlay">
+          <div className="modal-content" data-aos="zoom-in">
+            <button className="close-modal" onClick={handleCloseModals}><FaTimes /></button>
+            <h3>قدم شكوتك</h3>
+            <textarea 
+              placeholder="اكتب شكوتك هنا..." 
+              className="modal-textarea"
+              value={complainText}
+              onChange={(e) => setComplainText(e.target.value)}
+            ></textarea>
+            <button className="modal-submit-btn" onClick={() => {
+              if (complainText.trim() === "") {
+                alert("من فضلك اكتب نص الشكوى أولاً");
+              } else {
+                alert("تم إرسال الشكوى بنجاح");
+                handleCloseModals();
+              }
+            }}>إرسال</button>
+          </div>
+        </div>
+      )}
 
-{/* نافذة الشكاوى */}
-{showComplainModal && (
-  <div className="modal-overlay">
-    <div className="modal-content" data-aos="zoom-in">
-      <button className="close-modal" onClick={handleCloseModals}><FaTimes /></button>
-      <h3>قدم شكوتك</h3>
-      
-      <textarea 
-        placeholder="اكتب شكوتك هنا..." 
-        className="modal-textarea"
-        value={complainText}
-        onChange={(e) => setComplainText(e.target.value)}
-      ></textarea>
-      
-      <button 
-        className="modal-submit-btn" 
-        onClick={() => {
-          if (complainText.trim() === "") {
-            alert("من فضلك اكتب نص الشكوى أولاً");
-          } else {
-            alert("تم إرسال الشكوى بنجاح");
-            handleCloseModals();
-          }
-        }}
-      >
-        إرسال
-      </button>
-    </div>
-  </div>
-)}
-
-      {/* --- 3. صفحة التفاصيل الشخصية (المعدلة بالكامل) --- */}
       {activeTab === 'edit' && (
         <div className="edit-details-card" data-aos="fade-left">
             <div className="edit-nav-tab">التفاصيل شخصية</div>
             <h3 className="form-title">البيانات الشخصية</h3>
             <form className="personal-data-form" onSubmit={handleSavePersonalData}>
+                
                 <div className="input-group-wrapper">
                   <input 
                     type="email" 
@@ -339,70 +323,62 @@ const ClientProfile = () => {
                   {errors.phone && <span className="error-msg">{errors.phone}</span>}
                 </div>
 
-                <input 
-                  type="text" 
-                  name="city"
-                  placeholder="المحافظة" 
-                  className="form-input"
-                  value={formData.city}
-                  onChange={handleInputChange}
-                />
+                <div className="input-group-wrapper">
+                  <input 
+                    type="text" 
+                    name="city"
+                    placeholder="المحافظة" 
+                    className={`form-input ${errors.city ? 'input-error' : ''}`}
+                    value={formData.city}
+                    onChange={handleInputChange}
+                  />
+                  {errors.city && <span className="error-msg">{errors.city}</span>}
+                </div>
                 
-                <div className="form-group password">
-            <div className="input-password">
-              <input
-                type={showCurrentPassword ? "text" : "password"}
-                placeholder="كلمة السر الحالية"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <span
-                className="input-password-eye"
-                onClick={() => setShowPassword(!showCurrentPassword)}
-              >
-                {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
-              </span>
-            </div>
+                <div className="input-group-wrapper password-wrapper">
+                  <input 
+                    type={showPass ? "text" : "password"} 
+                    name="password"
+                    placeholder="كلمه السر" 
+                    className={`form-input ${errors.password ? 'input-error' : ''}`}
+                    value={formData.password}
+                    onChange={handleInputChange}
+                  />
+                  <span className="eye-icon" onClick={() => setShowPass(!showPass)}>
+                    {showPass ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                  {errors.password && <span className="error-msg">{errors.password}</span>}
+                </div>
 
-            {/*  */}
+                <div className="input-group-wrapper password-wrapper">
+                  <input 
+                    type={showNewPass ? "text" : "password"} 
+                    name="newPassword"
+                    placeholder="كلمة السر الجديدة" 
+                    className={`form-input ${errors.newPassword ? 'input-error' : ''}`}
+                    value={formData.newPassword}
+                    onChange={handleInputChange}
+                  />
+                  <span className="eye-icon" onClick={() => setShowNewPass(!showNewPass)}>
+                    {showNewPass ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                  {errors.newPassword && <span className="error-msg">{errors.newPassword}</span>}
+                </div>
 
-            <div className="input-password">
-              <input
-                type={showNewPassword ? "text" : "password"}
-                placeholder="كلمة السر الجديدة"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-              <span
-                className="input-password-eye"
-                onClick={() => setShowNewPassword(!showNewPassword)}
-              >
-                {showNewPassword ? <FiEye /> : <FiEyeOff />}
-              </span>
-            </div>
-
-            {/*  */}
-
-            <div className="input-password">
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="تأكيد كلمة السر"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              <span
-                className="input-password-eye"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              >
-                {passwordsNotMatch ? <FiEye /> : <FiEyeOff />}
-              </span>
-              {passwordsNotMatch && (
-                <p className="password error-msg">
-                  يجب أن تكون كلمة السر مطابقة
-                </p>
-              )}
-            </div>
-          </div>
+                <div className="input-group-wrapper password-wrapper">
+                  <input 
+                    type={showConfirmPass ? "text" : "password"} 
+                    name="confirmPassword"
+                    placeholder="تأكيد كلمة السر" 
+                    className={`form-input ${errors.confirmPassword ? 'input-error' : ''}`}
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                  />
+                  <span className="eye-icon" onClick={() => setShowConfirmPass(!showConfirmPass)}>
+                    {showConfirmPass ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                  {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword}</span>}
+                </div>
                 
                 <div className="form-buttons">
                     <button type="submit" className="btn-save">حفظ</button>

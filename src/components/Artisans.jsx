@@ -11,6 +11,7 @@ const Artisans = () => {
       once: true,
     });
   }, []);
+   const [searchTerm, setSearchTerm] = useState("");
 
   const artisansData = [
     { id: 1, name: 'أحمد علي', price: '150 ج', rate: '4.9', img: '/images/Artisans/Artisans1.svg' },
@@ -23,13 +24,20 @@ const Artisans = () => {
     { id: 6, name: ' ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
     { id: 6, name: ' شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
   ];
-
+  
+const filteredName = artisansData.filter((item) =>
+  item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  item.price.toString().includes(searchTerm)
+);
   return (
     <div className="artisans-page">
-   
       <section className="top-section">
         <div className="artisans-hero" data-aos="fade-down">
-          <img src="/images/Artisans/Artisanshero.svg" alt="Hero" className="hero-image" />
+          <img
+            src="/images/Artisans/Artisanshero.svg"
+            alt="Hero"
+            className="hero-image"
+          />
           <hr className="artisans-line" />
         </div>
 
@@ -43,11 +51,10 @@ const Artisans = () => {
         </div>
       </section>
 
-      
       <section className="artisans-main-wrapper">
         <div className="container">
           <div className="artisans-grid">
-            {artisansData.map((item) => (
+            {filteredName.map((item) => (
               <Link to={`/ProProfile/${item.id}`} key={item.id} className="card-link">
                 <div className="artisan-card" data-aos="fade-up">
                   <div className="artisan-img-wrapper">
@@ -66,7 +73,7 @@ const Artisans = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="load-more-container" data-aos="fade-up">
           <button className="load-more-btn">عرض المزيد ∨</button>
         </div>
