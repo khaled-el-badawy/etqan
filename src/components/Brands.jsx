@@ -713,7 +713,7 @@ const Brands = () => {
   const location = useLocation();
 
   /* ================= SELECT BRAND ================= */
-const selectedBrand = location.state?.brand;
+const selectedBrand = location.state?.brand || "Makita";
 
 const brandData = selectedBrand ? brandsConfig[selectedBrand] : null;
 

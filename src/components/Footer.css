@@ -277,16 +277,20 @@
 /* 3. وضع الموبايل (480px) */
 /* ============================================================ */
 @media screen and (max-width: 480px) {
-  .footer {
-    padding-top: 120px; /* تعويض تداخل حاوية التواصل */
-  }
-  .footer-desc {
+  /* .footer {
+    padding-top: 120px; 
+  } */
+  /* .footer-desc {
     font-size: 18px;
     line-height: 1.6;
-  }
-  .footer-section .footer-link-h3,
+  } */
+  /* .footer-section .footer-link-h3,
   .footer-section .footer-contact-h3 {
     font-size: 22px;
+  } */
+
+  .large-logo{
+   margin-left: -60px;
   }
   .footer-link {
     font-size: 20px;

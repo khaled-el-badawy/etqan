@@ -365,7 +365,135 @@ color:#555;
   }
 }
 
+/* ===== Tablets (768px) ===== */
+@media (max-width: 768px) {
 
+  .brands-header-icon {
+    width: 60%;
+    margin: auto;
+  }
+
+  .brands-page-container .hero-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .brands-page-container .hero-text {
+    font-size: 18px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .brands-page-container .stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .brands-page-container .back-to-shop-btn {
+    position: static;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .search-wrapper {
+    width: 90%;
+  }
+
+  .brands-page-container .initialbrands-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+
+  .brands-page-container .initialBrands-card {
+    width: 100%;
+  }
+
+  .brands-page-container .empty-favorites {
+    padding: 50px 20px;
+    font-size: 20px;
+  }
+
+  .brands-page-container .empty-favorites h2 {
+    font-size: 30px;
+  }
+}
+
+
+/* ===== Mobile (480px) ===== */
+@media (max-width: 480px) {
+
+  .brands-header-icon {
+    width: 80%;
+  }
+
+  .brands-page-container .hero-title {
+    font-size: 22px;
+  }
+
+  .brands-page-container .hero-text {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .brands-page-container .back-to-shop-btn {
+    width: 80%;
+    padding: 12px;
+    font-size: 18px;
+     border-radius:100px 20px 20px 100px;
+  }
+
+  .search-wrapper {
+    width: 95%;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .search-btn img {
+    width: 35px;
+  }
+
+  .brands-page-container .initialbrands-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .brands-page-container .initialBrands-title {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .brands-page-container .initialBrands-image img {
+    max-width: 150px;
+    margin: 0;
+  }
+
+  .brands-page-container .cart-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .brands-page-container .quantity-control {
+    justify-content: center;
+  }
+
+  .brands-page-container .add-cart-btn {
+    margin-right: 0;
+    width: 90%;
+    font-size: 18px;
+  }
+
+  .brands-page-container .empty-favorites {
+    padding: 40px 15px;
+    font-size: 18px;
+  }
+
+  .brands-page-container .empty-favorites h2 {
+    font-size: 24px;
+  }
+}
 
 
 
