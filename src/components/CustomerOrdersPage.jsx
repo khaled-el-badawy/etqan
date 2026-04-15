@@ -19,6 +19,8 @@ const CustomerOrders = [
     phone: "01234567890",
     status: "completed",
     currentStep: 0,
+    stepDate: "12/10/2025",
+    stepTime: "10:36 am",
     image: "/images/tv-player-entertainment-svgrepo-com 1.svg",
   },
   {
@@ -27,7 +29,9 @@ const CustomerOrders = [
     client: "محمد احمد",
     phone: "01066452001",
     status: "inProgress",
-    currentStep: 500,
+    currentStep: 5,
+    stepDate: "12/10/2025",
+    stepTime: "10:36 am",
     image: "/images/broken-cable-electrician-svgrepo-com 1.svg",
   },
   {
@@ -37,6 +41,8 @@ const CustomerOrders = [
     phone: "01066452001",
     status: "pending",
     currentStep: 2,
+    stepDate: "12/10/2025",
+    stepTime: "10:36 am",
     image: "/images/paint-bucket-svgrepo-com 1.svg",
   },
   {
@@ -46,6 +52,8 @@ const CustomerOrders = [
     phone: "01066478901",
     status: "canceled",
     currentStep: 5,
+    stepDate: "12/10/2025",
+    stepTime: "10:36 am",
     image: "/images/air-conditioning-air-conditioner-svgrepo-com 1.svg",
   },
   {
@@ -55,7 +63,8 @@ const CustomerOrders = [
     phone: "01066478901",
     status: "inProgress",
     currentStep: 2,
-
+    stepDate: "12/10/2025",
+    stepTime: "10:36 am",
     image: "/images/saw-svgrepo-com 2.svg",
   },
   {
@@ -65,6 +74,8 @@ const CustomerOrders = [
     phone: "01066478901",
     status: "canceled",
     currentStep: 5,
+    stepDate: "12/10/2025",
+    stepTime: "10:36 am",
     image: "/images/plumbing-plumber-svgrepo-com 1.svg",
   },
 ];
@@ -287,7 +298,7 @@ function OrderTrackingModal({ order, onClose }) {
       <div className="modal-content" data-aos="fade-up">
         <div className="modal-header" data-aos="fade-up">
           <img src="images/orderModalIcon.svg" alt="" className="modal-icon" />
-          <h3>تابع تفاصيل طلبك</h3>
+          <h3 className="modal-title">تابع تفاصيل طلبك</h3>
         </div>
         <div className="modal-progress">
           {steps.map((step, index) => (
@@ -296,7 +307,7 @@ function OrderTrackingModal({ order, onClose }) {
               className={`step ${index < order.currentStep ? "active" : ""}`}
               data-aos="fade-up"
             >
-              <span>
+              <span className="step-checker">
                 {index <= order.currentStep ? (
                   <div className="img-container">
                     <img
@@ -309,7 +320,14 @@ function OrderTrackingModal({ order, onClose }) {
                   <div className="img-container"></div>
                 )}
               </span>
-              {step}
+              <div className="step-text">
+                {step}
+                <span className="step-date" dir="ltr">
+                  {order.stepDate}{" - "}
+                  {order.stepTime}
+                </span>
+                {/* <span className="step-time"></span> */}
+              </div>
             </div>
           ))}
         </div>

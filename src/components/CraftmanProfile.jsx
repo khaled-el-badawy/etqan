@@ -545,6 +545,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
           </div>
 
           <div className="form-group password">
+            <h3>تغيير كلمة السر</h3>
             <div className="password-field">
               <input
                 type={showCurrentPassword ? "text" : "password"}
