@@ -26,7 +26,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 const handiesData = [
   {
     id: 1,
-    name: "محمد مصطفى",
+    name: "احمد علي",
     job: "كهربائي منازل وتشطيبات",
     rating: 0,
     verified: true,
@@ -233,7 +233,7 @@ const handiesData = [
 /* =======================
    Profile Summary
 ======================= */
-function ProfileSummary({ craftman, setEditMode }) {
+function ProfileSummary({ craftman, editMode, setEditMode }) {
   // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
@@ -245,14 +245,30 @@ function ProfileSummary({ craftman, setEditMode }) {
     <>
       <div className="coverBox" data-aos="fade-down">
         <img src={craftman.cover} alt="cover" />
+
+        {editMode && (
+          <label className="edit-avatar-label">
+            <input type="file" accept="image/*" hidden />
+            تعديل صورة الغلاف
+            <img src="/images/f7_camera-fill.svg" alt="" />
+          </label>
+        )}
       </div>
 
       <section className="profile-summary">
         <div className="profile-info">
           <div className="prson-data">
             {/* avatar لازم يكون هنا داخل prson-data */}
+
             <div className="profile-avatar" data-aos="fade-up">
-              <img src={craftman.avatar} alt={craftman.name} />
+              <img className="avatar" src={craftman.avatar} alt={craftman.name} />
+              {editMode && (
+                <label className="edit-avatar-label">
+                  <input type="file" accept="image/*" hidden />
+                  <img src="/images/f7_camera-fill.svg" alt="" />
+                </label>
+              )}
+
             </div>
 
             <div className="craftman-info" data-aos="fade-left">
@@ -814,8 +830,9 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               <div className="rating-bars">
                 {[5, 4, 3, 2, 1].map((star, index) => {
                   const count = craftman.reviews
-                    ? craftman.reviews.filter((review) => review.rating === star)
-                        .length
+                    ? craftman.reviews.filter(
+                        (review) => review.rating === star,
+                      ).length
                     : 0;
 
                   const percent =
@@ -945,7 +962,11 @@ const ProfilePage = () => {
   return (
     <div className="professional-profile-container">
       {/* مرر setEditMode */}
-      <ProfileSummary craftman={craftman} setEditMode={setEditMode} />
+      <ProfileSummary
+        craftman={craftman}
+        editMode={editMode}
+        setEditMode={setEditMode}
+      />
 
       {/* مرر editMode */}
       <ProfileSection
