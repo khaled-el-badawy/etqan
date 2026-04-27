@@ -5,11 +5,11 @@
   direction: rtl;
 }
 /* HEADER */
-.transport-header {
+.company-container .transport-header {
   padding: 20px 20px 10px;
 }
 
-.header-content {
+.company-container .header-content {
   max-width: 900px;
   margin: auto;
 }
@@ -20,11 +20,11 @@
   gap: 10px;
 } */
 
-.title-section h1 {
-  font-size: 64px;          
+.company-container .title-section h1 {
+  font-size: 64px;
   /* font-weight: 700; */
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #75A5B3;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #75a5b3;
   /* margin: 0; */
   text-align: center;
 }
@@ -34,18 +34,17 @@
   
 } */
 
-.subtitle {
+.company-container .subtitle {
   margin: 25px 150px;
   text-align: center;
   font-size: 28px;
   color: #6c6c6c;
   line-height: 1.6;
   max-width: 600px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- 
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 /* Filters */
-.filters {
+.company-container .filters {
   display: flex;
   gap: 15px;
   align-items: center;
@@ -53,7 +52,7 @@
   color: #888;
 }
 
-.filters select {
+.company-container .filters select {
   border: none;
   background: transparent;
   font-size: 14px;
@@ -62,7 +61,7 @@
 }
 
 /* Card */
-.company-card {
+.company-container .company-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,30 +70,30 @@
   border-radius: 20px;
   margin: 20px 20%;
   position: relative;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* LEFT */
-.left {
+.company-container .left {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.dot {
+.company-container .dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-.circle {
+.company-container .circle {
   width: 14px;
   height: 14px;
   border-radius: 50%;
   border: 2px solid;
 }
 
-.icon {
+.company-container .icon {
   width: 70px;
   height: 70px;
   background: #fff;
@@ -103,35 +102,35 @@
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* CONTENT */
-.content {
+.company-container .content {
   flex: 1;
   margin-left: 20px;
 }
 
-.content h2 {
+.company-container .content h2 {
   margin: 0;
   font-size: 20px;
   color: #333;
 }
 
-.content p {
+.company-container .content p {
   font-size: 14px;
   color: #777;
   margin: 8px 0;
   max-width: 500px;
 }
 
-.content span {
+.company-container .content span {
   font-size: 13px;
   color: #aaa;
 }
 
 /* Arrow */
- .arrow {
+.company-container .arrow {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -146,43 +145,43 @@
 /* COLORS */
 
 /* Blue */
-.company-card.blue {
+.company-container .company-card.blue {
   background: linear-gradient(135deg, #c7d2fe, #eef2ff);
 }
-.company-card.blue .dot {
+.company-container .company-card.blue .dot {
   background: #4f46e5;
 }
-.company-card.blue .circle {
+.company-container .company-card.blue .circle {
   border-color: #4f46e5;
 }
-.company-card.blue .arrow {
+.company-container .company-card.blue .arrow {
   background: #655eef;
 }
 
 /* Purple */
-.company-card.purple {
+.company-container .company-card.purple {
   background: linear-gradient(135deg, #e9d5ff, #faf5ff);
 }
-.company-card.purple .dot {
+.company-container .company-card.purple .dot {
   background: #a855f7;
 }
-.company-card.purple .circle {
+.company-container .company-card.purple .circle {
   border-color: #a855f7;
 }
-.company-card.purple .arrow {
+.company-container .company-card.purple .arrow {
   background: #a855f7;
 }
 
 /* Pink */
-.company-card.pink {
+.company-container .company-card.pink {
   background: linear-gradient(135deg, #fecdd3, #fff1f2);
 }
-.company-card.pink .dot {
+.company-container .company-card.pink .dot {
   background: #f43f5e;
 }
-.company-card.pink .circle {
+.company-container .company-card.pink .circle {
   border-color: #f43f5e;
 }
-.company-card.pink .arrow {
+.company-container .company-card.pink .arrow {
   background: #f74663;
 }
