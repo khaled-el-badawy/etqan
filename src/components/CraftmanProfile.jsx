@@ -26,7 +26,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 const handiesData = [
   {
     id: 1,
-    name: "احمد علي",
+    ctaftName: "احمد علي",
     job: "كهربائي منازل وتشطيبات",
     rating: 0,
     verified: true,
@@ -113,7 +113,7 @@ const handiesData = [
     reviews: [
       {
         id: 1,
-        name: "محمد رفعت",
+        ctaftName: "محمد رفعت",
         date: "21/8/2025",
         rating: 5,
         comment:
@@ -122,7 +122,7 @@ const handiesData = [
       },
       {
         id: 2,
-        name: "أحمد السيد",
+        ctaftName: "أحمد السيد",
         date: "21/8/2025",
         rating: 4,
         comment:
@@ -131,7 +131,7 @@ const handiesData = [
       },
       {
         id: 3,
-        name: "سارة جمال",
+        ctaftName: "سارة جمال",
         date: "21/8/2025",
         rating: 5,
         comment:
@@ -140,7 +140,7 @@ const handiesData = [
       },
       {
         id: 1,
-        name: "محمد رفعت",
+        ctaftName: "محمد رفعت",
         date: "21/8/2025",
         rating: 5,
         comment:
@@ -149,7 +149,7 @@ const handiesData = [
       },
       {
         id: 2,
-        name: "أحمد السيد",
+        ctaftName: "أحمد السيد",
         date: "21/8/2025",
         rating: 5,
         comment:
@@ -158,7 +158,7 @@ const handiesData = [
       },
       {
         id: 3,
-        name: "سارة جمال",
+        ctaftName: "سارة جمال",
         date: "21/8/2025",
         rating: 2,
         comment:
@@ -170,7 +170,7 @@ const handiesData = [
   // -----------------------------------------------------------------------------------------
   {
     id: 2,
-    name: "أحمد علي",
+    ctaftName: "أحمد علي",
     job: "سباك",
     rating: 0,
     verified: false,
@@ -233,7 +233,7 @@ const handiesData = [
 /* =======================
    Profile Summary
 ======================= */
-function ProfileSummary({ craftman, editMode, setEditMode }) {
+function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal }) {
   // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
@@ -261,14 +261,17 @@ function ProfileSummary({ craftman, editMode, setEditMode }) {
             {/* avatar لازم يكون هنا داخل prson-data */}
 
             <div className="profile-avatar" data-aos="fade-up">
-              <img className="avatar" src={craftman.avatar} alt={craftman.name} />
+              <img
+                className="avatar"
+                src={craftman.avatar}
+                alt={craftman.ctaftName}
+              />
               {editMode && (
                 <label className="edit-avatar-label">
                   <input type="file" accept="image/*" hidden />
                   <img src="/images/f7_camera-fill.svg" alt="" />
                 </label>
               )}
-
             </div>
 
             <div className="craftman-info" data-aos="fade-left">
@@ -281,7 +284,7 @@ function ProfileSummary({ craftman, editMode, setEditMode }) {
                     style={{ display: craftman.verified ? "block" : "none" }}
                   />
                 )}
-                {craftman.name}
+                {craftman.ctaftName}
               </h2>
 
               <p>{craftman.job}</p>
@@ -301,7 +304,13 @@ function ProfileSummary({ craftman, editMode, setEditMode }) {
             <MdModeEdit />
           </button>
 
-          <button className="request-service-btn">طلب خدمة</button>
+          {/* <button className="request-service-btn">طلب خدمة</button> */}
+          <button
+            className="request-service-btn"
+            onClick={() => setShowRequestModal(true)}
+          >
+            طلب خدمة
+          </button>
         </div>
       </section>
     </>
@@ -346,6 +355,8 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   const [dobError, setDobError] = useState("");
   const dobRef = React.useRef(null);
   const dobDateRef = React.useRef(null);
+
+  
 
   // حساب أقصى تاريخ مسموح (العمر لازم يكون 18 سنة على الأقل)
   const getMaxDateForAge18 = () => {
@@ -1083,14 +1094,91 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   );
 }
 
+/* ================= REQUEST MODAL COMPONENT ================= */
+const egyptianGovernorates = [
+  "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "دمياط", "بني سويف", "بورسعيد", "جنوب سيناء", "حلايب وشلاتين", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"
+];
+
+function RequestServiceModal({ craftmanName, onClose }) {
+  const today = new Date().toISOString().split('T')[0];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+
+  const filteredGovs = egyptianGovernorates.filter(gov => gov.includes(searchTerm));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowSuccessMsg(true);
+    setTimeout(() => {
+      setShowSuccessMsg(false);
+      onClose();
+    }, 1500);
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        {showSuccessMsg ? (
+          <div className="success-toast-container">
+            <div className="success-icon">✓</div>
+            <p>تم إرسال طلبك بنجاح</p>
+          </div>
+        ) : (
+          <>
+            <h2 className="modal-title"> {craftmanName}</h2>
+            <form className="request-form" onSubmit={handleSubmit}>
+              <div className="form-group-modal">
+                <label>اسم العميل</label>
+                <input type="text" placeholder="أدخل اسمك" required />
+              </div>
+              <div className="form-group-modal custom-select-container">
+                <label>المحافظة</label>
+                <input 
+                  type="text" placeholder="المحافظة" value={searchTerm}
+                  onChange={(e) => {setSearchTerm(e.target.value); setIsOpen(true);}}
+                  onFocus={() => setIsOpen(true)} required
+                />
+                {isOpen && filteredGovs.length > 0 && (
+                  <ul className="gov-dropdown-list">
+                    {filteredGovs.map((gov, index) => (
+                      <li key={index} onClick={() => {setSearchTerm(gov); setIsOpen(false);}}>
+                        {gov}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="form-group-modal">
+                <label>العنوان</label>
+                <input type="text" placeholder="العنوان بالتفصيل" required />
+              </div>
+              <div className="form-group-modal">
+                <label>تاريخ الطلب</label>
+                <input type="date" value={today} readOnly className="readonly-input" />
+              </div>
+              <div className="modal-btns">
+                <button type="submit" className="confirm-btn">إرسال الطلب</button>
+                <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
+                <button type="button" className="close-btn" onClick={onClose}>×</button>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* =======================
    Page Components
 ======================= */
 const ProfilePage = () => {
   const { id = 1 } = useParams();
-
+// عشان نتحكم في وضع تعديل الملف الشخصي
   const [editMode, setEditMode] = useState(false);
-
+  // عشان نتحكم في عرض مودال طلب الخدمة
+  const [showRequestModal, setShowRequestModal] = useState(false);
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -1104,11 +1192,18 @@ const ProfilePage = () => {
 
   return (
     <div className="professional-profile-container">
+      {showRequestModal && (
+        <RequestServiceModal
+          craftmanName={craftman.ctaftName}
+          onClose={() => setShowRequestModal(false)}
+        />
+      )}
       {/* مرر setEditMode */}
       <ProfileSummary
         craftman={craftman}
         editMode={editMode}
         setEditMode={setEditMode}
+        setShowRequestModal={setShowRequestModal}
       />
 
       {/* مرر editMode */}

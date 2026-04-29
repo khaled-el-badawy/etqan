@@ -1,0 +1,313 @@
+.dashartisans-page {
+    padding: 20px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+}
+
+.dashartisans-page .top-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.dashartisans-page .page-title {
+    margin: 0;
+    font-size: 2rem;
+    color: #2d3748;
+}
+
+.dashartisans-page .top-actions-left {
+    display: flex;
+    gap: 15px;
+}
+
+.dashartisans-page .add-btn-main {
+    background: #D9D9D9;
+    color: #40798C;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dashartisans-page .filter-dropdown select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #D9D9D9;
+    color: #40798C;
+    font-family: 'Cairo';
+    outline: none;
+}
+
+.dashartisans-page .search-input-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.dashartisans-page .search-input-box input {
+    width: 100%;
+    padding: 12px 20px 12px 50px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    text-align: right;
+    outline: none;
+}
+
+.dashartisans-page .search-icon-left {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+}
+
+.dashartisans-page .table-main-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.dashartisans-page .artisans-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashartisans-page .artisans-data-table th {
+    background: #edf2f7;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.dashartisans-page .artisans-data-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.dashartisans-page .actions-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dashartisans-page .view-btn { 
+    background: #608fa2; 
+    color: #fff; 
+    border: none; 
+    padding: 6px 18px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+.dashartisans-page .delete-btn { 
+    background: #cbd5e0; 
+    color: #2d3748;
+    border: none; 
+    padding: 6px 18px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+.dashartisans-page .footer-action {
+    text-align: center;  
+    margin-top: 25px; 
+}
+
+.dashartisans-page .show-all-btn-styled {
+    background: none; 
+    border: 1px solid #608fa2; 
+    color: #608fa2;
+    padding: 10px 30px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+.dashartisans-page .modal-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 3000;
+}
+
+.dashartisans-page .modal-content-new {
+    background: #fff; 
+    padding: 40px; 
+    border-radius: 25px;
+    width: 95%;
+    max-width: 900px;
+}
+
+.dashartisans-page .modal-title-new { 
+    color: #608fa2; 
+    text-align: center; 
+    font-size: 2rem; 
+    margin-bottom: 30px; 
+}
+
+.dashartisans-page .form-row-new {
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.dashartisans-page .input-group-valid {
+    flex: 1; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.dashartisans-page .input-group-valid input {
+    padding: 12px; 
+    border: 1.5px solid #e2e8f0; 
+    border-radius: 10px; 
+    outline: none;
+    box-shadow: 1px 2px 1px #608fa281;
+    width: 100%;
+}
+
+.dashartisans-page .password-input-wrapper { 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    width: 100%;
+}
+
+.dashartisans-page .eye-icon { 
+    position: absolute; 
+    left: 10px;
+    cursor: pointer; 
+    color: #a0aec0; 
+}
+
+.dashartisans-page .error-text-msg { 
+    color: #e53e3e; 
+    font-size: 0.7rem; 
+    margin-top: 4px; 
+    font-weight: bold; 
+}
+
+.dashartisans-page .modal-btns-new { 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    margin-top: 30px; 
+}
+
+.dashartisans-page .confirm-btn-new { 
+    background: #608fa2; 
+    color: #fff; 
+    border: none; 
+    padding: 12px 60px; 
+    border-radius: 10px;
+    cursor: pointer; 
+    font-weight: bold; 
+}
+
+.dashartisans-page .cancel-btn-new { 
+    background: #edf2f7; 
+    color: #4a5568; 
+    border: none; 
+    padding: 12px 60px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
+
+@media (max-width: 1024px) {
+    .dashartisans-page .modal-content-new { 
+        width: 90%; 
+        max-width: 800px; 
+        padding: 30px;
+    }
+    .dashartisans-page .form-row-new { 
+        gap: 10px; 
+        flex-wrap: wrap;
+    }
+    .dashartisans-page .input-group-valid {
+        min-width: 200px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .dashartisans-page .top-header-row { 
+        flex-direction: column; 
+        gap: 15px; 
+    }
+
+    .dashartisans-page .form-row-new { 
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .dashartisans-page .input-group-valid {
+        flex: 0 0 calc(50% - 15px); 
+        min-width: 200px;
+    }
+
+    .dashartisans-page .artisans-data-table thead { 
+        display: none; 
+    }
+
+    .dashartisans-page .artisans-data-table td { 
+        display: block; 
+        border: none; 
+        padding: 8px 0; 
+    }
+
+    .dashartisans-page .actions-btns { 
+        padding-bottom: 20px; 
+        border-bottom: 1px solid #eee; 
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashartisans-page .page-title { 
+        font-size: 1.5rem; 
+    }
+
+    .dashartisans-page .modal-content-new { 
+        padding: 25px 15px; 
+    }
+    
+    .dashartisans-page .form-row-new {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashartisans-page .input-group-valid {
+        width: 100%;
+        max-width: 320px; 
+    }
+
+    .dashartisans-page .confirm-btn-new, 
+    .dashartisans-page .cancel-btn-new { 
+        padding: 10px 30px;
+        width: 100%; 
+    }
+
+    .dashartisans-page .modal-btns-new { 
+        flex-direction: column; 
+        gap: 10px;
+        align-items: center; 
+    }
+}

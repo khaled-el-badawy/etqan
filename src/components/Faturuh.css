@@ -168,40 +168,6 @@
   align-items: flex-start;
 }
 
-.invoice-container .pricing-left  {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  position: relative;
-}
-
-.invoice-container .pricing-left::before {
-  content: "";
-  position: absolute;
-  right: 150px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: #00000026;
-  z-index: 1;
-}
-
-.invoice-container .price-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  direction: rtl;
-  position: relative;
-  z-index: 2;
-}
-
-.invoice-container .label {
-  min-width: 140px;
-  margin-left: 25px;
-  text-align: right;
-  font-weight: bold;
-}
-
 .invoice-container .value {
   padding-right: 20px ;
 }
@@ -209,7 +175,9 @@
 .invoice-container .pricing-right-box {
 background: #f0f0f0;
   border-radius: 10px;
-  width: 300px;
+  width: 30%;
+  height: 200px;
+  margin: auto;
   border: solid 1.5px rgba(0, 0, 0, 0.256);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.08);
 }
@@ -223,6 +191,7 @@ background: #f0f0f0;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
+  font-size: larger;
 }
 
 .invoice-container .box-row {
@@ -238,13 +207,12 @@ background: #f0f0f0;
 } */
 
 .invoice-container .total-final {
-  background: #75A5B3;
-  color: white;
-  padding: 10px;
+  color: #103947;
+  padding: 50px;
+  font-size: larger;
+  font-weight: bold;
   display: flex;
-  justify-content: space-between;
-  border-radius: 15px;
-  margin: 10px 30px 10px;
+  justify-content:center;
 }
 
 /* --- 5. الأزرار --- */
@@ -349,7 +317,9 @@ background: #f0f0f0;
     font-size: 20px;
     width: 100%;
   }
-
+  .invoice-container .pricing-right-box {
+    width: 50%;
+  }
 
   .invoice-container .users-data-grid {
     flex-direction: column ; 
@@ -362,7 +332,6 @@ background: #f0f0f0;
     max-width: 550px; 
   }
 
- 
   .invoice-container .pricing-summary {
     flex-direction: column;
     align-items: center;
@@ -415,7 +384,9 @@ background: #f0f0f0;
     flex-direction: column ;
     gap: 15px;
   }
-
+  .invoice-container .pricing-right-box {
+    width: 70%;
+  }
   .invoice-container .pay-methods-grid button{
     width: 210px;
   }
