@@ -30,12 +30,14 @@ import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
 import ContactUs from "./components/ContactUs";
+import Chat from "./components/Chat";
 import PageNotFound from "./components/PageNotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { i } from "framer-motion/client";
 
 function AppWrapper() {
   const location = useLocation();
@@ -109,7 +111,7 @@ function AppWrapper() {
 
         <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
         <Route path="/contactUs" element={<ContactUs />} />
-
+        <Route path="/Chat" element={<Chat />} />
         {/* صفحة 404 */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>

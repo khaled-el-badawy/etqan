@@ -191,7 +191,7 @@ function OrderCard({ order, setSelectedOrder }) {
           <button className="link" onClick={() => setSelectedOrder(order)}>
             تتبع الطلب
           </button>
-          <Link to={`#`} className="link">
+          <Link to={`/Chat`} className="link">
             اتصال
           </Link>
         </div>
