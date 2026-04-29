@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="readme-assets/etqan-logo.png" alt="ETQAN Logo — كل شيء بإتقان" width="450"/>
+  <img src="readme-assets/etqan-logo.png" alt="شعار إتقان" width="450"/>
 </p>
 
 <h1 align="center">🛠 منصة إتقان — Etqan Platform</h1>
 
 <p align="center">
-  <b>A Comprehensive Digital Marketplace Connecting Customers with Skilled Craftsmen, Contractors, and Professional Tools across Egypt</b>
+  <b>منصة رقمية متكاملة تربط العملاء بالحرفيين المهرة وشركات المقاولات، مع متجر احترافي للأدوات والمعدات في مصر</b>
 </p>
 
 <p align="center">
@@ -19,306 +19,286 @@
 
 ---
 
-## 📝 Project Overview
+## 📝 نظرة عامة على المشروع
 
-<img align="left" src="readme-assets/plumbing-workers.png" alt="Craftsmen at Work" width="250" style="margin-left: 15px;"/>
+<img align="left" src="readme-assets/plumbing-workers.png" alt="حرفيون يعملون" width="250" style="margin-left: 15px;"/>
 
-**Etqan (إتقان)** is a pioneering, full-stack front-end web platform designed to revolutionize the skilled trades and contracting market in Egypt. The name "Etqan" — Arabic for "mastery" and "perfection" — reflects the platform's core mission: to deliver high-quality, reliable craft services through a modern digital experience.
+**إتقان** هي منصة إلكترونية رائدة تهدف إلى إحداث نقلة نوعية في سوق الخدمات الحرفية والمقاولات في مصر. اسم "إتقان" يعكس رسالة المنصة الأساسية: تقديم خدمات حرفية عالية الجودة من خلال تجربة رقمية حديثة ومتطورة.
 
-The platform serves as a **three-sided marketplace** that seamlessly connects **customers** seeking maintenance, renovation, and construction services with **verified craftsmen** across 20+ specialized trades and **contracting companies** capable of managing large-scale projects. Beyond services, Etqan features a fully integrated **e-commerce store** offering professional-grade tools and equipment from globally recognized brands such as DeWalt, Makita, Bosch, Milwaukee, and KNIPEX.
+المنصة تعمل كـ **سوق رقمي ثلاثي الأطراف** يربط بسلاسة بين **العملاء** الباحثين عن خدمات الصيانة والتجديد والبناء، و**الحرفيين المعتمدين** في أكثر من 20 تخصصاً حرفياً، و**شركات المقاولات** القادرة على إدارة المشاريع الكبرى. بالإضافة إلى ذلك، تضم المنصة **متجراً إلكترونياً متكاملاً** يوفر أدوات ومعدات احترافية من علامات تجارية عالمية مثل DeWalt وMakita وBosch وMilwaukee وKNIPEX.
 
-Built entirely as a **Single Page Application (SPA)** using React 19 and Vite 7, the platform emphasizes speed, interactivity, and a premium user experience — leveraging modern animations, responsive design, and intuitive navigation to ensure that every interaction feels polished and professional.
+تم بناء المنصة بالكامل كـ **تطبيق صفحة واحدة (SPA)** باستخدام React 19 وVite 7، مع التركيز على السرعة والتفاعلية وتجربة المستخدم المتميزة.
 
 <br clear="both"/>
 
 ---
 
-## 👥 Target Users
+## 👥 الفئات المستهدفة
 
-The platform is architected to serve **three distinct user roles**, each with a dedicated registration flow, profile system, and order management interface:
+تم تصميم المنصة لتخدم **ثلاث فئات رئيسية**، لكل منها نظام تسجيل وملف شخصي وإدارة طلبات مخصصة:
 
 <table align="center">
   <tr>
-    <td width="33%" align="center">
-      <b>👤 Customers (العملاء)</b>
-    </td>
-    <td width="33%" align="center">
-      <b>🔧 Craftsmen (الحرفيون)</b>
-    </td>
-    <td width="33%" align="center">
-      <b>🏢 Companies (الشركات)</b>
-    </td>
+    <td width="33%" align="center"><b>👤 العملاء</b></td>
+    <td width="33%" align="center"><b>🔧 الحرفيون</b></td>
+    <td width="33%" align="center"><b>🏢 الشركات</b></td>
   </tr>
 </table>
 
-### 👤 Customers
-- Browse and search for craftsmen across 20+ specialized trade categories.
-- Submit service requests and track order statuses in real time.
-- Shop professional tools and equipment from the integrated Etqan Store.
-- Rate craftsmen and leave verified reviews to promote transparency.
-- Manage a personal profile with service history and complaint submission capabilities.
-- Communicate directly with craftsmen via the built-in real-time chat system.
+### 👤 العملاء
+- تصفح والبحث عن حرفيين في أكثر من 20 تخصص حرفي
+- إرسال طلبات خدمة وتتبع حالة الطلبات
+- التسوق من متجر إتقان للأدوات والمعدات
+- تقييم الحرفيين وكتابة مراجعات لضمان الشفافية
+- إدارة الملف الشخصي مع سجل الخدمات وتقديم الشكاوى
+- التواصل المباشر مع الحرفيين عبر نظام المحادثة المدمج
 
-### 🔧 Craftsmen
-- Build a professional portfolio profile showcasing skills, experience, service areas, work gallery, and customer reviews.
-- Receive and manage service requests from customers with a dedicated orders dashboard.
-- Purchase necessary tools and equipment through the platform's store.
-- Edit and update profile information, including date of birth (with age verification), service pricing, and password management.
+### 🔧 الحرفيون
+- بناء ملف شخصي احترافي يعرض المهارات والخبرات ومعرض الأعمال والتقييمات
+- استقبال وإدارة طلبات العمل من خلال لوحة طلبات مخصصة
+- شراء الأدوات والمعدات اللازمة من متجر المنصة
+- تعديل بيانات الملف الشخصي مع التحقق من العمر (18 سنة كحد أدنى)
 
-### 🏢 Companies
-- Create a comprehensive company profile displaying services, expertise, years of experience, and project portfolios.
-- Receive large-scale project requests (construction, finishing, building material transport, heavy equipment rental, furniture moving).
-- Manage company orders and interact with customers through a dedicated interface.
-
----
-
-## ⚒️ Core Services
-
-<table>
-  <tr>
-    <td width="55%">
-      <h3>🔗 Customer-to-Craftsman Matching</h3>
-      <p>An intelligent filtering and browsing system that connects customers with the best-suited professionals across 20+ specializations — including plumbing, carpentry, electrical, welding, HVAC, painting, plastering, masonry, tile work, aluminum work, demolition, pest control, satellite installation, smart security systems, engineering consultancy, and more.</p>
-      <h3>🛒 Etqan Store (E-Commerce)</h3>
-      <p>A full-featured online store for professional tools and equipment from premium international brands (DeWalt, Makita, Bosch, Milwaukee, KNIPEX, Metabo, RYOBI, Snap-on, BAHCO). Features include product search, discount badges, favorites/wishlist, shopping cart with quantity controls (max 5 per item), product ratings, and integrated Google Maps for delivery location pinpointing.</p>
-      <h3>🏗️ Contracting & Logistics Services</h3>
-      <p>A dedicated directory connecting customers with contracting companies for construction, finishing, building waste removal, sand & gravel transport, heavy equipment rental, and furniture moving — each with its own provider listing page.</p>
-      <h3>⭐ Rating & Trust System</h3>
-      <p>A transparent review and rating mechanism where customers can rate craftsmen and companies, view rating distributions (bar charts), and submit complaints — ensuring accountability and quality assurance across the platform.</p>
-      <h3>💬 Real-Time Chat</h3>
-      <p>A built-in messaging system with conversation list, search, online status indicators, unread message badges, file/image attachment support (via drag & drop or file picker), and an intuitive message interface.</p>
-    </td>
-  </tr>
-</table>
+### 🏢 الشركات
+- إنشاء ملف شركة شامل يعرض الخدمات والخبرات وسابقة الأعمال
+- استقبال طلبات المشاريع الكبرى (بناء، تشطيبات، نقل مواد، تأجير معدات)
+- إدارة طلبات الشركة والتفاعل مع العملاء
 
 ---
 
-## 🗂️ Application Architecture & Page Structure
+## ⚒️ الخدمات الأساسية
 
-The application comprises **25+ distinct pages/views**, managed via React Router v7 with dynamic route parameters:
+| الخدمة | الوصف |
+| :--- | :--- |
+| **🔗 ربط العميل بالحرفي** | نظام فلترة وتصفح ذكي يربط العملاء بأفضل الكفاءات في 20+ تخصص — سباكة، نجارة، كهرباء، حدادة، تكييف، دهانات، محارة، بناء، سيراميك، ألومنتال، تكسير، رش مبيدات، وأكثر. |
+| **🛒 متجر إتقان** | متجر إلكتروني متكامل للأدوات من ماركات عالمية مع بحث، خصومات، مفضلة، سلة مشتريات، تقييمات، وخرائط Google لتحديد موقع التوصيل. |
+| **🏷️ كتالوج الماركات** | صفحة ماركات ضخمة تعرض **72 منتج** من **8 ماركات عالمية** (Makita، Bosch، DeWalt، Milwaukee، Metabo، Snap-on، RYOBI، KNIPEX، BAHCO) — لكل ماركة هيدر مخصص، متوسط تقييم، بحث بالاسم والسعر، وإضافة للمفضلة والسلة. |
+| **🏗️ خدمات المقاولات** | دليل شركات متخصص في البناء والتشطيب ونقل المخلفات ونقل الرمل والزلط وتأجير المعدات الثقيلة ونقل الأثاث. |
+| **📋 دليل مزودي الخدمات** | صفحة Providers ديناميكية تعرض الشركات حسب نوع الخدمة المختار (مقاولات، نقل مخلفات، تأجير معدات...) مع بطاقات تفاعلية تنقل لملف الشركة. |
+| **📦 تفاصيل المنتج** | صفحة مفصلة لكل منتج مع معرض صور متعدد (Image Gallery)، تحكم بالكميات، إضافة للسلة والمفضلة، تقييمات المستخدمين مع إمكانية إضافة تقييم جديد، ومنتجات مشابهة. |
+| **📊 تتبع الطلبات** | نظام تتبع متقدم بـ **5 مراحل** (إرسال → قبول → معاينة → تنفيذ → انتهاء) مع Modal تفاعلي يعرض مؤشرات مرئية وتوقيتات لكل مرحلة. |
+| **⭐ نظام التقييم** | نظام مراجعات وتقييمات شفاف مع أشرطة توزيع التقييمات وإمكانية تقديم الشكاوى — مع نجوم تفاعلية ومودال تقييم ومودال شكوى. |
+| **💬 محادثة فورية** | نظام رسائل مدمج مع قائمة محادثات، بحث، مؤشرات حالة الاتصال، مرفقات صور (سحب وإفلات)، وشارات الرسائل غير المقروءة. |
+
+---
+
+## 🗂️ هيكل صفحات التطبيق
+
+يتكون التطبيق من **25+ صفحة/عرض** مُدارة عبر React Router v7:
 
 ```
-📁 Etqan (إتقان)
-├── 🏠 Index Page — Role selection (Customer / Craftsman / Company) with animated landing
-├── 🔑 Authentication System
-│   ├── Login (role-specific: /login/:role)
-│   ├── Login via OTP (/login-otp/:role)
-│   ├── Forgot Password (/forgot-password/:role)
-│   ├── Verify OTP (/verify-otp/:role)
-│   ├── Set New Password (/new-password/:role)
-│   ├── Customer Registration
-│   ├── Craftsman Registration
-│   └── Company Registration
-├── 🏡 Home Page
-│   ├── Hero Section — Animated statistics counter (500+ craftsmen, 1300+ satisfied clients, 4.8★ rating)
-│   ├── Main Services Grid (Craftsmen, Contractors, Products)
-│   ├── Top Craftsmen Carousel (Swiper with auto-play)
-│   ├── Customer Testimonials Carousel
-│   └── Contact Us Form (with validation)
-├── 🔧 Services Page — 20+ trade specializations with search filtering
-├── 👷 Artisans Page — Browse craftsmen by specialization
-├── 🏢 Companies Directory — Service categories (Construction, Transport, Equipment Rental, etc.)
-├── 📋 Provider Listings — Filtered company results per category
-├── 🛒 Store (Products Page) — Best sellers, brands grid, offers section, search, map, ratings modal
-├── 📦 Product Details — Individual product view
-├── ❤️ Favorites / Wishlist — Saved products with bulk cart addition
-├── 🛍️ Shopping Cart — Quantity control, order summary, checkout
-├── 🧾 Invoice (Faturuh) — Detailed service invoice with payment methods
-├── 👤 User Profiles
-│   ├── Craftsman Profile (/CraftmanProfile/:id) — Portfolio, works gallery, reviews, edit form
-│   ├── Company Profile (/CompanyProfile/:id) — Stats, about, services, reviews, edit form
-│   └── Client Profile — Service history, reviews, complaints, edit form
-├── 📋 Order Management
-│   ├── Customer Orders Page
-│   ├── Craftsman Orders Page
-│   └── Company Orders Page
-├── 💬 Chat Page — Real-time messaging with conversation sidebar
-├── ℹ️ About Us — Mission, features, vision with animated sections
-├── 📞 Contact Us — Contact form with validation & complaint submission
-├── 🔐 Order Details — Detailed order view
-└── 🚫 404 Page — Custom "Page Not Found"
+📁 إتقان (Etqan)
+├── 🏠 صفحة الهبوط
+├── 🔑 نظام المصادقة
+│   ├── تسجيل الدخول
+│   ├── تسجيل الدخول بـ OTP
+│   ├── نسيت كلمة المرور
+│   ├── التحقق من OTP
+│   ├── كلمة مرور جديدة
+│   ├── تسجيل عميل
+│   ├── تسجيل حرفي
+│   ├── تسجيل شركة
+├── 🏡 الصفحة الرئيسية
+├── 🔧 صفحة الخدمات
+├── 👷 صفحة الحرفيين
+├── 🏢 دليل الشركات
+├── 📋 مزودي الخدمات
+├── 🛒 المتجر
+├── 🏷️ صفحة الماركات
+├── 📦 تفاصيل المنتج
+├── ❤️ المفضلة
+├── 🛍️ سلة المشتريات
+├── 🧾 الفاتورة
+├── 👤 الملفات الشخصية
+│   ├── ملف الحرفي
+│   ├── ملف الشركة
+│   └── ملف العميل
+├── 📋 إدارة الطلبات
+│   ├── طلبات العميل
+│   ├── طلبات الحرفي
+│   └── طلبات الشركة
+├── 🔍 تفاصيل الطلب
+├── 📊 لوحة التحكم (Dashboard)
+│   ├── إدارة الحرفيين (Dashartisans)
+│   ├── إدارة العملاء (Dashcustomer)
+│   └── إدارة المنتجات (Dashproducts)
+├── 💬 صفحة المحادثة
+├── ℹ️ من نحن
+├── 📞 تواصل معنا
+└── 🚫 صفحة 404
 ```
 
 ---
 
-## 💻 Technologies Used
+## 💻 التقنيات المستخدمة
 
-<img align="right" src="readme-assets/electrician-ladder.png" alt="Electrician Working" width="200" style="margin-right: 15px;"/>
+<img align="right" src="readme-assets/electrician-ladder.png" alt="كهربائي يعمل" width="200" style="margin-right: 15px;"/>
 
-The front-end is built using a modern, performance-oriented technology stack carefully selected for speed, developer experience, and scalability:
+تم بناء واجهة المستخدم باستخدام أحدث التقنيات لضمان السرعة والمرونة وتجربة المستخدم الممتازة:
 
 <br clear="both"/>
 
-| Technology | Version | Purpose & Rationale |
+| التقنية | الإصدار | الغرض وسبب الاختيار |
 | :--- | :---: | :--- |
-| **React.js** | 19.2 | Core UI library using functional components, hooks (`useState`, `useEffect`, `useRef`, `useLayoutEffect`), and the component composition pattern for maximum reusability. Chosen for its massive ecosystem, stability, and ideal fit for interactive SPA platforms. |
-| **Vite** | 7.2 | Lightning-fast build tool and dev server with near-instant Hot Module Replacement (HMR). Selected over Webpack for its superior cold-start performance and modern ESM-first architecture. |
-| **React Router** | 7.13 | Client-side routing with dynamic parameters (`:role`, `:id`), nested routes, and `NavLink` active state management. Provides seamless page transitions without full-page reloads. |
-| **Framer Motion** | 12.29 | Advanced declarative animation library used for the landing page's entrance animations, floating effects, and frame reveal transitions. Provides production-grade motion with minimal code. |
-| **AOS (Animate On Scroll)** | 2.3 | Scroll-triggered animations (`fade-up`, `fade-left`, `zoom-in`, `flip-left`) applied globally across sections. Adds visual polish and engagement during browsing. |
-| **Swiper** | 12.1 | Touch-enabled carousel/slider library with autoplay, pagination, and navigation. Used for the "Top Craftsmen" and "Testimonials" sections on the home page. Fully responsive with mobile breakpoints. |
-| **Bootstrap** | 5.3 | CSS framework providing a responsive grid system and pre-built utility classes. Ensures consistent layout behavior across all device sizes. |
-| **Tailwind CSS** | 4.1 | Utility-first CSS framework integrated via PostCSS for rapid styling and fine-grained design control where needed alongside CSS Modules. |
-| **React-Leaflet / Leaflet** | 5.0 / 1.9 | Open-source mapping library used in the Store page for delivery location selection. Integrates Google Maps embed for geolocation-based experiences. |
-| **React Icons** | 5.5 | Comprehensive icon library supporting Font Awesome, Material Design, Feather, Ionicons, and more — providing consistent, high-quality iconography throughout the application. |
-| **React Select** | 5.10 | Enhanced dropdown/select component with search, filtering, and customizable styling. Used for specialty and region selection in forms. |
-| **ESLint** | 9.39 | JavaScript linter with React Hooks and React Refresh plugins for code quality enforcement and catching common errors during development. |
-| **PostCSS + Autoprefixer** | 8.5 / 10.4 | CSS processing pipeline ensuring cross-browser compatibility and modern CSS feature support. |
-| **gh-pages** | 6.3 | Deployment utility for publishing the production build to GitHub Pages. |
+| **React.js** | 19.2 | مكتبة بناء واجهات المستخدم التفاعلية باستخدام المكونات الوظيفية والـ Hooks. تم اختيارها لنظامها البيئي الضخم واستقرارها وملاءمتها لبناء منصات SPA تفاعلية. |
+| **Vite** | 7.2 | أداة بناء وتطوير فائقة السرعة مع HMR لحظي. تم اختيارها بدلاً من Webpack لأدائها المتفوق في التشغيل البارد وبنيتها الحديثة. |
+| **React Router** | 7.13 | إدارة التنقل والمسارات الديناميكية (`:role`، `:id`). يوفر تنقلاً سلساً بدون إعادة تحميل الصفحة. |
+| **Framer Motion** | 12.29 | مكتبة أنيميشن متقدمة لتحريك العناصر في صفحة الهبوط بتأثيرات دخول وتعويم احترافية. |
+| **AOS** | 2.3 | أنيميشن عند التمرير (`fade-up`، `zoom-in`، `flip-left`) مطبق على جميع الأقسام لإضافة حيوية بصرية. |
+| **Swiper** | 12.1 | مكتبة سلايدر تدعم اللمس مع تشغيل تلقائي وترقيم. مستخدمة لعرض أفضل الحرفيين وآراء العملاء. |
+| **Bootstrap** | 5.3 | إطار CSS يوفر نظام شبكة متجاوب ومكونات جاهزة لجميع أحجام الشاشات. |
+| **Tailwind CSS** | 4.1 | إطار CSS مدمج عبر PostCSS لتنسيق سريع ودقيق إلى جانب ملفات CSS المخصصة. |
+| **React-Leaflet** | 5.0 | مكتبة خرائط مفتوحة المصدر لتحديد موقع التوصيل في صفحة المتجر عبر Google Maps. |
+| **React Icons** | 5.5 | مكتبة أيقونات شاملة تدعم Font Awesome وMaterial Design وFeather وغيرها. |
+| **React Select** | 5.10 | مكون قوائم اختيار متقدمة مع بحث وفلترة لاختيار التخصصات والمناطق. |
+| **ESLint** | 9.39 | أداة فحص جودة الكود مع إضافات React Hooks وReact Refresh. |
+| **PostCSS + Autoprefixer** | 8.5 / 10.4 | معالجة CSS لضمان التوافق مع جميع المتصفحات. |
+| **gh-pages** | 6.3 | أداة نشر على GitHub Pages. |
 
-### Design & Styling Approach
+### منهجية التصميم والتنسيق
 
-The project employs a **hybrid styling architecture** combining:
-- **Component-scoped CSS files** (e.g., `Home.jsx` → `HomeStyle.css`) — one CSS file per component for isolation and maintainability.
-- **Custom Google Fonts** — Arabic typography via Almarai, El Messiri, and Lateef; Latin typography via Montserrat, Ubuntu, and Work Sans.
-- **Custom scrollbar styling** — Branded teal-colored scrollbar (`#3e7c87`) matching the platform's design language.
-- **RTL (Right-to-Left) support** — Full Arabic language interface with proper RTL layout, text alignment, and component direction.
+- **ملفات CSS مخصصة لكل مكون** (مثل: `Home.jsx` ← `HomeStyle.css`) لعزل الأنماط
+- **خطوط Google عربية** — Almarai، El Messiri، Lateef + خطوط لاتينية: Montserrat، Ubuntu، Work Sans
+- **شريط تمرير مخصص** بلون تيل (`#3e7c87`) متوافق مع هوية المنصة البصرية
+- **دعم كامل للعربية (RTL)** — واجهة عربية بالكامل مع محاذاة واتجاه صحيح
 
 ---
 
-## 🌟 Key Features & Advantages
+## 🌟 الميزات والمزايا الرئيسية
 
-### Platform Features
+### ميزات المنصة
 
-| Feature | Description |
+| الميزة | الوصف |
 | :--- | :--- |
-| **Multi-Role Authentication** | Separate registration and login flows for Customers, Craftsmen, and Companies — each with role-specific form fields, validation, and OTP verification. |
-| **20+ Trade Specializations** | Comprehensive coverage of skilled trades (plumbing, carpentry, electrical, welding, HVAC, painting, plastering, masonry, tiling, aluminum, demolition, gas, upholstery, transportation, appliance repair, pest control, cleaning, satellite, smart security, engineering consultancy). |
-| **Rich Craftsman Profiles** | Portfolio pages with cover photos, avatars, verification badges, about sections, services lists, work information (area, hours, response time, emergency service), work gallery with lightbox viewer, and customer reviews with rating distribution. |
-| **E-Commerce Store** | Product catalog with image sliders, discount badges, search filtering, wishlist (localStorage-persisted), shopping cart with quantity limits, brands directory, and product rating modals. |
-| **Geolocation Integration** | Google Maps embed with browser geolocation API for delivery location pinpointing in the store. |
-| **Real-Time Chat** | Full messaging interface with conversation list, search, online/offline indicators, unread badges, image attachments (file picker + drag & drop), and keyboard shortcuts (Enter to send, Escape to close). |
-| **Invoice Generation** | Detailed service invoice page with craftsman/customer data cards, itemized service table, pricing summary (subtotal, fees, discounts, tax), and multiple payment method options. |
-| **Animated Statistics** | Intersection Observer-based animated number counters on the home page hero section, counting up to platform metrics on scroll. |
-| **Form Validation** | Client-side validation across all forms: email format (regex), Egyptian phone numbers (01x pattern, 11 digits), password matching, date of birth with masked input (`DD/MM/YYYY`) and calendar picker with 18+ age verification. |
-| **Service Pricing Logic** | Craftsman service price input that rounds to the nearest 5 EGP on blur. |
-| **Favorites Persistence** | Wishlist data persisted via `localStorage` with add-all-to-cart functionality. |
-| **Responsive Design** | Fully responsive layouts from mobile (320px) to desktop, with hamburger menu navigation, breakpoint-aware Swiper configurations, and adaptive grid layouts. |
-| **404 Error Page** | Custom "Page Not Found" component for unmatched routes. |
+| **مصادقة متعددة الأدوار** | تسجيل وتسجيل دخول منفصل لكل نوع مستخدم مع حقول مخصصة وتحقق OTP واستعادة كلمة المرور. |
+| **نظام OTP متقدم** | رمز تحقق من 4 خانات مع انتقال تلقائي بين الحقول، عداد تنازلي 60 ثانية، زر إعادة إرسال، واستدعاء API جاهز (`/api/verify-otp`) مع معالجة الأخطاء. |
+| **قواعد كلمة المرور الفورية** | تحقق مرئي فوري أثناء الكتابة: يجب أن تبدأ بحرف كبير (Capital) + رمز خاص (!@#$%) + 8 أحرف كحد أدنى — مع تلوين أخضر/أحمر فوري لكل قاعدة. |
+| **تسجيل حرفي متقدم** | حقول خاصة: تاريخ الميلاد مع منتقي تقويم (date picker) وفحص عمر 18+، الحالة الاجتماعية (قائمة منسدلة)، الرقم القومي (14 رقم بالضبط)، واختيار المهنة من 21 تخصص مع بحث ديناميكي. |
+| **تسجيل شركة مع رفع ملفات** | رفع السجل التجاري (PDF/JPG/PNG) عبر حقل ملف مخصص مع أيقونة مجلد وعرض اسم الملف المرفوع. |
+| **اختيار المحافظة بالبحث** | قائمة منسدلة ذكية لـ 27 محافظة مصرية مع فلترة فورية أثناء الكتابة وإغلاق تلقائي عند النقر خارج القائمة. |
+| **20+ تخصص حرفي** | تغطية شاملة للحرف: سباكة، نجارة، كهرباء، حدادة، تكييف، دهانات، محارة، بناء، سيراميك، ألومنتال، تكسير، غاز، منجد، نقل، صيانة أجهزة، رش مبيدات، تنظيف، فني دش، فني كاميرات، أمن ذكي، استشارات هندسية. |
+| **ملفات شخصية غنية للحرفيين** | بورتفوليو مع صور غلاف قابلة للتعديل، أفاتار، شارة توثيق، معرض أعمال (Lightbox)، تقييمات مع توزيع بياني (5 أشرطة)، ونموذج طلب خدمة مع اختيار محافظة. |
+| **كتالوج ماركات ضخم** | **72 منتج** من **8 ماركات عالمية** (Makita، Bosch، DeWalt، Milwaukee، Metabo، Snap-on، RYOBI، KNIPEX، BAHCO) — لكل ماركة صفحة مخصصة بهيدر، بحث، متوسط تقييم، مفضلة localStorage، وإضافة للسلة. |
+| **متجر إلكتروني متكامل** | كتالوج مع سلايدر، خصومات، بحث، مفضلة (localStorage)، سلة بحد أقصى 5 قطع، تقييم منتجات، ودليل ماركات. |
+| **تفاصيل منتج متقدمة** | صفحة مفصلة مع معرض صور (Image Gallery) قابل للنقر، تحكم بالكميات، حالة المخزون، تقييمات المستخدمين، إضافة تقييم جديد، ومنتجات مشابهة (Related Products). |
+| **تحديد موقع جغرافي** | دمج Geolocation API مع خرائط Google لتحديد موقع التوصيل. |
+| **نظام تتبع طلبات بـ 5 مراحل** | Modal تفاعلي يعرض مراحل الطلب (إرسال → قبول → معاينة → تنفيذ → انتهاء) مع أيقونات تأكيد ✓ وتوقيتات لكل مرحلة — مع قفل التمرير أثناء العرض. |
+| **فلاتر الطلبات** | 5 تصنيفات (الكل / مكتمل / قيد التنفيذ / في الانتظار / ملغى) مع أزرار إجراء مختلفة حسب الحالة (تقييم/فاتورة/تتبع/تفاصيل/إعادة طلب). |
+| **إلغاء طلب ذكي** | إلغاء الطلب مع تمرير برمجي لأعلى الصفحة، تحديث الرسالة فوراً، وإعادة توجيه تلقائي بعد ثانيتين. |
+| **محادثة فورية** | واجهة رسائل كاملة مع قائمة محادثات، بحث، مؤشرات اتصال، مرفقات صور (سحب وإفلات + اختيار ملف). |
+| **فاتورة مفصلة** | صفحة فاتورة مع بيانات الحرفي والعميل وجدول خدمات مفصل وملخص أسعار وطرق دفع متعددة. |
+| **إحصائيات متحركة** | عدّادات أرقام متحركة باستخدام Intersection Observer على قسم الـ Hero. |
+| **تحقق متقدم من النماذج** | بريد إلكتروني (regex)، هاتف مصري (01x — 010/011/012/015 فقط، 11 رقم)، رقم قومي (14 رقم)، تطابق كلمات المرور، تاريخ ميلاد مع فحص عمر 18+. |
+| **تصميم متجاوب بالكامل** | تخطيطات متجاوبة من الموبايل (320px) إلى سطح المكتب مع قائمة هامبرجر وشبكات تكيفية. |
+| **صفحة 404 مخصصة** | صفحة خطأ مخصصة للمسارات غير الموجودة. |
 
-### Technical Advantages
+### المزايا التقنية
 
-- **Zero-reload Navigation** — SPA architecture ensures instant page transitions.
-- **Optimized Asset Loading** — SVG-first approach for icons and illustrations, reducing payload size.
-- **State Isolation** — Component-level state management with React hooks for predictable data flow.
-- **Conditional Rendering** — Navbar and Footer are intelligently hidden on authentication and landing pages.
-- **Scroll Management** — Programmatic scroll-to-top on page mount with multi-timeout strategy to counteract AOS layout shifts.
-- **Accessibility Considerations** — Semantic HTML, aria-labels on interactive elements, and keyboard navigation support.
-
----
-
-## 📚 Lessons Learned
-
-Building the Etqan platform provided invaluable hands-on experience across multiple dimensions of modern front-end development:
-
-### Architecture & Design Patterns
-- **Component-Driven Architecture**: Structuring a large application (25+ pages, 30+ components) into reusable, self-contained modules reinforced the importance of composition over inheritance in React.
-- **Role-Based Routing**: Implementing dynamic routes with parameters (`:role`, `:id`) taught effective patterns for multi-user-type applications without code duplication.
-- **State Management at Scale**: Managing complex form state (multi-step validations, masked inputs, password visibility toggles) within functional components demonstrated both the power and limitations of `useState`/`useRef` hooks.
-
-### UI/UX Engineering
-- **Animation Libraries Synergy**: Combining Framer Motion (entrance/layout animations) with AOS (scroll-triggered effects) showed how multiple animation systems can coexist — while also revealing the need for careful scroll management to prevent conflicts.
-- **RTL Design Complexity**: Building a fully Arabic-language interface required deep understanding of bidirectional text rendering, mirrored layouts, and RTL-aware component libraries.
-- **Form UX Best Practices**: Implementing the date-of-birth masked input (`--/--/----` with auto-fill, backspace handling, cursor positioning, and calendar picker fallback) demonstrated the complexity of creating truly user-friendly form inputs.
-
-### E-Commerce Patterns
-- **Client-Side Cart Management**: Using `localStorage` for cart and favorites persistence provided a practical understanding of offline-first data patterns, including synchronization between pages and quantity limit enforcement.
-- **Search & Filter Architecture**: Implementing real-time search filtering across products, services, and chat conversations reinforced efficient array filtering and state derivation techniques.
-
-### Technical Depth
-- **Intersection Observer API**: Using the Intersection Observer for animated number counters on the home page provided hands-on experience with this powerful browser API for scroll-based interactions.
-- **File Handling in the Browser**: The chat system's image attachment feature (FileReader API, drag & drop events, data URLs) deepened understanding of browser-native file processing.
-- **Geolocation API**: Integrating the browser's Geolocation API with Google Maps embeds for the store's delivery feature showcased real-world location-based service implementation.
+- **تنقل بدون إعادة تحميل** — بنية SPA تضمن انتقالات فورية بين الصفحات
+- **تحميل أصول محسّن** — نهج SVG أولاً للأيقونات والرسوم لتقليل حجم البيانات
+- **عزل الحالة** — إدارة حالة على مستوى المكون باستخدام React Hooks
+- **عرض شرطي ذكي** — إخفاء Navbar وFooter تلقائياً في صفحات المصادقة والهبوط
+- **إدارة التمرير** — تمرير برمجي لأعلى الصفحة عند التحميل مع استراتيجية متعددة المؤقتات
+- **تحقق النماذج في الوقت الفعلي** — قواعد كلمة المرور تتلون لحظياً أثناء الكتابة (أخضر/أحمر)
+- **إغلاق القوائم بالنقر خارجها** — جميع القوائم المنسدلة تُغلق تلقائياً بالنقر خارج حدودها عبر `mousedown` listener
+- **صور دور مخصصة** — كل صفحة مصادقة تعرض صورة SVG مختلفة حسب نوع المستخدم مع أنيميشن تعويم لا نهائي
+- **قفل التمرير في المودال** — `document.body.style.overflow = "hidden"` عند فتح أي Modal مع استعادته عند الإغلاق
 
 ---
 
-## 🎯 Conclusions
+## 📚 الدروس المستفادة
 
-The **Etqan Platform** successfully demonstrates the viability and depth of building a comprehensive, production-quality marketplace front-end using modern React and its ecosystem. Key outcomes include:
+### الهندسة المعمارية وأنماط التصميم
+- **البنية القائمة على المكونات**: هيكلة تطبيق كبير (25+ صفحة، 30+ مكون) إلى وحدات قابلة لإعادة الاستخدام عزّز أهمية نمط التركيب في React.
+- **التوجيه المبني على الأدوار**: تنفيذ مسارات ديناميكية بمعاملات (`:role`، `:id`) علّم أنماطاً فعالة للتطبيقات متعددة أنواع المستخدمين.
+- **إدارة الحالة المعقدة**: التعامل مع حالات النماذج المعقدة (تحقق متعدد الخطوات، أقنعة إدخال، أزرار إظهار كلمة المرور) أظهر قوة وحدود Hooks.
 
-1. **Comprehensive Marketplace Architecture**: The three-sided marketplace model (Customer ↔ Craftsman ↔ Company) proves that complex multi-stakeholder platforms can be elegantly structured using React's component model and dynamic routing — serving distinct user journeys from a single, unified codebase.
+### هندسة واجهة المستخدم
+- **تناغم مكتبات الأنيميشن**: الجمع بين Framer Motion وAOS أظهر كيف يمكن لأنظمة أنيميشن متعددة التعايش — مع ضرورة إدارة التمرير بعناية لمنع التعارضات.
+- **تعقيد تصميم RTL**: بناء واجهة عربية كاملة تطلب فهماً عميقاً لعرض النص ثنائي الاتجاه والتخطيطات المعكوسة.
+- **أفضل ممارسات UX للنماذج**: تنفيذ قناع تاريخ الميلاد (`--/--/----` مع ملء تلقائي ومعالجة الحذف وتحريك المؤشر ومنتقي التقويم) أظهر تعقيد إنشاء حقول إدخال سهلة الاستخدام.
 
-2. **Rich User Experience at Scale**: With 25+ interconnected pages, animated transitions, interactive carousels, real-time chat, geolocation integration, and a full e-commerce flow, the platform demonstrates that modern front-end technologies can deliver feature-rich experiences rivaling native applications.
+### أنماط التجارة الإلكترونية
+- **إدارة السلة على جانب العميل**: استخدام localStorage لحفظ السلة والمفضلة وفّر فهماً عملياً لأنماط البيانات غير المتصلة.
+- **بنية البحث والفلترة**: تنفيذ بحث فوري عبر المنتجات والخدمات والمحادثات عزّز تقنيات فلترة المصفوفات.
 
-3. **Design System Maturity**: The hybrid styling approach (component-scoped CSS + Bootstrap grid + Tailwind utilities + custom Google Fonts) establishes a flexible and maintainable design system capable of supporting a visually cohesive, RTL-first Arabic interface with premium aesthetics.
-
-4. **Frontend-Ready for Backend Integration**: The entire application is architecturally prepared for backend integration. Authentication flows include commented API call templates, form submissions log structured data, and the chat system's mock data layer can be transparently replaced with WebSocket or REST API connections.
-
-5. **Real-World Problem Solving**: Etqan addresses a genuine market gap in the Egyptian skilled trades sector. By digitizing the craftsman discovery, hiring, and review process — and combining it with an e-commerce store and contracting services — the platform creates a unified ecosystem that benefits all stakeholders.
-
-6. **Educational Foundation**: The project serves as a comprehensive learning artifact covering virtually every core aspect of modern front-end development: SPA routing, state management, form validation, animation, responsive design, e-commerce patterns, real-time communication interfaces, geolocation, and file handling.
+### العمق التقني
+- **Intersection Observer API**: استخدامها للعدّادات المتحركة وفّر خبرة عملية بهذه الواجهة البرمجية للتفاعلات المبنية على التمرير.
+- **معالجة الملفات في المتصفح**: ميزة مرفقات الصور في المحادثة (FileReader، سحب وإفلات، data URLs) عمّقت فهم معالجة الملفات.
+- **Geolocation API**: دمج تحديد الموقع الجغرافي مع خرائط Google لميزة التوصيل.
 
 ---
 
-## ⚙️ Local Development Setup
+## 🎯 الاستنتاجات
 
-To clone and run this project locally:
+1. **بنية سوق رقمي شاملة**: النموذج ثلاثي الأطراف (عميل ↔ حرفي ↔ شركة) يثبت أن المنصات المعقدة يمكن هيكلتها بأناقة باستخدام نموذج مكونات React والتوجيه الديناميكي.
 
-1. **Clone the repository:**
+2. **تجربة مستخدم غنية**: مع 25+ صفحة متصلة وأنيميشن وسلايدر ومحادثة وتحديد موقع ومتجر إلكتروني كامل — المنصة تثبت قدرة تقنيات الفرونت إند الحديثة على تقديم تجارب غنية.
+
+3. **نضج نظام التصميم**: النهج الهجين في التنسيق (CSS مخصص + Bootstrap + Tailwind + خطوط Google) يؤسس نظام تصميم مرن يدعم واجهة عربية RTL بجماليات عالية.
+
+4. **جاهزية للربط بالباك إند**: التطبيق مُعد معمارياً للربط بالخادم — تدفقات المصادقة تتضمن قوالب API جاهزة، والنماذج تسجل بيانات منظمة.
+
+5. **حل لمشكلة حقيقية**: إتقان تعالج فجوة حقيقية في سوق الخدمات الحرفية المصري من خلال رقمنة عملية اكتشاف وتوظيف الحرفيين مع دمج متجر إلكتروني وخدمات مقاولات.
+
+6. **أساس تعليمي شامل**: المشروع يغطي كل جانب أساسي من تطوير الفرونت إند الحديث: توجيه SPA، إدارة الحالة، تحقق النماذج، أنيميشن، تصميم متجاوب، أنماط تجارة إلكترونية، محادثة فورية، تحديد موقع، ومعالجة ملفات.
+
+---
+
+## ⚙️ التشغيل المحلي
+
+1. **استنساخ المشروع:**
    ```bash
    git clone https://github.com/khaled-el-badawy/etqan.git
    cd etqan
    ```
 
-2. **Install dependencies:**
+2. **تثبيت الحزم:**
    ```bash
    npm install
    ```
 
-3. **Start the development server:**
+3. **تشغيل السيرفر المحلي:**
    ```bash
    npm run dev
    ```
 
-4. **Build for production:**
+4. **بناء نسخة الإنتاج:**
    ```bash
    npm run build
    ```
 
-5. **Preview the production build:**
-   ```bash
-   npm run preview
-   ```
-
 ---
 
-## 📂 Project Structure
+## 📂 هيكل المشروع
 
 ```
 etqan/
-├── public/
-│   └── images/              # Static assets (SVG icons, product images, user avatars, brand logos)
+├── public/images/           # الأصول الثابتة (أيقونات، صور منتجات، شعارات ماركات)
 ├── src/
-│   ├── assets/              # React-managed assets
-│   ├── components/          # 30+ React components (JSX + scoped CSS files)
-│   │   ├── Index.jsx        # Landing page with role selection
-│   │   ├── Home.jsx         # Main dashboard with hero, services, testimonials
-│   │   ├── Login.jsx        # Role-based authentication
-│   │   ├── Service.jsx      # 20+ trade specialization grid
-│   │   ├── Products.jsx     # E-commerce store with search, cart, map
-│   │   ├── Chat.jsx         # Real-time messaging interface
-│   │   ├── CraftmanProfile.jsx  # Detailed craftsman portfolio
-│   │   ├── CompanyProfile.jsx   # Company profile with services & reviews
-│   │   ├── Clientprofile.jsx    # Customer profile with history & settings
-│   │   ├── Navbar.jsx       # Dynamic navigation with role-based links
-│   │   ├── Footer.jsx       # Site-wide footer with social links
-│   │   └── ...              # Registration, orders, cart, favorites, invoice, etc.
-│   ├── App.jsx              # Root component with routing configuration
-│   ├── main.jsx             # Application entry point
-│   └── index.css            # Global styles (fonts, scrollbar, selection)
-├── index.html               # HTML entry point
-├── vite.config.js           # Vite build configuration
-├── package.json             # Dependencies and scripts
-├── eslint.config.js         # Linting configuration
-└── README.md                # This file
+│   ├── components/          # 30+ مكون React (JSX + CSS مخصص لكل مكون)
+│   │   ├── Index.jsx        # صفحة الهبوط
+│   │   ├── Home.jsx         # الصفحة الرئيسية
+│   │   ├── Service.jsx      # شبكة التخصصات الحرفية
+│   │   ├── Products.jsx     # متجر الأدوات
+│   │   ├── Chat.jsx         # واجهة المحادثة
+│   │   ├── CraftmanProfile.jsx  # ملف الحرفي
+│   │   ├── CompanyProfile.jsx   # ملف الشركة
+│   │   └── ...              # تسجيل، طلبات، سلة، فاتورة، إلخ
+│   ├── App.jsx              # المكون الرئيسي مع إعدادات التوجيه
+│   ├── main.jsx             # نقطة دخول التطبيق
+│   └── index.css            # الأنماط العامة
+├── index.html               # ملف HTML الرئيسي
+├── vite.config.js           # إعدادات Vite
+└── package.json             # التبعيات والأوامر
 ```
 
 ---
 
 <p align="center">
-  <img src="readme-assets/etqan-logo.png" alt="ETQAN Logo" width="300"/>
+  <img src="readme-assets/etqan-logo.png" alt="شعار إتقان" width="300"/>
   <br/><br/>
-  <b>صُنع بإتقان بواسطة فريق إتقان — Built with Mastery by Team Etqan</b>
+  <b>صُنع بإتقان بواسطة فريق إتقان</b>
   <br/>
-  <sub>© 2026 Etqan Platform — All Rights Reserved</sub>
+  <sub>© 2026 منصة إتقان — جميع الحقوق محفوظة</sub>
 </p>

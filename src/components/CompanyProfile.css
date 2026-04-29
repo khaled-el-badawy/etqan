@@ -769,68 +769,6 @@
   }
 }
 
-/* موبايل */
-@media (max-width: 480px) {
-  .profile-container .cover-container {
-    height: 180px;
-  }
-
-  .profile-container .profile-img {
-    width: 150px;
-    height: 150px;
-  }
-
-  .profile-container .services {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-container .reviews {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-container .stats-box {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .profile-container .divider {
-    display: none;
-  }
-
-/* Buttons */
-
-.profile-container .btn.primary {
-  background: #40798C;
-  color: white;
-  margin-right: 20%;
-  margin-bottom: -120%
-}
-
-
-.profile-container .btn-edit {
-  width: 50px;
-  font-size: 26px;
-  margin-left: 25%;
-  margin-bottom: -120%
-}
-
-  .profile-container .modal-box {
-    width: 90%;
-  }
-
-  .profile-container .section-title {
-    font-size: 24px;
-  }
-
-  .profile-container .section-p {
-    font-size: 22px;
-  }
-
-  .profile-container .stat span,
-  .profile-container .stat p {
-    font-size: 22px;
-  }
-}
 
 
 @media (max-width: 768px) {
@@ -854,13 +792,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: -90%
+    margin-bottom: -420px
   }
 .profile-container .btn-edit {
   width: 50px;
   font-size: 28px;
-  margin-left: 110px;
-   margin-bottom: -90%
+  margin-left: 22%;
+   margin-bottom: -420px
 }
   .profile-container .icon-circle {
     width: 70px;
