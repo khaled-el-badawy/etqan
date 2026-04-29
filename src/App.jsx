@@ -33,6 +33,8 @@ import ContactUs from "./components/ContactUs";
 import PageNotFound from "./components/PageNotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Admin from "./components/Admin";
+import ProtectedRoute from "./components/ProtectedRoute";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -50,6 +52,7 @@ function AppWrapper() {
   const isForgotPage = location.pathname.startsWith("/forgot-password");
   const isVerifyPage = location.pathname.startsWith("/verify-otp");
   const isNewPage = location.pathname.startsWith("/new-password");
+  const isAdminPage = location.pathname.startsWith("/admin");
 
   //  صفحات ثابتة
   const hideRoutes = [
@@ -66,6 +69,7 @@ function AppWrapper() {
     isForgotPage ||
     isVerifyPage ||
     isNewPage ||
+    isAdminPage ||
     hideRoutes.includes(location.pathname);
 
   const showNavbar = !hideNavbar;
@@ -79,7 +83,7 @@ function AppWrapper() {
         <Route path="/" element={<Index />} />
         <Route path="/index" element={<Index />} />
 
-        {/*  صفحة login الموحدة */}
+        {/* صفحة login الموحدة */}
         <Route path="/login/:role" element={<Login />} />
         <Route path="/login-otp/:role" element={<LoginOTP />} />
 
@@ -109,6 +113,15 @@ function AppWrapper() {
 
         <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
         <Route path="/contactUs" element={<ContactUs />} />
+
+        <Route 
+          path="/admin" 
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          } 
+        />
 
         {/* صفحة 404 */}
         <Route path="*" element={<PageNotFound />} />

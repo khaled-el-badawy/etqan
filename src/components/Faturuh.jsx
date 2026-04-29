@@ -11,7 +11,6 @@ const Faturuh = () => {
 
   return (
     <div className="invoice-container">
-      {/* --- 1. Hero Section  --- */}
       <div className="invoice-hero">
         <div className="hero-img-side" data-aos="fade-right">
           <img src="/images/faturuh/faturuhhero.svg" alt="Invoice Hero" />
@@ -27,7 +26,6 @@ const Faturuh = () => {
         </div>
       </div>
 
-      {/* --- 2. Users Data Section --- */}
       <div className="users-data-grid" data-aos="fade-left">
         <div className="user-info-card">
           <div className="card-top craftsman-bg">
@@ -42,7 +40,6 @@ const Faturuh = () => {
           </div>
         </div>
 
-        {/* بيانات العميل   */}
         <div className="user-info-card" data-aos="fade-left">
           <div className="card-top customer-bg">
              <img src="/images/faturuh/faturuhicon1.svg" alt="icon" />
@@ -57,7 +54,6 @@ const Faturuh = () => {
         </div>
       </div>
 
-     {/* --- Table Section --- */}
      <div className="details-section" data-aos="zoom-in">
         <div className="details-header">تفاصيل الخدمة</div>
         <table className="invoice-table">
@@ -88,22 +84,12 @@ const Faturuh = () => {
         </table>
 
         <div className="pricing-summary">
-            <div className="pricing-left">
-                <div className="price-item"><span className='label'>اجمالي الخدمات:</span> <strong className='value'>$ 1.100 جنية </strong></div>
-                <div className="price-item"><span className='label'>رسوم اضافية:</span> <strong className='value'>+ 50 جنية</strong></div>
-                <div className="price-item"><span className='label'>خصم:</span> <strong className='value'>- 100 جنية</strong></div>
-                <div className="price-item"><span className='label'>الضريبه المضافة:</span> <strong className='value'> 130 جنية</strong></div>
-            </div>
             <div className="pricing-right-box">
-                <div className="box-title">ملخص فاتورة</div>
-                <div className="box-row"><span>اجمالي الخدمات:</span> <span>1500 ج</span></div>
-                <div className="box-row"><span>رسوم الخدمة:</span> <span>30 ج</span></div>
-                <div className="box-row"><span>خصم:</span> <span>0 ج</span></div>
+              <div className="box-title">ملخص فاتورة</div>
                 <div className="total-final"><span>الاجمالي النهائي:</span> <span>1530 ج</span></div>
             </div>
         </div>
       </div>
-      {/* --- 5. Payment Methods --- */}
       <div className="payment-area" data-aos="fade-up">
         <button className="pay-title-btn">طرق الدفع</button>
         <div className="pay-methods-grid">

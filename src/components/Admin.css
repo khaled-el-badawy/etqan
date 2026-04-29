@@ -1,0 +1,340 @@
+/* =========================================
+   1. GLOBAL & CONTAINER STYLES
+   ========================================= */
+   html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.admin-container {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    background-color: #f8fafc;
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. HEADER SECTION
+   ========================================= */
+.dashboard-header-full {
+    width: 100%;
+    background: #ffffff;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-right-side-tools {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.user-icon {
+    font-size: 2.2rem;
+    color: #cbd5e1;
+}
+
+.header-icon {
+    font-size: 1.3rem;
+    color: #4a5568;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.search-wrapper-fixed {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-absolute {
+    position: absolute;
+    right: 40px;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    padding: 5px 0;
+    border-radius: 8px;
+    outline: none;
+    background: #f1f5f9;
+}
+
+.search-input-absolute.open {
+    width: 180px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 5px 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.header-left-logo-fixed img {
+    width: 110px;
+}
+
+.notification-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dot-notify {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background: #3182ce;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* =========================================
+   3. LAYOUT & SIDEBAR
+   ========================================= */
+.admin-layout {
+    display: flex;
+}
+
+.sidebar-small {
+    width: 240px;
+    background: #ffffff;
+    min-height: calc(100vh - 70px);
+    border-left: 1px solid #e2e8f0;
+    padding: 20px 0;
+}
+
+.sidebar-item {
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #64748b;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar-item.active {
+    background: #f0f7ff;
+    color: #2c5282;
+    border-right: 4px solid #2c5282;
+}
+
+.main-dashboard-large {
+    flex: 1;
+    padding: 30px 40px;
+}
+
+/* =========================================
+   4. WELCOME CARD & STATS GRID
+   ========================================= */
+.welcome-card-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+}
+
+.welcome-content h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    color: #4C8092;
+}
+
+.welcome-content p {
+    margin-top: 10px;
+    color: #000000;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-card-new {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-img-box img {
+    width: 45px;
+    height: 45px;
+}
+
+.stat-value-box h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #4C8092;
+    font-weight: 700;
+}
+
+.card-row-bottom {
+    text-align: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 10px;
+    color: #000000;
+    font-weight: 600;
+}
+
+/* =========================================
+   5. CHART SECTION
+   ========================================= */
+.chart-section {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.chart-title {
+    text-align: right;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #4C8092;
+}
+
+.chart-main-container {
+    display: flex;
+    height: 300px;
+    gap: 10px;
+    direction: ltr;
+}
+
+.chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 35px;
+    color: #a0aec0;
+    font-size: 0.85rem;
+    border-right: 1px solid #edf2f7;
+    padding-right: 10px;
+}
+
+.chart-bars-area {
+    flex: 1;
+}
+
+.bars-wrapper-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 5px;
+    direction: rtl;
+}
+
+.bars-triple {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 240px;
+}
+
+/* أنيميشن الأعمدة عند السكرول */
+.bar {
+    width: 14px;
+    border-radius: 4px 4px 0 0;
+    height: 0;
+    transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-aos="zoom-in-up"].aos-animate .bar {
+    height: var(--h) !important;
+}
+
+.bar.green { background-color: #48bb78; }
+.bar.orange { background-color: #ed8936; }
+.bar.blue { background-color: #3182ce; }
+
+.month-name {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #718096;
+    font-weight: 600;
+}
+
+/* ستايل تعريف الألوان تحت الرسم */
+.chart-legend-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 25px;
+    direction: rtl;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.dot.green { background-color: #48bb78; }
+.dot.orange { background-color: #ed8936; }
+.dot.blue { background-color: #3182ce; }
+
+/* =========================================
+   6. RESPONSIVE QUERIES
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .sidebar-small { width: 80px; }
+    .sidebar-small span { display: none; }
+}
+
+@media (max-width: 768px) {
+    .admin-layout { flex-direction: column; }
+    .sidebar-small { width: 100%; min-height: auto; flex-direction: row; display: flex; overflow-x: auto; border-left: none; border-bottom: 1px solid #e2e8f0; }
+    .sidebar-item { flex: 0 0 auto; padding: 15px 20px; }
+    .main-dashboard-large { padding: 20px; }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header-full { padding: 10px 15px; }
+    .header-user-info span { display: none; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .search-input-absolute.open { width: 130px; }
+    .bar { width: 8px; }
+    .bars-triple { gap: 2px; }
+    .chart-main-container { height: 250px; }
+}
