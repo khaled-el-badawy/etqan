@@ -89,6 +89,17 @@ const mockMessages = [
 ========================= */
 
 const Sidebar = ({ conversations, selectedChat, onSelect }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredConversations = conversations.filter((conv) => {
+    if (!searchTerm.trim()) return true;
+    const term = searchTerm.trim().toLowerCase();
+    return (
+      conv.name.toLowerCase().includes(term) ||
+      conv.lastMessage.toLowerCase().includes(term)
+    );
+  });
+
   return (
     <div className="chat-sidebar">
       <h2 className="chat-sidebar__title">Messages</h2>
@@ -99,45 +110,51 @@ const Sidebar = ({ conversations, selectedChat, onSelect }) => {
           type="text"
           className="chat-sidebar__search-input"
           placeholder="Search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
       <div className="chat-sidebar__list">
-        {conversations.map((conv) => (
-          <div
-            key={conv.id}
-            className={`chat-sidebar__item ${selectedChat?.id === conv.id ? "chat-sidebar__item--active" : ""
-              }`}
-            onClick={() => onSelect(conv)}
-          >
-            <div className="chat-sidebar__avatar-wrap">
-              <img
-                src={conv.avatar}
-                alt={conv.name}
-                className="chat-sidebar__avatar"
-              />
-              {conv.online && (
-                <span className="chat-sidebar__online-dot"></span>
-              )}
-            </div>
-
-            <div className="chat-sidebar__info">
-              <div className="chat-sidebar__row">
-                <span className="chat-sidebar__name">{conv.name}</span>
-                <span className="chat-sidebar__time">{conv.time}</span>
-              </div>
-
-              <div className="chat-sidebar__row">
-                <span className="chat-sidebar__last-msg">
-                  {conv.lastMessage}
-                </span>
-                {conv.unread > 0 && (
-                  <span className="chat-sidebar__badge">{conv.unread}</span>
+        {filteredConversations.length === 0 ? (
+          <div className="chat-sidebar__empty">لا توجد نتائج</div>
+        ) : (
+          filteredConversations.map((conv) => (
+            <div
+              key={conv.id}
+              className={`chat-sidebar__item ${selectedChat?.id === conv.id ? "chat-sidebar__item--active" : ""
+                }`}
+              onClick={() => onSelect(conv)}
+            >
+              <div className="chat-sidebar__avatar-wrap">
+                <img
+                  src={conv.avatar}
+                  alt={conv.name}
+                  className="chat-sidebar__avatar"
+                />
+                {conv.online && (
+                  <span className="chat-sidebar__online-dot"></span>
                 )}
               </div>
+
+              <div className="chat-sidebar__info">
+                <div className="chat-sidebar__row">
+                  <span className="chat-sidebar__name">{conv.name}</span>
+                  <span className="chat-sidebar__time">{conv.time}</span>
+                </div>
+
+                <div className="chat-sidebar__row">
+                  <span className="chat-sidebar__last-msg">
+                    {conv.lastMessage}
+                  </span>
+                  {conv.unread > 0 && (
+                    <span className="chat-sidebar__badge">{conv.unread}</span>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
