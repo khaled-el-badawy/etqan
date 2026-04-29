@@ -288,10 +288,22 @@ text-decoration: none;
 background:#4f7f87;
 color:white;
 border:none;
-padding:10px 16px;
+padding:12px 6px;
 border-radius:8px;
 cursor:pointer;
 margin-left:-90px;
+/* width: 100px; */
+}
+
+.products-page-container  .products-add-btn .details{
+ text-decoration: none;
+background:transparent;
+border: 2px solid #98aab7;
+ color: #396c7d;
+padding:10px 6px;
+border-radius:8px;
+cursor:pointer;
+margin-right:-150px;
 }
 
 .products-page-container .products-add-btn :hover{
@@ -461,10 +473,22 @@ text-decoration: none;
 background:#4f7f87;
 color:white;
 border:none;
-padding:10px 16px;
+padding:12px 6px;
 border-radius:8px;
 cursor:pointer;
 margin-left:-90px;
+/* width: 100px; */
+}
+
+.products-page-container .offers-add-btn .details{
+ text-decoration: none;
+background:transparent;
+border: 2px solid #98aab7;
+ color: #396c7d;
+padding:10px 6px;
+border-radius:8px;
+cursor:pointer;
+margin-right:-150px;
 }
 
 .products-page-container .offers-add-btn :hover{
@@ -577,7 +601,7 @@ color:white;
 }
 
 /* ================= CLOSE BUTTON ================= */
-.close-btn {
+.products-page-container .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -589,7 +613,7 @@ color:white;
   
 }
 
-.close-btn:hover {
+.products-page-container .close-btn:hover {
   color: rgb(218, 44, 44);
 }
 

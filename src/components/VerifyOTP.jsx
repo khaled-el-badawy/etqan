@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import "./VerifyOTP.css";
 import { motion } from "framer-motion";
@@ -10,23 +12,17 @@ function VerifyOTP() {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get("type");
-
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(60);
   const [active, setActive] = useState(true);
   const [error, setError] = useState("");
-
   const isOtpComplete = otp.every((val) => val !== "");
-
   const images = {
     customer: "/images/Frame 19.svg",
     company: "/images/Frame 20.svg",
     craftsman: "/images/Frame 18.svg",
   };
-
   const currentImage = images[role] || images.craftsman;
-
-  // الدالة المعدلة للتحقق والانتقال للصفحة الجديدة
   const handleVerify = async () => {
     const enteredOtp = otp.join("");
 

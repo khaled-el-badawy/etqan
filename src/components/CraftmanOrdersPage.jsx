@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./CraftmanOrdersPage.css";
-import { FaUser, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { FaUser, FaMapMarkerAlt, FaCalendarAlt, FaPen } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 /* =======================
    Orders Data
@@ -168,7 +169,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
    Order Card
 ======================= */
 
-function OrderCard({ order }) {
+function OrderCard({ order, setdOrderTicket }) {
   console.log(order);
 
   return (
@@ -197,7 +198,12 @@ function OrderCard({ order }) {
 
       {order.status === "inProgress" && (
         <div className="btnBox">
-          <button className="in-progress-btn">تم الانتهاء</button>
+          <button
+            className="in-progress-btn"
+            onClick={() => setdOrderTicket(order)}
+          >
+            تم الانتهاء
+          </button>
           <button className="reject-btn">إلغاء</button>
         </div>
       )}
@@ -216,11 +222,15 @@ function OrderCard({ order }) {
    Orders Grid
 ======================= */
 
-function OrdersGrid({ orders }) {
+function OrdersGrid({ orders, setdOrderTicket }) {
   return (
     <div className="orders-grid">
       {orders.map((order) => (
-        <OrderCard key={order.id} order={order} />
+        <OrderCard
+          key={order.id}
+          order={order}
+          setdOrderTicket={setdOrderTicket}
+        />
       ))}
     </div>
   );
@@ -231,8 +241,9 @@ function OrdersGrid({ orders }) {
 ======================= */
 
 function CraftmanOrdersSection() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [OrderTicket, setdOrderTicket] = useState(null);
 
+  const [activeFilter, setActiveFilter] = useState("all");
   const filteredOrders = CraftmanOrders.filter((orders) => {
     if (activeFilter === "all") return true;
     return orders.status === activeFilter;
@@ -247,8 +258,132 @@ function CraftmanOrdersSection() {
         setActiveFilter={setActiveFilter}
       />
 
-      <OrdersGrid orders={filteredOrders} />
+      <OrdersGrid orders={filteredOrders} setdOrderTicket={setdOrderTicket} />
+      {/*  modal for order tracking */}
+      <TicketModal order={OrderTicket} onClose={() => setdOrderTicket(null)} />
     </section>
+  );
+}
+/* =======================
+    Ticket Modal
+======================= */
+
+function TicketModal({ order, onClose }) {
+  const [rows, setRows] = useState([
+    { id: 1, name: "تصليح حنفية", qty: 1, price: 100 },
+  ]);
+
+  useEffect(() => {
+    if (!order) return;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [order]);
+
+  if (!order) return null;
+
+  // ================= handlers =================
+
+  const handleChange = (id, field, value) => {
+    setRows((prev) =>
+      prev.map((row) => (row.id === id ? { ...row, [field]: value } : row)),
+    );
+  };
+
+  const addRow = () => {
+    setRows((prev) => [
+      ...prev,
+      { id: Date.now(), name: "", qty: 1, price: 0 },
+    ]);
+  };
+
+  const deleteRow = (id) => {
+    setRows((prev) => prev.filter((row) => row.id !== id));
+  };
+
+  const getTotal = (row) => row.qty * row.price;
+
+  // ================= UI =================
+
+  return (
+    <div className="ticket-modal-overlay">
+      <div className="modal-content" data-aos="fade-up">
+        <h2 className="modal-title">إضافة فاتورة خدمات</h2>
+
+        {/* table header */}
+        <div className="table-header">
+          <span>#</span>
+          <span>اسم الخدمة</span>
+          <span>الكمية</span>
+          <span>السعر</span>
+          <span>إجمالي</span>
+          <span>الخيارات</span>
+        </div>
+
+        {/* rows */}
+        {rows.map((row, index) => (
+          <div className="table-row" key={row.id}>
+            <span>{index + 1}</span>
+
+            <input
+              value={row.name}
+              onChange={(e) => handleChange(row.id, "name", e.target.value)}
+              placeholder="اكتب اسم"
+            />
+
+            <input
+              type="number"
+              value={row.qty}
+              onChange={(e) => handleChange(row.id, "qty", +e.target.value)}
+            />
+
+            <input
+              type="number"
+              value={row.price}
+              onChange={(e) => handleChange(row.id, "price", +e.target.value)}
+            />
+
+            <span>{getTotal(row)} جنيه</span>
+
+            <div className="actions">
+              {/* <button onClick={() => handleChange(row.id, "name", row.name)}>
+                {" "}
+                <FaPen />
+                تعديل
+              </button> */}
+              <button onClick={() => deleteRow(row.id)}>
+                {" "}
+                <MdDelete />
+                حذف
+              </button>
+            </div>
+          </div>
+        ))}
+
+        {/* add row */}
+        <div className="add-row-section">
+        <button className="add-btn" onClick={addRow}>
+          + إضافة خدمة أخرى
+        </button>
+        <div className="total-amount">
+          <span>المبلغ الإجمالي: </span>
+          <span>
+            {rows.reduce((sum, row) => sum + getTotal(row), 0)} جنيه
+          </span>
+          </div>
+        </div>
+        {/* footer */}
+        <div className="modal-footer">
+          <button className="confirm-btn">تأكيد واصدار فاتورة</button>
+          <button className="cancel-btn" onClick={onClose}>
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 

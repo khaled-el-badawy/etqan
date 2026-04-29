@@ -22,6 +22,8 @@ const Footer = () => {
     "/CartPage",
     "/FavoritesPage",
     "/Company",
+    "/Companies",
+    "/providers",
 
    
   ];

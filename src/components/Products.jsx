@@ -27,21 +27,21 @@ export default function Products() {
 });
 
   const products = [
-    { id: 1, name: "شنيور شحن DeWalt احترافي مع شنطة وبطارية وشاحن ", price: "7938", oldPrice: "9000", rating: "4.9",  discount: "19%", image: "images/download-removebg-preview 3.svg" },
-    { id: 2, name: "مفتاح صواميل كهربائي شحن مع ملحقات", price: "2160", oldPrice: "2400", rating: "4.9",  discount: "10%", image: "images/download-removebg-preview 4.svg" },
-    { id: 3, name: "طقم مفاتيح إنجليزي احترافي - مقاسات متعددة", price: "1050", oldPrice: "1500", rating: "4.9",  discount: "30%", image: "images/download-removebg-preview 5.svg" },
-    { id: 4, name: "طقم زراديات knipex احترافي 3 قطع", price: "3240", oldPrice: "4000", rating: "4.9",  discount: "19%", image: "images/download-removebg-preview 12.svg" },
-    { id: 5, name: "طقم شنيور makita متكامل مع شنطة وشاحن ", price: "9990", oldPrice: "11100", rating: "4.9",  discount: "10%", image: "images/download-removebg-preview 13.svg" },
-    { id: 6, name: "شنيور فك وربط milwaukee لاسلكي ببطارية ", price: "5950", oldPrice: "8500", rating: "4.9",  discount: "30%", image: "images/download-removebg-preview 14.svg" }
+    { id: 1, name: "شنيور شحن DeWalt احترافي مع شنطة وبطارية وشاحن ", price: "7938", oldPrice: "9000", rating: "0",  discount: "19%", image: "images/download-removebg-preview 3.svg" },
+    { id: 2, name: "مفتاح صواميل كهربائي شحن مع ملحقات", price: "2160", oldPrice: "2400", rating: "0",  discount: "10%", image: "images/download-removebg-preview 4.svg" },
+    { id: 3, name: "طقم مفاتيح إنجليزي احترافي - مقاسات متعددة", price: "1050", oldPrice: "1500", rating: "0",  discount: "30%", image: "images/download-removebg-preview 5.svg" },
+    { id: 4, name: "طقم زراديات knipex احترافي 3 قطع", price: "3240", oldPrice: "4000", rating: "0",  discount: "19%", image: "images/download-removebg-preview 12.svg" },
+    { id: 5, name: "طقم شنيور makita متكامل مع شنطة وشاحن ", price: "9990", oldPrice: "11100", rating: "0",  discount: "10%", image: "images/download-removebg-preview 13.svg" },
+    { id: 6, name: "شنيور فك وربط milwaukee لاسلكي ببطارية ", price: "5950", oldPrice: "8500", rating: "0",  discount: "30%", image: "images/download-removebg-preview 14.svg" }
   ];
 
   const offers = [
-    { id: 7, name: "شنيور تكسير وتخريم (Rotary Hammer)", price: "2310", oldPrice: "4200", rating: "4.9",  discount: "45%", image: "images/download-removebg-preview 6.svg" },
-    { id: 8, name: "منشار زاوية كهربائي لقص الخشب والالمنيوم", price: "6440", oldPrice: "9200", rating: "4.9", discount: "30%", image: "images/download-removebg-preview 7.svg" },
-    { id: 9, name: "طقم مفاتيح ربط ثابتة احترافي 12 - 24 قطعة", price: "440", oldPrice: "1100", rating: "4.9",  discount: "60%", image: "images/download-removebg-preview 8.svg" },
-    { id: 10, name: "طقم أزاميل خشب احترافي (6 قطع) مع حقيبة وحجر سن", price: "377", oldPrice: "650", rating: "4.9",  discount: "42%", image: "images/download-removebg-preview 9.svg" },
-    { id: 11, name: "طقم كماشة ومفتاح ربط كنيبكس مع جراب حزام", price: "618", oldPrice: "950", rating: "4.9",  discount: "35%", image: "images/download-removebg-preview 10.svg" },
-    { id: 12, name: "منشار أركت يدوي (صغير) مع طقم نصلات احتياطية", price: "125", oldPrice: "250", rating: "4.9",  discount: "50%", image: "images/download-removebg-preview 11.svg" }
+    { id: 7, name: "شنيور تكسير وتخريم (Rotary Hammer)", price: "2310", oldPrice: "4200", rating: "0",  discount: "45%", image: "images/download-removebg-preview 6.svg" },
+    { id: 8, name: "منشار زاوية كهربائي لقص الخشب والالمنيوم", price: "6440", oldPrice: "9200", rating: "0", discount: "30%", image: "images/download-removebg-preview 7.svg" },
+    { id: 9, name: "طقم مفاتيح ربط ثابتة احترافي 12 - 24 قطعة", price: "440", oldPrice: "1100", rating: "0",  discount: "60%", image: "images/download-removebg-preview 8.svg" },
+    { id: 10, name: "طقم أزاميل خشب احترافي (6 قطع) مع حقيبة وحجر سن", price: "377", oldPrice: "650", rating: "0",  discount: "42%", image: "images/download-removebg-preview 9.svg" },
+    { id: 11, name: "طقم كماشة ومفتاح ربط كنيبكس مع جراب حزام", price: "618", oldPrice: "950", rating: "0",  discount: "35%", image: "images/download-removebg-preview 10.svg" },
+    { id: 12, name: "منشار أركت يدوي (صغير) مع طقم نصلات احتياطية", price: "125", oldPrice: "250", rating: "0",  discount: "50%", image: "images/download-removebg-preview 11.svg" }
   ];
 
   const brands = [
@@ -348,7 +348,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
                      <FaHeart
                         onClick={() => {
                           toggleFavorite(product);
-                          // navigate("/FavoritesPage");
+                        
                         }}
                                style={{
                                  cursor: "pointer",
@@ -369,6 +369,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
                     </div>
                     <div className="products-add-btn">
                       <button className="link" onClick={() => addToCart(product)}>إضافة إلى السلة</button>
+                      <button className="details" onClick={() => navigate("/ProductsDetails")}>تفاصيل المنتج</button>
                     </div>
                   </div>
                 ))}
@@ -432,6 +433,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
                   </div>
                   <div className="offers-add-btn">
                     <button className="link" onClick={() => addToCart(offer)}>إضافة إلى السلة</button>
+                    <button className="details" onClick={() => navigate("/ProductsDetails")}>تفاصيل المنتج</button>
                   </div>
                 </div>
               ))}
