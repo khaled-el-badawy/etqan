@@ -5,7 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -45,9 +45,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Admin from "./components/Admin";
 import ProtectedRoute from "./components/ProtectedRoute";
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function AppWrapper() {
   const location = useLocation();

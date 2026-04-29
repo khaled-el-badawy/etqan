@@ -9,14 +9,12 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Footer from './Footer';
 
-// استيراد الصفحات
 import Dashcustomer from './Dashcustomer';
-import Dashartisans from './Dashartisans'; // استيراد صفحة الحرفيين الجديدة
+import Dashartisans from './Dashartisans'; 
 import Dashproducts from './Dashproducts'; 
 
 const Admin = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  // الحالة المسؤولة عن التنقل بين الصفحات
   const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
@@ -52,7 +50,6 @@ const Admin = () => {
     { month: 'July', values: [85, 35, 20] },
   ];
 
-  // دالة مساعدة لعرض المحتوى بناءً على الحالة
   const renderContent = () => {
     switch (currentPage) {
       case 'customers':
@@ -164,7 +161,6 @@ const Admin = () => {
             <FaUsers /> <span>العملاء</span>
           </div>
 
-          {/* تعديل زر الحرفيين هنا */}
           <div 
             className={`sidebar-item ${currentPage === 'artisans' ? 'active' : ''}`}
             onClick={() => setCurrentPage('artisans')}
