@@ -161,7 +161,7 @@
   padding-top: 20px;
   margin: 10px auto;
   margin-bottom: 20px;
-  /* max-width: 1100px; */
+  max-width: 1200px;
 }
 
 @media (max-width: 1024px) {
@@ -284,20 +284,22 @@
   font-size: 20px;
   cursor: pointer;
   background: none;
-  
+
   text-decoration: none;
   text-align: center;
 }
-
 
 .customer-orders-container .customer-order-card .btnBox .link:first-child {
   width: 50%;
   background-color: #40798c;
   color: white;
 }
-.customer-orders-container .customer-order-card .btnBox .link:first-child:hover {
+.customer-orders-container
+  .customer-order-card
+  .btnBox
+  .link:first-child:hover {
   background-color: #305f6e;
-} 
+}
 
 .customer-orders-container .customer-order-card .btnBox .link:last-child {
   flex: 1;
@@ -322,39 +324,35 @@
 }
 .order-modal-overlay .modal-content {
   background-color: white;
-
   width: 600px;
-  min-height: 500px;
-  min-height: 500px;
+  max-width: 90%;
+  /* min-height: 500px; */
+  height: 500px;
   padding: 20px 35px;
   border-radius: 15px;
 }
 .order-modal-overlay .modal-content .modal-header {
   display: flex;
-  
+  /* align-items: center; */
 }
 .order-modal-overlay .modal-content .modal-header img.modal-icon {
   width: 30px;
 }
-.order-modal-overlay .modal-content .modal-header h3 {
+.order-modal-overlay .modal-content .modal-header .modal-title {
   color: #40798c;
   font-size: 26px;
   margin-right: 10px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .order-modal-overlay .modal-content .modal-progress {
-  /* background-color: rgba(179, 146, 39, 0.733); */
   margin: 10px auto;
   width: 90%;
-
-  height: fit-content;
-
+  height: 100%;
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
   position: relative;
-  /* -------------------- */
-  gap: 50px;
 }
 .order-modal-overlay .modal-content .modal-progress::before {
   content: "";
@@ -362,23 +360,39 @@
   top: 50%;
   right: -5px;
   width: 2px;
-  height: 90%;
+  height: 85%;
   background-color: #28a745;
-
   transform: translateY(-50%);
 }
 
 .order-modal-overlay .modal-content .modal-progress .step {
-  /* border: 1px solid black; */
   font-size: 20px;
   display: flex;
   align-items: center;
-  /* gap: 10px; */
 }
-.order-modal-overlay .modal-content .modal-progress .step span {
+/*  */
+.order-modal-overlay .modal-content .modal-progress .step .step-checker {
   position: relative;
   right: -14px;
 }
+
+.order-modal-overlay .modal-content .modal-progress .step .step-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+.order-modal-overlay
+  .modal-content
+  .modal-progress
+  .step
+  .step-text
+  .step-date {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
 .order-modal-overlay .modal-content .modal-progress .step .img-container {
   background-color: #28a745;
   width: fit-content;
@@ -402,7 +416,6 @@
   width: 10px;
 }
 
-
 .order-modal-overlay .modal-content button {
   margin-top: 20px;
   border: none;
@@ -412,8 +425,8 @@
   font-size: 15px;
   font-weight: bold;
   width: 150px;
-  height: 40px;
-  
+  height: 60px;
+
   align-self: end;
   border-radius: 50px;
   display: flex;

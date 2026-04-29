@@ -1,0 +1,187 @@
+.company-container {
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  /* background: #f6f7fb; */
+  direction: rtl;
+}
+/* HEADER */
+.company-container .transport-header {
+  padding: 20px 20px 10px;
+}
+
+.company-container .header-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* .title-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+.company-container .title-section h1 {
+  font-size: 64px;
+  /* font-weight: 700; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #75a5b3;
+  /* margin: 0; */
+  text-align: center;
+}
+
+/* .title-section .icon {
+  font-size: 38px;
+  
+} */
+
+.company-container .subtitle {
+  margin: 25px 150px;
+  text-align: center;
+  font-size: 28px;
+  color: #6c6c6c;
+  line-height: 1.6;
+  max-width: 600px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+/* Filters */
+.company-container .filters {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+  color: #888;
+}
+
+.company-container .filters select {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* Card */
+.company-container .company-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+  width: 60%;
+  border-radius: 20px;
+  margin: 20px 20%;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* LEFT */
+.company-container .left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.company-container .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.company-container .circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.company-container .icon {
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* CONTENT */
+.company-container .content {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.company-container .content h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.company-container .content p {
+  font-size: 14px;
+  color: #777;
+  margin: 8px 0;
+  max-width: 500px;
+}
+
+.company-container .content span {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Arrow */
+.company-container .arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  margin: 0 0 -160px -40px;
+}
+
+/* COLORS */
+
+/* Blue */
+.company-container .company-card.blue {
+  background: linear-gradient(135deg, #c7d2fe, #eef2ff);
+}
+.company-container .company-card.blue .dot {
+  background: #4f46e5;
+}
+.company-container .company-card.blue .circle {
+  border-color: #4f46e5;
+}
+.company-container .company-card.blue .arrow {
+  background: #655eef;
+}
+
+/* Purple */
+.company-container .company-card.purple {
+  background: linear-gradient(135deg, #e9d5ff, #faf5ff);
+}
+.company-container .company-card.purple .dot {
+  background: #a855f7;
+}
+.company-container .company-card.purple .circle {
+  border-color: #a855f7;
+}
+.company-container .company-card.purple .arrow {
+  background: #a855f7;
+}
+
+/* Pink */
+.company-container .company-card.pink {
+  background: linear-gradient(135deg, #fecdd3, #fff1f2);
+}
+.company-container .company-card.pink .dot {
+  background: #f43f5e;
+}
+.company-container .company-card.pink .circle {
+  border-color: #f43f5e;
+}
+.company-container .company-card.pink .arrow {
+  background: #f74663;
+}

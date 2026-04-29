@@ -39,6 +39,7 @@ import OrderDetails from "./components/OrderDetails";
 import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
 import ContactUs from "./components/ContactUs";
+import Chat from "./components/Chat";
 import PageNotFound from "./components/PageNotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -118,7 +119,8 @@ function AppWrapper() {
 
         <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
         <Route path="/contactUs" element={<ContactUs />} />
-
+        <Route path="/Chat" element={<Chat />} />
+        {/* صفحة 404 */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 

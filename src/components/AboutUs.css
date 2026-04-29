@@ -1,61 +1,61 @@
 /* ///////////////////////////// 1.حرفه تصنع باتقان /////////////////////*/
-  .about-page{
-    margin-bottom: -210px;
-  }
-  .about-page .hero-top-section {
-  background: linear-gradient(60deg, #FFFFFF 22%,  #75A5B3 100%);
+.about-page {
+  margin-bottom: -210px;
+}
+
+.about-page .hero-top-section {
+  background: linear-gradient(60deg, #FFFFFF 22%, #75A5B3 100%);
   padding: 0;
-  margin-top:0;
-  
+  margin-top: 0;
   width: 100%;
   min-height: 550px;
   display: flex;
   align-items: center;
   overflow: hidden;
   margin-top: -60px;
-  }
-  
-  .about-page .hero-top-container {
+}
+
+.about-page .hero-top-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 90%;
   margin: 0 auto;
   direction: rtl;
-  }
-  
-  .about-page .hero-top-image {
+}
+
+.about-page .hero-top-image {
   flex: 1;
   text-align: right;
-  margin-left: -100px ;
-  }
-  
-  .about-page .hero-top-image img {
+  margin-left: -100px;
+}
+
+.about-page .hero-top-image img {
   max-width: 100%;
   height: auto;
-  margin-right: 100px ;
+  margin-right: 100px;
   margin-top: 10px;
-  }
-  
-  .about-page .hero-top-text {
+}
+
+.about-page .hero-top-text {
   flex: 1;
   margin-top: 50px;
   text-align: left;
-  margin-right: 160px ;
-  }
-  
-  .about-page .hero-title {
+  margin-right: 160px;
+}
+
+.about-page .hero-title {
   font-family: "El Messiri", sans-serif;
-  color: #40798C; 
+  color: #40798C;
   text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.194);
   font-size: 46px;
   font-weight: 0;
-  margin-top: -50px; 
+  margin-top: -50px;
   margin-bottom: 50px;
   margin-left: 150px;
-  }
-  
-  .about-page .hero-subtitle {
+}
+
+.about-page .hero-subtitle {
   font-family: "El Messiri", sans-serif;
   color: rgba(0, 0, 0, 0.788);
   font-size: 30px;
@@ -63,55 +63,56 @@
   margin-left: 140px;
   font-weight: 0;
   margin-right: -30px;
-  }
- /* //////////////////////////// من نحن - .2. //////////////////////////*/
+}
+
+/* //////////////////////////// من نحن - .2. //////////////////////////*/
 .about-page .about-section {
   padding: 60px 70px 0px 0;
-  direction: rtl; 
+  direction: rtl;
   font-family: "El Messiri", sans-serif;
   background-color: #ffffff;
   overflow: hidden;
-  min-height: auto; 
+  min-height: auto;
   display: flex;
   flex-direction: column;
-  }
-  
-  .about-page .about-title {
+}
+
+.about-page .about-title {
   text-align: center;
-  color: #4a7c8c; 
+  color: #4a7c8c;
   font-size: 60px;
   margin-bottom: 50px;
   font-weight: 10;
   width: 100%;
-  }
-  
-  .about-page .about-container {
+}
+
+.about-page .about-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  flex-direction: row-reverse; 
-  }
-  
-  .about-page .about-image {
+  flex-direction: row-reverse;
+}
+
+.about-page .about-image {
   flex: 1;
   display: flex;
   justify-content: center;
   margin-left: 50px;
-  }
-  
-  .about-page .about-image img {
+}
+
+.about-page .about-image img {
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.05));
-  }
-  
-  .about-page .about-content {
+  filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.05));
+}
+
+.about-page .about-content {
   flex: 1.2;
   text-align: right;
-  }
-  
-  .about-page .about-content h3 {
+}
+
+.about-page .about-content h3 {
   color: #000000;
   font-size: 1.9rem;
   line-height: 1.7;
@@ -119,40 +120,40 @@
   font-weight: 800;
   text-align: center;
   font-family: "El Messiri", sans-serif;
-  }
-  
-  .about-page .about-content p {
+}
+
+.about-page .about-content p {
   color: #373737;
   font-size: 1.60rem;
   line-height: 1.8;
   margin-bottom: 20px;
   text-align: center;
   font-family: "El Messiri", sans-serif;
-  }
-  
-  .about-page .highlight-text {
+}
+
+.about-page .highlight-text {
   color: #444;
   text-align: right;
-  }
-  /*  /////////////////// لماذا تختار موقعنا - .3.//////////////////// */
+}
+
+/* /////////////////// لماذا تختار موقعنا - .3.//////////////////// */
 .about-page .features-title {
   text-align: center;
   font-family: "Lateef", sans-serif;
   color: #4a7c8c;
   font-size: 3.2rem;
-  margin-top: 60px; 
-  margin-bottom: 40px; 
+  margin-top: 60px;
+  margin-bottom: 40px;
   font-weight: 500;
 }
 
 .about-page .features-outer-wrapper {
-  background-color: #f1f1f3c7; 
+  background-color: #f1f1f3c7;
   padding: 60px 10%;
-  border-radius: 20px; 
-  margin: 0 5%; 
+  border-radius: 20px;
+  margin: 0 5%;
   margin-bottom: 220px;
 }
-
 
 .about-page .features-container {
   display: grid;
@@ -162,18 +163,17 @@
   row-gap: 55px;
 }
 
-
 .about-page .feature-card {
-  background: #ffffff; 
+  background: #ffffff;
   padding: 30px 20px;
   border-radius: 15px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.452); 
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.452);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   width: 200px;
-  height: 240px;
+  height: auto;
   margin-right: 60px;
 }
 
@@ -205,16 +205,16 @@
   font-size: 0.95rem;
   line-height: 1.6;
 }
+
 /* /////////////////////////////////رؤيتنا.4 /////////////////////////*/
 .about-page .vision-section {
   font-family: "El Messiri", sans-serif;
   padding: 230px 0;
   direction: rtl;
-  background-color: #fff; 
+  background-color: #fff;
   overflow: hidden;
   margin-top: -230px;
 }
-
 
 .about-page .vision-header-title {
   text-align: center;
@@ -222,7 +222,6 @@
   font-size: 2.94rem;
   margin-bottom: 80px;
   margin-top: -150px;
-  
 }
 
 .about-page .vision-wrapper {
@@ -235,12 +234,11 @@
   padding: 0 20px;
 }
 
-
 .about-page .vision-list-side {
   flex: 1.2;
   display: flex;
   flex-direction: column;
-  gap: 40px; 
+  gap: 40px;
 }
 
 .about-page .vision-item-row {
@@ -248,7 +246,6 @@
   align-items: flex-start;
   gap: 25px;
 }
-
 
 .about-page .number-container {
   display: flex;
@@ -269,15 +266,14 @@
   justify-content: center;
   font-weight: bold;
   z-index: 2;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
-
 
 .about-page .line-connector {
   position: absolute;
-  top: 42px; 
+  top: 42px;
   width: 3px;
-  height: 90px; 
+  height: 90px;
   background-color: #5a8a9d;
   z-index: 1;
 }
@@ -303,118 +299,77 @@
   margin-right: 240px;
 }
 
- @media (max-width: 768px) {
-  /* // 1.(حرفه تصنع باتقان */
-  .about-page .hero-top-section {
-    padding: 20px 0 60px 0; 
-    display: block; 
-    margin: 0;
-    min-height: 0;
-  }
-  
-  .about-page .hero-top-container {
-    flex-direction: column; 
-    gap: 30px;
-    text-align: center;
-  }
-  
-  .about-page .hero-top-image {
-    width: 100%;
-    order: 1; 
-    text-align: center;
-  }
-  
-  .about-page .hero-top-image img {
-    max-width: 280px;
-    margin-right: -100px;
-  }
-  
-  .about-page .hero-top-text {
-    width: 100%;
-    order: 2; 
-    text-align: center;
-    padding: 0 10px;
-    
-  }
-  
-  .about-page .hero-title {
-    font-size: 32px ; 
-    margin-bottom: 15px;
-  }
-  
-  .about-page .hero-subtitle-container {
-    max-width: 100% ; 
-    margin: 0 auto;
-  }
-  
-  .about-page .hero-subtitle {
-    font-size: 20px ;
-    line-height: 1.5;
-  }
-  /* ////  من نحن - .2. ////// */
+@media (max-width: 1224px) {
+  .about-page .hero-top-container,
   .about-page .about-container {
     flex-direction: column; 
-    gap: 30px;
-    margin-bottom: 140px;
-    }
-  
-    .about-page .about-section {
-    padding: 50px 5%;
-    }
-  
-    .about-page .about-content {
     text-align: center;
-    }
+  }
+
+  .about-page .hero-top-image, 
+  .about-page .about-image { 
+    order: 1; 
+    margin: 0; 
+  }
+
+  .about-page .hero-top-image img 
+  { 
+    margin-right: 0;
+    margin-top: 50px; 
+  }
+
+  .about-page .hero-top-text, 
+  .about-page .about-content { 
+    order: 2; 
+    margin: 0; 
+    text-align: center;
+  }
+
+  .about-page .hero-title, 
+  .about-page .hero-subtitle { 
+    margin: 20px 0; 
+    font-size: 34px; 
+    text-align: center; 
+  }
+  .about-page .features-container {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .about-page .feature-card {
+    margin-right: 0;
+    width: 200px;
+  }
+
+  .about-page .vision-image-side img { margin-right: 0; }
+}
+
+@media (max-width: 768px) {
+.about-page .about-section {
+    padding: 40px 20px;}
+  .about-page .about-image {
+    margin-left: 0 ;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   
-    .about-page .about-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    }
-/* //////////// لماذا تختار موقعنا - .3. /////////////////     */
-.about-page .features-title{
-  margin-top: -150px;
-}
-.about-page .features-container { 
-  grid-template-columns: 1fr;
-  /* margin-right: 70px; */
- }
-  .about-page .features-outer-wrapper {
-  padding: 40px 5%; 
-  margin: 1 0%;
-   }
-/* ///////////* /////////////////////////////////رؤيتنا.4 /////////////////////////*/
-.about-page .vision-wrapper {
-  flex-direction: column; 
-  align-items: center;
-  gap: 30px;
+  .about-page .vision-image-side img {
+    margin-right: 0 ;
+    margin: 0 auto;
+  }
+
+  .about-page .about-title { font-size: 40px; }
+  .about-page .features-container { grid-template-columns: repeat(2, 1fr) ; }
+  .about-page .vision-wrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .about-page .vision-header-title { font-size: 2rem; }
+  .about-page .about-content h3 { font-size: 1.5rem; }
 }
 
-.about-page .vision-header-title {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-}
-
-.about-page .vision-image-side {
-  order: 1; 
-  margin-bottom: 20px;
- margin-left:190px ; 
-}
-
-.about-page .vision-image-side img {
-  max-width: 300px;
-}
-
-.about-page .vision-list-side {
-  order: 2;
-  width: 100%;
-}
-
-.about-page .text-content {
-  font-size: 1rem;
-}
-
-.about-page .line-connector {
-  height: 60px; 
-}
-
+@media (max-width: 480px) {
+.about-page .features-container { grid-template-columns: repeat(1, 1fr); }
 }
