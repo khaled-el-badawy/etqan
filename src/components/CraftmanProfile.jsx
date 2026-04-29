@@ -17,7 +17,7 @@ import { BsPin } from "react-icons/bs";
 import { ImSpinner3 } from "react-icons/im";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { PiScrewdriverFill } from "react-icons/pi";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 /* =======================
@@ -339,6 +339,187 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   //  عشان نتحكم في اظهار تأكيد كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  //  عشان نتحكم في تاريخ الميلاد في نموذج تعديل الملف الشخصي مع ماسك DD/MM/YYYY
+  const DOB_MASK = "--/--/----";
+  const [dob, setDob] = useState("");
+  const [dobFocused, setDobFocused] = useState(false);
+  const [dobError, setDobError] = useState("");
+  const dobRef = React.useRef(null);
+  const dobDateRef = React.useRef(null);
+
+  // حساب أقصى تاريخ مسموح (العمر لازم يكون 18 سنة على الأقل)
+  const getMaxDateForAge18 = () => {
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+    const yyyy = maxDate.getFullYear();
+    const mm = String(maxDate.getMonth() + 1).padStart(2, "0");
+    const dd = String(maxDate.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  };
+
+  // استخراج الأرقام فقط من قيمة الماسك
+  const getDigitsFromMask = (masked) => masked.replace(/[^0-9]/g, "");
+
+  // بناء قيمة الماسك من الأرقام المدخلة
+  const buildMaskedValue = (digits) => {
+    const slots = [0, 1, 3, 4, 6, 7, 8, 9]; // مواقع الأرقام في الماسك (--/--/----)
+    const mask = DOB_MASK.split("");
+    for (let i = 0; i < digits.length && i < slots.length; i++) {
+      mask[slots[i]] = digits[i];
+    }
+    return mask.join("");
+  };
+
+  // حساب موقع الكيرسور بناءً على عدد الأرقام المدخلة
+  const getCursorPosition = (digitCount) => {
+    const slots = [0, 1, 3, 4, 6, 7, 8, 9];
+    if (digitCount >= slots.length) return 10;
+    return slots[digitCount];
+  };
+
+  // ضبط موقع الكيرسور في الإنبوت
+  const setCursorPos = (pos) => {
+    setTimeout(() => {
+      if (dobRef.current) {
+        dobRef.current.setSelectionRange(pos, pos);
+      }
+    }, 0);
+  };
+
+  // التعامل مع إدخال تاريخ الميلاد بتنسيق --/--/---- مع ملء الأرقام تدريجياً
+  const handleDobChange = (e) => {
+    // الحصول على الحرف اللي المستخدم كتبه فعلاً
+    const typed = e.nativeEvent.data;
+    // لو الحرف مش رقم أو مفيش حرف (مثلاً delete) — نتجاهل
+    if (!typed || !/^[0-9]$/.test(typed)) {
+      // نرجع القيمة القديمة عشان نمنع أي تغيير غير مرغوب
+      const currentDisplay = dob || DOB_MASK;
+      setDob(currentDisplay);
+      const oldDigits = getDigitsFromMask(currentDisplay);
+      setCursorPos(getCursorPosition(oldDigits.length));
+      return;
+    }
+
+    const currentDisplay = dob || DOB_MASK;
+    const oldDigits = getDigitsFromMask(currentDisplay);
+
+    // لو وصلنا لأقصى عدد أرقام (8) — نتجاهل
+    if (oldDigits.length >= 8) {
+      setDob(currentDisplay);
+      setCursorPos(10);
+      return;
+    }
+
+    // نضيف الرقم الجديد للأرقام الموجودة
+    const resultDigits = oldDigits + typed;
+    const masked = buildMaskedValue(resultDigits);
+    setDob(masked);
+
+    const cursorPos = getCursorPosition(resultDigits.length);
+    setCursorPos(cursorPos);
+
+    // التحقق من صحة التاريخ عند إدخال التاريخ الكامل
+    validateDob(resultDigits);
+  };
+
+  // التعامل مع مفتاح Backspace لحذف آخر رقم
+  const handleDobKeyDown = (e) => {
+    if (e.key === "Backspace") {
+      e.preventDefault();
+      const currentDisplay = dob || DOB_MASK;
+      const digits = getDigitsFromMask(currentDisplay);
+      if (digits.length > 0) {
+        const newDigits = digits.slice(0, -1);
+        if (newDigits.length === 0) {
+          setDob(DOB_MASK);
+        } else {
+          const masked = buildMaskedValue(newDigits);
+          setDob(masked);
+        }
+        const cursorPos = getCursorPosition(newDigits.length);
+        setCursorPos(cursorPos);
+        validateDob(newDigits);
+      }
+    }
+  };
+
+  // عند الضغط على الحقل، نعرض الماسك ونحرك الكيرسور لأول خانة فاضية
+  const handleDobFocus = () => {
+    setDobFocused(true);
+    if (!dob) {
+      setDob(DOB_MASK);
+    }
+    const currentDisplay = dob || DOB_MASK;
+    const digits = getDigitsFromMask(currentDisplay);
+    const cursorPos = getCursorPosition(digits.length);
+    setCursorPos(cursorPos);
+  };
+
+  // عند مغادرة الحقل، لو مفيش أرقام نرجع للحالة الفاضية (placeholder)
+  const handleDobBlur = () => {
+    setDobFocused(false);
+    const currentDisplay = dob || DOB_MASK;
+    const digits = getDigitsFromMask(currentDisplay);
+    if (digits.length === 0) {
+      setDob("");
+    }
+  };
+
+  // التعامل مع اختيار تاريخ من الـ calendar (date picker)
+  const handleDatePickerChange = (e) => {
+    const dateValue = e.target.value; // YYYY-MM-DD
+    if (!dateValue) return;
+    const [yyyy, mm, dd] = dateValue.split("-");
+    const digits = dd + mm + yyyy;
+    const masked = buildMaskedValue(digits);
+    setDob(masked);
+    validateDob(digits);
+  };
+
+  // فتح الـ calendar عند الضغط على أيقونة التقويم
+  const openDatePicker = () => {
+    if (dobDateRef.current) {
+      dobDateRef.current.showPicker();
+    }
+  };
+
+  // التحقق من صحة التاريخ مع شرط العمر 18 سنة
+  const validateDob = (digits) => {
+    if (digits.length === 8) {
+      const day = parseInt(digits.slice(0, 2), 10);
+      const month = parseInt(digits.slice(2, 4), 10);
+      const year = parseInt(digits.slice(4, 8), 10);
+      const currentYear = new Date().getFullYear();
+
+      if (month < 1 || month > 12) {
+        setDobError("الشهر يجب أن يكون بين 01 و 12");
+      } else if (day < 1 || day > 31) {
+        setDobError("اليوم يجب أن يكون بين 01 و 31");
+      } else if (year < 1900 || year > currentYear) {
+        setDobError(`السنة يجب أن تكون بين 1900 و ${currentYear}`);
+      } else {
+        const dateObj = new Date(year, month - 1, day);
+        if (
+          dateObj.getFullYear() !== year ||
+          dateObj.getMonth() !== month - 1 ||
+          dateObj.getDate() !== day
+        ) {
+          setDobError("تاريخ غير صالح");
+        } else {
+          // التحقق من شرط العمر (18 سنة على الأقل)
+          const today = new Date();
+          const age18Date = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+          if (dateObj > age18Date) {
+            setDobError("يجب أن يكون عمرك 18 سنة على الأقل");
+          } else {
+            setDobError("");
+          }
+        }
+      }
+    } else {
+      setDobError("");
+    }
+  };
 
   /////////////////////////////////
   // عشان نتحقق إذا كانت كلمة السر الجديدة وتأكيدها متطابقين ولا لأ
@@ -396,7 +577,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (passwordsNotMatch || emailError || phoneError) {
+    if (passwordsNotMatch || emailError || phoneError || dobError) {
       return;
     }
 
@@ -496,7 +677,38 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
           <div className="form-group top">
             <h3>البيانات الشخصية</h3>
             <input type="text" id="name" placeholder="الاسم" />
-            <input type="tel" id="age" placeholder="العمر" />
+            <div className="dob-field-wrapper">
+              <input
+                type="text"
+                id="dob"
+                className="dob-input"
+                ref={dobRef}
+                placeholder="تاريخ الميلاد"
+                value={dob}
+                onChange={handleDobChange}
+                onKeyDown={handleDobKeyDown}
+                onFocus={handleDobFocus}
+                onClick={handleDobFocus}
+                onBlur={handleDobBlur}
+                inputMode="numeric"
+                autoComplete="off"
+              />
+              {/* أيقونة التقويم على يسار الحقل */}
+              <span className="dob-calendar-icon" onClick={openDatePicker}>
+                <FaCalendarAlt />
+              </span>
+              {/* حقل التاريخ المخفي للـ calendar picker */}
+              <input
+                type="date"
+                className="dob-hidden-date"
+                ref={dobDateRef}
+                onChange={handleDatePickerChange}
+                max={getMaxDateForAge18()}
+                min="1900-01-01"
+                tabIndex={-1}
+              />
+            </div>
+            {dobError && <p className="dob error-msg">{dobError}</p>}
 
             <select name="marital-status" id="marital-status">
               <option value="">اختر الحالة الاجتماعية</option>
