@@ -45,7 +45,7 @@
 }
 
 .about-page .hero-title {
-  font-family: "El Messiri", sans-serif;
+  font-family: "El Messiri", sans-serif ;
   color: #40798C;
   text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.194);
   font-size: 46px;
@@ -124,7 +124,7 @@
 
 .about-page .about-content p {
   color: #373737;
-  font-size: 1.60rem;
+  font-size: 1.30rem;
   line-height: 1.8;
   margin-bottom: 20px;
   text-align: center;

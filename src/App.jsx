@@ -43,6 +43,9 @@ import Chat from "./components/Chat";
 import PageNotFound from "./components/PageNotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Admin from "./components/Admin";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function AppWrapper() {
   const location = useLocation();
@@ -55,6 +58,7 @@ function AppWrapper() {
   const isForgotPage = location.pathname.startsWith("/forgot-password");
   const isVerifyPage = location.pathname.startsWith("/verify-otp");
   const isNewPage = location.pathname.startsWith("/new-password");
+  const isAdminPage = location.pathname.startsWith("/admin");
 
   const hideRoutes = [
     "/",
@@ -69,6 +73,7 @@ function AppWrapper() {
     isForgotPage ||
     isVerifyPage ||
     isNewPage ||
+    isAdminPage ||
     hideRoutes.includes(location.pathname);
 
   return (
@@ -79,6 +84,7 @@ function AppWrapper() {
         <Route path="/" element={<Index />} />
         <Route path="/index" element={<Index />} />
 
+        {/* صفحة login الموحدة */}
         <Route path="/login/:role" element={<Login />} />
         <Route path="/login-otp/:role" element={<LoginOTP />} />
 
@@ -119,6 +125,16 @@ function AppWrapper() {
 
         <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
         <Route path="/contactUs" element={<ContactUs />} />
+
+        <Route 
+          path="/admin" 
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          } 
+        />
+
         <Route path="/Chat" element={<Chat />} />
         {/* صفحة 404 */}
         <Route path="*" element={<PageNotFound />} />
