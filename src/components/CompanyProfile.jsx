@@ -1,11 +1,11 @@
-
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./CompanyProfile.css";
 
 import {
   MdModeEdit,
+  MdPhotoCamera,
 } from "react-icons/md";
 
 import {
@@ -23,6 +23,7 @@ import {
   FaCogs,
 } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+
 const reviews = [
   { id: 1, rating: 0 },
   { id: 2, rating: 0 },
@@ -35,16 +36,12 @@ const totalRatings = reviews.length;
 const avgRating =
   reviews.reduce((sum, r) => sum + r.rating, 0) / totalRatings;
 
-const companiesData = [{}];
-
-/* ================= PROFILE SECTION ================= */
+/* ================= EDIT PROFILE COMPONENT ================= */
 function ProfileSection({ setEditMode }) {
   const [password, setPassword] = useState("");
   const [showCurrentPassword, setShowPassword] = useState(false);
-
   const [newPassword, setNewPassword] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
-
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -54,9 +51,7 @@ function ProfileSection({ setEditMode }) {
   return (
     <div className="edit-form-container">
       <h2>تعديل ملف الشركة</h2>
-
       <form className="edit-profile-form">
-
         <div className="form-group">
           <h3>بيانات الشركة</h3>
           <input placeholder="اسم الشركة" />
@@ -72,398 +67,373 @@ function ProfileSection({ setEditMode }) {
           <input placeholder="الخدمات" />
         </div>
 
+       
         <div className="form-group">
           <h3>معلومات العمل</h3>
           <input placeholder="نطاق الخدمة" />
           <input placeholder="مواعيد العمل" />
           <input placeholder="سرعة الاستجابة" />
-
-          <select>
-            <option>خدمة الطوارئ</option>
-            <option>متاحة</option>
-            <option>غير متاحة</option>
+          <select className="custom-select">
+            <option value="" disabled selected hidden>خدمة الطوارئ</option>
+            <option value="available">متاحة</option>
+            <option value="available">غير متاحة</option>
           </select>
         </div>
 
         <div className="form-group password">
           <h3>تغيير كلمة السر</h3>
-
-     <div className="password-field">
-  <input
-    type={showCurrentPassword ? "text" : "password"}
-    placeholder="كلمة السر الحالية"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-  />
-
-            <span className="password-eye"
-              onClick={() => setShowPassword(!showCurrentPassword)}>
-    {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
-  </span>
-</div>
-
-         <div className="password-field">
-  <input
-    type={showNewPassword ? "text" : "password"}
-    placeholder="كلمة السر الجديدة"
-    value={newPassword}
-    onChange={(e) => setNewPassword(e.target.value)}
-  />
-
-            <span className="password-eye"
-              onClick={() => setShowNewPassword(!showNewPassword)}>
-    {showNewPassword ? <FiEye /> : <FiEyeOff />}
-  </span>
-</div>
-
-<div className="password-field">
-  <input
-    type={showConfirmPassword ? "text" : "password"}
-    placeholder="تأكيد كلمة السر"
-    value={confirmPassword}
-    onChange={(e) => setConfirmPassword(e.target.value)}
-  />
-
-            <span className="password-eye"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-    {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
-  </span>
-
-  {passwordsNotMatch && (
-    <p className="error-msg">كلمة السر غير متطابقة</p>
-  )}
+          <div className="password-field">
+            <input
+              type={showCurrentPassword ? "text" : "password"}
+              placeholder="كلمة السر الحالية"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span className="password-eye" onClick={() => setShowPassword(!showCurrentPassword)}>
+              {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
+            </span>
           </div>
+          <div className="password-field">
+            <input
+              type={showNewPassword ? "text" : "password"}
+              placeholder="كلمة السر الجديدة"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <span className="password-eye" onClick={() => setShowNewPassword(!showNewPassword)}>
+              {showNewPassword ? <FiEye /> : <FiEyeOff />}
+            </span>
           </div>
+          <div className="password-field">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="تأكيد كلمة السر"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <span className="password-eye" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+              {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
+            </span>
+            {passwordsNotMatch && <p className="error-msg">كلمة السر غير متطابقة</p>}
+          </div>
+        </div>
 
         <div className="form-btns">
           <button type="submit" className="save-btn">حفظ</button>
-          <button
-            type="button"
-            className="cancel-btn"
-            onClick={() => setEditMode(false)}
-          >
-            إلغاء
-          </button>
+          <button type="button" className="cancel-btn" onClick={() => setEditMode(false)}>إلغاء</button>
         </div>
-
       </form>
     </div>
   );
 }
 
-/* ================= MAIN ================= */
+/* ================= REQUEST MODAL COMPONENT ================= */
+const egyptianGovernorates = [
+  "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "دمياط", "بني سويف", "بورسعيد", "جنوب سيناء", "حلايب وشلاتين", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"
+];
+
+function RequestServiceModal({ companyName, onClose }) {
+  const today = new Date().toISOString().split('T')[0];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+
+  const filteredGovs = egyptianGovernorates.filter(gov => gov.includes(searchTerm));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowSuccessMsg(true);
+    setTimeout(() => {
+      setShowSuccessMsg(false);
+      onClose();
+    }, 1500);
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        {showSuccessMsg ? (
+          <div className="success-toast-container">
+            <div className="success-icon">✓</div>
+            <p>تم إرسال طلبك بنجاح</p>
+          </div>
+        ) : (
+          <>
+            <h2 className="modal-title"> {companyName}</h2>
+            <form className="request-form" onSubmit={handleSubmit}>
+              <div className="form-group-modal">
+                <label>اسم العميل</label>
+                <input type="text" placeholder="أدخل اسمك" required />
+              </div>
+              <div className="form-group-modal custom-select-container">
+                <label>المحافظة</label>
+                <input 
+                  type="text" placeholder="المحافظة" value={searchTerm}
+                  onChange={(e) => {setSearchTerm(e.target.value); setIsOpen(true);}}
+                  onFocus={() => setIsOpen(true)} required
+                />
+                {isOpen && filteredGovs.length > 0 && (
+                  <ul className="gov-dropdown-list">
+                    {filteredGovs.map((gov, index) => (
+                      <li key={index} onClick={() => {setSearchTerm(gov); setIsOpen(false);}}>
+                        {gov}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="form-group-modal">
+                <label>العنوان</label>
+                <input type="text" placeholder="العنوان بالتفصيل" required />
+              </div>
+              <div className="form-group-modal">
+                <label>تاريخ الطلب</label>
+                <input type="date" value={today} readOnly className="readonly-input" />
+              </div>
+              <div className="modal-btns">
+                <button type="submit" className="confirm-btn">إرسال الطلب</button>
+                <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
+                <button type="button" className="close-btn" onClick={onClose}>×</button>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ================= MAIN COMPONENT ================= */
 export default function CompanyProfile() {
-  const [showModal, setShowModal] = useState(false);
-  const [showServiceModal, setShowServiceModal] = useState(false); 
   const [activeTab, setActiveTab] = useState("profile");
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const companyName = "شركة أبناء سيناء";
+
+  const [profileImg, setProfileImg] = useState("/images/companylogo.jpg");
+  const [coverImg, setCoverImg] = useState("/images/companycover.jpg");
+
+  const profileInputRef = useRef(null);
+  const coverInputRef = useRef(null);
+
+  const handleImageUpload = (e, type) => {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      if (type === "profile") setProfileImg(url);
+      else setCoverImg(url);
+    }
+  };
 
   return (
     <div className="profile-container">
+      {showRequestModal && (
+        <RequestServiceModal companyName={companyName} onClose={() => setShowRequestModal(false)} />
+      )}
 
       {/* COVER */}
       <div className="cover-container">
-       
-        <img
-          src="/images/companycover.jpg"
-          alt="cover"
-          className="cover-img"
-        />
-        <div className="buttons left">
-           <button
-  className="request-btn"
-  onClick={() => setShowModal(true)}
->
-  طلب خدمة
+        <img src={coverImg} alt="cover" className="cover-img" />
+        
+        {activeTab === "edit" && (
+          <button className="edit-cover-btn" onClick={() => coverInputRef.current.click()}>
+            <MdPhotoCamera /> تعديل صورة الغلاف
           </button>
-          {showServiceModal && (
-  <div
-    className="modal-overlay"
-    onClick={(e) => {
-      if (e.target === e.currentTarget) setShowServiceModal(false);
-    }}
-  >
-    <div className="modal-box">
+        )}
+        <input 
+          type="file" ref={coverInputRef} style={{ display: "none" }} 
+          onChange={(e) => handleImageUpload(e, "cover")} accept="image/*" 
+        />
 
-      <button
-        className="close-btn"
-        onClick={() => setShowServiceModal(false)}
-      >
-        ×
-      </button>
-
-      <h3>طلب خدمة</h3>
-
-      <input type="text" placeholder="اسم العميل" />
-
-      <input type="text" placeholder="العنوان" />
-
-      <input type="text" placeholder="المحافظة" />
-
-      <input type="date" />
-
-      <button className="submit-btn">
-        إرسال
-      </button>
-
-    </div>
-  </div>
-)}
-                <button onClick={() => setActiveTab("edit")} className="btn-edit">
-                  <MdModeEdit />
-                </button>
-               
-              </div>
+        <div className="buttons left">
+          <button className="btn primary" onClick={() => setShowRequestModal(true)}>طلب خدمة</button>
+          <button onClick={() => setActiveTab("edit")} className="btn-edit">
+            <MdModeEdit />
+          </button>
+        </div>
         <div className="cover-overlay"></div>
       </div>
 
-    
-
-      {/* PROFILE */}
-      {activeTab === "profile" && (
-        <div>
-
-          <div className="profile-header">
-            <div className="profile-img-container">
-              <img
-                src="/images/companylogo.jpg"
-                alt="profile"
-                className="profile-img"
-              />
-              
+      <div className="profile-header">
+        <div className="profile-img-container">
+          <img src={profileImg} alt="profile" className="profile-img" />
+          {activeTab === "edit" && (
+            <div className="profile-camera-icon" onClick={() => profileInputRef.current.click()}>
+              <MdPhotoCamera />
             </div>
-
-            <div className="profile-info">
-              <h2>شركة أبناء سيناء</h2>
-              <p>للتجارة والمقاولات العامة</p>
-
-              <div className="rating">
-                <div className="star-icon">
-                <FaStar/>
-                <span>
-                    {avgRating.toFixed(1)}
-                    
-                    {/* ({totalRatings} تقييم) */}
-                </span>
-                </div>
-                </div>
-
-          
+          )}
+          <input 
+            type="file" ref={profileInputRef} style={{ display: "none" }} 
+            onChange={(e) => handleImageUpload(e, "profile")} accept="image/*" 
+          />
+        </div>
+        
+        <div className="profile-info">
+          <h2>{companyName}</h2>
+          <p>للتجارة والمقاولات العامة</p>
+          <div className="rating">
+            <div className="star-icon">
+              <FaStar />
+              <span>{avgRating.toFixed(1)}</span>
             </div>
           </div>
-          {/* <div className="section-divider"></div> */}
 
+          
+        </div>
+      </div>
+
+      {activeTab === "profile" ? (
+        <div>
           {/* STATS */}
-          <div className=" stats-box">
+          <div className="stats-box">
             <div className="stat">
               <div className="icon-circle blue"><FaCalendarAlt /></div>
               <span>2026</span>
               <p>تاريخ الانضمام</p>
             </div>
-
             <div className="stat">
               <div className="icon-circle green"><FaTasks /></div>
               <span>0</span>
               <p>عدد الطلبات</p>
             </div>
-
             <div className="stat">
               <div className="icon-circle purple"><FaMapMarkerAlt /></div>
               <span>القاهرة</span>
               <p>الموقع</p>
             </div>
-
             <div className="stat">
               <div className="icon-circle orange"><FaBriefcase /></div>
-              <span>43 سنة</span>
+              <span>16 سنة</span>
               <p>سنوات الخبرة</p>
             </div>
           </div>
-<div className="section-divider"></div>
+
+          <div className="section-divider"></div>
+
           {/* ABOUT */}
-          
           <div className="about-section">
-
-             <div className="about-text">
-            <h3 className="section-title"><FaBuilding className="title-icon" /> عن الشركة</h3>
-            
-            
-            <p className="section-p">
-             شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء،<br/> وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة<br/> بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة،<br/> وتُعد هذه الشركة من أقدم الشركات في هذا المجال، إليكم الكثير من التفاصيل حولها.
-
-            </p>
+            <div className="about-text">
+              <h3 className="section-title"><FaBuilding className="title-icon" /> عن الشركة</h3>
+              <p className="section-p">
+                شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء،<br /> 
+                وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة<br /> 
+                بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة،<br /> 
+                وتُعد هذه الشركة من أقدم الشركات في هذا المجال، إليكم الكثير من التفاصيل حولها.
+              </p>
             </div>
-    {/* <img
-  src="/images/WhatsApp Image 2026-04-28 at 7.30.35 PM.jpeg"
-  alt="construction"
-              className="about-img" /> */}
           </div>
-          
- <div className="section-divider"></div>
+
+          <div className="section-divider"></div>
+
           {/* WORK INFO */}
-<div className="section work-info">
+          <div className="section work-info">
+            <h3 className="section-title"><FaBriefcase className="title-icon" /> معلومات العمل</h3>
+            <div className="work-grid">
+              <div className="work-item">
+                <span className="label"><FaMapMarkerAlt className="label-icon" /> نطاق الخدمة</span>
+                <p>داخل القاهرة والجيزة</p>
+              </div>
+              <div className="work-item">
+                <span className="label"><FaClock className="label-icon" /> مواعيد العمل</span>
+                <p>من 9 صباحًا إلى 10 مساءً</p>
+              </div>
+              <div className="work-item">
+                <span className="label"><FaTasks className="label-icon" /> سرعة الاستجابة</span>
+                <p>خلال 30 دقيقة</p>
+              </div>
+              <div className="work-item">
+                <span className="label"><FaShieldAlt className="label-icon" /> خدمة الطوارئ</span>
+                <p>متاحة 24 ساعة</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="section-divider"></div>
+
+          {/* Services */}
+          <div className="section">
   <h3 className="section-title">
-    <FaBriefcase className="title-icon" />
-    معلومات العمل
+    <FaCogs className="title-icon" />
+    الخدمات الأساسية للشركة
   </h3>
-
-<div className="work-grid">
-
-  <div className="work-item">
-    <span className="label">
-      <FaMapMarkerAlt className="label-icon" />
-      نطاق الخدمة
-    </span>
-    <p>داخل القاهرة والجيزة</p>
-  </div>
-
-  <div className="work-item">
-    <span className="label">
-      <FaClock className="label-icon" />
-      مواعيد العمل
-    </span>
-    <p>من 9 صباحًا إلى 10 مساءً</p>
-  </div>
-
-  <div className="work-item">
-    <span className="label">
-      <FaTasks className="label-icon" />
-      سرعة الاستجابة
-    </span>
-    <p>خلال 30 دقيقة</p>
-  </div>
-
-  <div className="work-item">
-    <span className="label">
-      <FaShieldAlt className="label-icon" />
-      خدمة الطوارئ
-    </span>
-    <p>متاحة 24 ساعة</p>
-  </div>
-
-            </div>
-            </div>
-          
- 
-
-
-
-
-       <div className="section-divider"></div>
-               {/* Services */}
-      <div className="section">
-<h3 className="section-title">
-  <FaCogs className="title-icon" />
-  الخدمات الأساسية
-</h3>
- <div className="services">
-  <div className="service-card">
-    <div className="icon-circle blue">
-      <FaTruck />
+  <div className="services">
+    <div className="service-card">
+      <div className="icon-circle blue">
+        <FaBuilding />
+      </div>
+      <h4>المقاولات العامة</h4>
+      <p>تنفيذ كافة المشروعات السكنية والتجارية بأعلى جودة</p>
     </div>
-    <h4>نقل آمن وسريع</h4>
-    <p>نقل الأثاث بأمان وفي الوقت المحدد</p>
-  </div>
 
-        <div className="service-card">
-    <div className="icon-circle green">
-      <FaShieldAlt />
+    <div className="service-card">
+      <div className="icon-circle green">
+        <FaTools />
+      </div>
+      <h4>أعمال التشطيبات</h4>
+      <p>تشطيبات داخلية وخارجية عصرية تناسب جميع الأذواق</p>
     </div>
-    <h4>ضمان على الأثاث</h4>
-    <p>حماية كاملة ضد أي تلف</p>
-  </div>
 
-  <div className="service-card">
-    <div className="icon-circle purple">
-      <FaBoxOpen />
+    <div className="service-card">
+      <div className="icon-circle purple">
+        <FaTasks />
+      </div>
+      <h4>إدارة المشروعات</h4>
+      <p>إشراف هندسي متكامل وجدول زمني دقيق للتنفيذ</p>
     </div>
-    <h4>تغليف احترافي</h4>
-    <p>أفضل مواد تغليف عالية الجودة</p>
-  </div>
 
-  <div className="service-card">
-    <div className="icon-circle orange">
-      <FaTools />
+    <div className="service-card">
+      <div className="icon-circle orange">
+        <FaShieldAlt />
+      </div>
+      <h4>أعمال الترميم</h4>
+      <p>ترميم وتدعيم المباني القديمة بأحدث الوسائل التقنية</p>
     </div>
-    <h4>فك وتركيب</h4>
-    <p>فريق متخصص للفك والتركيب</p>
   </div>
 </div>
-      </div>
-<div className="section-divider"></div>
+
+          <div className="section-divider"></div>
+
           {/* REVIEWS */}
- <div className="section reviews-section">
-
-  <div className="reviews-header">
-    <h3 className="section-title">
-  <FaStar className="title-icon" />
-  تقييمات العملاء
-</h3>
-  </div>
-
-  <div className="reviews">
-
-    <div className="review-card">
-      <div className="user">
-        <div className="avatar">أ</div>
-        <div>
-          <h4>أحمد محمد</h4>
-                    <FaStar className="stars" />
-                     {avgRating.toFixed(1)}
-        </div>
-      </div>
-      <p>خدمة ممتازة جدًا والتعامل محترم والتسليم سريع.</p>
-    </div>
-
-    <div className="review-card">
-      <div className="user">
-        <div className="avatar">س</div>
-        <div>
-          <h4>سارة علي</h4>
-                    <FaStar className="stars" />
-                     {avgRating.toFixed(1)}
-        </div>
-      </div>
-      <p>تغليف احترافي وحافظوا على كل حاجة بدون أي خدش.</p>
-    </div>
-
-    <div className="review-card">
-      <div className="user">
-        <div className="avatar">م</div>
-        <div>
-          <h4>محمد خالد</h4>
-                    <FaStar className="stars" />
-                     {avgRating.toFixed(1)}
-        </div>
-      </div>
-      <p>أفضل شركة نقل تعاملت معها بصراحة.</p>
-    </div>
+          <div className="section reviews-section">
+            <div className="reviews-header">
+              <h3 className="section-title"><FaStar className="title-icon" /> تقييمات العملاء</h3>
             </div>
+            <div className="reviews">
+              <div className="review-card">
+                <div className="user">
+                  <div className="avatar">أ</div>
+                  <div>
+                    <h4>أحمد محمد</h4>
+                    <FaStar className="stars" /> {avgRating.toFixed(1)}
+                  </div>
+                </div>
+                <p>خدمة ممتازة جدًا والتعامل محترم .</p>
+              </div>
+              <div className="review-card">
+                <div className="user">
+                  <div className="avatar">س</div>
+                  <div>
+                    <h4>سارة علي</h4>
+                    <FaStar className="stars" /> {avgRating.toFixed(1)}
+                  </div>
+                </div>
+                <p>من الشركات المميزة فعلا في المجال.</p>
+              </div>
+              <div className="review-card">
+                <div className="user">
+                  <div className="avatar">م</div>
+                  <div>
+                    <h4>محمد خالد</h4>
+                    <FaStar className="stars" /> {avgRating.toFixed(1)}
+                  </div>
+                </div>
+                <p>أفضل شركة مقاولات تعاملت معها بصراحة.</p>
+              </div>
             </div>
-  </div>
-      )}
-
-      {/* EDIT */}
-      {activeTab === "edit" && (
+          </div>
+        </div>
+      ) : (
         <ProfileSection setEditMode={() => setActiveTab("profile")} />
       )}
-{showModal && (
-  <div className="overlay" onClick={() => setShowModal(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h1 style={{color:"red"}}>boooooox</h1>
-      <h2>طلب خدمة</h2>
-
-      <input placeholder="اسم العميل" />
-      <input placeholder="العنوان" />
-
-      <button
-        className="btn primary"
-        onClick={() => alert("تم الإرسال")}
-      >
-        إرسال
-      </button>
-    </div>
-  </div>
-)}
     </div>
   );
 }

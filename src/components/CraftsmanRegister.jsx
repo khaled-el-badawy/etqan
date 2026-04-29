@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect } from "react";
 import "./CraftsmanRegister.css";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import { FiEye, FiEyeOff, FiCalendar } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -17,9 +17,11 @@ function CraftsmanRegister() {
   const maritalList = ["أعزب", "متزوج", "مطلق", "أرمل"];
   const jobDropdownRef = useRef(null);
   const maritalDropdownRef = useRef(null);
+  const dateInputRef = useRef(null); 
+
   const [username,setUsername] = useState("");
   const [email,setEmail] = useState("");
-  const [age,setAge] = useState("");
+  const [birthDate, setBirthDate] = useState(""); 
   const [maritalStatus,setMaritalStatus] = useState("");
   const [nationalId,setNationalId] = useState("");
   const [phone,setPhone] = useState("");
@@ -34,7 +36,12 @@ function CraftsmanRegister() {
   const [showMarital,setShowMarital] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  // قفل القوايم
+  // حساب التاريخ الأقصى لضمان سن 18+ (سنة 2008 وما قبلها)
+  const today = new Date();
+  const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
+    .toISOString()
+    .split("T")[0];
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (jobDropdownRef.current && !jobDropdownRef.current.contains(event.target)) {
@@ -44,44 +51,30 @@ function CraftsmanRegister() {
         setShowMarital(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const filteredJobs = jobsList.filter((j) => j.includes(jobSearchTerm));
 
-  // اسم المستخدم
   const handleUsernameChange = (e)=>{
     const val = e.target.value;
-    if(/^[a-zA-Z\u0600-\u06FF\s]*$/.test(val)){
-      setUsername(val);
-    }
+    if(/^[a-zA-Z\u0600-\u06FF\s]*$/.test(val)){ setUsername(val); }
   };
 
-  // البريد الإلكتروني
   const handleEmailChange = (e)=>{
     const val = e.target.value.trim();
     setEmail(val);
-
     const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if(val && !emailRegex.test(val)){
-      setEmailError("البريد الإلكتروني غير صالح");
-    }else{
-      setEmailError("");
-    }
+    if(val && !emailRegex.test(val)){ setEmailError("البريد الإلكتروني غير صالح"); }
+    else{ setEmailError(""); }
   };
 
-  // الرقم القومي
   const handleNationalIdChange=(e)=>{
     const val=e.target.value;
-    if(/^\d*$/.test(val) && val.length<=14){
-      setNationalId(val);
-    }
+    if(/^\d*$/.test(val) && val.length<=14){ setNationalId(val); }
   };
 
-  // الهاتف
   const handlePhoneChange=(e)=>{
     const val=e.target.value;
     if(!/^\d*$/.test(val)) return;
@@ -96,69 +89,42 @@ function CraftsmanRegister() {
   };
 
   const checkRule=(rule)=>rule.test(password);
+  const passwordsNotMatch = confirmPassword.length > 0 && password !== confirmPassword;
 
-  const passwordsNotMatch =
-    confirmPassword.length > 0 && password !== confirmPassword;
-
+  // إرجاع شروط رقم الهاتف الأصلية بدقة
   const isPhoneValid =
     phone.length === 11 &&
     phone[0] === "0" &&
     ["010", "011", "012", "015"].includes(phone.substring(0, 3));
 
+  const isAgeValid = birthDate !== "" && birthDate <= maxDate;
+
   const isFormValid =
-    username.trim()!=="" &&
-    email.trim()!=="" &&
-    emailError==="" &&
-    age!=="" &&
-    Number(age)>=18 &&
-    maritalStatus!=="" &&
-    nationalId.trim()!=="" &&
-    nationalId.length===14 &&
-    selectedJob.trim()!=="" &&
-    isPhoneValid &&
-    password!=="" &&
-    confirmPassword!=="" &&
-    password===confirmPassword;
+    username.trim()!=="" && email.trim()!=="" && emailError==="" &&
+    isAgeValid && maritalStatus!=="" && nationalId.trim()!=="" &&
+    nationalId.length===14 && selectedJob.trim()!=="" && isPhoneValid &&
+    password!=="" && confirmPassword!=="" && password===confirmPassword;
 
-  // التسجيل
   const handleRegister = () => {
-    const data = {
-      username,
-      email,
-      age,
-      maritalStatus,
-      nationalId,
-      phone,
-      job: selectedJob,
-      password,
-      confirmPassword,
-    };
-
+    const data = { username, email, birthDate, maritalStatus, nationalId, phone, job: selectedJob, password, confirmPassword };
     console.log("DATA TO BACK:", data);
-
-    
     navigate("/login-otp/craftsman");
   };
 
   return (
     <div className="craftsman-page-container">
-
       <motion.div
         className="form-section"
         initial={{y:60,opacity:0}}
         animate={{y:0,opacity:1}}
         transition={{duration:1,ease:"easeOut",delay:0.4}}
       >
-
         <div className="form-fields">
-
           <form>
-
             <h1>مرحباً بك</h1>
             <h3>قم بإنشاء حسابك لبدء استخدام الخدمة</h3>
 
             <div className="fields-row">
-
               <div className="field-container">
                 <input type="text" placeholder="اسم المستخدم" value={username} onChange={handleUsernameChange}/>
               </div>
@@ -168,9 +134,47 @@ function CraftsmanRegister() {
                 {emailError && <p className="error-msg">{emailError}</p>}
               </div>
 
-              <div className="field-container">
-                <input type="number" placeholder="العمر" value={age} onChange={(e)=>setAge(e.target.value)} min="18"/>
-                {age && age<18 && <p className="error-msg">يجب ألا يقل العمر عن 18 سنة</p>}
+              
+              <div className="field-container" style={{position: "relative"}}>
+                <input 
+                  type="text" 
+                  placeholder="تاريخ الميلاد" 
+                  value={birthDate}
+                  readOnly 
+                  onClick={() => dateInputRef.current.showPicker()}
+                  style={{ paddingLeft: "45px", cursor: "pointer" }} 
+                />
+                <input 
+                  ref={dateInputRef}
+                  type="date"
+                  max={maxDate}
+                  onChange={(e) => setBirthDate(e.target.value)}
+                  style={{
+                    position: "absolute",
+                    left: 0, 
+                    opacity: 0,
+                    width: "40px",
+                    height: "100%",
+                    cursor: "pointer",
+                    zIndex: 2
+                  }}
+                />
+                <FiCalendar 
+                  onClick={() => dateInputRef.current.showPicker()}
+                  style={{
+                    position: "absolute",
+                    left: "25px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#40798C",
+                    fontSize: "26px",
+                    cursor: "pointer",
+                    zIndex: 1
+                  }}
+                />
+                {birthDate && birthDate > maxDate && (
+                  <p className="error-msg">يجب أن يكون العمر 18 سنة أو أكثر</p>
+                )}
               </div>
 
               <div className="field-container marital-dropdown" ref={maritalDropdownRef}>
@@ -205,7 +209,6 @@ function CraftsmanRegister() {
                   }}
                   onFocus={()=>setShowJobDropdown(true)}
                 />
-
                 {showJobDropdown && jobSearchTerm && (
                   <ul className="dropdown-list">
                     {filteredJobs.length>0 ? (
@@ -226,10 +229,28 @@ function CraftsmanRegister() {
               </div>
 
               <div className="field-container phone-field">
-                <input type="text" placeholder="رقم الهاتف" value={phone} onChange={handlePhoneChange}/>
+                <input
+                  type="text"
+                  placeholder="رقم الهاتف"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  required
+                />
+                {(phone.length > 0 && phone.length < 11) ||
+                phone[0] !== "0" ||
+                (phone.length >= 3 &&
+                  !["010", "011", "012", "015"].includes(phone.substring(0, 3))) ? (
+                  <ul className="phone-errors">
+                    {phone.length > 0 && phone.length < 11 && <li>رقم الهاتف يجب أن يكون 11 رقم</li>}
+                    {phone.length >= 1 && phone[0] !== "0" && <li>رقم الهاتف يجب أن يبدأ بالرقم 0</li>}
+                    {phone.length >= 3 &&
+                      !["010", "011", "012", "015"].includes(phone.substring(0, 3)) && (
+                        <li>رقم الهاتف يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015</li>
+                      )}
+                  </ul>
+                ) : null}
               </div>
 
-              {/* password */}
               <div className="field-container password-field-container" style={{position:"relative"}}>
                 <input
                   type={showPassword?"text":"password"}
@@ -240,11 +261,9 @@ function CraftsmanRegister() {
                   onFocus={()=>setIsFocused(true)}
                   onBlur={()=>setIsFocused(false)}
                 />
-
                 <span className="eye" onClick={()=>setShowPassword(!showPassword)}>
                   {showPassword ? <FiEye/> : <FiEyeOff/>}
                 </span>
-
                 {isFocused && (
                   <div className="password-rules" style={{position:"absolute",top:"100%",left:0,width:"100%"}}>
                     <ul>
@@ -262,7 +281,6 @@ function CraftsmanRegister() {
                 )}
               </div>
 
-              {/* confirm */}
               <div className="field-container confirm-password-field-container">
                 <input
                   type={showConfirmPassword?"text":"password"}
@@ -271,18 +289,13 @@ function CraftsmanRegister() {
                   value={confirmPassword}
                   onChange={(e)=>setConfirmPassword(e.target.value)}
                 />
-
                 <span className="eye" onClick={()=>setShowConfirmPassword(!showConfirmPassword)}>
                   {showConfirmPassword ? <FiEye/> : <FiEyeOff/>}
                 </span>
-
                 {passwordsNotMatch && (
-                  <p className="password-error-msg">
-                    يجب أن تكون كلمة السر مطابقة
-                  </p>
+                  <p className="password-error-msg">يجب أن تكون كلمة السر مطابقة</p>
                 )}
               </div>
-
             </div>
 
             <button
@@ -301,9 +314,7 @@ function CraftsmanRegister() {
             <h4 className="h4-craftsman-login">
               هل لديك حساب ؟ <Link to="/login/craftsman" className="Link">تسجيل الدخول</Link>
             </h4>
-
           </form>
-
         </div>
 
         <div className="image">
@@ -318,9 +329,7 @@ function CraftsmanRegister() {
             }}
           />
         </div>
-
       </motion.div>
-
     </div>
   );
 }

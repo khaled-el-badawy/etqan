@@ -170,9 +170,150 @@
 .companies-container .c4 .arrow { background: #4caf7d; }
 .companies-container .c5 .arrow { background: #7c8fa1; }
 
-/* RESPONSIVE */
-/* @media (max-width: 900px) {
-  .row-bottom {
+/* ===================== Responsive ===================== */
+
+/* لابتوب متوسط */
+@media (max-width: 1200px) {
+  .companies-container {
+    padding: 50px 20px;
+  }
+
+  .companies-container .header h1 {
+    font-size: 36px;
+  }
+
+  .companies-container .header p {
+    font-size: 26px;
+  }
+}
+
+/* تابلت */
+@media (max-width: 992px) {
+  .companies-container {
+    padding: 40px 15px;
+  }
+
+  .companies-container .row-top {
     grid-template-columns: 1fr;
   }
-} */
+
+  .companies-container .row-bottom {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .companies-container .card {
+    padding: 25px;
+  }
+
+  .companies-container .header h1 {
+    font-size: 36px;
+  }
+
+  .companies-container .header p {
+    font-size: 22px;
+  }
+
+  .companies-container .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .companies-container .icon img {
+    width: 80px;
+  }
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .companies-container {
+    padding: 30px 10px;
+  }
+
+  .companies-container .row-top,
+  .companies-container .row-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .companies-container .header h1 {
+    font-size: 28px;
+  }
+
+  .companies-container .header p {
+    font-size: 20px;
+  }
+
+  .companies-container .card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .companies-container .card h3 {
+    font-size: 26px;
+  }
+
+  .companies-container .card p {
+    font-size: 18px;
+  }
+
+  .companies-container .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .companies-container .curve {
+    width: 180px;
+    height: 180px;
+    bottom: -90px;
+    right: -90px;
+  }
+}
+
+/* موبايل صغير */
+@media (max-width: 480px) {
+  .companies-container {
+    padding: 20px 8px;
+  }
+
+  .companies-container .header h1 {
+    font-size: 28px;
+  }
+
+  .companies-container .header p {
+    font-size: 20px;
+  }
+
+  .companies-container .card {
+    padding: 18px;
+  }
+
+  .companies-container .card h3 {
+    font-size: 26px;
+  }
+
+  .companies-container .card p {
+    font-size: 18px;
+  }
+
+  .companies-container .icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .companies-container .icon img {
+    width: 65px;
+  }
+
+  .companies-container .arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+
+  .companies-container .curve {
+    width: 140px;
+    height: 140px;
+    bottom: -70px;
+    right: -70px;
+  }
+}

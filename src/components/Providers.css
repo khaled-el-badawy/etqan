@@ -140,3 +140,118 @@
   color: #666;
   font-weight: 500;
 }
+
+/* ===================== Responsive ===================== */
+
+/* لابتوب متوسط */
+@media (max-width: 1200px) {
+  .providers-container {
+    padding: 25px;
+  }
+
+  .providers-container .header h1 {
+    font-size: 28px;
+  }
+
+  .providers-container .header p {
+    font-size: 18px;
+  }
+}
+
+/* تابلت */
+@media (max-width: 992px) {
+  .providers-container {
+    padding: 20px;
+  }
+
+  .providers-container .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .providers-container .header h1 {
+    font-size: 28px;
+  }
+
+   .providers-container .card p {
+    font-size: 22px;
+  }
+
+  .providers-container .header p {
+    font-size: 24px;
+  }
+  
+ 
+
+  .providers-container .card {
+    padding: 18px;
+  }
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .providers-container {
+    padding: 15px;
+  }
+
+  .providers-container .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .providers-container .header h1 {
+    font-size: 28px;
+  }
+
+  .providers-container .header p {
+    font-size: 22px;
+  }
+
+  .providers-container .card h3 {
+    font-size: 26px;
+  }
+
+  .providers-container .card p {
+    font-size: 22px;
+  }
+
+  .providers-container .arrow {
+    width: 35px;
+    height: 35px;
+  }
+
+  .providers-container .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* موبايل صغير جدا */
+@media (max-width: 480px) {
+  .providers-container {
+    padding: 10px;
+  }
+
+  .providers-container .header h1 {
+    font-size: 28px;
+  }
+
+  .providers-container .header p {
+    font-size: 20px;
+  }
+
+  .providers-container .card {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .providers-container .card h3 {
+    font-size: 26px;
+  }
+
+  .providers-container .card p {
+    font-size: 22px;
+  }
+
+  .providers-container .rating {
+    font-size: 20px;
+  }
+}
