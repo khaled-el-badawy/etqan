@@ -1076,7 +1076,7 @@
 .password-field{
   position: relative;
   width: 80%;
-  background-color: tomato;
+  /* background-color: tomato; */
 }
 .password-field input {
   width: 100% !important;
@@ -1088,7 +1088,7 @@ input[type="password"]::-ms-clear {
   display: none;
 }
 .professional-profile-container .error-msg{
-  color: red;
+  color: rgb(235, 89, 89);
   font-size: 15px;
   font-weight: bold;
   text-align: center;

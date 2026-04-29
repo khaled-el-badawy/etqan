@@ -623,7 +623,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   return (
     <div className="profile-wrapper">
       {
-        //هتتحكم في التبويبات الرئيسية (عن الحرفي - الأعمال - التقييمات)
+       
       }
       <div className="main-tabs">
         <button
@@ -680,76 +680,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
         </div>
       )}
 
-      {/* -------------------------------- */}
-      {/* {activeMainTab === "works" && (
-        <div className="portfolio-section">
-          {!selectedCategory ? (
-            // عرض المجموعات 
-            <div
-              className="portfolio-grid"
-              data-aos="fade-up"
-              data-aos-once="true"
-            >
-              <label className="work-item upload-box">
-                <input type="file" accept="image/*" className="input-file" />
-                <img
-                  src="/images/upload.png"
-                  alt="upload"
-                  className="upload-icon"
-                />
-              </label>
-              {craftman.worksCategories.map((category) => (
-                <div
-                  key={category.id}
-                  className="work-category-item"
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  <img
-                    src={category.cover}
-                    alt={category.title}
-                    className="work-group-cover"
-                  />
-                  <p>{category.title}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            // عرض صور المجموعة 
-            <>
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className="back-btn"
-              >
-                رجوع
-              </button>
-
-              <div
-                className="portfolio-grid"
-                data-aos="fade-up"
-                data-aos-once="true"
-              >
-                <label className="work-item upload-box">
-                  <input type="file" accept="image/*" className="input-file" />
-                  <img
-                    src="/images/upload.png"
-                    alt="upload"
-                    className="upload-icon"
-                  />
-                </label>
-                {selectedCategory.images.map((image, index) => (
-                  <div
-                    key={index}
-                    className="work-item"
-                    onClick={() => setSelectedImage(image)}
-                  >
-                    <img src={image} alt="work" className="work-image" />
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-      )}*/}
+  
       {/* --------------------------------------------- */}
       {activeMainTab === "works" && (
         <div className="portfolio-section">

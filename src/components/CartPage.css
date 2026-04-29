@@ -280,7 +280,7 @@ cursor:pointer;
 
 /* ====== ملخص الطلب ====== */
 .cart-page-container .cart-total {
-  background-color: #f8f8f8; /* لون خلفية ناعم */
+  background-color: #f8f8f8; 
   padding: 20px;
   margin: 30px auto 50px auto;
   max-width: 600px;

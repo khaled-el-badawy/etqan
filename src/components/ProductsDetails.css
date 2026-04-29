@@ -1,0 +1,191 @@
+.product-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= GRID ================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* ================= IMAGES ================= */
+.main-image {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.thumbnail.active {
+  border: 2px solid #007bff;
+}
+
+/* ================= INFO ================= */
+.product-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.product-brand {
+  color: gray;
+  margin-top: 5px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.price {
+  color: green;
+  font-size: 22px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.stock {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.in-stock {
+  color: green;
+}
+
+.out-stock {
+  color: red;
+}
+
+/* ================= QUANTITY ================= */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.quantity button {
+  padding: 5px 10px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* ================= BUTTONS ================= */
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cart-btn {
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.fav-btn {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: white;
+}
+
+/* ================= DESCRIPTION ================= */
+.description {
+  margin-top: 20px;
+  color: #444;
+}
+
+/* ================= COMMENTS ================= */
+.comments {
+  margin-top: 40px;
+}
+
+.comment {
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-text {
+  margin-top: 10px;
+  color: #555;
+}
+
+/* ================= ADD COMMENT ================= */
+.add-comment textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.add-comment button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: green;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ================= RELATED ================= */
+.related {
+  margin-top: 40px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.related-card {
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

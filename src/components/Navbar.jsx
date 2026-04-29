@@ -136,7 +136,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/Company" onClick={toggleMenu}>
+                  <NavLink to="/Companies" onClick={toggleMenu}>
                     الشركات
                   </NavLink>
                 </li>

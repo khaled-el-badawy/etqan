@@ -8,7 +8,7 @@ const initialCartPage = [
     price: 100,
     oldPrice: 120,
     discount: "-20%",
-    rating: 4.5,
+    rating: 0,
     image: "/images/product1.png",
   },
   {
@@ -17,7 +17,7 @@ const initialCartPage = [
     price: 200,
     oldPrice: 250,
     discount: "-20%",
-    rating: 4.8,
+    rating: 0,
     image: "/images/product2.png",
   },
   {
@@ -26,7 +26,7 @@ const initialCartPage = [
     price: 300,
     oldPrice: 350,
     discount: "-15%",
-    rating: 4.2,
+    rating: 0,
     image: "/images/product3.png",
   },
   {
@@ -35,7 +35,7 @@ const initialCartPage = [
     price: 150,
     oldPrice: 180,
     discount: "-15%",
-    rating: 4.0,
+    rating: 0,
     image: "/images/product4.png",
   },
 ];
@@ -112,12 +112,13 @@ const CartPage = () => {
             <div className="hero-text" data-aos="fade-up">
               <p>"خطوة أخيرة قبل تأكيد طلبك"</p>
               <div className="hero-buttons">
+                 <button onClick={() => navigate("/FavoritesPage")} className="back-to-Favorites-btn">
+              عرض المفضلة
+                </button>
                 <button onClick={() => navigate("/products")} className="back-to-shop-btn">
              متابعة التسوق
           </button>
-                <button onClick={() => navigate("/FavoritesPage")} className="back-to-Favorites-btn">
-              عرض المفضلة
-                </button>
+               
               </div>
             </div>
           </div>
@@ -167,7 +168,7 @@ const CartPage = () => {
           </div>
 
           {/* جزء التوتال */}
-          <div className="cart-total" data-aos="fade-up">
+          <div className="cart-total" >
             <h3>ملخص الطلب</h3>
             <p>عدد المنتجات: {totalQuantity}</p>
             <p> السعر الإجمالي: {totalPrice} جنيه</p>

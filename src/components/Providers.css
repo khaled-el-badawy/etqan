@@ -1,0 +1,142 @@
+.providers-container {
+  padding: 30px;
+  direction: rtl;
+  font-family: "Cairo", sans-serif;
+  background: #f7fbfc;
+}
+
+/* Header */
+.providers-container .header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.providers-container .header h1 {
+  color: #40798C;
+  font-size: 32px;
+}
+
+.providers-container .header p {
+  color: #6b9eac;
+   font-size: 20px;
+}
+
+/* Grid */
+.providers-container .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.providers-container .card {
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.3s;
+  border: 1px solid rgba(64, 121, 140, 0.12);
+  
+}
+
+.providers-container .card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #8ec6d5;
+}
+
+/* Text */
+.providers-container .card h3 {
+  margin: 15px 0;
+  color: #2f5f6d;
+}
+
+.providers-container .card p {
+  color: #6b9eac;
+  font-size: 16px;
+}
+
+/* Dot */
+.providers-container .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+
+
+
+/* Arrow */
+.providers-container .arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  color: white;
+}
+
+
+
+/* 1 - ملون */
+.providers-container .card1 {
+  background: linear-gradient(135deg, #dceff3, #c8e3ea);
+}
+.providers-container .card1 .dot,
+.providers-container .card1 .arrow {
+  background: #40798C;
+}
+
+/* 2 - فاتح */
+.providers-container .card2 {
+  background: #ffffff;
+}
+.providers-container .card2 .dot,
+.providers-container .card2 .arrow {
+  background: #75A5B3;
+}
+
+/* 3 - ملون */
+.providers-container .card3 {
+  background: linear-gradient(135deg, #d9edf2, #c2e0e7);
+}
+.providers-container .card3 .dot,
+.providers-container .card3 .arrow {
+  background: #5f8e9c;
+}
+
+/* 4 - فاتح */
+.providers-container .card4 {
+  background: #f7fbfc;
+}
+.providers-container .card4 .dot,
+.providers-container .card4 .arrow {
+  background: #8cc8d2;
+}
+
+/* 5 - ملون */
+.providers-container .card5 {
+  background: linear-gradient(135deg, #e6f6f7, #cfeaed);
+}
+.providers-container .card5 .dot,
+.providers-container .card5 .arrow {
+  background: #6b9eac;
+}
+
+.providers-container .rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.providers-container .rating span {
+  margin-left: 6px;
+  color: #666;
+  font-weight: 500;
+}

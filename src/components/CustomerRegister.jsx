@@ -98,8 +98,7 @@ function CustomerRegister() {
         className="form-section"
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-      >
+        transition={{ duration: 1, ease: "easeOut", delay: 0.4 }} >
         <div className="form-fields">
           <form>
             <h1>مرحباً بك</h1>
