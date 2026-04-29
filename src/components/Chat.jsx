@@ -13,7 +13,7 @@ const mockConversations = [
     name: "فاروق كامل",
     lastMessage: "هخلص بكرا الساعة 10",
     unread: 0,
-    online: false,
+    online: true,
     time: "11:27",
     avatar: "https://randomuser.me/api/portraits/men/75.jpg",
   },
@@ -205,11 +205,62 @@ const MessagesList = ({ messages }) => {
 
 const MessageInput = ({ onSend }) => {
   const [input, setInput] = useState("");
+  const [imagePreview, setImagePreview] = useState(null); // data URL
+  const [dragging, setDragging] = useState(false);
+  const fileInputRef = useRef(null);
+  const dragCounter = useRef(0);
 
+  /* ---------- helpers ---------- */
+  const readFile = (file) => {
+    if (!file || !file.type.startsWith("image/")) return;
+    const reader = new FileReader();
+    reader.onload = (e) => setImagePreview(e.target.result);
+    reader.readAsDataURL(file);
+  };
+
+  /* ---------- file input ---------- */
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    readFile(file);
+    // reset so the same file can be re-selected
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  /* ---------- drag & drop ---------- */
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dragCounter.current++;
+    setDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dragCounter.current--;
+    if (dragCounter.current === 0) setDragging(false);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(false);
+    dragCounter.current = 0;
+    const file = e.dataTransfer.files?.[0];
+    readFile(file);
+  };
+
+  /* ---------- send ---------- */
   const handleSend = () => {
-    if (!input.trim()) return;
-    onSend(input);
+    if (!input.trim() && !imagePreview) return;
+    onSend(input.trim(), imagePreview);
     setInput("");
+    setImagePreview(null);
   };
 
   const handleKeyDown = (e) => {
@@ -217,16 +268,46 @@ const MessageInput = ({ onSend }) => {
   };
 
   return (
-    <div className="chat-input">
+    <div
+      className={`chat-input ${dragging ? "chat-input--drag-over" : ""}`}
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      {/* Image preview */}
+      {imagePreview && (
+        <div className="chat-input__preview">
+          <div className="chat-input__preview-item">
+            <img src={imagePreview} alt="preview" className="chat-input__preview-img" />
+            <button
+              className="chat-input__preview-close"
+              onClick={() => setImagePreview(null)}
+              aria-label="Remove image"
+              type="button"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="chat-input__wrapper">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type a messages"
+          placeholder="Type a message"
           className="chat-input__field"
         />
-        <input type="file" id="fileInput" style={{ display: "none" }} />
+        <input
+          type="file"
+          id="fileInput"
+          ref={fileInputRef}
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
         <label htmlFor="fileInput" className="chat-input__attach">
           <GrAttachment />
         </label>
@@ -298,10 +379,11 @@ const Chat = () => {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
-  const handleSend = (text) => {
+  const handleSend = (text, image) => {
     const newMsg = {
       id: Date.now(),
-      text,
+      text: text || "",
+      image: image || null,
       mine: true,
     };
     setMessages((prev) => [...prev, newMsg]);
