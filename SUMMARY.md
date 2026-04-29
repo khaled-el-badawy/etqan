@@ -1,98 +1,94 @@
 <p align="center">
-  <img src="readme-assets/etqan-logo.png" alt="ETQAN Logo" width="350"/>
+  <img src="readme-assets/etqan-logo.png" alt="شعار إتقان" width="350"/>
 </p>
 
-<h1 align="center">📋 Etqan Platform — Executive Summary</h1>
+<h1 align="center">📋 منصة إتقان — ملخص تنفيذي</h1>
 
 ---
 
-## What Is Etqan?
+## ما هي إتقان؟
 
-**Etqan (إتقان)** is a comprehensive digital marketplace platform that connects customers in Egypt with skilled craftsmen, contracting companies, and professional tools — all in one place. Think of it as the **"one-stop shop" for all home maintenance, renovation, construction, and professional tool needs** in the Egyptian market.
+**إتقان** هي منصة رقمية شاملة تربط العملاء في مصر بالحرفيين المهرة وشركات المقاولات والأدوات المهنية — كل ذلك في مكان واحد. هي **"المتجر الشامل"** لجميع احتياجات الصيانة المنزلية والتجديد والبناء والأدوات المهنية في السوق المصري.
 
 ---
 
-## What Does This Website Do?
+## ماذا يفعل هذا الموقع؟
 
-At its core, Etqan performs **four primary functions**:
+يقدم إتقان **أربع وظائف رئيسية**:
 
-| Function | What It Does |
+| الوظيفة | ماذا تفعل |
 | :--- | :--- |
-| **🔧 Craftsman Matching** | Customers can browse, search, and hire verified craftsmen across **20+ trade specializations** (plumbing, carpentry, electrical, welding, HVAC, painting, tiling, masonry, and more). Each craftsman has a rich profile with a portfolio, work gallery, services list, working hours, and customer reviews. |
-| **🏗️ Contracting Services** | Customers can find and request services from contracting companies for large-scale projects — including construction, finishing, building waste removal, sand & gravel transport, heavy equipment rental, and furniture moving. |
-| **🛒 E-Commerce Store** | A fully integrated online shop for professional tools and equipment from premium global brands (DeWalt, Makita, Bosch, Milwaukee, KNIPEX, etc.) with search, discounts, wishlists, shopping cart, and Google Maps-based delivery location selection. |
-| **💬 Communication Hub** | A built-in real-time chat system allowing customers and craftsmen to communicate directly, share images, and coordinate services. |
+| **🔧 ربط بالحرفيين** | يمكن للعملاء تصفح وتوظيف حرفيين معتمدين في **20+ تخصص** (سباكة، نجارة، كهرباء، حدادة، تكييف، دهانات، سيراميك، والمزيد). كل حرفي لديه ملف شخصي غني بمعرض أعمال وخدمات وتقييمات. |
+| **🏗️ خدمات مقاولات** | يمكن للعملاء إيجاد وطلب خدمات من شركات المقاولات للمشاريع الكبرى — بناء، تشطيب، نقل مخلفات، نقل رمل وزلط، تأجير معدات ثقيلة، ونقل أثاث. |
+| **🛒 متجر إلكتروني** | متجر متكامل للأدوات والمعدات المهنية من ماركات عالمية (DeWalt، Makita، Bosch، Milwaukee، KNIPEX) مع بحث، خصومات، مفضلة، سلة مشتريات، وتحديد موقع التوصيل عبر Google Maps. |
+| **💬 مركز تواصل** | نظام محادثة مدمج يتيح التواصل المباشر بين العملاء والحرفيين مع مشاركة الصور والتنسيق. |
 
 ---
 
-## Who Is It For?
+## لمن هذه المنصة؟
 
-The platform serves **three user types**, each with dedicated interfaces:
+تخدم المنصة **ثلاثة أنواع من المستخدمين**:
 
-- **👤 Customers** — Search for craftsmen, request services, shop for tools, rate service providers, track orders, and manage their profile.
-- **🔧 Craftsmen** — Showcase their portfolio, receive job requests, communicate with clients, buy tools, and manage their professional presence.
-- **🏢 Companies** — Display company services, receive project requests, and manage their company profile and order pipeline.
+- **👤 العملاء** — البحث عن حرفيين، طلب خدمات، التسوق، التقييم، تتبع الطلبات، وإدارة الملف الشخصي.
+- **🔧 الحرفيون** — عرض البورتفوليو، استقبال الطلبات، التواصل مع العملاء، شراء الأدوات، وإدارة الملف المهني.
+- **🏢 الشركات** — عرض خدمات الشركة، استقبال طلبات المشاريع، وإدارة ملف الشركة.
 
 ---
 
-## Technology Stack at a Glance
+## التقنيات المستخدمة
 
-| Layer | Technologies |
+| الطبقة | التقنيات |
 | :--- | :--- |
-| **Frontend Framework** | React 19.2 (Functional Components + Hooks) |
-| **Build Tool** | Vite 7.2 |
-| **Routing** | React Router v7.13 (SPA with dynamic routes) |
-| **Styling** | Component-scoped CSS, Bootstrap 5.3, Tailwind CSS 4.1, Google Fonts (Arabic + Latin) |
-| **Animations** | Framer Motion 12 (entrance animations), AOS 2.3 (scroll-triggered effects) |
-| **UI Components** | Swiper 12 (carousels), React Icons 5.5, React Select 5.10 |
-| **Maps** | React-Leaflet / Leaflet + Google Maps embed |
-| **Code Quality** | ESLint 9.39, PostCSS, Autoprefixer |
-| **Deployment** | gh-pages (GitHub Pages) |
+| **إطار العمل** | React 19.2 (مكونات وظيفية + Hooks) |
+| **أداة البناء** | Vite 7.2 |
+| **التوجيه** | React Router v7.13 (SPA مع مسارات ديناميكية) |
+| **التنسيق** | CSS مخصص لكل مكون، Bootstrap 5.3، Tailwind CSS 4.1، خطوط Google (عربي + لاتيني) |
+| **الأنيميشن** | Framer Motion 12 (أنيميشن دخول)، AOS 2.3 (تأثيرات تمرير) |
+| **مكونات UI** | Swiper 12 (سلايدر)، React Icons 5.5، React Select 5.10 |
+| **الخرائط** | React-Leaflet / Leaflet + Google Maps |
+| **جودة الكود** | ESLint 9.39، PostCSS، Autoprefixer |
+| **النشر** | gh-pages (GitHub Pages) |
 
 ---
 
-## Key Features Summary
+## ملخص الميزات الرئيسية
 
-✅ **Multi-role authentication** with role-specific registration, login, OTP verification, and password recovery  
-✅ **20+ trade specializations** with searchable service directory  
-✅ **Rich craftsman profiles** — portfolios, work galleries, reviews, rating distributions, and verified badges  
-✅ **Company profiles** — services, stats, reviews, and service request modals  
-✅ **Full e-commerce flow** — product catalog, search, wishlists, cart, quantity limits, brand filtering, and checkout  
-✅ **Geolocation-based delivery** — browser location API with Google Maps embed  
-✅ **Real-time chat** — conversation list, search, online indicators, file/image attachments, drag & drop  
-✅ **Invoice generation** — itemized service invoices with pricing breakdowns and payment methods  
-✅ **Animated statistics** — scroll-triggered number counters using Intersection Observer  
-✅ **Advanced form validation** — email regex, phone format (Egyptian), date of birth mask with 18+ age check, password matching  
-✅ **Fully responsive** — mobile-first design from 320px to desktop  
-✅ **RTL Arabic interface** — complete right-to-left layout with Arabic typography  
-✅ **Client-side data persistence** — cart and favorites stored in localStorage  
-✅ **Custom 404 page** — graceful error handling for unmatched routes  
-
----
-
-## What Was Learned?
-
-This project served as a comprehensive learning exercise covering:
-
-- **Component architecture** at scale (30+ components, 25+ pages)
-- **Multi-role SPA routing** with dynamic parameters
-- **Complex form UX** (masked date inputs, calendar pickers, real-time validation)
-- **Animation system design** (combining Framer Motion + AOS without conflicts)
-- **RTL/Arabic UI engineering** (bidirectional text, mirrored layouts)
-- **Client-side e-commerce patterns** (cart, wishlist, localStorage sync)
-- **Browser APIs** (Intersection Observer, Geolocation, FileReader, drag & drop)
-- **Responsive design** across all device breakpoints
+✅ مصادقة متعددة الأدوار مع تسجيل وOTP واستعادة كلمة المرور  
+✅ 20+ تخصص حرفي مع دليل خدمات قابل للبحث  
+✅ ملفات شخصية غنية للحرفيين — بورتفوليو، معرض أعمال، تقييمات، شارات توثيق  
+✅ ملفات شركات — إحصائيات، خدمات، تقييمات، طلب خدمة  
+✅ متجر إلكتروني كامل — كتالوج، بحث، مفضلة، سلة، ماركات، إتمام شراء  
+✅ تحديد موقع التوصيل — Geolocation API مع Google Maps  
+✅ محادثة فورية — قائمة محادثات، بحث، مرفقات صور، سحب وإفلات  
+✅ فاتورة مفصلة — بنود مع ملخص أسعار وطرق دفع  
+✅ إحصائيات متحركة — عدّادات باستخدام Intersection Observer  
+✅ تحقق متقدم — بريد إلكتروني، هاتف مصري، تاريخ ميلاد بقناع مع فحص عمر 18+  
+✅ تصميم متجاوب بالكامل من الموبايل إلى سطح المكتب  
+✅ واجهة عربية RTL كاملة مع خطوط عربية احترافية  
+✅ حفظ بيانات السلة والمفضلة في localStorage  
 
 ---
 
-## Conclusions
+## ماذا تعلمنا؟
 
-Etqan demonstrates that a **production-quality, feature-rich marketplace** can be built entirely on the modern React front-end stack. The platform is fully prepared for backend integration — with authentication flows, API call templates, and structured data submissions already in place. It addresses a real market need in Egypt's skilled trades sector and serves as both a functional prototype and a comprehensive educational reference for modern web development.
+- **بنية المكونات** على نطاق واسع (30+ مكون، 25+ صفحة)
+- **توجيه SPA متعدد الأدوار** بمعاملات ديناميكية
+- **تجربة نماذج معقدة** (أقنعة إدخال التاريخ، منتقي التقويم، تحقق فوري)
+- **تصميم أنظمة الأنيميشن** (Framer Motion + AOS معاً)
+- **هندسة واجهات RTL/العربية** (نص ثنائي الاتجاه، تخطيطات معكوسة)
+- **أنماط التجارة الإلكترونية** (سلة، مفضلة، مزامنة localStorage)
+- **واجهات المتصفح البرمجية** (Intersection Observer، Geolocation، FileReader، سحب وإفلات)
+
+---
+
+## الاستنتاجات
+
+إتقان تثبت أن **سوقاً رقمياً متكاملاً وغنياً بالميزات** يمكن بناؤه بالكامل على مكدس React الحديث. المنصة جاهزة للربط بالباك إند — مع تدفقات مصادقة وقوالب API وبيانات منظمة جاهزة. تعالج المنصة حاجة سوقية حقيقية في قطاع الخدمات الحرفية في مصر وتخدم كمرجع تعليمي شامل لتطوير الويب الحديث.
 
 ---
 
 <p align="center">
-  <sub><b>© 2026 Etqan Platform — All Rights Reserved</b></sub>
+  <sub><b>© 2026 منصة إتقان — جميع الحقوق محفوظة</b></sub>
   <br/>
-  <sub>For the full technical documentation, see <a href="README.md">README.md</a></sub>
+  <sub>للتوثيق التقني الكامل، راجع <a href="README.md">README.md</a></sub>
 </p>
