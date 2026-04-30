@@ -5,6 +5,56 @@
   padding-bottom: 40px;
 }
 
+
+.profile-container .activation-required-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.profile-container .activation-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.profile-container .activation-content h3{
+  color: #40798C;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-container .activation-content p{
+  font-size: 24px;
+}
+
+.profile-container .activation-icon {
+  font-size: 70px;
+  color: #40798C;
+  margin-bottom: 20px;
+}
+
+.profile-container .activate-btn {
+  background-color: #75A5B3;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.profile-container .activate-btn:hover {
+  background-color: #40798C;
+}
+
 .profile-container .section-divider {
   width: 85%;
   height: 1px;
@@ -33,11 +83,12 @@
   margin-top: -100px;
   position: relative;
   z-index: 2;
+
 }
 
 .profile-container .profile-img {
-  width: 220px;
-  height: 220px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   border: 6px solid #fff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -65,26 +116,43 @@
   border: none;
   cursor: pointer;
   font-size: 24px;
+ 
 }
 
-.profile-container .btn.primary {
-  background: #40798C;
-  color: white;
-}
+
+/* .profile-container .buttons.left {
+    position: absolute ; 
+    top: 240px ;        
+    left: 40px ;       
+    transform: none ;   
+    display: flex ;
+    gap: 10px ;
+    z-index: 100 ;     
+} */
 
 .profile-container .buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-left: 20px;
-  padding: 10px;
-  height: 65px;
-  align-self: flex-start;
+    display: flex ;
+    justify-content: flex-end ;
+    /* padding: 15px 20px ; */
+    position: relative ; 
+    top: 0 ;
+    left: 0 ;
+    transform: none ;
+    width: 100% ;
+}
+
+/* تنسيق زر طلب خدمة */
+.profile-container .btn.primary {
+    background-color: #40798C ;
+    color: white ;
+    border-radius: 8px ;
+    border: none ;
+    cursor: pointer ;
+    font-weight: bold ;
 }
 
 .profile-container .buttons button {
-  gap: 5px;
+
   border-radius: 10px;
   font-weight: bold;
   border: none;
@@ -92,12 +160,12 @@
   cursor: pointer;
   transition: 0.2s ease;
   color: #40798c;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .profile-container .btn-edit {
   width: 50px;
-  font-size: 26px;
+  font-size: 28px;
 }
 
 .profile-container .buttons button:hover {
@@ -165,7 +233,7 @@
   justify-content: center;
   gap: 50px;
   border-radius: 16px;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .profile-container .stat {
@@ -506,6 +574,16 @@
   transition: 0.3s;
  }
 
+ .profile-container .edit-cancel-btn{
+     width: 50%;
+  display: block;
+  border: none;
+  border-radius: 8px;
+  color: #40798c;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+ }
  .profile-container .cancel-btn{
      /* width: 50%; */
   padding: 12px;
@@ -666,7 +744,7 @@
   font-weight: bold;
   font-size: 24px;
   transition: .3s;
-}
+}  
 
 .profile-container .profile-header {
   display: flex;

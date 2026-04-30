@@ -14,22 +14,19 @@ import {
   FaClock,
   FaTasks,
   FaBriefcase,
-  FaTruck,
   FaShieldAlt,
-  FaBoxOpen,
-  FaTools,
   FaStar,
   FaBuilding,
   FaCogs,
+  FaUserCheck,
+  FaTools,
 } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const reviews = [
-  { id: 1, rating: 0 },
-  { id: 2, rating: 0 },
-  { id: 3, rating: 0 },
-  { id: 4, rating: 0 },
-  { id: 5, rating: 0 },
+  { id: 1, rating: 0, name: "أحمد محمد", text: "خدمة ممتازة جدًا والتعامل محترم ." },
+  { id: 2, rating: 0, name: "سارة علي", text: "من الشركات المميزة فعلا في المجال." },
+  { id: 3, rating: 0, name: "محمد خالد", text: "أفضل شركة مقاولات تعاملت معها بصراحة." },
 ];
 
 const totalRatings = reviews.length;
@@ -37,7 +34,9 @@ const avgRating =
   reviews.reduce((sum, r) => sum + r.rating, 0) / totalRatings;
 
 /* ================= EDIT PROFILE COMPONENT ================= */
-function ProfileSection({ setEditMode }) {
+function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setCompanyData, companyData }) {
+  const [formData, setFormData] = useState({ ...companyData });
+  const [errors, setErrors] = useState({});
   const [password, setPassword] = useState("");
   const [showCurrentPassword, setShowPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
@@ -45,82 +44,89 @@ function ProfileSection({ setEditMode }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const passwordsNotMatch =
-    confirmPassword.length > 0 && newPassword !== confirmPassword;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) setErrors({ ...errors, [name]: "" });
+  };
+
+  const validate = () => {
+    let newErrors = {};
+    const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]+$/;
+    if (!formData.name || !nameRegex.test(formData.name)) newErrors.name = "يرجى إدخال اسم صحيح (حروف فقط)";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email || !emailRegex.test(formData.email)) newErrors.email = "يرجى إدخال بريد إلكتروني صحيح ومكتمل";
+    const phoneRegex = /^(010|011|012|015)[0-9]{8}$/;
+    if (!formData.phone || !phoneRegex.test(formData.phone)) newErrors.phone = "يجب أن يكون 11 رقم ويبدأ بـ 010, 011, 012, أو 015";
+    if (newPassword && newPassword !== confirmPassword) newErrors.confirmPassword = "كلمة السر غير متطابقة";
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      setCompanyData(formData);
+      setIsAccountActive(true);
+      setEditMode("profile");
+    }
+  };
 
   return (
     <div className="edit-form-container">
-      <h2>تعديل ملف الشركة</h2>
-      <form className="edit-profile-form">
+      <h2>{isAccountActive ? "تعديل ملف الشركة" : "إكمال بيانات الشركة"}</h2>
+      <form className="edit-profile-form" onSubmit={handleSave}>
         <div className="form-group">
           <h3>بيانات الشركة</h3>
-          <input placeholder="اسم الشركة" />
-          <input placeholder="البريد الإلكتروني" />
-          <input placeholder="رقم الهاتف" />
+          <input name="name" placeholder="اسم الشركة" value={formData.name} onChange={handleInputChange} />
+          {errors.name && <p style={{color: 'red', fontSize: '12px'}}>{errors.name}</p>}
+          <input name="email" placeholder="البريد الإلكتروني" value={formData.email} onChange={handleInputChange} />
+          {errors.email && <p style={{color: 'red', fontSize: '12px'}}>{errors.email}</p>}
+          <input name="phone" placeholder="رقم الهاتف" value={formData.phone} maxLength={11} onChange={handleInputChange} />
+          {errors.phone && <p style={{color: 'red', fontSize: '12px'}}>{errors.phone}</p>}
         </div>
 
         <div className="form-group">
           <h3>البيانات الأساسية</h3>
-          <input placeholder="عن الشركة" />
-          <input placeholder="سنوات الخبرة" />
-          <input placeholder="المحافظة" />
-          <input placeholder="الخدمات" />
+          <input name="about" placeholder="عن الشركة" value={formData.about} onChange={handleInputChange} />
+          <input name="experience" placeholder="سنوات الخبرة" value={formData.experience} onChange={handleInputChange} />
+          <input name="governorate" placeholder="المحافظة" value={formData.governorate} onChange={handleInputChange} />
+          <input name="services" placeholder="الخدمات" value={formData.services} onChange={handleInputChange} />
         </div>
 
-       
         <div className="form-group">
           <h3>معلومات العمل</h3>
-          <input placeholder="نطاق الخدمة" />
-          <input placeholder="مواعيد العمل" />
-          <input placeholder="سرعة الاستجابة" />
-          <select className="custom-select">
-            <option value="" disabled selected hidden>خدمة الطوارئ</option>
+          <input name="scope" placeholder="نطاق الخدمة" value={formData.scope} onChange={handleInputChange} />
+          <input name="hours" placeholder="مواعيد العمل" value={formData.hours} onChange={handleInputChange} />
+          <input name="responseTime" placeholder="سرعة الاستجابة" value={formData.responseTime} onChange={handleInputChange} />
+          <select name="emergency" className="custom-select" value={formData.emergency} onChange={handleInputChange}>
+            <option value="" disabled hidden>خدمة الطوارئ</option>
             <option value="available">متاحة</option>
-            <option value="available">غير متاحة</option>
+            <option value="unavailable">غير متاحة</option>
           </select>
         </div>
 
         <div className="form-group password">
           <h3>تغيير كلمة السر</h3>
           <div className="password-field">
-            <input
-              type={showCurrentPassword ? "text" : "password"}
-              placeholder="كلمة السر الحالية"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <span className="password-eye" onClick={() => setShowPassword(!showCurrentPassword)}>
-              {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
-            </span>
+            <input type={showCurrentPassword ? "text" : "password"} placeholder="كلمة السر الحالية" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <span className="password-eye" onClick={() => setShowPassword(!showCurrentPassword)}>{showCurrentPassword ? <FiEye /> : <FiEyeOff />}</span>
           </div>
           <div className="password-field">
-            <input
-              type={showNewPassword ? "text" : "password"}
-              placeholder="كلمة السر الجديدة"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-            <span className="password-eye" onClick={() => setShowNewPassword(!showNewPassword)}>
-              {showNewPassword ? <FiEye /> : <FiEyeOff />}
-            </span>
+            <input type={showNewPassword ? "text" : "password"} placeholder="كلمة السر الجديدة" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+            <span className="password-eye" onClick={() => setShowNewPassword(!showNewPassword)}>{showNewPassword ? <FiEye /> : <FiEyeOff />}</span>
           </div>
           <div className="password-field">
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="تأكيد كلمة السر"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <span className="password-eye" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-              {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
-            </span>
-            {passwordsNotMatch && <p className="error-msg">كلمة السر غير متطابقة</p>}
+            <input type={showConfirmPassword ? "text" : "password"} placeholder="تأكيد كلمة السر" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <span className="password-eye" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>{showConfirmPassword ? <FiEye /> : <FiEyeOff />}</span>
+            {errors.confirmPassword && <p style={{color: 'red', fontSize: '12px'}}>{errors.confirmPassword}</p>}
           </div>
         </div>
 
         <div className="form-btns">
           <button type="submit" className="save-btn">حفظ</button>
-          <button type="button" className="cancel-btn" onClick={() => setEditMode(false)}>إلغاء</button>
+          <button type="button" className="edit-cancel-btn" onClick={() => setEditMode("profile")}>إلغاء</button>
         </div>
       </form>
     </div>
@@ -128,73 +134,36 @@ function ProfileSection({ setEditMode }) {
 }
 
 /* ================= REQUEST MODAL COMPONENT ================= */
-const egyptianGovernorates = [
-  "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "دمياط", "بني سويف", "بورسعيد", "جنوب سيناء", "حلايب وشلاتين", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"
-];
-
 function RequestServiceModal({ companyName, onClose }) {
   const today = new Date().toISOString().split('T')[0];
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-
+  const egyptianGovernorates = ["القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "دمياط", "بني سويف", "بورسعيد", "جنوب سيناء", "حلايب وشلاتين", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"];
   const filteredGovs = egyptianGovernorates.filter(gov => gov.includes(searchTerm));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowSuccessMsg(true);
-    setTimeout(() => {
-      setShowSuccessMsg(false);
-      onClose();
-    }, 1500);
-  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         {showSuccessMsg ? (
-          <div className="success-toast-container">
-            <div className="success-icon">✓</div>
-            <p>تم إرسال طلبك بنجاح</p>
-          </div>
+          <div className="success-toast-container"><div className="success-icon">✓</div><p>تم إرسال طلبك بنجاح</p></div>
         ) : (
           <>
-            <h2 className="modal-title"> {companyName}</h2>
-            <form className="request-form" onSubmit={handleSubmit}>
-              <div className="form-group-modal">
-                <label>اسم العميل</label>
-                <input type="text" placeholder="أدخل اسمك" required />
-              </div>
+            <h2 className="modal-title">طلب خدمة من {companyName}</h2>
+            <form className="request-form" onSubmit={(e) => {e.preventDefault(); setShowSuccessMsg(true); setTimeout(() => {setShowSuccessMsg(false); onClose();}, 1500);}}>
+              <div className="form-group-modal"><label>اسم العميل</label><input type="text" placeholder="أدخل اسمك" required /></div>
               <div className="form-group-modal custom-select-container">
                 <label>المحافظة</label>
-                <input 
-                  type="text" placeholder="المحافظة" value={searchTerm}
-                  onChange={(e) => {setSearchTerm(e.target.value); setIsOpen(true);}}
-                  onFocus={() => setIsOpen(true)} required
-                />
+                <input type="text" placeholder="المحافظة" value={searchTerm} onChange={(e) => {setSearchTerm(e.target.value); setIsOpen(true);}} onFocus={() => setIsOpen(true)} required />
                 {isOpen && filteredGovs.length > 0 && (
                   <ul className="gov-dropdown-list">
-                    {filteredGovs.map((gov, index) => (
-                      <li key={index} onClick={() => {setSearchTerm(gov); setIsOpen(false);}}>
-                        {gov}
-                      </li>
-                    ))}
+                    {filteredGovs.map((gov, index) => (<li key={index} onClick={() => {setSearchTerm(gov); setIsOpen(false);}}>{gov}</li>))}
                   </ul>
                 )}
               </div>
-              <div className="form-group-modal">
-                <label>العنوان</label>
-                <input type="text" placeholder="العنوان بالتفصيل" required />
-              </div>
-              <div className="form-group-modal">
-                <label>تاريخ الطلب</label>
-                <input type="date" value={today} readOnly className="readonly-input" />
-              </div>
-              <div className="modal-btns">
-                <button type="submit" className="confirm-btn">إرسال الطلب</button>
-                <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
-                <button type="button" className="close-btn" onClick={onClose}>×</button>
-              </div>
+              <div className="form-group-modal"><label>العنوان</label><input type="text" placeholder="العنوان بالتفصيل" required /></div>
+              <div className="form-group-modal"><label>تاريخ الطلب</label><input type="date" value={today} readOnly className="readonly-input" /></div>
+              <div className="modal-btns"><button type="submit" className="confirm-btn">إرسال الطلب</button><button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button></div>
             </form>
           </>
         )}
@@ -207,10 +176,16 @@ function RequestServiceModal({ companyName, onClose }) {
 export default function CompanyProfile() {
   const [activeTab, setActiveTab] = useState("profile");
   const [showRequestModal, setShowRequestModal] = useState(false);
-  const companyName = "شركة أبناء سيناء";
+  const [isAccountActive, setIsAccountActive] = useState(false); 
+  const [companyData, setCompanyData] = useState({
+    name: "شركة أبناء سيناء",
+    about: "شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء، وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة.",
+    email: "", phone: "", governorate: "القاهرة", experience: "16 سنة", scope: "داخل القاهرة والجيزة", hours: "من 9 صباحًا إلى 10 مساءً", responseTime: "خلال 30 دقيقة", emergency: "available", services: ""
+  });
 
-  const [profileImg, setProfileImg] = useState("/images/companylogo.jpg");
-  const [coverImg, setCoverImg] = useState("/images/companycover.jpg");
+  const [profileImg, setProfileImg] = useState("");
+  const [coverImg, setCoverImg] = useState("");
+  
 
   const profileInputRef = useRef(null);
   const coverInputRef = useRef(null);
@@ -219,220 +194,129 @@ export default function CompanyProfile() {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      if (type === "profile") setProfileImg(url);
-      else setCoverImg(url);
+      if (type === "profile") {
+        setProfileImg(url);
+      } else {
+        setCoverImg(url);
+      }
+    }
+  };
+
+ 
+  const triggerCoverUpload = () => {
+    if (coverInputRef.current) {
+      coverInputRef.current.click();
     }
   };
 
   return (
     <div className="profile-container">
-      {showRequestModal && (
-        <RequestServiceModal companyName={companyName} onClose={() => setShowRequestModal(false)} />
-      )}
+      {showRequestModal && <RequestServiceModal companyName={companyData.name} onClose={() => setShowRequestModal(false)} />}
 
-      {/* COVER */}
-      <div className="cover-container">
-        <img src={coverImg} alt="cover" className="cover-img" />
+      {/* COVER SECTION */}
+      <div className="cover-container" style={{ backgroundColor: coverImg ? 'transparent' : '#f0f2f5', height: '250px', position: 'relative' }}>
+        {coverImg && <img src={coverImg} alt="cover" className="cover-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
         
+        {/* زر تعديل الغلاف */}
         {activeTab === "edit" && (
-          <button className="edit-cover-btn" onClick={() => coverInputRef.current.click()}>
+          <button 
+            type="button"
+            className="edit-cover-btn" 
+            onClick={triggerCoverUpload}
+            style={{ zIndex: 10 }}
+          >
             <MdPhotoCamera /> تعديل صورة الغلاف
           </button>
         )}
+        
+       
         <input 
-          type="file" ref={coverInputRef} style={{ display: "none" }} 
-          onChange={(e) => handleImageUpload(e, "cover")} accept="image/*" 
+          type="file" 
+          ref={coverInputRef} 
+          style={{ display: "none" }} 
+          onChange={(e) => handleImageUpload(e, "cover")} 
+          accept="image/*" 
         />
-
-        <div className="buttons left">
-          <button className="btn primary" onClick={() => setShowRequestModal(true)}>طلب خدمة</button>
-          <button onClick={() => setActiveTab("edit")} className="btn-edit">
-            <MdModeEdit />
-          </button>
-        </div>
+        
+        {isAccountActive && (
+          <div className="buttons left">
+            <button className="btn primary" onClick={() => setShowRequestModal(true)}>طلب خدمة</button>
+            <button onClick={() => setActiveTab("edit")} className="btn-edit"><MdModeEdit /></button>
+          </div>
+        )}
         <div className="cover-overlay"></div>
       </div>
 
-      <div className="profile-header">
-        <div className="profile-img-container">
-          <img src={profileImg} alt="profile" className="profile-img" />
+      {/* PROFILE HEADER */}
+      <div className="profile-header" style={{ textAlign: 'center', marginTop: '-75px', position: 'relative', zIndex: '5' }}>
+        <div style={{ position: 'relative', width: '190px', height: '190px', margin: '0 auto' }}>
+          <div className="profile-img" style={{ backgroundColor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '5px solid #fff', overflow: 'hidden', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            {profileImg ? <img src={profileImg} alt="profile" className="profile-img"  /> : <FaBuilding style={{ fontSize: '60px', color: '#ccc' }} />}
+          </div>
           {activeTab === "edit" && (
-            <div className="profile-camera-icon" onClick={() => profileInputRef.current.click()}>
+            <div 
+              onClick={() => profileInputRef.current.click()} 
+              className="profile-camera-icon "
+            >
               <MdPhotoCamera />
             </div>
           )}
-          <input 
-            type="file" ref={profileInputRef} style={{ display: "none" }} 
-            onChange={(e) => handleImageUpload(e, "profile")} accept="image/*" 
-          />
         </div>
-        
-        <div className="profile-info">
-          <h2>{companyName}</h2>
+        <input type="file" ref={profileInputRef} style={{ display: "none" }} onChange={(e) => handleImageUpload(e, "profile")} accept="image/*" />
+        <div className="profile-info" style={{ marginTop: '15px' }}>
+          <h2>{companyData.name}</h2>
           <p>للتجارة والمقاولات العامة</p>
-          <div className="rating">
-            <div className="star-icon">
-              <FaStar />
-              <span>{avgRating.toFixed(1)}</span>
-            </div>
-          </div>
-
-          
+          {isAccountActive && <div className="rating"><div className="star-icon"><FaStar /><span>{avgRating.toFixed(1)}</span></div></div>}
         </div>
       </div>
 
-      {activeTab === "profile" ? (
+      {/* RENDER TABS */}
+      {!isAccountActive && activeTab !== "edit" ? (
+        <div className="activation-required-section">
+          <div className="activation-content">
+            <FaUserCheck className="activation-icon" />
+            <h3>أهلاً بك في منصتنا <img src="/images/hand.svg" alt="hand" style={{ width: '50px' }}/></h3>
+            <p className="no-wrap-text">يرجى إكمال تفعيل حسابك وإضافة بيانات الشركة لتظهر للعملاء بشكل احترافي.</p>
+            <button className="activate-btn" onClick={() => setActiveTab("edit")}>فعل حسابك الآن</button>
+          </div>
+        </div>
+      ) : activeTab === "profile" ? (
         <div>
-          {/* STATS */}
           <div className="stats-box">
-            <div className="stat">
-              <div className="icon-circle blue"><FaCalendarAlt /></div>
-              <span>2026</span>
-              <p>تاريخ الانضمام</p>
-            </div>
-            <div className="stat">
-              <div className="icon-circle green"><FaTasks /></div>
-              <span>0</span>
-              <p>عدد الطلبات</p>
-            </div>
-            <div className="stat">
-              <div className="icon-circle purple"><FaMapMarkerAlt /></div>
-              <span>القاهرة</span>
-              <p>الموقع</p>
-            </div>
-            <div className="stat">
-              <div className="icon-circle orange"><FaBriefcase /></div>
-              <span>16 سنة</span>
-              <p>سنوات الخبرة</p>
-            </div>
+            <div className="stat"><div className="icon-circle blue"><FaCalendarAlt /></div><span>2026</span><p>تاريخ الانضمام</p></div>
+            <div className="stat"><div className="icon-circle green"><FaTasks /></div><span>0</span><p>عدد الطلبات</p></div>
+            <div className="stat"><div className="icon-circle purple"><FaMapMarkerAlt /></div><span>{companyData.governorate}</span><p>الموقع</p></div>
+            <div className="stat"><div className="icon-circle orange"><FaBriefcase /></div><span>{companyData.experience}</span><p>سنوات الخبرة</p></div>
           </div>
-
           <div className="section-divider"></div>
-
-          {/* ABOUT */}
-          <div className="about-section">
-            <div className="about-text">
-              <h3 className="section-title"><FaBuilding className="title-icon" /> عن الشركة</h3>
-              <p className="section-p">
-                شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء،<br /> 
-                وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة<br /> 
-                بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة،<br /> 
-                وتُعد هذه الشركة من أقدم الشركات في هذا المجال، إليكم الكثير من التفاصيل حولها.
-              </p>
-            </div>
-          </div>
-
+          <div className="about-section"><div className="about-text"><h3 className="section-title"><FaBuilding className="title-icon" /> عن الشركة</h3><p className="section-p">{companyData.about}</p></div></div>
           <div className="section-divider"></div>
-
-          {/* WORK INFO */}
           <div className="section work-info">
             <h3 className="section-title"><FaBriefcase className="title-icon" /> معلومات العمل</h3>
             <div className="work-grid">
-              <div className="work-item">
-                <span className="label"><FaMapMarkerAlt className="label-icon" /> نطاق الخدمة</span>
-                <p>داخل القاهرة والجيزة</p>
-              </div>
-              <div className="work-item">
-                <span className="label"><FaClock className="label-icon" /> مواعيد العمل</span>
-                <p>من 9 صباحًا إلى 10 مساءً</p>
-              </div>
-              <div className="work-item">
-                <span className="label"><FaTasks className="label-icon" /> سرعة الاستجابة</span>
-                <p>خلال 30 دقيقة</p>
-              </div>
-              <div className="work-item">
-                <span className="label"><FaShieldAlt className="label-icon" /> خدمة الطوارئ</span>
-                <p>متاحة 24 ساعة</p>
-              </div>
+              <div className="work-item"><span className="label"><FaMapMarkerAlt /> نطاق الخدمة</span><p>{companyData.scope}</p></div>
+              <div className="work-item"><span className="label"><FaClock /> مواعيد العمل</span><p>{companyData.hours}</p></div>
+              <div className="work-item"><span className="label"><FaTasks /> سرعة الاستجابة</span><p>{companyData.responseTime}</p></div>
+              <div className="work-item"><span className="label"><FaShieldAlt /> خدمة الطوارئ</span><p>{companyData.emergency === "available" ? "متاحة 24 ساعة" : "غير متاحة"}</p></div>
             </div>
           </div>
-
           <div className="section-divider"></div>
-
-          {/* Services */}
-          <div className="section">
-  <h3 className="section-title">
-    <FaCogs className="title-icon" />
-    الخدمات الأساسية للشركة
-  </h3>
-  <div className="services">
-    <div className="service-card">
-      <div className="icon-circle blue">
-        <FaBuilding />
-      </div>
-      <h4>المقاولات العامة</h4>
-      <p>تنفيذ كافة المشروعات السكنية والتجارية بأعلى جودة</p>
-    </div>
-
-    <div className="service-card">
-      <div className="icon-circle green">
-        <FaTools />
-      </div>
-      <h4>أعمال التشطيبات</h4>
-      <p>تشطيبات داخلية وخارجية عصرية تناسب جميع الأذواق</p>
-    </div>
-
-    <div className="service-card">
-      <div className="icon-circle purple">
-        <FaTasks />
-      </div>
-      <h4>إدارة المشروعات</h4>
-      <p>إشراف هندسي متكامل وجدول زمني دقيق للتنفيذ</p>
-    </div>
-
-    <div className="service-card">
-      <div className="icon-circle orange">
-        <FaShieldAlt />
-      </div>
-      <h4>أعمال الترميم</h4>
-      <p>ترميم وتدعيم المباني القديمة بأحدث الوسائل التقنية</p>
-    </div>
-  </div>
-</div>
-
+          <div className="section"><h3 className="section-title"><FaCogs className="title-icon" /> الخدمات الأساسية للشركة</h3>
+            <div className="services">
+              <div className="service-card"><div className="icon-circle blue"><FaBuilding /></div><h4>المقاولات العامة</h4><p>تنفيذ كافة المشروعات السكنية والتجارية بأعلى جودة</p></div>
+              <div className="service-card"><div className="icon-circle green"><FaTools /></div><h4>أعمال التشطيبات</h4><p>تشطيبات داخلية وخارجية عصرية تناسب جميع الأذواق</p></div>
+              <div className="service-card"><div className="icon-circle purple"><FaTasks /></div><h4>إدارة المشروعات</h4><p>إشراف هندسي متكامل وجدول زمني دقيق للتنفيذ</p></div>
+              <div className="service-card"><div className="icon-circle orange"><FaShieldAlt /></div><h4>أعمال الترميم</h4><p>ترميم وتدعيم المباني القديمة بأحدث الوسائل التقنية</p></div>
+            </div>
+          </div>
           <div className="section-divider"></div>
-
-          {/* REVIEWS */}
           <div className="section reviews-section">
-            <div className="reviews-header">
-              <h3 className="section-title"><FaStar className="title-icon" /> تقييمات العملاء</h3>
-            </div>
-            <div className="reviews">
-              <div className="review-card">
-                <div className="user">
-                  <div className="avatar">أ</div>
-                  <div>
-                    <h4>أحمد محمد</h4>
-                    <FaStar className="stars" /> {avgRating.toFixed(1)}
-                  </div>
-                </div>
-                <p>خدمة ممتازة جدًا والتعامل محترم .</p>
-              </div>
-              <div className="review-card">
-                <div className="user">
-                  <div className="avatar">س</div>
-                  <div>
-                    <h4>سارة علي</h4>
-                    <FaStar className="stars" /> {avgRating.toFixed(1)}
-                  </div>
-                </div>
-                <p>من الشركات المميزة فعلا في المجال.</p>
-              </div>
-              <div className="review-card">
-                <div className="user">
-                  <div className="avatar">م</div>
-                  <div>
-                    <h4>محمد خالد</h4>
-                    <FaStar className="stars" /> {avgRating.toFixed(1)}
-                  </div>
-                </div>
-                <p>أفضل شركة مقاولات تعاملت معها بصراحة.</p>
-              </div>
-            </div>
+            <div className="reviews-header"><h3 className="section-title"><FaStar className="title-icon" /> تقييمات العملاء</h3></div>
+            <div className="reviews">{reviews.map(r => (<div className="review-card" key={r.id}><div className="user"><div className="avatar">{r.name[0]}</div><div><h4>{r.name}</h4><FaStar className="stars" /> {r.rating.toFixed(1)}</div></div><p>{r.text}</p></div>))}</div>
           </div>
         </div>
       ) : (
-        <ProfileSection setEditMode={() => setActiveTab("profile")} />
+        <ProfileSection setEditMode={setActiveTab} setIsAccountActive={setIsAccountActive} isAccountActive={isAccountActive} setCompanyData={setCompanyData} companyData={companyData} />
       )}
     </div>
   );

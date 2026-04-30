@@ -36,7 +36,7 @@ const Navbar = () => {
   const getProfileLink = () => {
     if (userRole === "craftman") return `/CraftmanProfile/${userId}`;
     if (userRole === "company") return `/CompanyProfile/${userId}`;
-    return "/CustomerProfile"; // أو صفحة إعدادات الحساب للعميل
+    return "/CustomerProfile"; 
   };
 
   // 2. دالة تحديد رابط الجرس بناءً على النوع
