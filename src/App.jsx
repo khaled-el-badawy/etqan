@@ -40,6 +40,7 @@ import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
 import ContactUs from "./components/ContactUs";
 import Chat from "./components/Chat";
+import NotificationsPage from "./components/NotificationsPage";
 import PageNotFound from "./components/PageNotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -101,6 +102,7 @@ function AppWrapper() {
         <Route path="/CraftmanOrdersPage" element={<CraftmanOrdersPage />} />
         <Route path="/CompanyOrdersPage" element={<CompanyOrdersPage />} />
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
+        <Route path="/NotificationsPage" element={<NotificationsPage />} />
 
         <Route path="/Companies" element={<Companies />} />
         <Route path="/providers" element={<Providers />} />

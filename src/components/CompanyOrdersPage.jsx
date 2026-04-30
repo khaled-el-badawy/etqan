@@ -5,111 +5,15 @@ import "./CompanyOrdersPage.css";
 import { FaUser, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 /* =======================
-   Orders Data
+   استيراد البيانات من الحالة العامة (Context)
+   ⬅ بدل ما نكتب الداتا هنا، بنجيبها من OrdersContext
+   ⬅ للـ Back-End: الداتا هتيجي من الـ API من خلال الـ Context
 ======================= */
-
-//muck data temporary 
-const companyOrders = [
-  {
-    id: 1,
-    companyName: "زبدة لنقل الموبليا",
-    client: "ابراهيم علي",
-    location: "المنصورة - أحمد ماهر",
-    date: "اليوم",
-    status: "pending",
-  },
-  {
-    id: 2,
-    companyName: "تركيب السخانات الكهربائية",
-    client: "احمد علي",
-    location: "المنصورة - أحمد ماهر",
-    date: "13 - 1 - 2026",
-    status: "completed",
-  },
-  {
-    id: 3,
-    companyName: "معالجة انقطاع الكهرباء",
-    client: "احمد علي",
-    location: "المنصورة - الترعة",
-    date: "12 - 2 - 2026",
-    status: "pending",
-  },
-  {
-    id: 4,
-    companyName: "إصلاح لوحات التوزيع",
-    client: "محمد علي",
-    location: "المنصورة - المشاية",
-    date: "8 - 1 - 2026",
-    status: "completed",
-  },
-  {
-    id: 5,
-    companyName: "صيانة  الاسلاك والتوصيلات",
-    client: "اكرامي كامل",
-    location: "المنصورة - الجلاء",
-    date: "21 - 2 - 2026",
-    status: "inProgress",
-  },
-  {
-    id: 6,
-    companyName: "إصلاح الدوائر  الكهربية",
-    client: "صلاح مصطفى",
-    location: "المنصورة - قناة السويس",
-    date: "5 - 2 - 2026",
-    status: "inProgress",
-  },
-  {
-    id: 7,
-    companyName: "معالجة ضعف التيار",
-    client: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "19 - 2 - 2026",
-    status: "completed",
-  },
-  {
-    id: 8,
-    companyName: "تركيب وحدات إضاءة",
-    client: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "27 - 12 - 2025",
-    status: "completed",
-  },
-  {
-    id: 9,
-    companyName: "إصلاح لوحات التوزيع",
-    client: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "اليوم",
-    status: "pending",
-  },
-  {
-    id: 10,
-    companyName: "تركيب أجراس كهربائية",
-    client: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "اليوم",
-    status: "pending",
-  },
-  {
-    id: 11,
-    companyName: "صيانة  الاسلاك والتوصيلات",
-    client: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "8 - 11 - 2025",
-    status: "completed",
-  },
-  {
-    id: 12,
-    companyName: "إصلاح الدوائر الكهربية",
-    client: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "23 - 1 - 2026",
-    status: "completed",
-  },
-];
+import { useOrders } from "./OrdersContext";
 
 /* =======================
-   Hero Section
+   قسم البانر العلوي (Hero Section)
+   ⬅ بانر ترحيبي في أعلى الصفحة
 ======================= */
 
 function HeroBanner() {
@@ -128,12 +32,15 @@ function HeroBanner() {
 }
 
 /* =======================
-   Tabs
+   أزرار التصفية (Tabs)
+   ⬅ بتسمح للمستخدم يفلتر الطلبات حسب الحالة
+   ⬅ الحالات: الكل / مكتمل / قيد التنفيذ / في الانتظار
 ======================= */
 
 function OrdersTabs({ activeFilter, setActiveFilter }) {
   return (
     <div className="tabs" data-aos="fade-left">
+      {/* زر عرض كل الطلبات */}
       <button
         className={activeFilter === "all" ? "active" : ""}
         onClick={() => setActiveFilter("all")}
@@ -141,6 +48,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         الكل
       </button>
 
+      {/* زر عرض الطلبات المكتملة */}
       <button
         className={activeFilter === "completed" ? "active" : ""}
         onClick={() => setActiveFilter("completed")}
@@ -148,6 +56,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         الطلبات المكتملة
       </button>
 
+      {/* زر عرض الطلبات قيد التنفيذ */}
       <button
         className={activeFilter === "inProgress" ? "active" : ""}
         onClick={() => setActiveFilter("inProgress")}
@@ -155,6 +64,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         قيد التنفيذ
       </button>
 
+      {/* زر عرض الطلبات المعلقة */}
       <button
         className={activeFilter === "pending" ? "active" : ""}
         onClick={() => setActiveFilter("pending")}
@@ -166,47 +76,62 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
 }
 
 /* =======================
-   Order Card
+   كارت الطلب الواحد (Order Card)
+   ⬅ بيعرض تفاصيل طلب الشركة: اسم الشركة/الخدمة، العميل، الموقع، التاريخ
+   ⬅ الأزرار بتتغير حسب حالة الطلب (status)
+   ⬅ للـ Back-End: عند الضغط على "قبول" أو "رفض" → ابعت PATCH /api/company/orders/:id
 ======================= */
 
-function OrderCard({ order }) {
-  console.log(order);
+function OrderCard({ order, onAccept, onReject }) {
 
   return (
     <div className="order-card" data-aos="fade-up">
+      {/* اسم الشركة أو الخدمة */}
       <h3 className="order-title">{order.companyName}</h3>
+
+      {/* معلومات الطلب */}
       <div className="order-info">
+        {/* اسم العميل */}
         <p>
           <FaUser className="icon" />
           <span>العميل: {order.client}</span>
         </p>
+        {/* موقع العميل */}
         <p>
           <FaMapMarkerAlt className="icon" />
           <span>{order.location}</span>
         </p>
+        {/* تاريخ الطلب */}
         <p>
           <FaCalendarAlt className="icon" />
           <span>{order.date}</span>
         </p>
       </div>
 
+      {/* ========== أزرار حسب حالة الطلب ========== */}
+
+      {/* حالة: مكتمل — زر واحد غير قابل للضغط */}
       {order.status === "completed" && (
         <div className="btnBox">
           <button className="completed-btn">مكتمل</button>
         </div>
       )}
 
+      {/* حالة: قيد التنفيذ — زر "تم الانتهاء" + زر "إلغاء" */}
+      {/* للـ Back-End: "تم الانتهاء" → PATCH { status: "completed" } */}
       {order.status === "inProgress" && (
         <div className="btnBox">
-          <button className="in-progress-btn">تم الانتهاء</button>
-          <button className="reject-btn">إلغاء</button>
+          <button className="in-progress-btn" onClick={() => onAccept(order.id)}>تم الانتهاء</button>
+          <button className="reject-btn" onClick={() => onReject(order.id)}>إلغاء</button>
         </div>
       )}
 
+      {/* حالة: في الانتظار — زر "قبول" + زر "رفض" */}
+      {/* للـ Back-End: "قبول" → PATCH { status: "inProgress" } / "رفض" → DELETE */}
       {order.status === "pending" && (
         <div className="btnBox">
-          <button className="accept-btn">قبول</button>
-          <button className="reject-btn">رفض</button>
+          <button className="accept-btn" onClick={() => onAccept(order.id)}>قبول</button>
+          <button className="reject-btn" onClick={() => onReject(order.id)}>رفض</button>
         </div>
       )}
     </div>
@@ -214,47 +139,93 @@ function OrderCard({ order }) {
 }
 
 /* =======================
-   Orders Grid
+   شبكة عرض الطلبات (Orders Grid)
+   ⬅ بتعرض كل كروت الطلبات في شكل شبكة (grid)
 ======================= */
 
-function OrdersGrid({ orders }) {
+function OrdersGrid({ orders, onAccept, onReject }) {
   return (
     <div className="orders-grid">
       {orders.map((order) => (
-        <OrderCard key={order.id} order={order} />
+        <OrderCard
+          key={order.id}
+          order={order}
+          onAccept={onAccept}
+          onReject={onReject}
+        />
       ))}
     </div>
   );
 }
 
 /* =======================
-   Main Section
+   القسم الرئيسي — طلبات الشركة (Main Section)
+   ⬅ بيقرأ البيانات من الـ Context (بدل الداتا المحلية)
+   ⬅ بيطبق الفلترة حسب التبويب النشط
+   ⬅ للـ Back-End: الدوال updateCompanyOrderStatus و removeCompanyOrder
+     لازم يتم استبدالها بـ API calls
 ======================= */
 
 function CompanyOrdersSection() {
+  /* جلب البيانات والدوال من الـ Context */
+  const {
+    companyOrders,
+    updateCompanyOrderStatus,
+    removeCompanyOrder,
+  } = useOrders();
+
+  /* حالة التبويب النشط — "all" يعني كل الطلبات */
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const filteredOrders = companyOrders.filter((orders) => {
+  /* تطبيق الفلترة على الطلبات */
+  /* للـ Back-End: ممكن تنقل الفلترة للـ API → GET /api/company/orders?status=pending */
+  const filteredOrders = companyOrders.filter((order) => {
     if (activeFilter === "all") return true;
-    return orders.status === activeFilter;
+    return order.status === activeFilter;
   });
+
+  /* ---- معالج قبول الطلب / تم الانتهاء ---- */
+  /* للـ Back-End: PATCH /api/company/orders/:id */
+  const handleAccept = (id) => {
+    /* لو الطلب pending → حوّله لـ inProgress */
+    /* لو الطلب inProgress → حوّله لـ completed */
+    const order = companyOrders.find((o) => o.id === id);
+    if (order?.status === "pending") {
+      updateCompanyOrderStatus(id, "inProgress");
+    } else if (order?.status === "inProgress") {
+      updateCompanyOrderStatus(id, "completed");
+    }
+  };
+
+  /* ---- معالج رفض/إلغاء الطلب ---- */
+  /* للـ Back-End: DELETE /api/company/orders/:id أو PATCH { status: "rejected" } */
+  const handleReject = (id) => {
+    removeCompanyOrder(id);
+  };
 
   return (
     <section className="orders-section">
       <h2 data-aos="fade-left">الطلبات الواردة</h2>
 
+      {/* أزرار التصفية */}
       <OrdersTabs
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
       />
 
-      <OrdersGrid orders={filteredOrders} />
+      {/* شبكة الطلبات */}
+      <OrdersGrid
+        orders={filteredOrders}
+        onAccept={handleAccept}
+        onReject={handleReject}
+      />
     </section>
   );
 }
 
 /* =======================
-   Page Export
+   تصدير الصفحة (Page Export)
+   ⬅ المكوّن الرئيسي اللي بيتم عرضه في الـ Route
 ======================= */
 
 const OrdersPage = () => {
@@ -267,7 +238,9 @@ const OrdersPage = () => {
 
   return (
     <div className="company-orders-page-container">
+      {/* البانر العلوي */}
       <HeroBanner />
+      {/* قسم الطلبات — بيقرأ من الـ Context */}
       <CompanyOrdersSection />
     </div>
   );

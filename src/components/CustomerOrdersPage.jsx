@@ -8,80 +8,15 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaUserLarge } from "react-icons/fa6";
 
 /* =======================
-   Orders Data
+   استيراد البيانات من الحالة العامة (Context)
+   ⬅ بدل ما نكتب الداتا هنا، بنجيبها من OrdersContext
+   ⬅ للـ Back-End: الداتا هتيجي من الـ API من خلال الـ Context
 ======================= */
-
-const CustomerOrders = [
-  {
-    id: 1,
-    service: "اصلاح تلفزيون",
-    client: "احمد محمد",
-    phone: "01234567890",
-    status: "completed",
-    currentStep: 0,
-    stepDate: "12/10/2025",
-    stepTime: "10:36 am",
-    image: "/images/tv-player-entertainment-svgrepo-com 1.svg",
-  },
-  {
-    id: 2,
-    service: "اصلاح كهرباء",
-    client: "محمد احمد",
-    phone: "01066452001",
-    status: "inProgress",
-    currentStep: 5,
-    stepDate: "12/10/2025",
-    stepTime: "10:36 am",
-    image: "/images/broken-cable-electrician-svgrepo-com 1.svg",
-  },
-  {
-    id: 3,
-    service: "دهان",
-    client: "احمد محمد",
-    phone: "01066452001",
-    status: "pending",
-    currentStep: 2,
-    stepDate: "12/10/2025",
-    stepTime: "10:36 am",
-    image: "/images/paint-bucket-svgrepo-com 1.svg",
-  },
-  {
-    id: 4,
-    service: "اصلاح تكييف",
-    client: "محمد ايمن",
-    phone: "01066478901",
-    status: "canceled",
-    currentStep: 5,
-    stepDate: "12/10/2025",
-    stepTime: "10:36 am",
-    image: "/images/air-conditioning-air-conditioner-svgrepo-com 1.svg",
-  },
-  {
-    id: 5,
-    service: "نجار",
-    client: "مصطفي بكر",
-    phone: "01066478901",
-    status: "inProgress",
-    currentStep: 2,
-    stepDate: "12/10/2025",
-    stepTime: "10:36 am",
-    image: "/images/saw-svgrepo-com 2.svg",
-  },
-  {
-    id: 6,
-    service: "سباكة",
-    client: "اكرامي كامل",
-    phone: "01066478901",
-    status: "canceled",
-    currentStep: 5,
-    stepDate: "12/10/2025",
-    stepTime: "10:36 am",
-    image: "/images/plumbing-plumber-svgrepo-com 1.svg",
-  },
-];
+import { useOrders } from "./OrdersContext";
 
 /* =======================
-   Hero Section
+   قسم البانر العلوي (Hero Section)
+   ⬅ بانر ترحيبي في أعلى صفحة تتبع طلبات العميل
 ======================= */
 
 function HeroBanner() {
@@ -89,7 +24,7 @@ function HeroBanner() {
     <div className="hero-banner" data-aos="fade-up">
       <div className="hero-content" data-aos="fade-left">
         <h1>متابعة دقيقة وآمنه لطلباتك</h1>
-        <p>“من الحرفي لحد باب بيتك”</p>
+        <p>"من الحرفي لحد باب بيتك"</p>
       </div>
 
       <div className="hero-image" data-aos="fade-right">
@@ -100,12 +35,15 @@ function HeroBanner() {
 }
 
 /* =======================
-   Tabs
+   أزرار التصفية (Tabs)
+   ⬅ بتسمح للعميل يفلتر طلباته حسب الحالة
+   ⬅ الحالات: الكل / مكتمل / قيد التنفيذ / في الانتظار / ملغى
 ======================= */
 
 function OrdersTabs({ activeFilter, setActiveFilter }) {
   return (
     <div className="tabs" data-aos="fade-left">
+      {/* زر عرض كل الطلبات */}
       <button
         className={activeFilter === "all" ? "active" : ""}
         onClick={() => setActiveFilter("all")}
@@ -113,6 +51,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         الكل
       </button>
 
+      {/* زر عرض الطلبات المكتملة */}
       <button
         className={activeFilter === "completed" ? "active" : ""}
         onClick={() => setActiveFilter("completed")}
@@ -120,6 +59,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         الطلبات المكتملة
       </button>
 
+      {/* زر عرض الطلبات قيد التنفيذ */}
       <button
         className={activeFilter === "inProgress" ? "active" : ""}
         onClick={() => setActiveFilter("inProgress")}
@@ -127,6 +67,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         قيد التنفيذ
       </button>
 
+      {/* زر عرض الطلبات المعلقة */}
       <button
         className={activeFilter === "pending" ? "active" : ""}
         onClick={() => setActiveFilter("pending")}
@@ -134,6 +75,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         في الانتظار
       </button>
 
+      {/* زر عرض الطلبات الملغية */}
       <button
         className={activeFilter === "canceled" ? "active" : ""}
         onClick={() => setActiveFilter("canceled")}
@@ -145,12 +87,16 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
 }
 
 /* =======================
-   Order Card
+   كارت طلب العميل (Order Card)
+   ⬅ بيعرض تفاصيل الطلب: الخدمة، صورة الخدمة، العميل، الهاتف
+   ⬅ الأزرار بتتغير حسب حالة الطلب (status)
+   ⬅ للـ Back-End: الأزرار بتتحكم في التنقل بين الصفحات وفتح المودال
 ======================= */
 
 function OrderCard({ order, setSelectedOrder }) {
   return (
     <div className="customer-order-card" data-aos="fade-up">
+      {/* شارة حالة الطلب */}
       <span className={`status ${order.status}`}>
         {order.status === "completed" && "مكتمل"}
         {order.status === "inProgress" && "قيد التنفيذ"}
@@ -158,17 +104,23 @@ function OrderCard({ order, setSelectedOrder }) {
         {order.status === "canceled" && "ملغى"}
       </span>
 
+      {/* عنوان الخدمة */}
       <h3 className="service-title">{order.service}</h3>
 
+      {/* تفاصيل الطلب — صورة + معلومات العميل */}
       <div className="order-details">
+        {/* صورة الخدمة */}
         <div className="image">
           <img src={order.image} alt={order.service} />
         </div>
 
+        {/* معلومات العميل */}
         <div className="client-info">
+          {/* اسم العميل */}
           <p>
             <FaUserLarge style={{ fontSize: "20px" }} /> {order.client}
           </p>
+          {/* رقم الهاتف */}
           <p>
             {" "}
             <FaPhoneAlt style={{ fontSize: "20px" }} /> {order.phone}
@@ -176,6 +128,10 @@ function OrderCard({ order, setSelectedOrder }) {
         </div>
       </div>
 
+      {/* ========== أزرار حسب حالة الطلب ========== */}
+
+      {/* حالة: مكتمل — أزرار "تقييم الخدمة" و "فاتورة" */}
+      {/* للـ Back-End: التقييم → POST /api/reviews / الفاتورة → GET /api/invoices/:id */}
       {order.status === "completed" && (
         <div className="btnBox">
           <Link to={`/Clientprofile`} className="link">
@@ -186,6 +142,9 @@ function OrderCard({ order, setSelectedOrder }) {
           </Link>
         </div>
       )}
+
+      {/* حالة: قيد التنفيذ — أزرار "تتبع الطلب" و "اتصال" */}
+      {/* للـ Back-End: تتبع الطلب → GET /api/customer/orders/:id/tracking */}
       {order.status === "inProgress" && (
         <div className="btnBox">
           <button className="link" onClick={() => setSelectedOrder(order)}>
@@ -197,6 +156,8 @@ function OrderCard({ order, setSelectedOrder }) {
         </div>
       )}
 
+      {/* حالة: في الانتظار — زر "تفاصيل" */}
+      {/* للـ Back-End: GET /api/customer/orders/:id */}
       {order.status === "pending" && (
         <div className="btnBox">
           <Link to={`/OrderDetails`} className="link">
@@ -205,6 +166,8 @@ function OrderCard({ order, setSelectedOrder }) {
         </div>
       )}
 
+      {/* حالة: ملغى — زر "إعادة الطلب" */}
+      {/* للـ Back-End: POST /api/customer/orders (نسخة جديدة من الطلب) */}
       {order.status === "canceled" && (
         <div className="btnBox">
           <Link to={`/CraftmanProfile/1`} className="link">
@@ -217,13 +180,14 @@ function OrderCard({ order, setSelectedOrder }) {
 }
 
 /* =======================
-   Orders Grid
+   شبكة عرض الطلبات (Orders Grid)
+   ⬅ بتعرض كل كروت الطلبات في شكل شبكة (grid)
 ======================= */
 
-function OrdersGrid({ CustomerOrders, setSelectedOrder }) {
+function OrdersGrid({ customerOrders, setSelectedOrder }) {
   return (
     <div className="orders-grid">
-      {CustomerOrders.map((order) => (
+      {customerOrders.map((order) => (
         <OrderCard
           key={order.id}
           order={order}
@@ -235,15 +199,25 @@ function OrdersGrid({ CustomerOrders, setSelectedOrder }) {
 }
 
 /* =======================
-   Main Section
+   القسم الرئيسي — طلبات العميل (Main Section)
+   ⬅ بيقرأ البيانات من الـ Context (بدل الداتا المحلية)
+   ⬅ بيطبق الفلترة حسب التبويب النشط
+   ⬅ للـ Back-End: ممكن تنقل الفلترة للـ API → GET /api/customer/orders?status=pending
 ======================= */
 
 function OrdersSection() {
+  /* جلب البيانات من الـ Context */
+  const { customerOrders } = useOrders();
+
+  /* حالة التبويب النشط — "all" يعني كل الطلبات */
   const [activeFilter, setActiveFilter] = useState("all");
-  //for modal
+
+  /* حالة المودال — الطلب اللي هيتعرض في مودال التتبع */
   const [selectedOrder, setSelectedOrder] = useState(null);
 
-  const filteredOrders = CustomerOrders.filter((order) => {
+  /* تطبيق الفلترة على الطلبات */
+  /* للـ Back-End: ممكن تنقل الفلترة للـ API → GET /api/customer/orders?status=... */
+  const filteredOrders = customerOrders.filter((order) => {
     if (activeFilter === "all") return true;
     return order.status === activeFilter;
   });
@@ -251,17 +225,20 @@ function OrdersSection() {
   return (
     <section className="orders-section">
       <h2 data-aos="fade-left">طلباتك</h2>
-      {/*  tabs for filtering orders */}
+
+      {/* أزرار التصفية */}
       <OrdersTabs
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
       />
-      {/*  grid of orders */}
+
+      {/* شبكة الطلبات — بتقرأ من الـ Context */}
       <OrdersGrid
-        CustomerOrders={filteredOrders}
+        customerOrders={filteredOrders}
         setSelectedOrder={setSelectedOrder}
       />
-      {/*  modal for order tracking */}
+
+      {/* مودال تتبع الطلب — يظهر عند الضغط على "تتبع الطلب" */}
       <OrderTrackingModal
         order={selectedOrder}
         onClose={() => setSelectedOrder(null)}
@@ -270,7 +247,11 @@ function OrdersSection() {
   );
 }
 
-// Steps for order tracking (for future use in the modal)
+/* =======================
+   خطوات تتبع الطلب
+   ⬅ المراحل اللي بيمر بيها الطلب
+   ⬅ للـ Back-End: ممكن تيجي من الـ API → GET /api/customer/orders/:id/steps
+======================= */
 const steps = [
   "تم ارسال الطلب",
   "تم قبول الطلب",
@@ -279,8 +260,14 @@ const steps = [
   "تم الانتهاء",
 ];
 
-//pop up component will be added here later
+/* =======================
+   مودال تتبع الطلب (Order Tracking Modal)
+   ⬅ يظهر عند الضغط على "تتبع الطلب" في طلب قيد التنفيذ
+   ⬅ بيعرض خطوات التنفيذ بشكل مرئي (progress steps)
+   ⬅ للـ Back-End: البيانات (currentStep, stepDate, stepTime) بتيجي من الـ API
+======================= */
 function OrderTrackingModal({ order, onClose }) {
+  /* منع التمرير في الخلفية لما المودال مفتوح */
   useEffect(() => {
     if (!order) return;
 
@@ -291,15 +278,19 @@ function OrderTrackingModal({ order, onClose }) {
     };
   }, [order]);
 
+  /* لو مفيش طلب مختار → ما تعرضش المودال */
   if (!order) return null;
 
   return (
     <div className="order-modal-overlay">
       <div className="modal-content" data-aos="fade-up">
+        {/* رأس المودال */}
         <div className="modal-header" data-aos="fade-up">
           <img src="images/orderModalIcon.svg" alt="" className="modal-icon" />
           <h3 className="modal-title">تابع تفاصيل طلبك</h3>
         </div>
+
+        {/* خطوات التنفيذ */}
         <div className="modal-progress">
           {steps.map((step, index) => (
             <div
@@ -307,6 +298,7 @@ function OrderTrackingModal({ order, onClose }) {
               className={`step ${index < order.currentStep ? "active" : ""}`}
               data-aos="fade-up"
             >
+              {/* علامة الصح أو الدائرة الفارغة */}
               <span className="step-checker">
                 {index <= order.currentStep ? (
                   <div className="img-container">
@@ -320,24 +312,29 @@ function OrderTrackingModal({ order, onClose }) {
                   <div className="img-container"></div>
                 )}
               </span>
+
+              {/* نص الخطوة + التاريخ والوقت */}
               <div className="step-text">
                 {step}
                 <span className="step-date" dir="ltr">
                   {order.stepDate}{" - "}
                   {order.stepTime}
                 </span>
-                {/* <span className="step-time"></span> */}
               </div>
             </div>
           ))}
         </div>
+
+        {/* زر الإغلاق */}
         <button onClick={onClose}>تم</button>
       </div>
     </div>
   );
 }
+
 /* =======================
-   Page Export
+   تصدير الصفحة (Page Export)
+   ⬅ المكوّن الرئيسي اللي بيتم عرضه في الـ Route
 ======================= */
 
 const CustomerOrdersPage = () => {
@@ -350,7 +347,9 @@ const CustomerOrdersPage = () => {
 
   return (
     <div className="customer-orders-container">
+      {/* البانر العلوي */}
       <HeroBanner />
+      {/* قسم الطلبات — بيقرأ من الـ Context */}
       <OrdersSection />
     </div>
   );

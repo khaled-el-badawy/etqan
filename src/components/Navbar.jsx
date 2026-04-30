@@ -9,14 +9,22 @@ import {
 import { IoChatbubbleEllipses } from "react-icons/io5"; 
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
+import { useOrders } from "./OrdersContext";
+import NotificationDropdown from "./NotificationDropdown";
 
 const Navbar = () => {
   const ordersRef = useRef(null);
   const servicesRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [notification, setNotification] = useState(0);
   const [messagesCount, setMessagesCount] = useState(5);
+
+  // عدد الإشعارات المعلقة من الـ Context
+  const { pendingNotifications } = useOrders();
+  const pendingCount = pendingNotifications.length;
+
+  // حالة فتح/إغلاق قائمة الإشعارات
+  const [isNotifOpen, setIsNotifOpen] = useState(false);
 
   // حالة نوع المستخدم: 'craftman' أو 'company' أو 'customer'
   const [userRole, setUserRole] = useState("craftman"); 
@@ -26,10 +34,17 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setActiveDropdown(null);
+    setIsNotifOpen(false);
   };
 
   const toggleDropdown = (name) => {
     setActiveDropdown(activeDropdown === name ? null : name);
+  };
+
+  const toggleNotifications = (e) => {
+    e.preventDefault();
+    setIsNotifOpen((prev) => !prev);
+    setActiveDropdown(null);
   };
 
   // 1. دالة تحديد رابط البروفايل بناءً على النوع
@@ -37,13 +52,6 @@ const Navbar = () => {
     if (userRole === "craftman") return `/CraftmanProfile/${userId}`;
     if (userRole === "company") return `/CompanyProfile/${userId}`;
     return "/CustomerProfile"; 
-  };
-
-  // 2. دالة تحديد رابط الجرس بناءً على النوع
-  const getNotificationLink = () => {
-    if (userRole === "craftman") return "/CraftmanOrdersPage";
-    if (userRole === "company") return "/CompanyOrdersPage";
-    return "/CustomerOrdersPage";
   };
 
   useEffect(() => {
@@ -85,13 +93,23 @@ const Navbar = () => {
               )}
             </NavLink>
 
-            {/* أيقونة الجرس - ديناميكية */}
-            <NavLink to={getNotificationLink()} className="icon-wrapper">
+            {/* أيقونة الجرس - تفتح قائمة الإشعارات */}
+            <div
+              className="icon-wrapper notif-bell-trigger"
+              onClick={toggleNotifications}
+              style={{ cursor: "pointer" }}
+            >
               <FaBell className="icon" />
-              <span className="notification-dot">
-                {notification > 0 ? notification : "2"}
-              </span>
-            </NavLink>
+              {pendingCount > 0 && (
+                <span className="notification-dot">
+                  {pendingCount}
+                </span>
+              )}
+              <NotificationDropdown
+                isOpen={isNotifOpen}
+                onClose={() => setIsNotifOpen(false)}
+              />
+            </div>
           </div>
 
           <div className="mobile-menu-icon" onClick={toggleMenu}>
@@ -151,4 +169,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

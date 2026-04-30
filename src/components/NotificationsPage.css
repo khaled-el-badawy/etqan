@@ -1,0 +1,97 @@
+/* ========================================
+   Full Notifications Page Styles
+   ======================================== */
+
+.notif-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 16px 60px;
+  direction: rtl;
+}
+
+/* ---- Page Title ---- */
+.notif-page__title {
+  text-align: center;
+  font-size: 36px;
+  color: #40798c;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0 0 36px;
+}
+
+/* ---- List container ---- */
+.notif-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Notification Row ---- */
+.notif-row {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e8ecef;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-right: 4px solid #e8a838;
+}
+
+.notif-row:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 24px rgba(64, 121, 140, 0.1);
+}
+
+/* Body */
+.notif-row__body {
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Message */
+.notif-row__message {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* Sub text */
+.notif-row__sub {
+  font-size: 13.5px;
+  color: #78909c;
+  font-weight: 500;
+}
+
+/* ---- Empty state ---- */
+.notif-page__empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: #94a3b8;
+}
+
+.notif-page__empty p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .notif-page {
+    padding: 24px 12px 40px;
+  }
+
+  .notif-page__title {
+    font-size: 26px;
+  }
+
+  .notif-row__body {
+    padding: 14px 16px;
+  }
+
+  .notif-row__message {
+    font-size: 15px;
+  }
+}
