@@ -1,0 +1,178 @@
+/* ========================================
+   Notification Dropdown Styles
+   ======================================== */
+
+/* ---- Dropdown container ---- */
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 370px;
+  max-height: 480px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(64, 121, 140, 0.1);
+  z-index: 9999;
+  overflow: hidden;
+  direction: rtl;
+
+  /* animation defaults */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-10px);
+  transition:
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.notif-dropdown--open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.notif-dropdown--closed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* ---- Arrow ---- */
+.notif-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-top: 1px solid rgba(64, 121, 140, 0.1);
+  border-left: 1px solid rgba(64, 121, 140, 0.1);
+  z-index: 1;
+}
+
+/* ---- Header ---- */
+.notif-dropdown__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #40798c 0%, #3a6d7e 100%);
+  color: #ffffff;
+}
+
+.notif-dropdown__title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.notif-dropdown__badge {
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ---- List ---- */
+.notif-dropdown__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.notif-dropdown__list::-webkit-scrollbar {
+  width: 5px;
+}
+.notif-dropdown__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.notif-dropdown__list::-webkit-scrollbar-thumb {
+  background: #40798c40;
+  border-radius: 10px;
+}
+
+/* ---- Item ---- */
+.notif-dropdown__item {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f2f5;
+  transition: background 0.2s ease;
+}
+
+.notif-dropdown__item:last-child {
+  border-bottom: none;
+}
+
+.notif-dropdown__item:hover {
+  background: #f7fafb;
+}
+
+.notif-dropdown__item--empty {
+  text-align: center;
+  color: #94a3b8;
+}
+
+/* ---- Message text ---- */
+.notif-dropdown__message {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* ---- Sub text (location · date) ---- */
+.notif-dropdown__sub {
+  font-size: 12.5px;
+  color: #78909c;
+  font-weight: 500;
+}
+
+/* ---- Footer ---- */
+.notif-dropdown__footer {
+  text-align: center;
+  padding: 12px 0;
+  border-top: 1px solid #f0f2f5;
+  background: #fafbfc;
+}
+
+.notif-dropdown__see-more {
+  background: none;
+  border: none;
+  color: #40798c;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 18px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.notif-dropdown__see-more:hover {
+  background: rgba(64, 121, 140, 0.08);
+  color: #2d5a68;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .notif-dropdown {
+    width: calc(100vw - 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+  }
+  .notif-dropdown--open {
+    transform: translateX(-50%) translateY(0);
+  }
+  .notif-dropdown--closed {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
