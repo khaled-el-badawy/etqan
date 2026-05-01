@@ -172,7 +172,7 @@ const CartPage = () => {
             <h3>ملخص الطلب</h3>
             <p>عدد المنتجات: {totalQuantity}</p>
             <p> السعر الإجمالي: {totalPrice} جنيه</p>
-            <button onClick={handleCheckout} className="checkout-btn">
+            <button onClick={() => navigate("/CheckOut")}  className="checkout-btn">
               إتمام الشراء
             </button>
           </div>

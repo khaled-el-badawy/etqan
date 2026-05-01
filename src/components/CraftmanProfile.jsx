@@ -1152,7 +1152,9 @@ function RequestServiceModal({ craftmanName, onClose }) {
               <div className="form-group-modal">
                 <label>العنوان</label>
                 <input type="text" placeholder="العنوان بالتفصيل" required />
-              </div>
+                </div>
+                <div className="form-group-modal"><label>وصف الخدمة</label>
+                <input type="text" placeholder="وصف الخدمة" required /></div>
               <div className="form-group-modal">
                 <label>تاريخ الطلب</label>
                 <input type="date" value={today} readOnly className="readonly-input" />

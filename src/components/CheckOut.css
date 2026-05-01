@@ -1,0 +1,163 @@
+
+.checkout-container {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: sans-serif;
+    color: #334155;
+}
+
+/* الهيدر */
+.checkout-container .checkout-header { text-align: center; margin-bottom: 40px; }
+.checkout-container .checkout-header h1 { font-size: 38px; margin-bottom: 20px; color: #40798C; }
+
+.checkout-container .stepper { display: flex; align-items: center; justify-content: center; gap: 15px; color: #94a3b8; }
+.checkout-container .step { display: flex; align-items: center; gap: 8px; font-size: 18px; }
+.checkout-container .step span { width: 28px; height: 28px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+.checkout-container .step.active { color: #75A5B3; font-weight: bold; }
+.checkout-container .step.active span { background: #75A5B3; }
+.checkout-container .line { height: 1px; width: 60px; background: #cbd5e1; }
+
+/* التقسيم الرئيسي */
+.checkout-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; 
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* الكروت */
+.checkout-container .card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+.checkout-container .card-title { font-size: 28px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; color: #40798C; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+
+/* الفورم */
+.checkout-container .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.checkout-container .input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+.checkout-container .input-group label { font-size: 20px; font-weight: 500; }
+.checkout-container .star { color: #ef4444; }
+.checkout-container .input-group input, .checkout-container .input-group select, .checkout-container .input-group textarea {
+ padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fdfdfd; font-size: 18px;
+}
+.checkout-container .full-width { grid-column: span 2; }
+
+.checkout-container .phone-input {
+    text-align: right ;
+    direction: rtl ;
+}
+/* طرق الدفع */
+.checkout-container .method-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 15px; border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+}
+.checkout-container .method-item.selected { border-color: #40798C; background: #f0f7ff; }
+.method-text { flex-grow: 1; margin-right: 15px; }
+.checkout-container .method-text strong { display: block; font-size: 20px; }
+.checkout-container .method-text small { color: #64748b; font-size: 18px; }
+.checkout-container .method-icon { font-size: 20px; }
+
+/* ملخص الطلب */
+.checkout-container .cart-item { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+.checkout-container .item-img { width: 65px; height: 65px; background: #f1f5f9; border-radius: 8px; }
+.checkout-container .item-details h3 { font-size: 18px; margin: 0; }
+.checkout-container .item-details p { font-size: 16px; color: #64748b; margin-top: 5px; }
+.checkout-container .item-price { font-weight: bold; margin-right: auto; }
+
+.checkout-container .price-summary { margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+.checkout-container .price-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 18px; color: #64748b; }
+.checkout-container .total { border-top: 1px solid #e2e8f0; padding-top: 15px; margin-top: 10px; font-size: 22px; font-weight: bold; color: #40798C; }
+
+.checkout-container .info-badges { display: flex; gap: 10px; margin-top: 20px; }
+.checkout-container .badge { flex: 1; font-size: 14px; padding: 10px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center; }
+
+.checkout-container .checkout-btn {
+    width: 100%; padding: 12px; background:#75A5B3; color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 24px; margin-top: 20px; cursor: pointer;
+}
+.checkout-container .checkout-btn:hover {
+ background:#40798C; 
+}
+.checkout-container .footer-note { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 15px; }
+
+
+
+.item-img {
+    width: 65px;
+    height: 65px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden; /* عشان الصورة متمسحش الحواف */
+}
+.item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* عشان الصورة تملى المربع من غير ما تتمط */
+}
+
+/* تنسيق سطر الخصم */
+.price-row.discount {
+    color: #16a34a; /* لون أخضر للخصم */
+    font-weight: bold;
+}
+
+/* تحسين شكل القائمة المنسدلة */
+select {
+    cursor: pointer;
+}
+
+/* استايل لزرار التأكيد عند التحويم */
+.checkout-btn:active {
+    transform: scale(0.98);
+}
+.step.clickable {
+    cursor: pointer;
+    transition: 0.3s;
+}
+.step.clickable:hover {
+    color: #40798C;
+    transform: translateY(-2px);
+}
+
+/* تحسين اختيار طريقة الدفع */
+.method-item {
+    transition: all 0.3s ease;
+    border: 2px solid #e2e8f0; /* زيادة سمك البوردر عشان يبان الاختيار */
+}
+.method-item:hover {
+    border-color: #cbd5e1;
+}
+.method-item.selected {
+    border-color: #40798C;
+    background: #f0f7ff;
+    box-shadow: 0 4px 12px rgba(11, 65, 138, 0.08);
+}
+
+/* جعل الملخص يتحرك مع السكرول في الشاشات الكبيرة */
+@media (min-width: 850px) {
+    .sticky-card {
+        position: sticky;
+       
+    }
+}
+
+/* أنيميشن بسيط عند النزول لزرار التأكيد */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+#confirm-button:focus {
+    animation: pulse 0.5s ease-in-out;
+    outline: none;
+}
+/* ريسبونسيف للموبايل */
+@media (max-width: 850px) {
+    .checkout-layout { grid-template-columns: 1fr; }
+    .input-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+}

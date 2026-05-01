@@ -149,7 +149,7 @@ function RequestServiceModal({ companyName, onClose }) {
           <div className="success-toast-container"><div className="success-icon">✓</div><p>تم إرسال طلبك بنجاح</p></div>
         ) : (
           <>
-            <h2 className="modal-title">طلب خدمة من {companyName}</h2>
+            <h2 className="modal-title">{companyName}</h2>
             <form className="request-form" onSubmit={(e) => {e.preventDefault(); setShowSuccessMsg(true); setTimeout(() => {setShowSuccessMsg(false); onClose();}, 1500);}}>
               <div className="form-group-modal"><label>اسم العميل</label><input type="text" placeholder="أدخل اسمك" required /></div>
               <div className="form-group-modal custom-select-container">
@@ -162,8 +162,13 @@ function RequestServiceModal({ companyName, onClose }) {
                 )}
               </div>
               <div className="form-group-modal"><label>العنوان</label><input type="text" placeholder="العنوان بالتفصيل" required /></div>
+              <div className="form-group-modal"><label>وصف الخدمة</label><input type="text" placeholder="وصف الخدمة" required /></div>
               <div className="form-group-modal"><label>تاريخ الطلب</label><input type="date" value={today} readOnly className="readonly-input" /></div>
-              <div className="modal-btns"><button type="submit" className="confirm-btn">إرسال الطلب</button><button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button></div>
+                <div className="modal-btns">
+                  <button type="submit" className="confirm-btn">إرسال الطلب</button>
+                  <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
+                  <button type="button" className="close-btn" onClick={onClose}>×</button>
+                </div>
             </form>
           </>
         )}
