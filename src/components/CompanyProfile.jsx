@@ -179,7 +179,7 @@ export default function CompanyProfile() {
   const [isAccountActive, setIsAccountActive] = useState(false); 
   const [companyData, setCompanyData] = useState({
     name: "شركة أبناء سيناء",
-    about: "شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء، وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة.",
+    about: "شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء، وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة، وتُعد هذه الشركة من أقدم الشركات في هذا المجال، إليكم الكثير من التفاصيل حولها.",
     email: "", phone: "", governorate: "القاهرة", experience: "16 سنة", scope: "داخل القاهرة والجيزة", hours: "من 9 صباحًا إلى 10 مساءً", responseTime: "خلال 30 دقيقة", emergency: "available", services: ""
   });
 
@@ -294,10 +294,10 @@ export default function CompanyProfile() {
           <div className="section work-info">
             <h3 className="section-title"><FaBriefcase className="title-icon" /> معلومات العمل</h3>
             <div className="work-grid">
-              <div className="work-item"><span className="label"><FaMapMarkerAlt /> نطاق الخدمة</span><p>{companyData.scope}</p></div>
-              <div className="work-item"><span className="label"><FaClock /> مواعيد العمل</span><p>{companyData.hours}</p></div>
-              <div className="work-item"><span className="label"><FaTasks /> سرعة الاستجابة</span><p>{companyData.responseTime}</p></div>
-              <div className="work-item"><span className="label"><FaShieldAlt /> خدمة الطوارئ</span><p>{companyData.emergency === "available" ? "متاحة 24 ساعة" : "غير متاحة"}</p></div>
+              <div className="work-item"><span className="label-icon"><FaMapMarkerAlt /> نطاق الخدمة</span><p>{companyData.scope}</p></div>
+              <div className="work-item"><span className="label-icon"><FaClock /> مواعيد العمل</span><p>{companyData.hours}</p></div>
+              <div className="work-item"><span className="label-icon"><FaTasks /> سرعة الاستجابة</span><p>{companyData.responseTime}</p></div>
+              <div className="work-item"><span className="label-icon"><FaShieldAlt /> خدمة الطوارئ</span><p>{companyData.emergency === "available" ? "متاحة 24 ساعة" : "غير متاحة"}</p></div>
             </div>
           </div>
           <div className="section-divider"></div>
