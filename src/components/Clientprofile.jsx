@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ClientProfile.css';
 import { 
   FaStar, FaStarHalfAlt, FaRegStar, FaEdit, 
-  FaExclamationTriangle, FaTimes, FaEye, FaEyeSlash 
+  FaExclamationTriangle, FaTimes, FaEye, FaEyeSlash, FaTrashAlt 
 } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -13,7 +13,8 @@ const ClientProfile = () => {
 
   const [showRateModal, setShowRateModal] = useState(false);
   const [showComplainModal, setShowComplainModal] = useState(false);
-  
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false); 
+  const [showDeleteToast, setShowDeleteToast] = useState(false); 
 
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
@@ -97,6 +98,15 @@ const ClientProfile = () => {
     }
   };
 
+ 
+  const confirmDeleteAccount = () => {
+    setShowDeleteConfirm(false);
+    setShowDeleteToast(true);
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
+  };
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -130,6 +140,7 @@ const ClientProfile = () => {
   const handleCloseModals = () => {
     setShowRateModal(false);
     setShowComplainModal(false);
+    setShowDeleteConfirm(false);
     setSelectedRating(0);
     setReviewText("");
     setComplainText("");
@@ -137,26 +148,64 @@ const ClientProfile = () => {
 
   return (
     <div className="profile-container">
-      <header className="profile-header" style={{ backgroundImage: `url('/images/Client profile/hero.svg')` }}></header>
+      
+      {showDeleteToast && (
+        <div className="modal-overlay" style={{ zIndex: 9999 }}>
+          <div className="success-toast-container" style={{ background: '#fff', padding: '30px', borderRadius: '15px', textAlign: 'center' }}>
+            <div className="success-icon" style={{ backgroundColor: '#ff6b6b', color: '#fff', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px' }}>✓</div>
+            <p style={{ fontSize: '18px', fontWeight: 'bold' }}>تم حذف الحساب بنجاح</p>
+          </div>
+        </div>
+      )}
+
+      <header className="profile-header" style={{ backgroundImage: `url('/images/Client profile/hero.svg')` }}>
+      </header>
 
       <div className="profile-identity-wrapper" data-aos="fade-left">
-        <div className="identity-content">
-          <div className="avatar-container">
-            <img src="/images/Client profile/client.svg" alt="Client" className="main-avatar" />
+        <div className="identity-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className="avatar-container">
+              <img src="/images/Client profile/client.svg" alt="Client" className="main-avatar" />
+            </div>
+            <div className="name-verify-block">
+              <h2 className="client-name">
+                محمد السيد
+                <img src="/images/Client profile/profilelogo1.svg" alt="Verified" className="verify-tick" />
+                <img 
+                  src="/images/Client profile/profilelogo2.svg" 
+                  alt="Edit" 
+                  className="edit-name-icon" 
+                  title="تعديل البيانات" 
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setActiveTab('edit')}
+                />
+              </h2>
+            </div>
           </div>
-          <div className="name-verify-block">
-            <h2 className="client-name">
-              محمد السيد
-              <img src="/images/Client profile/profilelogo1.svg" alt="Verified" className="verify-tick" />
-              <img 
-                src="/images/Client profile/profilelogo2.svg" 
-                alt="Edit" 
-                className="edit-name-icon" 
-                title="تعديل البيانات" 
-                onClick={() => setActiveTab('edit')}
-              />
-            </h2>
-          </div>
+
+          
+          {activeTab === 'edit' && (
+            <button 
+              type="button"
+              className="btn-delete-white-area" 
+              onClick={() => setShowDeleteConfirm(true)}
+              style={{ 
+                backgroundColor: '#ff6b6b', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '10px 20px', 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px', 
+                fontWeight: 'bold',
+                marginLeft: 'auto'
+              }}
+            >
+              <FaTrashAlt /> حذف الحساب
+            </button>
+          )}
         </div>
       </div>
 
@@ -293,6 +342,30 @@ const ClientProfile = () => {
         </div>
       )}
 
+      {/* مودال تأكيد حذف الحساب */}
+      {showDeleteConfirm && (
+        <div className="modal-overlay" onClick={() => setShowDeleteConfirm(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ textAlign: 'center', padding: '30px' }}>
+            <h3 style={{ color: '#40798C', marginBottom: '15px' }}>تنبيه حذف الحساب</h3>
+            <p style={{ color: '#666', marginBottom: '25px' }}>هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا الإجراء.</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
+              <button 
+                onClick={confirmDeleteAccount}
+                style={{ backgroundColor: '#ff6b6b', color: '#fff', border: 'none', padding: '10px 25px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}
+              >
+                نعم
+              </button>
+              <button 
+                onClick={() => setShowDeleteConfirm(false)}
+                style={{ backgroundColor: '#eaeaea', color: '#333', border: 'none', padding: '10px 25px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}
+              >
+                إلغاء
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {activeTab === 'edit' && (
         <div className="edit-details-card" data-aos="fade-left">
             <div className="edit-nav-tab">التفاصيل شخصية</div>
@@ -359,7 +432,7 @@ const ClientProfile = () => {
                     value={formData.newPassword}
                     onChange={handleInputChange}
                   />
-                  <span className="eye-icon" onClick={() => setShowNewPass(!showNewPass)}>
+                  <span className="eye-icon" onClick={() => setShowNewPassword(!showNewPass)}>
                     {showNewPass ? <FaEyeSlash /> : <FaEye />}
                   </span>
                   {errors.newPassword && <span className="error-msg">{errors.newPassword}</span>}

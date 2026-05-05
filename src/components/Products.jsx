@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Products.css";
-import { FaShoppingCart, FaHeart, FaMapMarkerAlt,FaStar } from "react-icons/fa";
+import { FaShoppingCart, FaHeart, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import 'leaflet/dist/leaflet.css';
+
 export default function Products() {
   const navigate = useNavigate();
 
@@ -22,9 +23,9 @@ export default function Products() {
   }, []);
 
   const [favorites, setFavorites] = useState(() => {
-  const saved = localStorage.getItem("favorites");
-  return saved ? JSON.parse(saved) : [];
-});
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const products = [
     { id: 1, name: "شنيور شحن DeWalt احترافي مع شنطة وبطارية وشاحن ", price: "7938", oldPrice: "9000", rating: "0",  discount: "19%", image: "images/download-removebg-preview 3.svg" },
@@ -61,20 +62,18 @@ export default function Products() {
 
   const [showMap, setShowMap] = useState(false);
   const [position, setPosition] = useState([30.0444, 31.2357]); 
-  const [geoLoaded, setGeoLoaded] = useState(false);
 
   const locateUser = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (pos) => { setPosition([pos.coords.latitude, pos.coords.longitude]); setGeoLoaded(true); },
-        (err) => { console.log("خطأ في تحديد الموقع:", err); setGeoLoaded(true); }
+        (pos) => { setPosition([pos.coords.latitude, pos.coords.longitude]); },
+        (err) => { console.log("خطأ في تحديد الموقع:", err); }
       );
-    } else { console.log("المتصفح لا يدعم تحديد الموقع"); setGeoLoaded(true); }
+    } else { console.log("المتصفح لا يدعم تحديد الموقع"); }
   };
 
   const handleOpenMap = () => { locateUser(); setShowMap(true); };
 
-  // ================== السلة ==================
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -83,20 +82,7 @@ export default function Products() {
   const [showLimitMessage, setShowLimitMessage] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [rateMessage, setRateMessage] = useState("");
 
-
-  const handleSubmitRate = () => {
-  setRateMessage("تم إرسال التقييم بنجاح شكراً لمساهمتك");
-
-  setTimeout(() => {
-    setRateMessage("");
-  }, 2000);
-
-  setProductName("");
-  setSelectedRating(0);
-  setShowRateModal(false);
-};
   const addToCart = (product) => {
     let savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingItemIndex = savedCart.findIndex(item => item.id === product.id);
@@ -122,53 +108,25 @@ export default function Products() {
   };
 
   const toggleFavorite = (product) => {
-  let updatedFavorites = [...favorites];
+    let updatedFavorites = [...favorites];
+    const exists = updatedFavorites.find(item => item.id === product.id);
 
-  const exists = updatedFavorites.find(item => item.id === product.id);
+    if (exists) {
+      updatedFavorites = updatedFavorites.filter(item => item.id !== product.id);
+    } else {
+      updatedFavorites.push(product);
+    }
 
-  if (exists) {
-    updatedFavorites = updatedFavorites.filter(item => item.id !== product.id);
-  } else {
-    updatedFavorites.push(product);
-  }
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
 
-  setFavorites(updatedFavorites);
-  localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-};
-
-  // ================== فلترة البحث ==================
   const filteredProducts = [...products, ...offers].filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  const [showRateModal, setShowRateModal] = useState(false);
-  const [productName, setProductName] = useState("");
-  const [selectedRating, setSelectedRating] = useState(0);
-const isFormValid = productName.trim() !== "" && selectedRating !== 0;
-    const renderStars = () => (
-    <div className="stars-row">
-      {[1,2,3,4,5].map(star => (
-        <FaStar
-          key={star}
-          onClick={() => setSelectedRating(star)}
-          style={{
-            cursor: "pointer",
-            color: star <= selectedRating ? "#F9CF01" : "#ccc",
-            fontSize: "24px"
-          }}
-        />
-      ))}
-        
-      </div>
-      
   );
 
   return (
     <>
-      {rateMessage && (
-  <div className="success-alert">
-    {rateMessage}
-  </div>
-)}
       {showSuccessMessage && (
         <div className="success-alert-products">تمت إضافة المنتج إلى السلة</div>
       )}
@@ -182,21 +140,21 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
         <div className="topbar-content">
           <div className="topbar-icons">
             <FaShoppingCart
-  onClick={() => navigate("/CartPage")}
-  style={{
-    cursor: "pointer",
-    fontSize: "28px",
-    color: cart.length > 0 ? "#40798c" : "#ccc"
-  }}
-/>
+              onClick={() => navigate("/CartPage")}
+              style={{
+                cursor: "pointer",
+                fontSize: "28px",
+                color: cart.length > 0 ? "#40798c" : "#ccc"
+              }}
+            />
             <FaHeart
-  onClick={() => navigate("/FavoritesPage")}
-  style={{
-    cursor: "pointer",
-    fontSize: "28px",
-    color: favorites.length > 0 ? "rgb(243, 72, 72)" : "#ccc"
-  }}
-/>
+              onClick={() => navigate("/FavoritesPage")}
+              style={{
+                cursor: "pointer",
+                fontSize: "28px",
+                color: favorites.length > 0 ? "rgb(243, 72, 72)" : "#ccc"
+              }}
+            />
           </div>
           <div className="search-container">
             <input
@@ -206,117 +164,70 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-<div className="topbar-actions">
-  
-  <div
-    className="map-ping"
-    onClick={handleOpenMap}
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      cursor: "pointer",
-      color: "#555",
-      fontSize: "20px",
-    }}
-    onMouseEnter={(e) => e.currentTarget.style.color = "#40798c"}
-    onMouseLeave={(e) => e.currentTarget.style.color = "#555"}
-  >
-    <span>تحديد الموقع</span>
-    <FaMapMarkerAlt />
-  </div>
-
-  <button
-    className="rating-btn"
-    onClick={() => setShowRateModal(true)}
-  >
-    تقييم المنتج
-  </button>
-</div>
-</div>
+          <div className="topbar-actions">
+            <div
+              className="map-ping"
+              onClick={handleOpenMap}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                cursor: "pointer",
+                color: "#555",
+                fontSize: "20px",
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = "#40798c"}
+              onMouseLeave={(e) => e.currentTarget.style.color = "#555"}
+            >
+              <span>تحديد الموقع</span>
+              <FaMapMarkerAlt />
+            </div>
+          </div>
+        </div>
       </div>
-    {/* ================= ⭐ MODAL ================= */}
-{showRateModal && (
-  <div
-    className="modal-overlay"
-    onClick={(e) => {
-      if (e.target === e.currentTarget) setShowRateModal(false);
-    }}
-  >
-    <div className="modal-box">
-
-      <button className="close-btn" onClick={() => setShowRateModal(false)}>×</button>
-
-            <h3>تقييم المنتج</h3>
-            
-  {renderStars() }
-      <input
-        type="text"
-              placeholder="اكتب اسم المنتج"
-              required
-        value={productName}
-        onChange={(e) => setProductName(e.target.value)}
-      />
-
-    
-
-      
-
-  <button
-  className="submit-btn"
-              disabled={!isFormValid}
-               style={{ opacity: !isFormValid ? 0.5 : 1 }}
-      onClick={handleSubmitRate}
->
-  إرسال
-</button>
-
-    </div>
-  </div>
-)}
 
       {/* ================= Map Modal ================= */}
-   {showMap && (
-  <div 
-    className="map-overlay"
-    onClick={(e) => {
-      if (e.target === e.currentTarget) setShowMap(false);
-    }}
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100vw",
-      height: "100vh",
-      backgroundColor: "rgba(0,0,0,0.5)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 1000,
-    }}
-  >
-    <div 
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        width: "90%",
-        maxWidth: "700px",
-        height: "450px",
-        borderRadius: "12px",
-        overflow: "hidden",
-        boxShadow: "0 5px 20px rgba(0,0,0,0.3)"
-      }}
-    >
-      <iframe
-        title="map"
-        width="100%"
-        height="100%"
-        style={{ border: 0 }}
-        loading="lazy"
-        allowFullScreen
-       src={`https://maps.google.com/maps?q=${position[0]},${position[1]}&z=17&output=embed`}
-></iframe>
-    </div>
-  </div>
-)}
+      {showMap && (
+        <div 
+          className="map-overlay"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowMap(false);
+          }}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              width: "90%",
+              maxWidth: "700px",
+              height: "450px",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 5px 20px rgba(0,0,0,0.3)"
+            }}
+          >
+            <iframe
+              title="map"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              src={`https://maps.google.com/maps?q=${position[0]},${position[1]}&z=17&output=embed`}
+            ></iframe>
+          </div>
+        </div>
+      )}
 
       <div className="products-page-container">
         {/* ================= Slider ================= */}
@@ -336,7 +247,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
               <button className="slider-arrow left" onClick={() => bestSellersRef.current.scrollBy({ left: -300, behavior: "smooth" })}>❮</button>
               <div className="products-slider" ref={bestSellersRef}>
                 {filteredProducts.filter(p => products.some(prod => prod.id === p.id)).map((product) => (
-                  <div key={product.id} className="product-card">
+                  <div key={product.id} className="product-card" onClick={() => navigate("/ProductsDetails", { state: { product: product } })}>
                     <div className="image-wrapper">
                       <span className="discount">{product.discount}</span>
                       <div className="product-image"><img src={product.image} alt={product.name} /></div>
@@ -346,20 +257,18 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
                                {product.name}
                             </h3>
                      <FaHeart
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           toggleFavorite(product);
-                        
                         }}
-                               style={{
-                                 cursor: "pointer",
-                                 fontSize: "24px",
-                                 marginTop: "-15px",
-                           color: favorites.some(item => item.id === product.id) ? "rgb(243, 72, 72)" : "#ccc"
-                               }}
-                              />
-                           
-                            </div>
-                    
+                        style={{
+                          cursor: "pointer",
+                          fontSize: "24px",
+                          marginTop: "-15px",
+                          color: favorites.some(item => item.id === product.id) ? "rgb(243, 72, 72)" : "#ccc"
+                        }}
+                      />
+                    </div>
                     <div className="price-rating-row">
                       <div className="price-box">
                         <span className="new-price">{product.price} جنيه</span>
@@ -368,8 +277,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
                       <div className="rating">⭐ {product.rating}</div>
                     </div>
                     <div className="products-add-btn">
-                      <button className="link" onClick={() => addToCart(product)}>إضافة إلى السلة</button>
-                      <button className="details" onClick={() => navigate("/ProductsDetails")}>تفاصيل المنتج</button>
+                      <button className="link" onClick={(e) => { e.stopPropagation(); addToCart(product); }}>إضافة إلى السلة</button>
                     </div>
                   </div>
                 ))}
@@ -384,14 +292,13 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
         <div className="brands" data-aos="fade-up">
           {brands.map((brand, index) => (
             <div
-              
-  key={index}
-  className="brand-box"
-  onClick={() => navigate("/Brands",{ state: { brand: brand.name } })}
-  style={{ cursor: "pointer" }}
->
-  <img src={brand.image} alt={brand.name} />
-</div>
+              key={index}
+              className="brand-box"
+              onClick={() => navigate("/Brands",{ state: { brand: brand.name } })}
+              style={{ cursor: "pointer" }}
+            >
+              <img src={brand.image} alt={brand.name} />
+            </div>
           ))}
         </div>
 
@@ -399,31 +306,30 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
         {filteredProducts.filter(p => offers.some(offer => offer.id === p.id)).length > 0 && (
           <>
             <h2 className="offers-section-title" data-aos="fade-right">أفضل العروض والخصومات</h2>
-            <div className="offers-slider" data-aos="fade-up">
+            <div className="offers-slider"  data-aos="fade-up">
               {filteredProducts.filter(p => offers.some(offer => offer.id === p.id)).map((offer) => (
-                <div key={offer.id} className="offers-card">
+                <div key={offer.id} className="offers-card" onClick={() => navigate("/ProductsDetails", { state: { product: offer } })}>
                   <div className="image-wrapper">
                     <span className="discount">{offer.discount}</span>
                     <div className="offers-image"><img src={offer.image} alt={offer.name} /></div>
                   </div>
-                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <h3 className="product-title" style={{ margin: 0 }}>
-                               {offer.name}
-                            </h3>
-                     <FaHeart
-                      onClick={() => {
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <h3 className="product-title" style={{ margin: 0 }}>
+                      {offer.name}
+                    </h3>
+                    <FaHeart
+                      onClick={(e) => {
+                        e.stopPropagation();
                         toggleFavorite(offer);
-                        // navigate("/FavoritesPage");
                       }}
-                               style={{
-                                 cursor: "pointer",
-                                 fontSize: "24px",
-                                 marginTop: "-15px",
-                           color: favorites.some(item => item.id === offer.id) ? "rgb(243, 72, 72)" : "#ccc"
-                               }}
-                              />
-                           
-                            </div>
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "24px",
+                        marginTop: "-15px",
+                        color: favorites.some(item => item.id === offer.id) ? "rgb(243, 72, 72)" : "#ccc"
+                      }}
+                    />
+                  </div>
                   <div className="price-rating-row">
                     <div className="price-box">
                       <span className="new-price">{offer.price} جنيه</span>
@@ -432,8 +338,7 @@ const isFormValid = productName.trim() !== "" && selectedRating !== 0;
                     <div className="rating">⭐ {offer.rating} </div>
                   </div>
                   <div className="offers-add-btn">
-                    <button className="link" onClick={() => addToCart(offer)}>إضافة إلى السلة</button>
-                    <button className="details" onClick={() => navigate("/ProductsDetails")}>تفاصيل المنتج</button>
+                    <button className="link" onClick={(e) => { e.stopPropagation(); addToCart(offer); }}>إضافة إلى السلة</button>
                   </div>
                 </div>
               ))}

@@ -1,6 +1,54 @@
 .professional-profile-container {
   width: 100%;
 }
+.profile-container .activation-required-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.professional-profile-container .activation-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.profile-container .activation-content h3{
+  color: #40798C;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.professional-profile-container .activation-content p{
+  font-size: 24px;
+}
+
+.professional-profile-container .activation-icon {
+  font-size: 70px;
+  color: #40798C;
+  margin-bottom: 20px;
+}
+
+.professional-profile-container .activate-btn {
+  background-color: #75A5B3;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.professional-profile-container .activate-btn:hover {
+  background-color: #40798C;
+}
 
 .professional-profile-container .coverBox {
   width: 100%;
@@ -51,12 +99,48 @@
   border-radius: 50%;
   top: -100px;
   right: 0;
-  /* overflow: hidden; */
   background: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   align-items: center;
   
+}
+
+.professional-profile-container .activation-required-section {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  min-height: 400px;       
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.professional-profile-container .activation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.professional-profile-container .btn-delete-account, .activate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;    
+  width: fit-content;       
+  padding: 12px 25px;      
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.professional-profile-container .no-wrap-text {
+  white-space: normal;
+  max-width: 500px;         
+  line-height: 1.6;
 }
 
 .professional-profile-container .profile-summary .profile-avatar img.avatar {
@@ -1142,7 +1226,18 @@ height: 20px;
 .edit-form-container form.edit-profile-form .form-btns button.cancel-btn {
   background-color: #eeeeee;
   color: #40798c;
+ 
+
 }
+
+
+.btn-delete-account {
+  white-space: nowrap; 
+  min-width: fit-content; 
+ 
+}
+
+
 
 .password-field{
   position: relative;

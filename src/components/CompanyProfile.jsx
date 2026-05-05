@@ -20,6 +20,7 @@ import {
   FaCogs,
   FaUserCheck,
   FaTools,
+  FaTrashAlt,
 } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
@@ -92,7 +93,20 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
           <input name="about" placeholder="عن الشركة" value={formData.about} onChange={handleInputChange} />
           <input name="experience" placeholder="سنوات الخبرة" value={formData.experience} onChange={handleInputChange} />
           <input name="governorate" placeholder="المحافظة" value={formData.governorate} onChange={handleInputChange} />
-          <input name="services" placeholder="الخدمات" value={formData.services} onChange={handleInputChange} />
+        
+          <select 
+  name="services" 
+  value={formData.services} 
+  onChange={handleInputChange}
+  className="custom-select" 
+>
+  <option value="" disabled hidden>اختر نوع الشركة</option>
+  <option value="لنقل مخلفات البناء"> نقل مخلفات البناء</option>
+  <option value="لنقل الرمل والزلط ">نقل الرمل والزلط </option>
+  <option value="للمقاولات والبناء">مقاولات وبناء</option>
+  <option value="لنقل الأثاث">نقل الأثاث</option>
+  <option value="لتأجير قلابات ولود">تأجير قلابات ولودر</option>
+</select>
         </div>
 
         <div className="form-group">
@@ -139,7 +153,13 @@ function RequestServiceModal({ companyName, onClose }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-  const egyptianGovernorates = ["القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "دمياط", "بني سويف", "بورسعيد", "جنوب سيناء", "حلايب وشلاتين", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"];
+  const egyptianGovernorates = [
+    "القاهرة","الجيزة","الإسكندرية","الدقهلية","الشرقية","الغربية",
+    "المنوفية","البحيرة","كفر الشيخ","الفيوم","بني سويف","المنيا",
+    "أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر",
+    "الوادي الجديد","مطروح","شمال سيناء","جنوب سيناء","الإسماعيلية",
+    "السويس","بورسعيد","دمياط","القليوبية"
+  ];
   const filteredGovs = egyptianGovernorates.filter(gov => gov.includes(searchTerm));
 
   return (
@@ -182,12 +202,16 @@ export default function CompanyProfile() {
   const [activeTab, setActiveTab] = useState("profile");
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [isAccountActive, setIsAccountActive] = useState(false); 
-  const [companyData, setCompanyData] = useState({
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false); 
+
+  const initialData = {
     name: "شركة أبناء سيناء",
     about: "شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء، وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة، وتُعد هذه الشركة من أقدم الشركات في هذا المجال، إليكم الكثير من التفاصيل حولها.",
     email: "", phone: "", governorate: "القاهرة", experience: "16 سنة", scope: "داخل القاهرة والجيزة", hours: "من 9 صباحًا إلى 10 مساءً", responseTime: "خلال 30 دقيقة", emergency: "available", services: ""
-  });
+  };
 
+  const [companyData, setCompanyData] = useState(initialData);
   const [profileImg, setProfileImg] = useState("");
   const [coverImg, setCoverImg] = useState("");
   
@@ -207,22 +231,53 @@ export default function CompanyProfile() {
     }
   };
 
- 
   const triggerCoverUpload = () => {
     if (coverInputRef.current) {
       coverInputRef.current.click();
     }
   };
 
+ 
+  const confirmDelete = () => {
+    setShowConfirmModal(false);
+    setShowDeleteToast(true);
+    setTimeout(() => {
+      setShowDeleteToast(false);
+      window.location.href = "/"; 
+    }, 2000);
+  };
+
   return (
     <div className="profile-container">
       {showRequestModal && <RequestServiceModal companyName={companyData.name} onClose={() => setShowRequestModal(false)} />}
+      
+
+      {showConfirmModal && (
+        <div className="modal-overlay" onClick={() => setShowConfirmModal(false)}>
+          <div className="modal-box delete-confirm-modal" onClick={(e) => e.stopPropagation()}>
+            <h3 style={{ marginBottom: '20px', color: '#40798C' }}>تنبيه حذف الحساب</h3>
+            <p style={{ marginBottom: '30px', color: '#666' }}>هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا الإجراء.</p>
+            <div className="modal-btns" style={{ justifyContent: 'center', gap: '15px' }}>
+              <button className="confirm-btn" style={{ backgroundColor: '#ff6b6b', padding: '10px 20px' }} onClick={confirmDelete}>نعم</button>
+              <button className="cancel-btn" style={{ backgroundColor: '#eaeaea' }} onClick={() => setShowConfirmModal(false)}>إلغاء</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showDeleteToast && (
+        <div className="modal-overlay" style={{ zIndex: 9999 }}>
+          <div className="success-toast-container" style={{ background: '#fff', padding: '30px', borderRadius: '15px', textAlign: 'center' }}>
+            <div className="success-icon" style={{ backgroundColor: '#ff6b6b' }}>✓</div>
+            <p style={{ fontSize: '18px', fontWeight: 'bold' }}>تم حذف الحساب بنجاح</p>
+          </div>
+        </div>
+      )}
 
       {/* COVER SECTION */}
       <div className="cover-container" style={{ backgroundColor: coverImg ? 'transparent' : '#f0f2f5', height: '250px', position: 'relative' }}>
         {coverImg && <img src={coverImg} alt="cover" className="cover-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
         
-        {/* زر تعديل الغلاف */}
         {activeTab === "edit" && (
           <button 
             type="button"
@@ -234,7 +289,6 @@ export default function CompanyProfile() {
           </button>
         )}
         
-       
         <input 
           type="file" 
           ref={coverInputRef} 
@@ -245,8 +299,19 @@ export default function CompanyProfile() {
         
         {isAccountActive && (
           <div className="buttons left">
-            <button className="btn primary" onClick={() => setShowRequestModal(true)}>طلب خدمة</button>
-            <button onClick={() => setActiveTab("edit")} className="btn-edit"><MdModeEdit /></button>
+            {activeTab === "edit" ? (
+              <button 
+                className="btn-delete" 
+                onClick={() => setShowConfirmModal(true)}
+                style={{ backgroundColor: '#ff6b6b', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
+                <FaTrashAlt /> حذف الحساب
+              </button>
+            ) : (
+              <>
+                <button className="btn primary" onClick={() => setShowRequestModal(true)}>طلب خدمة</button>
+                <button onClick={() => setActiveTab("edit")} className="btn-edit"><MdModeEdit /></button>
+              </>
+            )}
           </div>
         )}
         <div className="cover-overlay"></div>
@@ -270,7 +335,7 @@ export default function CompanyProfile() {
         <input type="file" ref={profileInputRef} style={{ display: "none" }} onChange={(e) => handleImageUpload(e, "profile")} accept="image/*" />
         <div className="profile-info" style={{ marginTop: '15px' }}>
           <h2>{companyData.name}</h2>
-          <p>للتجارة والمقاولات العامة</p>
+          <p>{companyData.services}</p>
           {isAccountActive && <div className="rating"><div className="star-icon"><FaStar /><span>{avgRating.toFixed(1)}</span></div></div>}
         </div>
       </div>

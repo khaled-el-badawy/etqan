@@ -60,7 +60,7 @@ padding:30px;
   display: flex;
   justify-content:center;
   align-items: center;
-  margin-left: 80px;
+
 }
 
  .search-container input{
@@ -73,26 +73,7 @@ padding:30px;
   
 
 }
- .rating-btn{
-background: linear-gradient(90deg, #87c0ca, #40798c);
-color: white;
-border: none;
-border-radius: 12px;
-font-size: 19px;
-padding: 8px 20px;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
- }
-
-.rating-btn:hover{
-  box-shadow: 2px 2px 5px #a3a9a6;
-}
-
-.topbar-actions {
-  display: flex;
-  align-items: center;
-  gap: 40px; 
-}
 
 /* ================= Slider ================= */
 
@@ -288,11 +269,10 @@ text-decoration: none;
 background:#4f7f87;
 color:white;
 border:none;
-padding:12px 6px;
+padding:12px 12px;
 border-radius:8px;
 cursor:pointer;
-margin-left:-90px;
-/* width: 100px; */
+margin-left:-110px;
 }
 
 .products-page-container  .products-add-btn .details{
@@ -358,12 +338,6 @@ color:#2f6f73;
 font-family: "Rubik";
 font-size: 42px;
  }
-
-
-
-
-
-
 
 
 
@@ -473,11 +447,10 @@ text-decoration: none;
 background:#4f7f87;
 color:white;
 border:none;
-padding:12px 6px;
+padding:12px 12px;
 border-radius:8px;
 cursor:pointer;
-margin-left:-90px;
-/* width: 100px; */
+margin-left:-110px;
 }
 
 .products-page-container .offers-add-btn .details{
