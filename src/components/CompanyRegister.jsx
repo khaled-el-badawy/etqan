@@ -2,9 +2,11 @@ import React, { useState, useRef } from "react";
 import "./CompanyRegister.css";
 import { FiEye, FiEyeOff, FiFolderPlus } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"; 
 
 function CompanyRegister() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -18,7 +20,7 @@ function CompanyRegister() {
 
   const fileInputRef = useRef(null);
   const [commercialFile, setCommercialFile] = useState(null);
-
+  const[isLoading, setIsLoading] = useState(false);
 
   // اسم الشركة
   const handleUsernameChange = (e) => {
@@ -72,6 +74,43 @@ function CompanyRegister() {
     confirmPassword !== "" &&
     password === confirmPassword;
 
+  
+    // --- دالة الربط بـ Axios لرفع البيانات والملف ---
+  const handleRegister = async () => {
+    setIsLoading(true);
+    // 1. استخدام FormData لأننا بنرفع ملف (Multipart Form Data)
+    const formData = new FormData();
+    formData.append("CompanyName", username);
+    formData.append("Email", email);
+    formData.append("PhoneNumber", phone);
+    formData.append("Password", password);
+    formData.append("ConfirmPassword", confirmPassword);
+    formData.append("CommercialRegisterFile", commercialFile); // الملف الحقيقي
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5036/api/CompanyAccount/register-step1-send-otp",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
+      if (response.status === 200) {
+        alert("تم إرسال كود التحقق بنجاح");
+        // التوجه لصفحة الـ OTP وتحديد الـ Role كـ company
+        navigate("/login-otp/company", { state: { email: email } });
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message || "حدث خطأ أثناء التسجيل");
+      } else {
+        alert("فشل الاتصال بالسيرفر، تأكد من تشغيل الـ .NET API");
+      }
+    }
+      finally{
+        setIsLoading(false);
+      
+    }
+  };
   return (
     <div className="company-page-container">
       <motion.div
@@ -250,7 +289,19 @@ function CompanyRegister() {
                       >
                         تسجيل
                       </Link>
-
+                      <button
+              type="button"
+              className={`link-button ${!isFormValid ? "disabled" : ""}`}
+              onClick={handleRegister}
+              disabled={!isFormValid|| isLoading}
+              style={{
+                pointerEvents: !isFormValid ? "none" : "auto",
+                opacity: !isFormValid ? 0.5 : 1,
+                width: "100%", cursor: "pointer"
+              }}
+            >
+              {isLoading ? "جاري إنشاء الحساب..." : "تسجيل"}
+            </button>
             <h4 className="h4-login">
               هل لديك حساب ؟{" "}
               <Link to="/login/company" className="Link">

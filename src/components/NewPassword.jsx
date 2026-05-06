@@ -3,19 +3,19 @@ import "./NewPassword.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import axios from "axios"; 
 
 function NewPassword() {
   const { role } = useParams(); // customer / company / craftsman
   const location = useLocation();
   const navigate = useNavigate();
-
-  // الحقول فاضية
+  const userEmail = location.state?.email || "";
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-
+  const [loading, setLoading] = useState(false); // حالة التحميل
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -43,10 +43,15 @@ function NewPassword() {
     checkRule(rules.minLength) &&
     password === confirmPassword;
 
-  const handleChangePassword = () => {
+  
+
+   
+
+
+    // --- الدالة المصلحة للربط بالباك إند ---
+  const handleChangePassword = async () => {
     let valid = true;
 
-    // تحقق من كلمة المرور
     if (!checkRule(rules.firstCapital)) {
       setPasswordError("يجب أن يبدأ أول حرف بحرف كبير");
       valid = false;
@@ -60,7 +65,6 @@ function NewPassword() {
       setPasswordError("");
     }
 
-    // تحقق من التأكيد
     if (confirmPassword !== password) {
       setConfirmPasswordError("تأكيد كلمة المرور غير متطابق");
       valid = false;
@@ -68,23 +72,35 @@ function NewPassword() {
       setConfirmPasswordError("");
     }
 
+    // لو البيانات صحيحة محلياً، نبدأ نكلم السيرفر
     if (valid) {
-      setSuccessMessage("تم تغيير كلمة المرور بنجاح");
-      setPassword("");
-      setConfirmPassword("");
+      setLoading(true);
+      try {
+        const response = await axios.post("http://localhost:5036/api/ResetPassword/reset-password", {
+          email: userEmail,
+          newPassword: password
+        });
 
-      setTimeout(() => {
-        setSuccessMessage("");
+        if (response.status === 200) {
+          setSuccessMessage("تم تغيير كلمة المرور بنجاح");
+          setPassword("");
+          setConfirmPassword("");
 
-        //  هنا التغيير الوحيد: تحديد الوجهة حسب state.from
-        if (location.state?.from === "register") {
-          navigate("/home", { state: { role } });
-        
-      
-          navigate("/home", { state: { role } }); 
-    
+
+
+          
+          // نوديه لصفحة اللوجن حسب دوره بعد ثانية واحدة
+          setTimeout(() => {
+            navigate(`/home/${role}`);
+          }, 1500);
         }
-      }, 1000);
+      } catch (error) {
+        // لو السيرفر رفض (مثلاً CORS أو اليوزر مش موجود)
+        const msg = error.response?.data?.message || "حدث خطأ أثناء الحفظ، تأكد من الاتصال";
+        setPasswordError(msg);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -169,6 +185,23 @@ function NewPassword() {
               )}
               {confirmPasswordError && <p className="NewPassword-error-msg">{confirmPasswordError}</p>}
             </div>
+
+             <button
+              type="button"
+              className="btn-container"
+              onClick={handleChangePassword}
+              disabled={!isFormValid || loading}
+              style={{
+                pointerEvents: (!isFormValid || loading) ? "none" : "auto",
+                opacity: (!isFormValid || loading) ? 0.5 : 1,
+                transform: isFocused ? "translateY(80px)" : "translateY(0)",
+                transition: "transform 0.3s ease",
+                cursor: "pointer",
+                border: "none"
+              }}
+            >
+              {loading ? "جاري الحفظ..." : "حفظ كلمة المرور"}
+            </button>
 
             {/* زر تغيير كلمة المرور */}
             <button

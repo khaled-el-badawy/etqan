@@ -1,34 +1,37 @@
 import React, { useEffect,useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useParams } from 'react-router-dom'; 
 import './Artisans.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import axios from 'axios'; // استيراد أكسيوس
 
 const Artisans = () => {
+  const { jobId } = useParams(); // لقط الـ ID من الرابط
+  const [artisansData, setArtisansData] = useState([]); // داتا فاضية في البداية
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
+    // تشغيل الأنيميشن
     AOS.init({
       duration: 1000,
       once: true,
     });
-  }, []);
-   const [searchTerm, setSearchTerm] = useState("");
 
-  const artisansData = [
-    { id: 1, name: 'أحمد علي', price: '150 ج', rate: '4.9', img: '/images/Artisans/Artisans1.svg' },
-    { id: 2, name: 'السيد محمد', price: '200 ج', rate: '4.9', img: '/images/Artisans/Artisans2.svg' },
-    { id: 3, name: 'محمود طه', price: '120 ج', rate: '4.9', img: '/images/Artisans/Artisans3.svg' },
-    { id: 4, name: 'علي محمد', price: '300 ج', rate: '4.9', img: '/images/Artisans/Artisans4.svg' },
-    { id: 5, name: 'محمد ابراهيم', price: '310 ج', rate: '4.9', img: '/images/Artisans/Artisans5.svg' },
-    { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-    { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans7.svg' },
-    { id: 6, name: ' ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-    { id: 6, name: ' شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-  ];
-  
-const filteredName = artisansData.filter((item) =>
-  item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  item.price.toString().includes(searchTerm)
-);
+    // دالة جلب البيانات من الباك إند
+    const fetchArtisans = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5036/api/Jobs/${jobId}/artisans`);
+        setArtisansData(response.data);
+      } catch (error) {
+        console.error("خطأ في جلب الحرفيين:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtisans();
+  }, [jobId]); // لو الـ ID اتغير، اطلب الداتا تاني
   return (
     <div className="artisans-page">
       <section className="top-section">
@@ -52,32 +55,46 @@ const filteredName = artisansData.filter((item) =>
         </div>
       </section>
 
-      <section className="artisans-main-wrapper">
-        <div className="container">
-          <div className="artisans-grid">
-            {filteredName.map((item) => (
-              <Link to={`/CraftmanProfile/${item.id}`} key={item.id} className="card-link">
-                <div className="artisan-card" data-aos="fade-up">
-                  <div className="artisan-img-wrapper">
-                    <img src={item.img} alt={item.name} />
-                  </div>
-                  <div className="artisan-info">
-                    <h3>{item.name}</h3>
-                    <p>سعر الخدمة: {item.price}</p>
-                    <div className="rating">
-                      <span>{item.rate}</span>
-                      <span className="star-icon">★</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+       <section className="artisans-main-wrapper">
+             <div className="container">
+               {loading ? (
+                 <p style={{textAlign: 'center', padding: '50px'}}>جاري تحميل المحترفين...</p>
+               ) : (
+                 <div className="artisans-grid">
+                   {artisansData.length > 0 ? (
+                     artisansData.map((item) => (
+                       <Link to={`/ProProfile/${item.id}`} key={item.id} className="card-link">
+                         <div className="artisan-card" data-aos="fade-up">
+                           <div className="artisan-img-wrapper">
+                             <img src={item.img} alt={item.name} />
+                           </div>
+                           <div className="artisan-info">
+                             <h3>{item.name}</h3>
+                             <p>سعر الخدمة: {item.price}</p>
+                             <div className="rating">
+                               <span>{item.rate}</span>
+                               <span className="star-icon">★</span>
+                             </div>
+                           </div>
+                         </div>
+                       </Link>
+                     ))
+                   ) : (
+                     <div style={{gridColumn: '1/-1', textAlign: 'center', padding: '50px'}}>
+                       <h3>لا يوجد حرفيون متاحون لهذه الخدمة حالياً</h3>
+                     </div>
+                   )}
+                 </div>
+               )}
+             </div>
 
-        <div className="load-more-container" data-aos="fade-up">
-          <button className="load-more-btn">عرض المزيد ∨</button>
-        </div>
+
+
+        {artisansData.length > 0 && (
+          <div className="load-more-container" data-aos="fade-up">
+            <button className="load-more-btn">عرض المزيد ∨</button>
+          </div>
+        )}
       </section>
     </div>
   );

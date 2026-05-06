@@ -4,6 +4,7 @@ import "./CraftsmanRegister.css";
 import { FiEye, FiEyeOff, FiCalendar } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"; 
 
 function CraftsmanRegister() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function CraftsmanRegister() {
   const jobDropdownRef = useRef(null);
   const maritalDropdownRef = useRef(null);
   const dateInputRef = useRef(null); 
-
+ const[isLoading, setIsLoading] = useState(false);
   const [username,setUsername] = useState("");
   const [email,setEmail] = useState("");
   const [birthDate, setBirthDate] = useState(""); 
@@ -36,11 +37,22 @@ function CraftsmanRegister() {
   const [showMarital,setShowMarital] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
+    // إغلاق القوائم عند الضغط خارجها
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (jobDropdownRef.current && !jobDropdownRef.current.contains(event.target)) setShowJobDropdown(false);
+      if (maritalDropdownRef.current && !maritalDropdownRef.current.contains(event.target)) setShowMarital(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   // حساب التاريخ الأقصى لضمان سن 18+ (سنة 2008 وما قبلها)
   const today = new Date();
   const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
     .toISOString()
     .split("T")[0];
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -105,10 +117,44 @@ function CraftsmanRegister() {
     nationalId.length===14 && selectedJob.trim()!=="" && isPhoneValid &&
     password!=="" && confirmPassword!=="" && password===confirmPassword;
 
-  const handleRegister = () => {
-    const data = { username, email, birthDate, maritalStatus, nationalId, phone, job: selectedJob, password, confirmPassword };
-    console.log("DATA TO BACK:", data);
-    navigate("/login-otp/craftsman");
+
+
+    // 2. دالة الربط باستخدام Axios
+  const handleRegister = async () => {
+    setIsLoading(true);
+    const registerData = {
+      fullname: username,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+      birthDate: parseInt(birthDate),
+      maritalStatus: maritalList.indexOf(maritalStatus), 
+      nationalId: nationalId,
+      phoneNumber: phone,
+      jobId: 1 
+      
+    };
+
+    try {
+      // إرسال الطلب للباك إند (تأكد من البورت 5036)
+      const response = await axios.post("https://jeanette-unhumanistic-makayla.ngrok-free.dev/api/ClientAccount/register-step1-send-otp", registerData);
+
+      if (response.status === 200) {
+        // نجاح: ننتقل لصفحة الـ OTP ونمرر الإيميل في الـ state
+        navigate("/login-otp/craftsman", { state: { email: email } });
+      }
+    } catch (error) {
+      if (error.response) {
+        // خطأ راجع من السيرفر (مثلاً ModelState Error)
+        alert(error.response.data.message || "خطأ في البيانات المرسلة");
+      } else {
+        // خطأ في الاتصال (السيرفر طافي أو CORS)
+        alert("فشل الاتصال بالسيرفر، تأكد من تشغيل الـ .NET وتفعيل الـ CORS");
+      }
+    }
+    finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -310,7 +356,10 @@ function CraftsmanRegister() {
             >
               تسجيل
             </button>
-
+            <button type="button" className={`link-button ${!isFormValid ? "disabled" : ""}`} onClick={handleRegister} 
+              disabled={!isFormValid || isLoading} style={{ pointerEvents: !isFormValid ? "none" : "auto", opacity: !isFormValid ? 0.5 : 1 }}>
+             {isLoading ? "جاري إنشاء الحساب..." : "تسجيل"}
+            </button>
             <h4 className="h4-craftsman-login">
               هل لديك حساب ؟ <Link to="/login/craftsman" className="Link">تسجيل الدخول</Link>
             </h4>

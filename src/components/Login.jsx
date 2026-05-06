@@ -40,7 +40,6 @@ function Login() {
     // عرض رسالة النجاح مؤقتًا
     setShowSuccess(true);
 
-    // تجربة الفرونت: بعد ثانية تنقلك على الصفحة الرئيسية
     setTimeout(() => {
       navigate("/home");
     }, 1000);

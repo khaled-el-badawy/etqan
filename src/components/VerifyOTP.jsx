@@ -3,9 +3,8 @@
 import React, { useState, useEffect } from "react";
 import "./VerifyOTP.css";
 import { motion } from "framer-motion";
-import { useParams, useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 function VerifyOTP() {
   const { role } = useParams();
   const location = useLocation();
@@ -17,36 +16,34 @@ function VerifyOTP() {
   const [active, setActive] = useState(true);
   const [error, setError] = useState("");
   const isOtpComplete = otp.every((val) => val !== "");
+  const userEmail = location.state?.email || "";
   const images = {
     customer: "/images/Frame 19.svg",
     company: "/images/Frame 20.svg",
     craftsman: "/images/Frame 18.svg",
   };
   const currentImage = images[role] || images.craftsman;
-  const handleVerify = async () => {
-    const enteredOtp = otp.join("");
 
+
+
+
+ const handleVerify = async () => {
+    const enteredOtp = otp.join("");
     try {
-      const response = await fetch("/api/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role, otp: enteredOtp }),
+      const response = await axios.post("http://localhost:5036/api/ForgetPassword/verify-otp", {
+        email: userEmail,
+        otp: enteredOtp
       });
 
-      const data = await response.json();
-
-      if (data.success) {
-        navigate(`/new-password/${role}`);
-      } else {
-        setError("رمز التحقق غير صحيح");
+      if (response.status === 200) {
+      
+        navigate(`/new-password/${role}`, { state: { email: userEmail } });
       }
     } catch (err) {
-      console.error(err);
-      setError("حدث خطأ، حاول مرة أخرى");
+      setError(err.response?.data?.message || "رمز التحقق غير صحيح");
     }
   };
 
-  // التايمر
   useEffect(() => {
     let interval;
     if (active && timer > 0) {
@@ -57,15 +54,18 @@ function VerifyOTP() {
     return () => clearInterval(interval);
   }, [active, timer]);
 
-  // إعادة إرسال الرمز
-  const handleResend = () => {
-    alert("جاري إعادة إرسال الرمز");
-    setTimer(60);
-    setActive(true);
-    setOtp(["", "", "", ""]);
-    setError("");
+  const handleResend = async () => {
+    alert("جاري إعادة إرسال الرمز...");
+    try {
+      await axios.post(`http://localhost:5036/api/ForgetPassword/forgot-password-check-email?email=${userEmail}`);
+      setTimer(60);
+      setActive(true);
+      setOtp(["", "", "", ""]);
+      setError("");
+    } catch (err) {
+      alert("فشل إعادة الإرسال");
+    }
   };
-
   // إدخال OTP
   const handleChange = (value, index) => {
     if (/^\d?$/.test(value)) {
@@ -96,6 +96,7 @@ function VerifyOTP() {
               يرجى تفقد بريدك الإلكتروني وكتابة رمز التحقق
               <br />
               الذي أرسلناه للتو لإتمام {type === "reset" ? "تغيير كلمة المرور" : "تفعيل الحساب"}
+               {userEmail && <small className="user-email">"{userEmail}"</small>}
             </h3>
 
             <div className="otp-row">

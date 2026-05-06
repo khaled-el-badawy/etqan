@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Service.css';
-
+import { useNavigate } from 'react-router-dom'; // استيراد التنقل
 const Service = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate(); // استخدام التنقل
 
   const servicesData = [
     { id: 1, title: "سباك", icon: "/images/services/service1.svg", link: "/Artisans", delay: "200" },
@@ -73,6 +74,7 @@ const Service = () => {
               filteredServices.map((service) => (
                 <a 
                   key={service.id} 
+                  onClick={() => navigate(`/Artisans/${service.id}`)} // الربط بالـ ID
                   href={service.link} 
                   className="service-cards" 
                   data-aos="zoom-in-up" 

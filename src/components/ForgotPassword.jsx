@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./ForgotPassword.css";
 import { motion } from "framer-motion";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom"; 
+import axios from "axios";
 
 function ForgotPassword() {
   const { role } = useParams(); // customer / company / craftsman
-
+   const navigate = useNavigate();
   const [email, setEmail] = useState(""); 
   const [emailError, setEmailError] = useState(""); 
 
@@ -22,7 +23,7 @@ function ForgotPassword() {
 
   // تحقق من صحة البريد (للتأكد من تنسيق البريد فقط)
   const isFormValid = emailRegex.test(email);
-
+const [loading, setLoading] = useState(false);
   const handleEmailChange = (e) => {
     const val = e.target.value;
     setEmail(val);
@@ -35,7 +36,22 @@ function ForgotPassword() {
       setEmailError("");
     }
   };
+   const handleCheckEmail = async () => {
+    setLoading(true);
+    try {
 
+      const response = await axios.post(`http://localhost:5036/api/ForgetPassword/forgot-password-check-email?email=${email}`);
+      
+      if (response.status === 200) {
+       
+        navigate(`/verify-otp/${role}?type=reset`, { state: { email: email } });
+      }
+    } catch (error) {
+      alert(error.response?.data?.message || "حدث خطأ ما");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="ForgotPassword-container">
       <motion.div
@@ -61,6 +77,17 @@ function ForgotPassword() {
                 </p>
               )}
             </div>
+                <button
+              type="button"
+              onClick={handleCheckEmail}
+              className={`btn-container ${!isFormValid || loading ? "disabled" : ""}`}
+              style={{
+                pointerEvents: !isFormValid || loading ? "none" : "auto",
+                opacity: !isFormValid || loading ? 0.5 : 1,
+              }}
+            >
+              {loading ? "جاري الإرسال..." : "إرسال"}
+            </button>
 
             {/* الزرار يتحرك حسب صحة البريد */}
             <Link

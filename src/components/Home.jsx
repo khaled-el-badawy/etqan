@@ -88,9 +88,9 @@ const HeroSection = () => {
 
 // 3. Main Services
 const servicesData = [
-  {id: 1, title: 'خدمات الحرفيين', description: 'نوفر لك نخبة من الحرفيين المحترفين في مختلف التخصصات، لتنفيذ أعمال الصيانة والتشطيبات بجودة عالية وسهولة في التواصل.', icon: '/images/icons/servicesicon1.svg', link: '#' },
-  {id: 2, title: 'شركات مقاولات', description: 'نربطك بشركات نقل موثوقة لنقل الأثاث ومواد البناء بأمان وسرعة، مع خيارات تناسب مختلف الاحتياجات.', icon: '/images/icons/servicesicon3.svg', link: '#' },
-  {id: 3, title: 'المنتجات', description: 'متجر متكامل يوفر الأدوات والمعدات التي يحتاجها الحرفيون، بمنتجات موثوقة وأسعار مناسبة مع سهولة الطلب.', icon: '/images/icons/servicesicon2.svg', link: '#' }
+  {id: 1, title: 'خدمات الحرفيين', description: 'نوفر لك نخبة من الحرفيين المحترفين في مختلف التخصصات، لتنفيذ أعمال الصيانة والتشطيبات بجودة عالية وسهولة في التواصل.', icon: '/images/icons/servicesicon1.svg', link: '/Service' },
+  {id: 2, title: 'شركات مقاولات', description: 'نربطك بشركات نقل موثوقة لنقل الأثاث ومواد البناء بأمان وسرعة، مع خيارات تناسب مختلف الاحتياجات.', icon: '/images/icons/servicesicon3.svg', link: '/Companies' },
+  {id: 3, title: 'المنتجات', description: 'متجر متكامل يوفر الأدوات والمعدات التي يحتاجها الحرفيون، بمنتجات موثوقة وأسعار مناسبة مع سهولة الطلب.', icon: '/images/icons/servicesicon2.svg', link: '/Products' }
 ];
 
 const MainServices = () => {
@@ -107,7 +107,7 @@ const MainServices = () => {
               <h3>{service.title}</h3>
               <p>{service.description}</p>
             </div>
-            <a href={service.link} className="service-btn"> عرض <FaArrowLeft className="arrow-icon" /></a>
+            <Link to={service.link} className="service-btn"> عرض <FaArrowLeft className="arrow-icon" /></Link>
           </div>
         ))}
       </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./LoginOTP.css";
 import { motion } from "framer-motion";
-import { useParams, useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios"; 
 
 function LoginOTP() {
   const { role } = useParams();
@@ -10,7 +10,7 @@ function LoginOTP() {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get("type");
-
+  const userEmail = location.state?.email || "";
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(60);
   const [active, setActive] = useState(true);
@@ -26,30 +26,42 @@ function LoginOTP() {
 
   const currentImage = images[role] || images.craftsman;
 
-  // الدالة المعدلة للتحقق والانتقال للصفحة الجديدة
-   const handleLogin = async() => {
-   const enteredOtp = otp.join("");
+
+
+  
+    // 2. دالة التحقق المربوطة بالباك إند (طريقتنا بـ Axios)
+  const handleLogin = async () => {
+    const enteredOtp = otp.join(""); // تجميع الـ 4 أرقام
+
+    // تحديد الرابط بناءً على نوع المستخدم (Role)
+   const apiUrls = {
+  craftsman: "http://localhost:5036/api/ArtisanAccount/register-step2-verify",
+  customer: "http://localhost:5036/api/ClientAccount/register-step2-verify",
+  company: "http://localhost:5036/api/CompanyAccount/register-step2-verify", // ضيف السطر ده
+};
+
+    const targetUrl = apiUrls[role];
 
     try {
-      const response = await fetch("/api/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role, otp: enteredOtp }),
+      // إرسال الإيميل والكود للباك إند
+      const response = await axios.post(targetUrl, {
+        email: userEmail,
+        otp: enteredOtp
       });
 
-      const data = await response.json();
-
-      if (data.success) {
-        navigate("/home");
-      } else {
-        setError("رمز التحقق غير صحيح");
+      if (response.status === 200) {
+        alert(response.data.message || "تم تفعيل الحساب بنجاح!");
+        navigate("/home"); // التوجه للرئيسية بعد النجاح
       }
     } catch (err) {
-      console.error(err);
-      setError("حدث خطأ، حاول مرة أخرى");
+      // معالجة الأخطاء (كود غلط أو منتهي)
+      if (err.response) {
+        setError(err.response.data.message || "رمز التحقق غير صحيح");
+      } else {
+        setError("تعذر الاتصال بالسيرفر، تأكد من تشغيل الباك إند");
+      }
     }
   };
-
   // التايمر
   useEffect(() => {
     let interval;
@@ -85,6 +97,7 @@ function LoginOTP() {
       }
     }
   };
+
 
   return (
     <div className="LoginOTP-container">

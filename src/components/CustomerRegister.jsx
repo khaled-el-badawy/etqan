@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import "./CustomerRegister.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; 
+import axios from "axios"; 
 
 function CustomerRegister() {
+  const navigate = useNavigate();
   const governorates = [
     "القاهرة","الجيزة","الإسكندرية","الدقهلية","الشرقية","الغربية",
     "المنوفية","البحيرة","كفر الشيخ","الفيوم","بني سويف","المنيا",
@@ -26,7 +28,7 @@ function CustomerRegister() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailError, setEmailError] = useState("");
-
+   const[isLoading, setIsLoading] = useState(false);
   // قفل القائمة لما نضغط بره
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -91,7 +93,40 @@ function CustomerRegister() {
     password !== "" &&
     confirmPassword !== "" &&
     password === confirmPassword;
+   
+  
+  // --- دالة الربط بـ Axios (طريقتنا) ---
+  const handleRegister = async () => {
+    setIsLoading(true);
+    const registerData = {
+      fullName: username, // الباك إند مستني fullName
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+      phoneNumber: phone, // الباك إند مستني phoneNumber
+      governorate: Governorate // الباك إند مستني governorate
+    };
 
+    try {
+      // إرسال للـ ClientAccountController
+    const response = await axios.post("https://jeanette-unhumanistic-makayla.ngrok-free.dev/api/ClientAccount/register-step1-send-otp", registerData);
+
+      if (response.status === 200) {
+        // التوجه لصفحة الـ OTP مع تحديد الـ Role كـ customer
+        navigate("/login-otp/customer", { state: { email: email } });
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message || "حدث خطأ في البيانات");
+      } else {
+        alert("فشل الاتصال بالسيرفر، تأكد من تشغيل الـ .NET API");
+      }
+    }
+      finally{
+        setIsLoading(false);
+      
+    }
+  };
   return (
     <div className="customer-register-page-container">
       <motion.div
@@ -227,7 +262,19 @@ function CustomerRegister() {
             >
               تسجيل
             </Link>
-
+                 <button
+              type="button"
+              className={`link-button ${!isFormValid ? "disabled" : ""}`}
+              onClick={handleRegister}
+              disabled={!isFormValid || isLoading}
+              style={{
+                pointerEvents: !isFormValid ? "none" : "auto",
+                opacity: !isFormValid ? 0.5 : 1,
+                width: "100%", cursor: "pointer"
+              }}
+            >
+              {isLoading ? "جاري إنشاء الحساب..." : "تسجيل"}
+            </button>
             <h4 className="h4-customer-login">
               هل لديك حساب ؟ <Link to="/login/customer" className="Link">تسجيل الدخول</Link>
             </h4>
