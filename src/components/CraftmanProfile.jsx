@@ -278,7 +278,7 @@ function ProfileSection({
   const [showAllReviews, setShowAllReviews] = useState(false);
 
   // States الحقول
-  const [price, setPrice] = useState("");
+  
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -480,10 +480,6 @@ function ProfileSection({
   };
 
 
-  const handlePriceBlur = () => {
-    let value = parseInt(price);
-    if (!isNaN(value)) setPrice(value < 5 ? 5 : Math.ceil(value / 5) * 5);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -685,13 +681,6 @@ function ProfileSection({
               type="text"
               placeholder="نطاق الخدمة"
               defaultValue={craftman.workInfo.area}
-            />
-            <input
-              type="number"
-              placeholder="سعر الخدمة"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              onBlur={handlePriceBlur}
             />
             <input
               type="text"

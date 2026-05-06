@@ -36,7 +36,6 @@ useEffect(() => {
     }
   };
 
-
   syncChatCounter();
   const interval = setInterval(syncChatCounter, 1000);
   window.addEventListener("chatUpdate", syncChatCounter);
@@ -46,6 +45,24 @@ useEffect(() => {
     clearInterval(interval); 
     window.removeEventListener("chatUpdate", syncChatCounter);
     window.removeEventListener("storage", syncChatCounter);
+  };
+}, []);
+
+// كود إغلاق القوائم عند الضغط بالخارج
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      (ordersRef.current && !ordersRef.current.contains(event.target)) &&
+      (servicesRef.current && !servicesRef.current.contains(event.target))
+    ) {
+      setActiveDropdown(null); // يغلق كل القوائم
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
   };
 }, []);
 

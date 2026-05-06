@@ -136,7 +136,7 @@ const CartPage = () => {
         </div>
       ) : (
         <>
-          <div className="initialCart-cards-container">
+          <div className="initialCart-cards-container" data-aos="fade-up">
             {cart.map((item) => (
               <div key={item.id} className="initialCart-card">
                 <div className="image-wrapper">
@@ -168,7 +168,7 @@ const CartPage = () => {
           </div>
 
           {/* جزء التوتال */}
-          <div className="cart-total" >
+          <div className="cart-total" data-aos="fade-up">
             <h3>ملخص الطلب</h3>
             <p>عدد المنتجات: {totalQuantity}</p>
             <p> السعر الإجمالي: {totalPrice} جنيه</p>
