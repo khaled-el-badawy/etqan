@@ -100,29 +100,7 @@ const handiesData = [
       },
       {
         id: 4,
-<<<<<<< HEAD
-        ctaftName: "محمد رفعت",
-        date: "21/8/2025",
-        rating: 5,
-        comment:
-          "الحرفي وصل في الموعد المحدد بالضبط، وكان محترم جدًا في التعامل. فحص المشكلة الأول وشرح لي سببها قبل ما يبدأ الشغل، وبعدها نفّذ الإصلاح بسرعة ونظافة. بصراحة تجربة مريحة وموثوقة",
-        avatar: "/images/revewer (1).png",
-      },
-      {
-        id: 5,
-        ctaftName: "أحمد السيد",
-        date: "21/8/2025",
-        rating: 5,
-        comment:
-          "عجبني جدًا أسلوب التعامل، كان صبور وشرح لي كل خطوة قبل التنفيذ. عرض عليّ أكثر من حل وخلاني أختار الأنسب، وده خلاني أحس بثقة كبيرة في الخدمة.",
-        avatar: "/images/revewer (2).png",
-      },
-      {
-        id: 6,
-        ctaftName: "سارة جمال",
-=======
         ctaftName: "محمد عبد الله",
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
         date: "21/8/2025",
         rating: 2,
         comment:
@@ -136,10 +114,6 @@ const handiesData = [
 /* =======================
    Profile Summary
 ======================= */
-<<<<<<< HEAD
-function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, handleImageChange }) {
-  // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
-=======
 function ProfileSummary({
   craftman,
   editMode,
@@ -152,7 +126,6 @@ function ProfileSummary({
   coverImg,
   setCoverImg,
 }) {
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
@@ -170,16 +143,6 @@ function ProfileSummary({
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="coverBox" data-aos="fade-down">
-        <img src={craftman.cover || "/images/profile-cover.png"} alt="cover" />
-
-        {editMode && (
-          <label className="edit-avatar-label">
-            <input type="file" accept="image/*" hidden onChange={(e) => handleImageChange(e, 'cover')} />
-            تعديل صورة الغلاف
-            <img src="/images/f7_camera-fill.svg" alt="" />
-=======
       <div
         className="coverBox"
         data-aos="fade-down"
@@ -197,7 +160,6 @@ function ProfileSummary({
               onChange={(e) => handleImageChange(e, "cover")}
             />
             تعديل صورة الغلاف <MdPhotoCamera />
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
           </label>
         )}
       </div>
@@ -205,19 +167,6 @@ function ProfileSummary({
       <section className="profile-summary">
         <div className="profile-info">
           <div className="prson-data">
-<<<<<<< HEAD
-            {/* avatar لازم يكون هنا داخل prson-data */}
-
-            <div className="profile-avatar" data-aos="fade-up">
-              <img
-                className="avatar"
-                src={craftman.avatar || craftman.img}
-                alt={craftman.ctaftName}
-              />
-              {editMode && (
-                <label className="edit-avatar-label">
-                  <input type="file" accept="image/*" hidden onChange={(e) => handleImageChange(e, 'avatar')} />
-=======
             <div
               className="profile-avatar"
               data-aos="fade-up"
@@ -240,7 +189,6 @@ function ProfileSummary({
                     hidden
                     onChange={(e) => handleImageChange(e, "profile")}
                   />
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
                   <img src="/images/f7_camera-fill.svg" alt="" />
                 </label>
               )}
@@ -272,22 +220,6 @@ function ProfileSummary({
         </div>
 
         <div className="action-btns">
-<<<<<<< HEAD
-          <button
-            className="edit-profile-btn"
-            onClick={() => setEditMode(!editMode)}
-          >
-            <MdModeEdit />
-          </button>
-
-          {/* <button className="request-service-btn">طلب خدمة</button> */}
-          <button
-            className="request-service-btn"
-            onClick={() => setShowRequestModal(true)}
-          >
-            طلب خدمة
-          </button>
-=======
           {isAccountActive &&
             (editMode ? (
               <button
@@ -324,7 +256,6 @@ function ProfileSummary({
                 </button>
               </>
             ))}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
         </div>
       </section>
     </>
@@ -345,23 +276,11 @@ function ProfileSection({
   const [activeSideTab, setActiveSideTab] = useState("basic-info");
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAllReviews, setShowAllReviews] = useState(false);
-<<<<<<< HEAD
-  //  عشان نتحكم في قيمة سعر الخدمة في نموذج تعديل الملف الشخصي بحيث يكون رقم فقط ويتقرب لأقرب 5 جنيه
-  const [price, setPrice] = useState("");
-  //  عشان نتحكم في صحة البريد الإلكتروني في نموذج تعديل الملف الشخصي
-  const [email, setEmail] = useState(craftman.email || "");
-  const [emailError, setEmailError] = useState("");
-  //  عشان نتحكم في صحة رقم الهاتف في نموذج تعديل الملف الشخصي
-  const [phone, setPhone] = useState(craftman.phone || "");
-  const [phoneError, setPhoneError] = useState("");
-  //  عشان نتحكم في اظهار كلمة السر أو اخفائها في نموذج تعديل الملف الشخصي
-=======
 
   // States الحقول
   
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   const [password, setPassword] = useState("");
   const [showCurrentPassword, setShowPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
@@ -592,42 +511,10 @@ function ProfileSection({
       return;
     }
 
-<<<<<<< HEAD
-    // منطق الحفظ وتحديث الـ LocalStorage لمزامنة البيانات مع الداشبورد والبروفايل
-    const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
-    const updated = {
-        ...craftman,
-        name: e.target.name.value,
-        ctaftName: e.target.name.value,
-        email: email,
-        phone: phone,
-        location: e.target.address.value,
-        job: e.target.job.value,
-        about: {
-            ...craftman.about,
-            aboutInfo: e.target.job.value,
-            experience: e.target.years.value
-        },
-        services: e.target.services.value.split(',').map(s => s.trim()),
-        workInfo: {
-            ...craftman.workInfo,
-            area: e.target.area.value,
-            workingHours: e.target.working_hours.value,
-            speedOfResponse: e.target.speed_of_response.value,
-            emergencyService: e.target.emergency_service.value
-        }
-    };
-    const newList = saved.map(a => a.id === craftman.id ? updated : a);
-    localStorage.setItem('sharedArtisans', JSON.stringify(newList));
-    alert("تم تحديث البيانات بنجاح");
-    setEditMode(false);
-    window.location.reload(); 
-=======
     // All good — clear errors and save
     setFormErrors({});
     setIsAccountActive(true);
     setEditMode(false);
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   };
 
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
@@ -650,22 +537,6 @@ function ProfileSection({
         return (
           <ul className="basic-info-content">
             <li className="about-info">
-<<<<<<< HEAD
-              <FaUser className="icon" />
-              {aboutData.aboutInfo}
-            </li>
-            <li className="experience">
-              <MdAccessTime className="icon" />
-              {aboutData.experience}
-            </li>
-            <li className="area">
-              <MdLocationPin className="icon" />
-              {aboutData.area}
-            </li>
-            <li className="completed-orders">
-              <MdWork className="icon" />
-              {`عدد الطلبات المنفذة : ${aboutData.completedOrders} طلب`}
-=======
               <FaUser className="icon" /> {craftman.about.aboutInfo}
             </li>
             <li className="experience">
@@ -677,53 +548,23 @@ function ProfileSection({
             <li className="completed-orders">
               <MdWork className="icon" />{" "}
               {`عدد الطلبات المنفذة : ${craftman.about.completedOrders} طلب`}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </li>
           </ul>
         );
       case "services":
         return (
           <ul className="services-content">
-<<<<<<< HEAD
-            {servicesData.map((service, index) => {
-              return (
-                <>
-                  <li key={index}>
-                    <PiScrewdriverFill className="icon" />
-                    {service}
-                  </li>
-                </>
-              );
-            })}
-=======
             {craftman.services.map((s, i) => (
               <li key={i}>
                 <PiScrewdriverFill className="icon" /> {s}
               </li>
             ))}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
           </ul>
         );
       case "work-info":
         return (
           <ul className="work-info-content">
             <li>
-<<<<<<< HEAD
-              <BsPin className="icon" />
-              {`نطاق الخدمة : ${workData.area}`}
-            </li>
-            <li>
-              <MdAccessTime className="icon" />
-              {`ساعات العمل : ${workData.workingHours}`}
-            </li>
-            <li>
-              <ImSpinner3 className="icon" />
-              {`سرعة الاستجابة : ${workData.speedOfResponse}`}
-            </li>
-            <li>
-              <AiOutlineExclamationCircle className="icon" />
-              {`خدمة الطوارئ : ${workData.emergencyService}`}
-=======
               <BsPin className="icon" />{" "}
               {`نطاق الخدمة : ${craftman.workInfo.area}`}
             </li>
@@ -738,7 +579,6 @@ function ProfileSection({
             <li>
               <AiOutlineExclamationCircle className="icon" />{" "}
               {`خدمة الطوارئ : ${craftman.workInfo.emergencyService}`}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </li>
           </ul>
         );
@@ -756,9 +596,6 @@ function ProfileSection({
         <form className="edit-profile-form" onSubmit={handleSubmit}>
           <div className="form-group top">
             <h3>البيانات الشخصية</h3>
-<<<<<<< HEAD
-            <input type="text" id="name" name="name" placeholder="الاسم" defaultValue={craftman.ctaftName || craftman.name} />
-=======
             <input
               type="text"
               placeholder="الاسم"
@@ -767,7 +604,6 @@ function ProfileSection({
             />
             
             {/* -------- */}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             <div className="dob-field-wrapper">
               <input
                 type="text"
@@ -822,46 +658,6 @@ function ProfileSection({
               maxLength={11}
               style={formErrors.phone ? { borderColor: "#ff6b6b" } : {}}
             />
-<<<<<<< HEAD
-            {phoneError && <p className="phone error-msg">{phoneError}</p>}
-            <input type="text" id="address" name="address" placeholder="المحافظة" defaultValue={craftman.location} />
-          </div>
-          {/* */}
-          <div className="form-group middle">
-            <h3>البيانات الأساسية</h3>
-            <input type="text" id="job" name="job" placeholder="عن الحرفي" defaultValue={craftman.about?.aboutInfo || craftman.job} />
-            <input type="text" id="years" name="years" placeholder="سنوات الخبرة" defaultValue={craftman.about?.experience} />
-            <input type="text" id="services" name="services" placeholder="الخدمات (افصل بينها بفصلة)" defaultValue={craftman.services?.join(", ")} />
-          </div>
-          {/* */}
-          <div className="form-group bottom">
-            <h3>معلومات العمل</h3>
-            <input type="text" id="area" name="area" placeholder="نطاق الخدمة" defaultValue={craftman.workInfo?.area} />
-            <input
-              type="number"
-              inputMode="tel"
-              id="price"
-              name="price"
-              placeholder="سعر الخدمة"
-              step={5}
-              min={5}
-              value={price}
-              onChange={handlePriceChange}
-              onBlur={handlePriceBlur}
-            />
-            <input type="text" id="working_hours" name="working_hours" placeholder="مواعيد العمل" defaultValue={craftman.workInfo?.workingHours} />
-            <input
-              type="text"
-              id="speed_of_response"
-              name="speed_of_response"
-              placeholder="وقت الاستجابة"
-              defaultValue={craftman.workInfo?.speedOfResponse}
-            />
-            <select id="emergency-service" name="emergency_service">
-              <option value="">اختر خدمة الطوارئ</option>
-              <option value="متاحة">متاحة</option>
-              <option value="غير متاحة">غير متاحة</option>
-=======
             {formErrors.phone && <p className="dob error-msg">{formErrors.phone}</p>}
             <input
               type="text"
@@ -899,7 +695,6 @@ function ProfileSection({
               <option value="">خدمة الطوارئ</option>
               <option>متاحة</option>
               <option>غير متاحة</option>
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </select>
           </div>
           <div className="form-group password">
@@ -919,13 +714,7 @@ function ProfileSection({
                 {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
-<<<<<<< HEAD
-
-            {/* */}
-
-=======
             {formErrors.password && <p className="dob error-msg">{formErrors.password}</p>}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             <div className="password-field">
               <input
                 type={showNewPassword ? "text" : "password"}
@@ -941,13 +730,7 @@ function ProfileSection({
                 {showNewPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
-<<<<<<< HEAD
-
-            {/* */}
-
-=======
             {formErrors.newPassword && <p className="dob error-msg">{formErrors.newPassword}</p>}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             <div className="password-field">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -965,11 +748,6 @@ function ProfileSection({
             </div>
             {formErrors.confirmPassword && <p className="dob error-msg">{formErrors.confirmPassword}</p>}
           </div>
-<<<<<<< HEAD
-
-          {/* */}
-=======
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
           <div className="form-btns">
             <button type="submit" className="save-btn">
               حفظ
@@ -989,132 +767,17 @@ function ProfileSection({
 
   return (
     <div className="profile-wrapper">
-<<<<<<< HEAD
-      {
-       
-      }
-      <div className="main-tabs">
-        <button
-          className={activeMainTab === "about" ? "active" : ""}
-          onClick={() => setActiveMainTab("about")}
-        >
-          عن الحرفي
-        </button>
-
-        <button
-          className={activeMainTab === "works" ? "active" : ""}
-          onClick={() => setActiveMainTab("works")}
-        >
-          الأعمال
-        </button>
-
-        <button
-          className={activeMainTab === "reviews" ? "active" : ""}
-          onClick={() => setActiveMainTab("reviews")}
-        >
-          تقييمات
-        </button>
-      </div>
-
-      {/* المحتوي */}
-      {activeMainTab === "about" && (
-        <div className="about-section">
-          {/* Vertical Tabs */}
-          <div className="side-tabs" data-aos="fade-up">
-            <button
-              className={activeSideTab === "basic-info" ? "active" : ""}
-              onClick={() => setActiveSideTab("basic-info")}
-            >
-              المعلومات الأساسية
-            </button>
-
-            <button
-              className={activeSideTab === "services" ? "active" : ""}
-              onClick={() => setActiveSideTab("services")}
-            >
-              الخدمات
-            </button>
-
-            <button
-              className={activeSideTab === "work-info" ? "active" : ""}
-              onClick={() => setActiveSideTab("work-info")}
-            >
-              معلومات العمل
-            </button>
-          </div>
-
-          {/* المحتوي (علي اليسار) */}
-          <div className="side-content">{renderSideContent()}</div>
-        </div>
-      )}
-
-  
-      {/* --------------------------------------------- */}
-      {activeMainTab === "works" && (
-        <div className="portfolio-section">
-          <div className="portfolio-grid">
-            {/* upload box */}
-            <label className="work-item upload-box">
-              <input type="file" accept="image/*" className="input-file" hidden />
-=======
       {!isAccountActive ? (
         <div className="activation-required-section">
           <div className="activation-content">
             <FaUserCheck className="activation-icon" />
             <h3>
               أهلاً بك في منصتنا{" "}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               <img
                 src="/images/hand.svg"
                 alt="hand"
                 style={{ width: "50px" }}
               />
-<<<<<<< HEAD
-            </label>
-
-            {/* images map */}
-            {(craftman.worksImages || []).map((image, index) => (
-              <div
-                key={index}
-                className="work-item"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                data-aos-once="true"
-                onClick={() => setSelectedImage(image)}
-              >
-                <img
-                  src={image}
-                  alt={`Work ${index + 1}`}
-                  className="work-image"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      {/* --------------------------------------------- */}
-      {activeMainTab === "reviews" && (<div className="reviews-section">
-          {/* ================= Rating Summary ================= */}
-          <h1 className="reviews-title">التقييمات وآراء العملاء</h1>
-          <div className="rating-summary">
-            <div className="rating-summary-box">
-              <div className="rating-score">
-                <h2>{avgRating.toFixed(1)}</h2>
-                <div className="review-stars">
-                  {[...Array(5)].map((_, index) => {
-                    return (
-                      <span
-                        key={index}
-                        className={
-                          index < Math.round(avgRating) ? "filled" : ""
-                        }
-                      >
-                        ★
-                      </span>
-                    );
-                  })}
-                </div>
-=======
             </h3>
             <p className="no-wrap-text">
               يرجى إكمال تفعيل حسابك وإضافة بياناتك المهنية لتظهر للعملاء بشكل
@@ -1168,7 +831,6 @@ function ProfileSection({
                 >
                   معلومات العمل
                 </button>
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               </div>
               <div className="side-content">{renderSideContent()}</div>
             </div>
@@ -1213,13 +875,6 @@ function ProfileSection({
                         </span>
                       ))}
                     </div>
-<<<<<<< HEAD
-                    <div className="rate-and-date">
-                      <span>{review.date}</span>
-                      <div className="review-stars">
-                        {[...Array(5)].map((_, starIndex) => {
-                          return (
-=======
                   </div>
                   <div className="rating-bars">
                     {[5, 4, 3, 2, 1].map((star, i) => {
@@ -1260,7 +915,6 @@ function ProfileSection({
                         <span>{r.date}</span>
                         <div className="review-stars">
                           {[...Array(5)].map((_, si) => (
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
                             <span
                               key={si}
                               className={si < r.rating ? "filled" : ""}
@@ -1286,23 +940,7 @@ function ProfileSection({
                     </span>
                   </button>
                 </div>
-<<<<<<< HEAD
-              );
-            })
-          ) : (
-            <p className="no-reviews" data-aos="fade-up">
-              <span>لا توجد تقييمات حتى الآن</span>
-            </p>
-          )}
-          {(craftman.reviews || []).length > 3 && (
-            <div className="show-all-reviews">
-              <button onClick={() => setShowAllReviews(!showAllReviews)}>
-                {showAllReviews ? <FaArrowUp /> : <FaArrowDown />}
-                <span>{showAllReviews ? "عرض أقل" : "عرض كل التقييمات"}</span>
-              </button>
-=======
               )}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </div>
           )}
         </>
@@ -1384,10 +1022,6 @@ function RequestServiceModal({ craftmanName, onClose }) {
           </div>
         ) : (
           <>
-<<<<<<< HEAD
-            <h2 className="modal-title-request"> {craftmanName}</h2>
-            <form className="request-form-custom" onSubmit={handleSubmit}>
-=======
          <h2 className="modal-title">{craftmanName}</h2>
             <form
               className="request-form"
@@ -1400,7 +1034,6 @@ function RequestServiceModal({ craftmanName, onClose }) {
                 }, 1500);
               }}
             >
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               <div className="form-group-modal">
                 <label>اسم العميل</label>
                 <input type="text" placeholder="أدخل اسمك" required />
@@ -1451,11 +1084,6 @@ function RequestServiceModal({ craftmanName, onClose }) {
                   className="readonly-input"
                 />
               </div>
-<<<<<<< HEAD
-              <div className="modal-btns-group">
-                <button type="submit" className="confirm-btn">إرسال الطلب</button>
-                <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
-=======
               <div className="modal-btns">
                 <button type="submit" className="confirm-btn">
                   إرسال الطلب
@@ -1466,7 +1094,6 @@ function RequestServiceModal({ craftmanName, onClose }) {
                 <button type="button" className="close-btn" onClick={onClose}>
                   ×
                 </button>
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               </div>
             </form>
             </>
@@ -1478,46 +1105,9 @@ function RequestServiceModal({ craftmanName, onClose }) {
 
 /* ================= PAGE COMPONENT ================= */
 const ProfilePage = () => {
-<<<<<<< HEAD
-  const { id } = useParams();
-// عشان نتحكم في وضع تعديل الملف الشخصي
-=======
   const { id = 1 } = useParams();
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   const [editMode, setEditMode] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
-<<<<<<< HEAD
-  const [craftman, setCraftman] = useState(null);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
-
-    const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
-    let found = saved.find(a => a.id === Number(id));
-    if (!found) found = handiesData.find(a => a.id === Number(id));
-    setCraftman(found);
-  }, [id]);
-
-  const handleImageChange = (e, type) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const updated = { ...craftman, [type === 'cover' ? 'cover' : 'avatar']: reader.result };
-        setCraftman(updated);
-        const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
-        const newList = saved.map(a => a.id === craftman.id ? updated : a);
-        localStorage.setItem('sharedArtisans', JSON.stringify(newList));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  if (!craftman) return <div style={{padding: "100px", textAlign: "center"}}><h2>جاري تحميل بيانات الحرفي...</h2></div>;
-=======
   const [isAccountActive, setIsAccountActive] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showDeleteToast, setShowDeleteToast] = useState(false);
@@ -1538,7 +1128,6 @@ const ProfilePage = () => {
 
   const craftman = handiesData.find((e) => e.id === Number(id));
   if (!craftman) return <p>Not Found</p>;
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
 
   return (
     <div className="professional-profile-container">
@@ -1607,16 +1196,12 @@ const ProfilePage = () => {
         editMode={editMode}
         setEditMode={setEditMode}
         setShowRequestModal={setShowRequestModal}
-<<<<<<< HEAD
-        handleImageChange={handleImageChange}
-=======
         setShowConfirmModal={setShowConfirmModal}
         isAccountActive={isAccountActive}
         profileImg={profileImg}
         setProfileImg={setProfileImg}
         coverImg={coverImg}
         setCoverImg={setCoverImg}
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
       />
 
       <ProfileSection

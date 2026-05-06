@@ -8,8 +8,7 @@ import {
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { CartProvider } from "./components/CartContext"; 
-
+import { CartProvider } from "./components/CartContext";
 
 import Login from "./components/Login";
 import LoginOTP from "./components/LoginOTP";
@@ -34,7 +33,7 @@ import Products from "./components/Products";
 import ProductsDetails from "./components/ProductsDetails";
 import FavoritesPage from "./components/FavoritesPage";
 import CartPage from "./components/CartPage";
-import CheckOut from "./components/CheckOut"; 
+import CheckOut from "./components/CheckOut";
 import Brands from "./components/Brands";
 import CraftmanProfile from "./components/CraftmanProfile";
 import OrderDetails from "./components/OrderDetails";
@@ -117,8 +116,7 @@ function AppWrapper() {
 
         <Route path="/FavoritesPage" element={<FavoritesPage />} />
         <Route path="/CartPage" element={<CartPage />} />
-        
-  
+
         <Route path="/CheckOut" element={<CheckOut />} />
         <Route path="/Brands" element={<Brands />} />
 
@@ -129,20 +127,20 @@ function AppWrapper() {
 
         {/* هذا هو المسار المطلوب - تأكد من تطابقه تماماً */}
         <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
-        
+
         <Route path="/contactUs" element={<ContactUs />} />
 
-        <Route 
-          path="/admin" 
+        <Route
+          path="/admin"
           element={
             <ProtectedRoute>
               <Admin />
             </ProtectedRoute>
-          } 
+          }
         />
 
         <Route path="/Chat" element={<Chat />} />
-        
+
         {/* صفحة 404 يجب أن تكون دائماً في آخر القائمة */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
@@ -154,7 +152,7 @@ function AppWrapper() {
 
 function App() {
   return (
-    <CartProvider> 
+    <CartProvider>
       <Router>
         <AppWrapper />
       </Router>

@@ -233,8 +233,8 @@ display: flex;
 .customer-register-page-container .image {
   height: 100vh;
 }
-.customer-register-page-container .image img {
-}
+/* .customer-register-page-container .image img {
+} */
 @media (max-width: 1130px) {
   .customer-register-page-container .image {
     height: 150vh;
@@ -256,8 +256,8 @@ display: flex;
   .customer-register-page-container .form-fields form {
     min-height: 100vh;
   }
-  .customer-register-page-container .form-section {
-  }
+  /* .customer-register-page-container .form-section {
+  } */
 
   .customer-register-page-container .form-section,
   .customer-register-page-container .h4-login {
@@ -322,8 +322,8 @@ display: flex;
     display: block;
   }
 
-  .customer-register-page-container .password-field {
-  }
+  /* .customer-register-page-container .password-field {
+  } */
 
   .customer-register-page-container .link-button {
     width: 60%;
