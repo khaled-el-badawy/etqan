@@ -113,7 +113,10 @@ const Dashcustomer = () => {
 
     if (Object.keys(newErrors).length === 0) {
       const newCustomer = {
-        id: Date.now(),
+        id:
+          customers.length > 0
+            ? Math.max(...customers.map((c) => c.id)) + 1
+            : 1,
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
