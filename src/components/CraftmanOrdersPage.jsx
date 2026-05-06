@@ -6,110 +6,15 @@ import { FaUser, FaMapMarkerAlt, FaCalendarAlt, FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 /* =======================
-   Orders Data
+   استيراد البيانات من الحالة العامة (Context)
+   ⬅ بدل ما نكتب الداتا هنا، بنجيبها من OrdersContext
+   ⬅ للـ Back-End: الداتا هتيجي من الـ API من خلال الـ Context
 ======================= */
-
-const CraftmanOrders = [
-  {
-    id: 1,
-    service: "صيانة  الاسلاك والتوصيلات",
-    clientName: "ابراهيم به",
-    location: "المنصورة - أحمد ماهر",
-    date: "اليوم",
-    status: "pending",
-  },
-  {
-    id: 2,
-    service: "تركيب السخانات الكهربائية",
-    clientName: "ابراهيم به",
-    location: "المنصورة - أحمد ماهر",
-    date: "13 - 1 - 2026",
-    status: "completed",
-  },
-  {
-    id: 3,
-    service: "معالجة انقطاع الكهرباء",
-    clientName: "احمد علي",
-    location: "المنصورة - الترعة",
-    date: "12 - 2 - 2026",
-    status: "pending",
-  },
-  {
-    id: 4,
-    service: "إصلاح لوحات التوزيع",
-    clientName: "محمد علي",
-    location: "المنصورة - المشاية",
-    date: "8 - 1 - 2026",
-    status: "completed",
-  },
-  {
-    id: 5,
-    service: "صيانة  الاسلاك والتوصيلات",
-    clientName: "اكرامي كامل",
-    location: "المنصورة - الجلاء",
-    date: "21 - 2 - 2026",
-    status: "inProgress",
-  },
-  {
-    id: 6,
-    service: "إصلاح الدوائر  الكهربية",
-    clientName: "صلاح مصطفى",
-    location: "المنصورة - قناة السويس",
-    date: "5 - 2 - 2026",
-    status: "inProgress",
-  },
-  {
-    id: 7,
-    service: "معالجة ضعف التيار",
-    clientName: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "19 - 2 - 2026",
-    status: "completed",
-  },
-  {
-    id: 8,
-    service: "تركيب وحدات إضاءة",
-    clientName: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "27 - 12 - 2025",
-    status: "completed",
-  },
-  {
-    id: 9,
-    service: "إصلاح لوحات التوزيع",
-    clientName: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "اليوم",
-    status: "pending",
-  },
-  {
-    id: 10,
-    service: "تركيب أجراس كهربائية",
-    clientName: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "اليوم",
-    status: "pending",
-  },
-  {
-    id: 11,
-    service: "صيانة  الاسلاك والتوصيلات",
-    clientName: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "8 - 11 - 2025",
-    status: "completed",
-  },
-  {
-    id: 12,
-    service: "إصلاح الدوائر الكهربية",
-    clientName: "احمد وائل",
-    location: "المنصورة - حي الجامعة",
-    date: "23 - 1 - 2026",
-    status: "completed",
-  },
-];
+import { useOrders } from "./OrdersContext";
 
 /* =======================
-   Hero Section
+   قسم البانر العلوي (Hero Section)
+   ⬅ بانر ترحيبي في أعلى الصفحة
 ======================= */
 
 function HeroBanner() {
@@ -128,12 +33,15 @@ function HeroBanner() {
 }
 
 /* =======================
-   Tabs
+   أزرار التصفية (Tabs)
+   ⬅ بتسمح للمستخدم يفلتر الطلبات حسب الحالة
+   ⬅ الحالات: الكل / مكتمل / قيد التنفيذ / في الانتظار
 ======================= */
 
 function OrdersTabs({ activeFilter, setActiveFilter }) {
   return (
     <div className="tabs" data-aos="fade-left">
+      {/* زر عرض كل الطلبات */}
       <button
         className={activeFilter === "all" ? "active" : ""}
         onClick={() => setActiveFilter("all")}
@@ -141,6 +49,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         الكل
       </button>
 
+      {/* زر عرض الطلبات المكتملة */}
       <button
         className={activeFilter === "completed" ? "active" : ""}
         onClick={() => setActiveFilter("completed")}
@@ -148,6 +57,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         الطلبات المكتملة
       </button>
 
+      {/* زر عرض الطلبات قيد التنفيذ */}
       <button
         className={activeFilter === "inProgress" ? "active" : ""}
         onClick={() => setActiveFilter("inProgress")}
@@ -155,6 +65,7 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
         قيد التنفيذ
       </button>
 
+      {/* زر عرض الطلبات المعلقة */}
       <button
         className={activeFilter === "pending" ? "active" : ""}
         onClick={() => setActiveFilter("pending")}
@@ -166,36 +77,49 @@ function OrdersTabs({ activeFilter, setActiveFilter }) {
 }
 
 /* =======================
-   Order Card
+   كارت الطلب الواحد (Order Card)
+   ⬅ بيعرض تفاصيل كل طلب: اسم الخدمة، العميل، الموقع، التاريخ
+   ⬅ الأزرار بتتغير حسب حالة الطلب (status)
+   ⬅ للـ Back-End: عند الضغط على "قبول" أو "رفض" → ابعت PATCH /api/craftman/orders/:id
 ======================= */
 
-function OrderCard({ order, setdOrderTicket }) {
-  console.log(order);
+function OrderCard({ order, setdOrderTicket, onAccept, onReject }) {
 
   return (
     <div className="order-card" data-aos="fade-up">
+      {/* عنوان الخدمة */}
       <h3 className="order-title">{order.service}</h3>
+
+      {/* معلومات الطلب */}
       <div className="order-info">
+        {/* اسم العميل */}
         <p>
           <FaUser className="icon" />
           <span>العميل: {order.clientName}</span>
         </p>
+        {/* موقع العميل */}
         <p>
           <FaMapMarkerAlt className="icon" />
           <span>{order.location}</span>
         </p>
+        {/* تاريخ الطلب */}
         <p>
           <FaCalendarAlt className="icon" />
           <span>{order.date}</span>
         </p>
       </div>
 
+      {/* ========== أزرار حسب حالة الطلب ========== */}
+
+      {/* حالة: مكتمل — زر واحد غير قابل للضغط */}
       {order.status === "completed" && (
         <div className="btnBox">
           <button className="completed-btn">مكتمل</button>
         </div>
       )}
 
+      {/* حالة: قيد التنفيذ — زر "تم الانتهاء" (يفتح المودال) + زر "إلغاء" */}
+      {/* للـ Back-End: عند "تم الانتهاء" → PATCH status = "completed" */}
       {order.status === "inProgress" && (
         <div className="btnBox">
           <button
@@ -204,14 +128,16 @@ function OrderCard({ order, setdOrderTicket }) {
           >
             تم الانتهاء
           </button>
-          <button className="reject-btn">إلغاء</button>
+          <button className="reject-btn" onClick={() => onReject(order.id)}>إلغاء</button>
         </div>
       )}
 
+      {/* حالة: في الانتظار — زر "قبول" + زر "رفض" */}
+      {/* للـ Back-End: "قبول" → PATCH status = "inProgress" / "رفض" → DELETE أو PATCH status = "rejected" */}
       {order.status === "pending" && (
         <div className="btnBox">
-          <button className="accept-btn">قبول</button>
-          <button className="reject-btn">رفض</button>
+          <button className="accept-btn" onClick={() => onAccept(order.id)}>قبول</button>
+          <button className="reject-btn" onClick={() => onReject(order.id)}>رفض</button>
         </div>
       )}
     </div>
@@ -219,10 +145,11 @@ function OrderCard({ order, setdOrderTicket }) {
 }
 
 /* =======================
-   Orders Grid
+   شبكة عرض الطلبات (Orders Grid)
+   ⬅ بتعرض كل كروت الطلبات في شكل شبكة (grid)
 ======================= */
 
-function OrdersGrid({ orders, setdOrderTicket }) {
+function OrdersGrid({ orders, setdOrderTicket, onAccept, onReject }) {
   return (
     <div className="orders-grid">
       {orders.map((order) => (
@@ -230,6 +157,8 @@ function OrdersGrid({ orders, setdOrderTicket }) {
           key={order.id}
           order={order}
           setdOrderTicket={setdOrderTicket}
+          onAccept={onAccept}
+          onReject={onReject}
         />
       ))}
     </div>
@@ -237,42 +166,84 @@ function OrdersGrid({ orders, setdOrderTicket }) {
 }
 
 /* =======================
-   Main Section
+   القسم الرئيسي — طلبات الحرفي (Main Section)
+   ⬅ بيقرأ البيانات من الـ Context (بدل الداتا المحلية)
+   ⬅ بيطبق الفلترة حسب التبويب النشط
+   ⬅ للـ Back-End: الدوال updateCraftmanOrderStatus و removeCraftmanOrder
+     لازم يتم استبدالها بـ API calls
 ======================= */
 
 function CraftmanOrdersSection() {
+  /* جلب البيانات والدوال من الـ Context */
+  const {
+    craftmanOrders,
+    updateCraftmanOrderStatus,
+    removeCraftmanOrder,
+  } = useOrders();
+
+  /* حالة المودال — الطلب اللي هيتعرض في مودال الفاتورة */
   const [OrderTicket, setdOrderTicket] = useState(null);
 
+  /* حالة التبويب النشط — "all" يعني كل الطلبات */
   const [activeFilter, setActiveFilter] = useState("all");
-  const filteredOrders = CraftmanOrders.filter((orders) => {
+
+  /* تطبيق الفلترة على الطلبات */
+  /* للـ Back-End: ممكن تنقل الفلترة للـ API → GET /api/craftman/orders?status=pending */
+  const filteredOrders = craftmanOrders.filter((order) => {
     if (activeFilter === "all") return true;
-    return orders.status === activeFilter;
+    return order.status === activeFilter;
   });
+
+  /* ---- معالج قبول الطلب ---- */
+  /* للـ Back-End: PATCH /api/craftman/orders/:id { status: "inProgress" } */
+  const handleAccept = (id) => {
+    updateCraftmanOrderStatus(id, "inProgress");
+  };
+
+  /* ---- معالج رفض/إلغاء الطلب ---- */
+  /* للـ Back-End: DELETE /api/craftman/orders/:id أو PATCH { status: "rejected" } */
+  const handleReject = (id) => {
+    removeCraftmanOrder(id);
+  };
 
   return (
     <section className="orders-section">
       <h2 data-aos="fade-left">الطلبات الواردة</h2>
 
+      {/* أزرار التصفية */}
       <OrdersTabs
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
       />
 
-      <OrdersGrid orders={filteredOrders} setdOrderTicket={setdOrderTicket} />
-      {/*  modal for order tracking */}
+      {/* شبكة الطلبات */}
+      <OrdersGrid
+        orders={filteredOrders}
+        setdOrderTicket={setdOrderTicket}
+        onAccept={handleAccept}
+        onReject={handleReject}
+      />
+
+      {/* مودال إصدار فاتورة عند الضغط على "تم الانتهاء" */}
       <TicketModal order={OrderTicket} onClose={() => setdOrderTicket(null)} />
     </section>
   );
 }
+
 /* =======================
-    Ticket Modal
+   مودال الفاتورة (Ticket Modal)
+   ⬅ يظهر عند الضغط على "تم الانتهاء" في طلب قيد التنفيذ
+   ⬅ بيسمح للحرفي يضيف بنود الفاتورة (اسم الخدمة، الكمية، السعر)
+   ⬅ للـ Back-End: عند "تأكيد واصدار فاتورة" → POST /api/invoices { orderId, items }
 ======================= */
 
 function TicketModal({ order, onClose }) {
+  /* بنود الفاتورة — كل بند فيه: اسم، كمية، سعر */
   const [rows, setRows] = useState([
     { id: 1, name: "تصليح حنفية", qty: 1, price: 100 },
   ]);
 
+  /* منع التمرير في الخلفية لما المودال مفتوح */
   useEffect(() => {
     if (!order) return;
 
@@ -283,16 +254,19 @@ function TicketModal({ order, onClose }) {
     };
   }, [order]);
 
+  /* لو مفيش طلب مختار → ما تعرضش المودال */
   if (!order) return null;
 
-  // ================= handlers =================
+  // ================= معالجات الأحداث =================
 
+  /* تعديل قيمة خانة في بند معين */
   const handleChange = (id, field, value) => {
     setRows((prev) =>
       prev.map((row) => (row.id === id ? { ...row, [field]: value } : row)),
     );
   };
 
+  /* إضافة بند جديد في الفاتورة */
   const addRow = () => {
     setRows((prev) => [
       ...prev,
@@ -300,20 +274,22 @@ function TicketModal({ order, onClose }) {
     ]);
   };
 
+  /* حذف بند من الفاتورة */
   const deleteRow = (id) => {
     setRows((prev) => prev.filter((row) => row.id !== id));
   };
 
+  /* حساب إجمالي البند الواحد */
   const getTotal = (row) => row.qty * row.price;
 
-  // ================= UI =================
+  // ================= واجهة المودال =================
 
   return (
     <div className="ticket-modal-overlay">
       <div className="modal-content" data-aos="fade-up">
         <h2 className="modal-title">إضافة فاتورة خدمات</h2>
 
-        {/* table header */}
+        {/* رأس الجدول */}
         <div className="table-header">
           <span>#</span>
           <span>اسم الخدمة</span>
@@ -323,37 +299,37 @@ function TicketModal({ order, onClose }) {
           <span>الخيارات</span>
         </div>
 
-        {/* rows */}
+        {/* صفوف البنود */}
         {rows.map((row, index) => (
           <div className="table-row" key={row.id}>
             <span>{index + 1}</span>
 
+            {/* اسم الخدمة */}
             <input
               value={row.name}
               onChange={(e) => handleChange(row.id, "name", e.target.value)}
               placeholder="اكتب اسم"
             />
 
+            {/* الكمية */}
             <input
               type="number"
               value={row.qty}
               onChange={(e) => handleChange(row.id, "qty", +e.target.value)}
             />
 
+            {/* السعر */}
             <input
               type="number"
               value={row.price}
               onChange={(e) => handleChange(row.id, "price", +e.target.value)}
             />
 
+            {/* إجمالي البند */}
             <span>{getTotal(row)} جنيه</span>
 
+            {/* زر الحذف */}
             <div className="actions">
-              {/* <button onClick={() => handleChange(row.id, "name", row.name)}>
-                {" "}
-                <FaPen />
-                تعديل
-              </button> */}
               <button onClick={() => deleteRow(row.id)}>
                 {" "}
                 <MdDelete />
@@ -363,7 +339,7 @@ function TicketModal({ order, onClose }) {
           </div>
         ))}
 
-        {/* add row */}
+        {/* زر إضافة بند + المبلغ الإجمالي */}
         <div className="add-row-section">
         <button className="add-btn" onClick={addRow}>
           + إضافة خدمة أخرى
@@ -375,7 +351,9 @@ function TicketModal({ order, onClose }) {
           </span>
           </div>
         </div>
-        {/* footer */}
+
+        {/* أزرار التأكيد والإلغاء */}
+        {/* للـ Back-End: "تأكيد واصدار فاتورة" → POST /api/invoices */}
         <div className="modal-footer">
           <button className="confirm-btn">تأكيد واصدار فاتورة</button>
           <button className="cancel-btn" onClick={onClose}>
@@ -388,7 +366,8 @@ function TicketModal({ order, onClose }) {
 }
 
 /* =======================
-   Page Export
+   تصدير الصفحة (Page Export)
+   ⬅ المكوّن الرئيسي اللي بيتم عرضه في الـ Route
 ======================= */
 
 const OrdersPage = () => {
@@ -401,7 +380,9 @@ const OrdersPage = () => {
 
   return (
     <div className="craftman-page-container">
+      {/* البانر العلوي */}
       <HeroBanner />
+      {/* قسم الطلبات — بيقرأ من الـ Context */}
       <CraftmanOrdersSection />
     </div>
   );

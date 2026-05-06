@@ -1,6 +1,54 @@
 .professional-profile-container {
   width: 100%;
 }
+.profile-container .activation-required-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.professional-profile-container .activation-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.profile-container .activation-content h3 {
+  color: #40798c;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.professional-profile-container .activation-content p {
+  font-size: 24px;
+}
+
+.professional-profile-container .activation-icon {
+  font-size: 70px;
+  color: #40798c;
+  margin-bottom: 20px;
+}
+
+.professional-profile-container .activate-btn {
+  background-color: #75a5b3;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.professional-profile-container .activate-btn:hover {
+  background-color: #40798c;
+}
 
 .professional-profile-container .coverBox {
   width: 100%;
@@ -51,20 +99,58 @@
   border-radius: 50%;
   top: -100px;
   right: 0;
-  /* overflow: hidden; */
   background: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  /* background-color: red; */
+  /* overflow: hidden; */
+}
+
+.professional-profile-container .activation-required-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.professional-profile-container .activation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.professional-profile-container .btn-delete-account,
+.activate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  width: fit-content;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.professional-profile-container .no-wrap-text {
+  white-space: normal;
+  max-width: 500px;
+  line-height: 1.6;
 }
 
 .professional-profile-container .profile-summary .profile-avatar img.avatar {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   border-radius: 50%;
   scale: 1.1;
+  /* opacity: 0.2; */
 }
 
 .professional-profile-container .profile-summary .craftman-info {
@@ -104,7 +190,11 @@
   align-items: center;
   gap: 5px;
 }
-.professional-profile-container .profile-summary .craftman-info span .star-icon {
+.professional-profile-container
+  .profile-summary
+  .craftman-info
+  span
+  .star-icon {
   width: 25px;
   margin-right: 5px;
 }
@@ -331,7 +421,7 @@
 .professional-profile-container .basic-info-content li {
   display: flex;
   align-items: flex-start;
-  
+
   gap: 20px;
   position: relative;
 }
@@ -374,7 +464,6 @@
   align-items: flex-start;
   gap: 20px;
   position: relative;
-  
 }
 .professional-profile-container .services-content li .icon {
   width: 30px;
@@ -961,7 +1050,7 @@
 /* start Edit Profile Form Styles */
 
 /* cover box */
-.professional-profile-container .coverBox .edit-avatar-label {
+.professional-profile-container .coverBox .edit-cover-label {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -969,25 +1058,25 @@
   height: 35px;
   padding: 5px;
   border-radius: 10px;
-  background-color: #EEE;
+  background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   font-weight: bold;
-  transition: .3s;
+  transition: 0.3s;
 }
-@media (max-width:767px) {
-  .professional-profile-container .coverBox .edit-avatar-label {
-  top: 10px
+@media (max-width: 767px) {
+  .professional-profile-container .coverBox .edit-cover-label {
+    top: 10px;
   }
 }
-.professional-profile-container .coverBox .edit-avatar-label:hover{
+.professional-profile-container .coverBox .edit-cover-label:hover {
   opacity: 0.8;
-  transition: .3s;
+  transition: 0.3s;
 }
-.professional-profile-container .coverBox .edit-avatar-label img {
+.professional-profile-container .coverBox .edit-cover-label img {
   width: 20px;
   height: 20px;
 }
@@ -997,39 +1086,47 @@
   height: 20px;
 }
 /* profile-avatar */
-.professional-profile-container .profile-summary .profile-avatar .edit-avatar-label {
-  
+.professional-profile-container
+  .profile-summary
+  .profile-avatar
+  .edit-avatar-label {
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  bottom: 10px;
+  left: 10px;
   z-index: 99999;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #EEE;
+  background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   font-weight: bold;
-  transition: .3s;
+  transition: 0.3s;
 }
-@media (max-width:767px) {
-  .professional-profile-container .profile-summary .profile-avatar .edit-avatar-label {
+@media (max-width: 767px) {
+  .professional-profile-container
+    .profile-summary
+    .profile-avatar
+    .edit-avatar-label {
     bottom: -5px;
     left: 5px;
     width: 35px;
     height: 35px;
   }
 }
-.professional-profile-container .profile-summary .profile-avatar .edit-avatar-label img {
-width: 20px;
-height: 20px;
-
+.professional-profile-container
+  .profile-summary
+  .profile-avatar
+  .edit-avatar-label
+  img {
+  width: 20px;
+  height: 20px;
 }
 
-  .edit-form-container {
+.edit-form-container {
   /* background-color: #b4b4b4; */
   min-height: 100vh;
   padding: 20px;
@@ -1142,30 +1239,36 @@ height: 20px;
 .edit-form-container form.edit-profile-form .form-btns button.cancel-btn {
   background-color: #eeeeee;
   color: #40798c;
+    display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.password-field{
+.btn-delete-account {
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.password-field {
   position: relative;
   width: 80%;
   /* background-color: tomato; */
 }
 .password-field input {
   width: 100% !important;
-  
-
 }
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none;
 }
-.professional-profile-container .error-msg{
+.professional-profile-container .error-msg {
   color: rgb(235, 89, 89);
   font-size: 15px;
   font-weight: bold;
   text-align: center;
   width: 80%;
 }
-.professional-profile-container .error-msg.password{
+.professional-profile-container .error-msg.password {
   position: absolute;
   width: 90%;
   left: 40%;
@@ -1183,6 +1286,44 @@ input[type="password"]::-ms-clear {
   color: #40798c;
 }
 /* DOB Field Styles */
+/* .dob-field-wrapper {
+  position: relative;
+  width: 80%;
+  background-color: red;
+}
+
+.dob-field-wrapper .dob-input {
+  direction: ltr;
+  text-align: right;
+  width: 100% ;
+  padding-left: 45px ;
+}
+
+.dob-calendar-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #40798c;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.dob-hidden-date {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+} */
+/* ------------ */
 .dob-field-wrapper {
   position: relative;
   width: 80%;
@@ -1219,6 +1360,7 @@ input[type="password"]::-ms-clear {
   padding: 0;
   overflow: hidden;
 }
+/* ------------ */
 /* end Edit Profile Form Styles */
 
 /* modal styles */
@@ -1242,22 +1384,44 @@ input[type="password"]::-ms-clear {
   padding: 25px;
   border-radius: 15px;
   direction: rtl;
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
+.professional-profile-container .modal-box::-webkit-scrollbar {
+  width: 7px;
+}
+.professional-profile-container .modal-box::-webkit-scrollbar-thumb {
+  background: #40798c;
+  border-radius: 10px;
+}
+
+.professional-profile-container .modal-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
 .professional-profile-container .modal-title {
-  color: #40798C;
+  color: #40798c;
   text-align: center;
   margin-bottom: 20px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.professional-profile-container .modal-title {
+  color: #40798c;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .professional-profile-container .form-group-modal {
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .professional-profile-container .form-group-modal input {
@@ -1276,14 +1440,13 @@ input[type="password"]::-ms-clear {
   gap: 10px;
   margin-top: 20px;
   font-size: 18px;
-  
 }
 
 .professional-profile-container .modal-btns :hover {
   box-shadow: 2px 2px 5px #a3a9a6;
 }
- .professional-profile-container .confirm-btn{
-   /* width: 50%; */
+.professional-profile-container .confirm-btn {
+  /* width: 50%; */
   padding: 12px;
   /* margin: 15px auto 0 auto; */
   display: block;
@@ -1294,10 +1457,10 @@ input[type="password"]::-ms-clear {
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
- }
+}
 
- .professional-profile-container .cancel-btn{
-     /* width: 50%; */
+.professional-profile-container .cancel-btn {
+  /* width: 50%; */
   padding: 12px;
   /* margin: 15px auto 0 auto; */
   display: block;
@@ -1308,7 +1471,7 @@ input[type="password"]::-ms-clear {
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
- }
+}
 .professional-profile-container .modal-box .close-btn {
   position: absolute;
   top: 10px;
@@ -1344,7 +1507,7 @@ input[type="password"]::-ms-clear {
   border-radius: 8px;
   margin-top: 5px;
   z-index: 10;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .professional-profile-container .gov-dropdown-list li {
@@ -1354,7 +1517,7 @@ input[type="password"]::-ms-clear {
 }
 
 .professional-profile-container .gov-dropdown-list li::marker {
-  color: #40798C;
+  color: #40798c;
 }
 
 .professional-profile-container .gov-dropdown-list li:hover {
@@ -1366,7 +1529,7 @@ input[type="password"]::-ms-clear {
 }
 
 .professional-profile-container .gov-dropdown-list::-webkit-scrollbar-thumb {
-  background: #40798C;
+  background: #40798c;
   border-radius: 10px;
 }
 
@@ -1383,7 +1546,7 @@ input[type="password"]::-ms-clear {
 .professional-profile-container .success-icon {
   width: 70px;
   height: 70px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -1397,7 +1560,7 @@ input[type="password"]::-ms-clear {
 .professional-profile-container .success-toast-container p {
   font-size: 22px;
   font-weight: bold;
-  color: #40798C;
+  color: #40798c;
   margin: 0;
 }
 

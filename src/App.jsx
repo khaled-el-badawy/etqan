@@ -8,8 +8,9 @@ import {
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { CartProvider } from "./components/CartContext"; 
 
-/* صفحات */
+
 import Login from "./components/Login";
 import LoginOTP from "./components/LoginOTP";
 import Index from "./components/Index";
@@ -33,6 +34,7 @@ import Products from "./components/Products";
 import ProductsDetails from "./components/ProductsDetails";
 import FavoritesPage from "./components/FavoritesPage";
 import CartPage from "./components/CartPage";
+import CheckOut from "./components/CheckOut"; 
 import Brands from "./components/Brands";
 import CraftmanProfile from "./components/CraftmanProfile";
 import OrderDetails from "./components/OrderDetails";
@@ -40,6 +42,7 @@ import Faturuh from "./components/Faturuh";
 import Clientprofile from "./components/Clientprofile";
 import ContactUs from "./components/ContactUs";
 import Chat from "./components/Chat";
+import NotificationsPage from "./components/NotificationsPage";
 import PageNotFound from "./components/PageNotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -83,7 +86,6 @@ function AppWrapper() {
         <Route path="/" element={<Index />} />
         <Route path="/index" element={<Index />} />
 
-        {/* صفحة login الموحدة */}
         <Route path="/login/:role" element={<Login />} />
         <Route path="/login-otp/:role" element={<LoginOTP />} />
 
@@ -101,6 +103,7 @@ function AppWrapper() {
         <Route path="/CraftmanOrdersPage" element={<CraftmanOrdersPage />} />
         <Route path="/CompanyOrdersPage" element={<CompanyOrdersPage />} />
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
+        <Route path="/NotificationsPage" element={<NotificationsPage />} />
 
         <Route path="/Companies" element={<Companies />} />
         <Route path="/providers" element={<Providers />} />
@@ -114,7 +117,9 @@ function AppWrapper() {
 
         <Route path="/FavoritesPage" element={<FavoritesPage />} />
         <Route path="/CartPage" element={<CartPage />} />
-
+        
+  
+        <Route path="/CheckOut" element={<CheckOut />} />
         <Route path="/Brands" element={<Brands />} />
 
         <Route path="/OrderDetails" element={<OrderDetails />} />
@@ -149,9 +154,11 @@ function AppWrapper() {
 
 function App() {
   return (
-    <Router>
-      <AppWrapper />
-    </Router>
+    <CartProvider> 
+      <Router>
+        <AppWrapper />
+      </Router>
+    </CartProvider>
   );
 }
 

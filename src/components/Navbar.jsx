@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { mockConversations } from "./ChatData";
 import {
   FaUserCircle,
   FaBell,
@@ -9,89 +10,144 @@ import {
 import { IoChatbubbleEllipses } from "react-icons/io5"; 
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
+import { useOrders } from "./OrdersContext";
+import NotificationDropdown from "./NotificationDropdown";
 
 const Navbar = () => {
   const ordersRef = useRef(null);
   const servicesRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [notification, setNotification] = useState(0);
-  const [messagesCount, setMessagesCount] = useState(5);
+  
+  // العداد 
+  const [chatsCount, setChatsCount] = useState(0);
 
-  // حالة نوع المستخدم: 'craftman' أو 'company' أو 'customer'
+useEffect(() => {
+  const syncChatCounter = () => {
+    const currentMockData = mockConversations || [];
+    
+    const savedChats = JSON.parse(localStorage.getItem("allChats")) || [];
+
+    if (currentMockData.length !== savedChats.length) {
+      localStorage.setItem("allChats", JSON.stringify(currentMockData));
+      setChatsCount(currentMockData.length);
+      
+      window.dispatchEvent(new Event("chatUpdate"));
+    }
+  };
+
+  syncChatCounter();
+  const interval = setInterval(syncChatCounter, 1000);
+  window.addEventListener("chatUpdate", syncChatCounter);
+  window.addEventListener("storage", syncChatCounter);
+
+  return () => {
+    clearInterval(interval); 
+    window.removeEventListener("chatUpdate", syncChatCounter);
+    window.removeEventListener("storage", syncChatCounter);
+  };
+}, []);
+
+// كود إغلاق القوائم عند الضغط بالخارج
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      (ordersRef.current && !ordersRef.current.contains(event.target)) &&
+      (servicesRef.current && !servicesRef.current.contains(event.target))
+    ) {
+      setActiveDropdown(null); // يغلق كل القوائم
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
+  const { pendingNotifications } = useOrders();
+  const pendingCount = pendingNotifications.length;
+
+  const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [userRole, setUserRole] = useState("craftman"); 
-  // معرف المستخدم (ID) لربطه بالبروفايل الخاص به
   const [userId, setUserId] = useState("1");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setActiveDropdown(null);
+    setIsNotifOpen(false);
   };
 
   const toggleDropdown = (name) => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
-  // 1. دالة تحديد رابط البروفايل بناءً على النوع
+  const toggleNotifications = (e) => {
+    e.preventDefault();
+    setIsNotifOpen((prev) => !prev);
+    setActiveDropdown(null);
+  };
+
   const getProfileLink = () => {
     if (userRole === "craftman") return `/CraftmanProfile/${userId}`;
     if (userRole === "company") return `/CompanyProfile/${userId}`;
-    return "/CustomerProfile"; // أو صفحة إعدادات الحساب للعميل
+    return "/CustomerProfile"; 
   };
 
-  // 2. دالة تحديد رابط الجرس بناءً على النوع
-  const getNotificationLink = () => {
-    if (userRole === "craftman") return "/CraftmanOrdersPage";
-    if (userRole === "company") return "/CompanyOrdersPage";
-    return "/CustomerOrdersPage";
+useEffect(() => {
+  const updateCount = () => {
+    const savedChats = JSON.parse(localStorage.getItem("allChats")) || [];
+    setChatsCount(savedChats.length);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        ordersRef.current &&
-        !ordersRef.current.contains(event.target) &&
-        servicesRef.current &&
-        !servicesRef.current.contains(event.target)
-      ) {
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  updateCount();
+  window.addEventListener("storage", updateCount);
+  window.addEventListener("chatUpdate", updateCount);
+
+  return () => {
+    window.removeEventListener("storage", updateCount);
+    window.removeEventListener("chatUpdate", updateCount);
+  };
+}, []);
 
   return (
     <nav className="navbar">
       <div className="container">
         <div className="nav-icons-area">
           <div className="nav-icons">
-            {/* أيقونة الملف الشخصي - ديناميكية الآن */}
             <NavLink to={getProfileLink()} className="user-circle-link">
               <div className="user-circle">
                 <FaUserCircle className="icon" />
               </div>
             </NavLink>
 
-            {/* أيقونة الرسائل */}
+            {/* أيقونة الرسائل  */}
             <NavLink to="/Chat" className="icon-wrapper">
               <IoChatbubbleEllipses className="icon chat-bubble-icon" />
-              {messagesCount > 0 && (
+              {chatsCount > 0 && (
                 <span className="notification-dot chat-dot">
-                  {messagesCount}
+                  {chatsCount}
                 </span>
               )}
             </NavLink>
 
-            {/* أيقونة الجرس - ديناميكية */}
-            <NavLink to={getNotificationLink()} className="icon-wrapper">
+            <div
+              className="icon-wrapper notif-bell-trigger"
+              onClick={toggleNotifications}
+              style={{ cursor: "pointer" }}
+            >
               <FaBell className="icon" />
-              <span className="notification-dot">
-                {notification > 0 ? notification : "2"}
-              </span>
-            </NavLink>
+              {pendingCount > 0 && (
+                <span className="notification-dot">
+                  {pendingCount}
+                </span>
+              )}
+              <NotificationDropdown
+                isOpen={isNotifOpen}
+                onClose={() => setIsNotifOpen(false)}
+              />
+            </div>
           </div>
 
           <div className="mobile-menu-icon" onClick={toggleMenu}>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 import "./Chat.css";
+import { mockConversations } from "./ChatData";
 import { FaSearch, FaPhoneAlt } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 import { GrAttachment } from "react-icons/gr";
@@ -7,71 +8,71 @@ import { GrAttachment } from "react-icons/gr";
 /* =========================
    Mock Data
 ========================= */
-const mockConversations = [
-  {
-    id: 1,
-    name: "فاروق كامل",
-    lastMessage: "هخلص بكرا الساعة 10",
-    unread: 0,
-    online: true,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-  },
-  {
-    id: 2,
-    name: "حسين مصطفي",
-    lastMessage: "ابعتلي اللوكيشن",
-    unread: 3,
-    online: false,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-  },
-  {
-    id: 3,
-    name: "علي السيد",
-    lastMessage: "وصلت عند البيت",
-    unread: 1,
-    online: false,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/45.jpg",
-  },
-  {
-    id: 4,
-    name: "محمد مؤمن",
-    lastMessage: "هكون عندك في خلال ساعه",
-    unread: 0,
-    online: true,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-  },
-  {
-    id: 5,
-    name: "كمال محسن",
-    lastMessage: "المشكلة اتحلت الحمد لله",
-    unread: 0,
-    online: false,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/60.jpg",
-  },
-  {
-    id: 6,
-    name: "سالم محمد",
-    lastMessage: "شكرًا جدا علي الشغل",
-    unread: 0,
-    online: false,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/64.jpg",
-  },
-  {
-    id: 7,
-    name: "علاء السيد",
-    lastMessage: "تمام فين العنوان؟",
-    unread: 0,
-    online: false,
-    time: "11:27",
-    avatar: "https://randomuser.me/api/portraits/men/36.jpg",
-  },
-];
+// const mockConversations = [
+//   {
+//     id: 1,
+//     name: "فاروق كامل",
+//     lastMessage: "هخلص بكرا الساعة 10",
+//     unread: 0,
+//     online: true,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+//   },
+//   {
+//     id: 2,
+//     name: "حسين مصطفي",
+//     lastMessage: "ابعتلي اللوكيشن",
+//     unread: 3,
+//     online: false,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+//   },
+//   {
+//     id: 3,
+//     name: "علي السيد",
+//     lastMessage: "وصلت عند البيت",
+//     unread: 1,
+//     online: false,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
+//   },
+//   {
+//     id: 4,
+//     name: "محمد مؤمن",
+//     lastMessage: "هكون عندك في خلال ساعه",
+//     unread: 0,
+//     online: true,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/22.jpg",
+//   },
+//   {
+//     id: 5,
+//     name: "كمال محسن",
+//     lastMessage: "المشكلة اتحلت الحمد لله",
+//     unread: 0,
+//     online: false,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/60.jpg",
+//   },
+//   {
+//     id: 6,
+//     name: "سالم محمد",
+//     lastMessage: "شكرًا جدا علي الشغل",
+//     unread: 0,
+//     online: false,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/64.jpg",
+//   },
+//   {
+//     id: 7,
+//     name: "علاء السيد",
+//     lastMessage: "تمام فين العنوان؟",
+//     unread: 0,
+//     online: false,
+//     time: "11:27",
+//     avatar: "https://randomuser.me/api/portraits/men/36.jpg",
+//   },
+// ];
 
 const mockMessages = [
   { id: 1, text: "السلام عليكم", mine: false },

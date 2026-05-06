@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 // animation library
 import AOS from "aos";
@@ -11,8 +11,10 @@ import {
   MdAccessTime,
   MdLocationPin,
   MdWork,
+  MdPhotoCamera,
 } from "react-icons/md";
-import { FaUser } from "react-icons/fa6";
+import { FaUser, FaTrashAlt } from "react-icons/fa";
+import { FaUserCheck } from "react-icons/fa6";
 import { BsPin } from "react-icons/bs";
 import { ImSpinner3 } from "react-icons/im";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
@@ -32,9 +34,6 @@ const handiesData = [
     verified: true,
     avatar: "/images/Ellipse 321.png",
     cover: "/images/profile-cover.png",
-
-    ////////////////////////////// about craftman
-    //basic info
     about: {
       aboutInfo:
         "كهربائي متخصص في جميع أعمال الكهرباء المنزلية والتجارية، أعمل بدقة واهتمام بأدق التفاصيل، مع الالتزام التام بمعايير الأمان وجودة التنفيذ، وهدفي الأساسي هو تقديم خدمة مضمونة ترضي العميل.",
@@ -42,7 +41,6 @@ const handiesData = [
       area: "القاهرة والجيزة",
       completedOrders: "0",
     },
-    //services
     services: [
       "تأسيس كهرباء الشقق والفيلات",
       "صيانة الأعطال الكهربائية",
@@ -51,47 +49,13 @@ const handiesData = [
       "تركيب مفاتيح وبرايز",
       "تركيب لوحات التوزيع",
     ],
-    //work info
     workInfo: {
       area: " القاهرة - الجيزة - 6 أكتوبر - الشيخ زايد",
       workingHours: "من 9 صباحًا حتى 9 مساءً",
       speedOfResponse: "خلال ساعة",
       emergencyService: "متاحة",
     },
-    ////////////////////////////// works images
-    // ------------------cat------------------------------------
-    // worksCategories: [
-    //   {
-    //     id: 1,
-    //     title: "تشطيبات",
-    //     cover: "/images/work (4).png",
-    //     images: [
-    //       "/images/work (5).png",
-    //       "/images/work (4).png",
-    //       "/images/work (6).png",
-    //     ],
-    //   },
-    //   {
-    //     id: 2,
-    //     title: "إضاءة",
-    //     cover: "/images/work (1).png",
-    //     images: [
-    //       "/images/work (1).png",
-    //       "/images/work (6).png",
-    //       "/images/work (6).png",
-    //       "/images/work (8).png",
-    //       "/images/work (9).png",
-    //       "/images/work (9).png",
-    //       "/images/work (1).png",
-    //     ],
-    //   },
-    // ],
-    // ------------------------------------------------------
-    ////////////////////////////// works images
     worksImages: [
-      "/images/work (1).png",
-      "/images/work (2).png",
-      "/images/work (6).png",
       "/images/work (1).png",
       "/images/work (2).png",
       "/images/work (6).png",
@@ -100,16 +64,12 @@ const handiesData = [
       "/images/work (9).png",
       "/images/work (1).png",
       "/images/work (2).png",
-      "/images/work (1).png",
-      "/images/work (8).png",
-      "/images/work (9).png",
       "/images/work (6).png",
       "/images/work (7).png",
       "/images/work (8).png",
       "/images/work (9).png",
       "/images/work (2).png",
     ],
-    ////////////////////////////// reviews
     reviews: [
       {
         id: 1,
@@ -140,6 +100,7 @@ const handiesData = [
       },
       {
         id: 4,
+<<<<<<< HEAD
         ctaftName: "محمد رفعت",
         date: "21/8/2025",
         rating: 5,
@@ -159,90 +120,57 @@ const handiesData = [
       {
         id: 6,
         ctaftName: "سارة جمال",
+=======
+        ctaftName: "محمد عبد الله",
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
         date: "21/8/2025",
         rating: 2,
         comment:
           "كنت محتاجة الإصلاح يتم بسرعة، والحرفي لبّى الطلب في نفس اليوم. الشغل كان مرتب ومحترف، وحسّيت إن فيه اهتمام حقيقي بالتفاصيل.",
-        avatar: "/images/revewer (3).png",
+        avatar: "/images/revewer (1).png",
       },
     ],
-  },
-  // -----------------------------------------------------------------------------------------
-  {
-    id: 2,
-    ctaftName: "أحمد علي",
-    job: "سباك",
-    rating: 0,
-    verified: false,
-    avatar: "/images/test.avif",
-    cover: "/images/cover2.png",
-
-    // about craftman
-    //basic info
-    about: {
-      aboutInfo:
-        "سباك متخصص في جميع أعمال السباكة المنزلية والتجارية، أعمل بدقة واهتمام بأدق التفاصيل، مع الالتزام التام بمعايير الأمان وجودة التنفيذ، وهدفي الأساسي هو تقديم خدمة مضمونة ترضي العميل.",
-      experience: "10 سنوات",
-      area: "المنصورة والدقهلية",
-      completedOrders: "+90",
-    },
-    //services
-    services: [
-      "تأسيس السباكة الشقق والفيلات",
-      "صيانة مواسير المياه والصرف الصحي",
-      "تشطيبات الحمامات والمطابخ",
-      "فحص الأعطال ومعالجةت",
-    ],
-    // work info
-    workInfo: {
-      area: "المنصورة احمد ماهر - المنصورة - الدقهلية",
-      workingHours: "من 9 صباحًا حتى 5 مساءً",
-      speedOfResponse: "اقل من ساعة",
-      emergencyService: "متاحة",
-    },
-    // -------------------------------------------------
-    // worksCategories: [
-    //   {
-    //     id: 1,
-    //     title: "تشطيبات",
-    //     cover: "/images/work (6).png",
-    //     images: [
-    //       "/images/work (1).png",
-    //       "/images/work (5).png",
-    //       "/images/work (2).png",
-    //     ],
-    //   },
-    //   {
-    //     id: 2,
-    //     title: "إضاءة",
-    //     cover: "/images/work (5).png",
-    //     images: ["/images/work (5).png", "/images/work (5).png"],
-    //   },
-    // ],
-    // -------------------------------------------------
-    ////////////////////////////// works images
-    worksImages: [
-      "/images/work (1).png",
-      "/images/work (9).png",
-      "/images/work (2).png",
-    ],
-    reviews: [],
   },
 ];
 
 /* =======================
    Profile Summary
 ======================= */
+<<<<<<< HEAD
 function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, handleImageChange }) {
   // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
+=======
+function ProfileSummary({
+  craftman,
+  editMode,
+  setEditMode,
+  setShowRequestModal,
+  setShowConfirmModal,
+  isAccountActive,
+  profileImg,
+  setProfileImg,
+  coverImg,
+  setCoverImg,
+}) {
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
       ? allRatings.reduce((acc, curr) => acc + curr, 0) / allRatings.length
       : 0;
 
+  const handleImageChange = (e, type) => {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      if (type === "profile") setProfileImg(url);
+      else setCoverImg(url);
+    }
+  };
+
   return (
     <>
+<<<<<<< HEAD
       <div className="coverBox" data-aos="fade-down">
         <img src={craftman.cover || "/images/profile-cover.png"} alt="cover" />
 
@@ -251,6 +179,25 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, 
             <input type="file" accept="image/*" hidden onChange={(e) => handleImageChange(e, 'cover')} />
             تعديل صورة الغلاف
             <img src="/images/f7_camera-fill.svg" alt="" />
+=======
+      <div
+        className="coverBox"
+        data-aos="fade-down"
+        style={{ backgroundColor: isAccountActive ? "transparent" : "#f0f2f5" }}
+      >
+        {(isAccountActive || coverImg) && (
+          <img src={coverImg || craftman.cover} alt="cover" />
+        )}
+        {editMode && (
+          <label className="edit-cover-label">
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={(e) => handleImageChange(e, "cover")}
+            />
+            تعديل صورة الغلاف <MdPhotoCamera />
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
           </label>
         )}
       </div>
@@ -258,6 +205,7 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, 
       <section className="profile-summary">
         <div className="profile-info">
           <div className="prson-data">
+<<<<<<< HEAD
             {/* avatar لازم يكون هنا داخل prson-data */}
 
             <div className="profile-avatar" data-aos="fade-up">
@@ -269,11 +217,34 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, 
               {editMode && (
                 <label className="edit-avatar-label">
                   <input type="file" accept="image/*" hidden onChange={(e) => handleImageChange(e, 'avatar')} />
+=======
+            <div
+              className="profile-avatar"
+              data-aos="fade-up"
+              style={{
+                backgroundColor: isAccountActive ? "transparent" : "#e0e0e0",
+              }}
+            >
+              {(isAccountActive || profileImg) && (
+                <img
+                  className="avatar"
+                  src={profileImg || craftman.avatar}
+                  alt={craftman.ctaftName}
+                />
+              )}
+              {editMode && (
+                <label className="edit-avatar-label">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    hidden
+                    onChange={(e) => handleImageChange(e, "profile")}
+                  />
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
                   <img src="/images/f7_camera-fill.svg" alt="" />
                 </label>
               )}
             </div>
-
             <div className="craftman-info" data-aos="fade-left">
               <h2>
                 {craftman.verified && (
@@ -285,17 +256,23 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, 
                 )}
                 {craftman.ctaftName || craftman.name}
               </h2>
-
-              <p>{craftman.job}</p>
-              <span>
-                <img src="/images/star.png" alt="Star" className="star-icon" />{" "}
-                {avgRating.toFixed(1)}
-              </span>
+              {isAccountActive && <p>{craftman.job}</p>}
+              {isAccountActive && (
+                <span>
+                  <img
+                    src="/images/star.png"
+                    alt="Star"
+                    className="star-icon"
+                  />{" "}
+                  {avgRating.toFixed(1)}
+                </span>
+              )}
             </div>
           </div>
         </div>
 
         <div className="action-btns">
+<<<<<<< HEAD
           <button
             className="edit-profile-btn"
             onClick={() => setEditMode(!editMode)}
@@ -310,6 +287,44 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, 
           >
             طلب خدمة
           </button>
+=======
+          {isAccountActive &&
+            (editMode ? (
+              <button
+                className="btn-delete-account"
+                onClick={() => setShowConfirmModal(true)}
+                style={{
+                  backgroundColor: "#ff6b6b",
+                  color: "#fff",
+                  border: "none",
+                  padding: "24px 18px",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontWeight: "bold",
+                }}
+              >
+                <FaTrashAlt /> حذف الحساب
+              </button>
+            ) : (
+              <>
+                <button
+                  className="edit-profile-btn"
+                  onClick={() => setEditMode(true)}
+                >
+                  <MdModeEdit />
+                </button>
+                <button
+                  className="request-service-btn"
+                  onClick={() => setShowRequestModal(true)}
+                >
+                  طلب خدمة
+                </button>
+              </>
+            ))}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
         </div>
       </section>
     </>
@@ -319,17 +334,18 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, 
 /* =======================
    Profile Section
 ======================= */
-function ProfileSection({ craftman, editMode, setEditMode }) {
-  // هتتحكم في التبويبات الرئيسية (عن الحرفي - الأعمال - التقييمات)
+function ProfileSection({
+  craftman,
+  editMode,
+  setEditMode,
+  isAccountActive,
+  setIsAccountActive,
+}) {
   const [activeMainTab, setActiveMainTab] = useState("about");
-  // هتتحكم في التبويبات الجانبية في قسم عن الحرفي
   const [activeSideTab, setActiveSideTab] = useState("basic-info");
-  // works section states
   const [selectedImage, setSelectedImage] = useState(null);
-  // لما يضغط على مجموعة أعمال معينة عشان يشوف صورها
-  // const [selectedCategory, setSelectedCategory] = useState(null);
-  //  عشان نتحكم في عرض كل التقييمات أو 3 تقييمات فقط
   const [showAllReviews, setShowAllReviews] = useState(false);
+<<<<<<< HEAD
   //  عشان نتحكم في قيمة سعر الخدمة في نموذج تعديل الملف الشخصي بحيث يكون رقم فقط ويتقرب لأقرب 5 جنيه
   const [price, setPrice] = useState("");
   //  عشان نتحكم في صحة البريد الإلكتروني في نموذج تعديل الملف الشخصي
@@ -339,14 +355,21 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   const [phone, setPhone] = useState(craftman.phone || "");
   const [phoneError, setPhoneError] = useState("");
   //  عشان نتحكم في اظهار كلمة السر أو اخفائها في نموذج تعديل الملف الشخصي
+=======
+
+  // States الحقول
+  
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   const [password, setPassword] = useState("");
   const [showCurrentPassword, setShowPassword] = useState(false);
-  //  عشان نتحكم في اظهار كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
   const [newPassword, setNewPassword] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
-  //  عشان نتحكم في اظهار تأكيد كلمة السر الجديدة أو اخفائها في نموذج تعديل الملف الشخصي
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+
   //  عشان نتحكم في تاريخ الميلاد في نموذج تعديل الملف الشخصي مع ماسك DD/MM/YYYY
   const DOB_MASK = "--/--/----";
   const [dob, setDob] = useState("");
@@ -355,12 +378,14 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   const dobRef = React.useRef(null);
   const dobDateRef = React.useRef(null);
 
-  
-
   // حساب أقصى تاريخ مسموح (العمر لازم يكون 18 سنة على الأقل)
   const getMaxDateForAge18 = () => {
     const today = new Date();
-    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+    const maxDate = new Date(
+      today.getFullYear() - 18,
+      today.getMonth(),
+      today.getDate(),
+    );
     const yyyy = maxDate.getFullYear();
     const mm = String(maxDate.getMonth() + 1).padStart(2, "0");
     const dd = String(maxDate.getDate()).padStart(2, "0");
@@ -517,7 +542,11 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
         } else {
           // التحقق من شرط العمر (18 سنة على الأقل)
           const today = new Date();
-          const age18Date = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+          const age18Date = new Date(
+            today.getFullYear() - 18,
+            today.getMonth(),
+            today.getDate(),
+          );
           if (dateObj > age18Date) {
             setDobError("يجب أن يكون عمرك 18 سنة على الأقل");
           } else {
@@ -530,66 +559,40 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
     }
   };
 
-  /////////////////////////////////
-  // عشان نتحقق إذا كانت كلمة السر الجديدة وتأكيدها متطابقين ولا لأ
-  const passwordsNotMatch =
-    confirmPassword.length > 0 && newPassword !== confirmPassword;
-  // عشان نتحقق من صحة النموذج قبل الحفظ (تقدر تضيف باقي الحقول اللي انت عايزها)
 
-  // عشان نتحقق من صحة البريد الإلكتروني في نموذج تعديل الملف الشخصي
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
 
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    if (value.length > 0 && !emailRegex.test(value)) {
-      setEmailError("يرجى إدخال بريد إلكتروني صالح");
-    } else if (value.length === 0) {
-      setEmailError("");
-    } else {
-      setEmailError("");
-    }
-  };
-
-  // عشان نتحقق من صحة رقم الهاتف في نموذج تعديل الملف الشخصي
-  const phoneRegex = /^01[0125][0-9]{8}$/;
-
-  const handlePhoneChange = (e) => {
-    const value = e.target.value;
-    setPhone(value);
-
-    if (value.length > 0 && !phoneRegex.test(value)) {
-      setPhoneError(
-        "يجب ان يبدأ رقم الهاتف ب 010 او 011 او 012 او 015 و وان يتكون من 11 رقم",
-      );
-    } else {
-      setPhoneError("");
-    }
-  };
-  // عشان نتحكم في قيمة سعر الخدمة في نموذج تعديل الملف الشخصي بحيث يكون رقم فقط ويتقرب لأقرب 5 جنيه
-  const handlePriceChange = (e) => {
-    setPrice(e.target.value);
-  };
-
-  const handlePriceBlur = () => {
-    let value = parseInt(price);
-
-    if (isNaN(value) || value < 5) {
-      value = 5;
-    } else {
-      value = Math.ceil(value / 5) * 5;
-    }
-
-    setPrice(value);
-  };
-  // عشان نتحقق من صحة النموذج قبل الحفظ (تقدر تضيف باقي الحقول اللي انت عايزها)
   const handleSubmit = (e) => {
     e.preventDefault();
+    const errors = {};
 
-    if (passwordsNotMatch || emailError || phoneError || dobError) {
+    // 1. Phone: Required & must start with a valid Egyptian prefix
+    if (!phone.trim()) {
+      errors.phone = "رقم الهاتف مطلوب";
+    } else if (!/^(010|011|012|015)/.test(phone.trim())) {
+      errors.phone = "رقم الهاتف يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015";
+    }
+
+    // 2. Password: Optional — but if changing, validate all fields
+    const isChangingPassword = password || newPassword || confirmPassword;
+    if (isChangingPassword) {
+      if (!password.trim()) {
+        errors.password = "كلمة السر الحالية مطلوبة لتغيير كلمة السر";
+      }
+      if (!newPassword.trim()) {
+        errors.newPassword = "أدخل كلمة السر الجديدة";
+      }
+      if (newPassword !== confirmPassword) {
+        errors.confirmPassword = "كلمة السر الجديدة وتأكيدها غير متطابقتين";
+      }
+    }
+
+    // If there are errors, show them and stop
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
       return;
     }
 
+<<<<<<< HEAD
     // منطق الحفظ وتحديث الـ LocalStorage لمزامنة البيانات مع الداشبورد والبروفايل
     const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
     const updated = {
@@ -619,16 +622,19 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
     alert("تم تحديث البيانات بنجاح");
     setEditMode(false);
     window.location.reload(); 
+=======
+    // All good — clear errors and save
+    setFormErrors({});
+    setIsAccountActive(true);
+    setEditMode(false);
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   };
 
-  //-------------------------------------------------------------
-  // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
       ? allRatings.reduce((acc, curr) => acc + curr, 0) / allRatings.length
       : 0;
-
   const displayedReviews = showAllReviews
     ? craftman.reviews
     : craftman.reviews?.slice(0, 3);
@@ -644,6 +650,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
         return (
           <ul className="basic-info-content">
             <li className="about-info">
+<<<<<<< HEAD
               <FaUser className="icon" />
               {aboutData.aboutInfo}
             </li>
@@ -658,13 +665,26 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
             <li className="completed-orders">
               <MdWork className="icon" />
               {`عدد الطلبات المنفذة : ${aboutData.completedOrders} طلب`}
+=======
+              <FaUser className="icon" /> {craftman.about.aboutInfo}
+            </li>
+            <li className="experience">
+              <MdAccessTime className="icon" /> {craftman.about.experience}
+            </li>
+            <li className="area">
+              <MdLocationPin className="icon" /> {craftman.about.area}
+            </li>
+            <li className="completed-orders">
+              <MdWork className="icon" />{" "}
+              {`عدد الطلبات المنفذة : ${craftman.about.completedOrders} طلب`}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </li>
           </ul>
         );
-
       case "services":
         return (
           <ul className="services-content">
+<<<<<<< HEAD
             {servicesData.map((service, index) => {
               return (
                 <>
@@ -675,13 +695,20 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                 </>
               );
             })}
+=======
+            {craftman.services.map((s, i) => (
+              <li key={i}>
+                <PiScrewdriverFill className="icon" /> {s}
+              </li>
+            ))}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
           </ul>
         );
-
       case "work-info":
         return (
           <ul className="work-info-content">
             <li>
+<<<<<<< HEAD
               <BsPin className="icon" />
               {`نطاق الخدمة : ${workData.area}`}
             </li>
@@ -696,29 +723,51 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
             <li>
               <AiOutlineExclamationCircle className="icon" />
               {`خدمة الطوارئ : ${workData.emergencyService}`}
+=======
+              <BsPin className="icon" />{" "}
+              {`نطاق الخدمة : ${craftman.workInfo.area}`}
+            </li>
+            <li>
+              <MdAccessTime className="icon" />{" "}
+              {`ساعات العمل : ${craftman.workInfo.workingHours}`}
+            </li>
+            <li>
+              <ImSpinner3 className="icon" />{" "}
+              {`سرعة الاستجابة : ${craftman.workInfo.speedOfResponse}`}
+            </li>
+            <li>
+              <AiOutlineExclamationCircle className="icon" />{" "}
+              {`خدمة الطوارئ : ${craftman.workInfo.emergencyService}`}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </li>
           </ul>
         );
-
       default:
         return null;
     }
   };
-  // renderSideContent هتستخدمها عشان تعرض المحتوي علي اليسار حسب التبويب الجانبي اللي المستخدم ضاغط عليه في قسم عن الحرفي
+
   if (editMode) {
     return (
       <div className="edit-form-container">
-        <h2>تعديل الملف الشخصي</h2>
-
-        <form
-          className="edit-profile-form"
-          data-aos="fade-up"
-          data-aos-once="true"
-          onSubmit={handleSubmit}
-        >
+        <h2>
+          {isAccountActive ? "تعديل الملف الشخصي" : "إكمال بيانات الحرفي"}
+        </h2>
+        <form className="edit-profile-form" onSubmit={handleSubmit}>
           <div className="form-group top">
             <h3>البيانات الشخصية</h3>
+<<<<<<< HEAD
             <input type="text" id="name" name="name" placeholder="الاسم" defaultValue={craftman.ctaftName || craftman.name} />
+=======
+            <input
+              type="text"
+              placeholder="الاسم"
+              defaultValue={craftman.ctaftName}
+              required
+            />
+            
+            {/* -------- */}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             <div className="dob-field-wrapper">
               <input
                 type="text"
@@ -751,31 +800,29 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               />
             </div>
             {dobError && <p className="dob error-msg">{dobError}</p>}
-
-            <select name="marital-status" id="marital-status">
-              <option value="">اختر الحالة الاجتماعية</option>
-              <option value="متزوج">متزوج</option>
-              <option value="أعزب">أعزب</option>
-              <option value="ارمل">ارمل</option>
-              <option value="مطلق">مطلق</option>
-              {/* <option value="مطلق">افضل عدم الإجابة</option> */}
+            {/* -------- */}
+            <select>
+              <option value="">الحالة الاجتماعية</option>
+              <option>متزوج</option>
+              <option>أعزب</option>
+              <option>ارمل</option>
+              <option>مطلق</option>
             </select>
             <input
               type="email"
-              id="email"
               placeholder="البريد الإلكتروني"
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            {emailError && <p className="email error-msg">{emailError}</p>}
             <input
               type="tel"
-              id="phone"
               placeholder="رقم الهاتف"
               value={phone}
-              onChange={handlePhoneChange}
+              onChange={(e) => { setPhone(e.target.value); setFormErrors((prev) => ({ ...prev, phone: "" })); }}
               maxLength={11}
+              style={formErrors.phone ? { borderColor: "#ff6b6b" } : {}}
             />
+<<<<<<< HEAD
             {phoneError && <p className="phone error-msg">{phoneError}</p>}
             <input type="text" id="address" name="address" placeholder="المحافظة" defaultValue={craftman.location} />
           </div>
@@ -814,9 +861,47 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               <option value="">اختر خدمة الطوارئ</option>
               <option value="متاحة">متاحة</option>
               <option value="غير متاحة">غير متاحة</option>
+=======
+            {formErrors.phone && <p className="dob error-msg">{formErrors.phone}</p>}
+            <input
+              type="text"
+              placeholder="المحافظة"
+              defaultValue={craftman.about.area}
+            />
+          </div>
+          <div className="form-group middle">
+            <h3>البيانات الأساسية</h3>
+            <input
+              type="text"
+              placeholder="عن الحرفي"
+              defaultValue={craftman.job}
+            />
+            <input
+              type="text"
+              placeholder="سنوات الخبرة"
+              defaultValue={craftman.about.experience}
+            />
+            <input type="text" placeholder="الخدمات" />
+          </div>
+          <div className="form-group bottom">
+            <h3>معلومات العمل</h3>
+            <input
+              type="text"
+              placeholder="نطاق الخدمة"
+              defaultValue={craftman.workInfo.area}
+            />
+            <input
+              type="text"
+              placeholder="مواعيد العمل"
+              defaultValue={craftman.workInfo.workingHours}
+            />
+            <select>
+              <option value="">خدمة الطوارئ</option>
+              <option>متاحة</option>
+              <option>غير متاحة</option>
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </select>
           </div>
-
           <div className="form-group password">
             <h3>تغيير كلمة السر</h3>
             <div className="password-field">
@@ -824,7 +909,8 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                 type={showCurrentPassword ? "text" : "password"}
                 placeholder="كلمة السر الحالية"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { setPassword(e.target.value); setFormErrors((prev) => ({ ...prev, password: "" })); }}
+                style={formErrors.password ? { borderColor: "#ff6b6b" } : {}}
               />
               <span
                 className="password-eye"
@@ -833,15 +919,20 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                 {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
+<<<<<<< HEAD
 
             {/* */}
 
+=======
+            {formErrors.password && <p className="dob error-msg">{formErrors.password}</p>}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             <div className="password-field">
               <input
                 type={showNewPassword ? "text" : "password"}
                 placeholder="كلمة السر الجديدة"
                 value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
+                onChange={(e) => { setNewPassword(e.target.value); setFormErrors((prev) => ({ ...prev, newPassword: "" })); }}
+                style={formErrors.newPassword ? { borderColor: "#ff6b6b" } : {}}
               />
               <span
                 className="password-eye"
@@ -850,35 +941,36 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                 {showNewPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
+<<<<<<< HEAD
 
             {/* */}
 
+=======
+            {formErrors.newPassword && <p className="dob error-msg">{formErrors.newPassword}</p>}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             <div className="password-field">
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="تأكيد كلمة السر"
                 value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                onChange={(e) => { setConfirmPassword(e.target.value); setFormErrors((prev) => ({ ...prev, confirmPassword: "" })); }}
+                style={formErrors.confirmPassword ? { borderColor: "#ff6b6b" } : {}}
               />
               <span
                 className="password-eye"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
-                {passwordsNotMatch ? <FiEye /> : <FiEyeOff />}
+                {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
               </span>
-              {passwordsNotMatch && (
-                <p className="password error-msg">
-                  يجب أن تكون كلمة السر مطابقة
-                </p>
-              )}
             </div>
+            {formErrors.confirmPassword && <p className="dob error-msg">{formErrors.confirmPassword}</p>}
           </div>
+<<<<<<< HEAD
 
           {/* */}
+=======
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
           <div className="form-btns">
-            {/* <button type="submit" className="save-btn">
-              حفظ
-            </button> */}
             <button type="submit" className="save-btn">
               حفظ
             </button>
@@ -894,8 +986,10 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
       </div>
     );
   }
+
   return (
     <div className="profile-wrapper">
+<<<<<<< HEAD
       {
        
       }
@@ -962,11 +1056,20 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
             {/* upload box */}
             <label className="work-item upload-box">
               <input type="file" accept="image/*" className="input-file" hidden />
+=======
+      {!isAccountActive ? (
+        <div className="activation-required-section">
+          <div className="activation-content">
+            <FaUserCheck className="activation-icon" />
+            <h3>
+              أهلاً بك في منصتنا{" "}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               <img
-                src="/images/upload.png"
-                alt="upload"
-                className="upload-icon"
+                src="/images/hand.svg"
+                alt="hand"
+                style={{ width: "50px" }}
               />
+<<<<<<< HEAD
             </label>
 
             {/* images map */}
@@ -1011,78 +1114,179 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                     );
                   })}
                 </div>
+=======
+            </h3>
+            <p className="no-wrap-text">
+              يرجى إكمال تفعيل حسابك وإضافة بياناتك المهنية لتظهر للعملاء بشكل
+              احترافي.
+            </p>
+            <button className="activate-btn" onClick={() => setEditMode(true)}>
+              فعل حسابك الآن
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="main-tabs">
+            <button
+              className={activeMainTab === "about" ? "active" : ""}
+              onClick={() => setActiveMainTab("about")}
+            >
+              عن الحرفي
+            </button>
+            <button
+              className={activeMainTab === "works" ? "active" : ""}
+              onClick={() => setActiveMainTab("works")}
+            >
+              الأعمال
+            </button>
+            <button
+              className={activeMainTab === "reviews" ? "active" : ""}
+              onClick={() => setActiveMainTab("reviews")}
+            >
+              تقييمات
+            </button>
+          </div>
+          {activeMainTab === "about" && (
+            <div className="about-section">
+              <div className="side-tabs" data-aos="fade-up">
+                <button
+                  className={activeSideTab === "basic-info" ? "active" : ""}
+                  onClick={() => setActiveSideTab("basic-info")}
+                >
+                  المعلومات الأساسية
+                </button>
+                <button
+                  className={activeSideTab === "services" ? "active" : ""}
+                  onClick={() => setActiveSideTab("services")}
+                >
+                  الخدمات
+                </button>
+                <button
+                  className={activeSideTab === "work-info" ? "active" : ""}
+                  onClick={() => setActiveSideTab("work-info")}
+                >
+                  معلومات العمل
+                </button>
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               </div>
-
-              <div className="rating-bars">
-                {[5, 4, 3, 2, 1].map((star, index) => {
-                  const count = craftman.reviews
-                    ? craftman.reviews.filter(
-                        (review) => review.rating === star,
-                      ).length
-                    : 0;
-
-                  const percent =
-                    craftman.reviews && craftman.reviews.length > 0
-                      ? (count / craftman.reviews.length) * 100
-                      : 0;
-
-                  return (
-                    <div key={index} className="rating-bar">
-                      <span>{star}</span>
-
-                      <div className="bar">
-                        <div
-                          className="fill"
-                          style={{ width: `${percent}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="side-content">{renderSideContent()}</div>
+            </div>
+          )}
+          {activeMainTab === "works" && (
+            <div className="portfolio-section">
+              <div className="portfolio-grid">
+                <label className="work-item upload-box">
+                  <input type="file" accept="image/*" hidden />
+                  <img
+                    src="/images/upload.png"
+                    alt="upload"
+                    className="upload-icon"
+                  />
+                </label>
+                {craftman.worksImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="work-item"
+                    onClick={() => setSelectedImage(img)}
+                  >
+                    <img src={img} alt="work" className="work-image" />
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-
-          <hr />
-
-          {/* ================= Reviews List ================= */}
-          {craftman.reviews && craftman.reviews.length > 0 ? (
-            displayedReviews.map((review, index) => {
-              return (
-                <div
-                  key={index}
-                  className="review-card"
-                  data-aos="fade-left"
-                  data-aos-delay={index * 100}
-                >
-                  <div className="review-card-content">
-                    <div className="review-header">
-                      <div className="review-avatar">
-                        <img src={review.avatar} alt={review.name} />
-                      </div>
-                      <h4>{review.name}</h4>
+          )}
+          {activeMainTab === "reviews" && (
+            <div className="reviews-section">
+              <h1 className="reviews-title">التقييمات وآراء العملاء</h1>
+              <div className="rating-summary">
+                <div className="rating-summary-box">
+                  <div className="rating-score">
+                    <h2>{avgRating.toFixed(1)}</h2>
+                    <div className="review-stars">
+                      {[...Array(5)].map((_, i) => (
+                        <span
+                          key={i}
+                          className={i < Math.round(avgRating) ? "filled" : ""}
+                        >
+                          ★
+                        </span>
+                      ))}
                     </div>
+<<<<<<< HEAD
                     <div className="rate-and-date">
                       <span>{review.date}</span>
                       <div className="review-stars">
                         {[...Array(5)].map((_, starIndex) => {
                           return (
+=======
+                  </div>
+                  <div className="rating-bars">
+                    {[5, 4, 3, 2, 1].map((star, i) => {
+                      const count = craftman.reviews.filter(
+                        (r) => r.rating === star,
+                      ).length;
+                      const percent =
+                        craftman.reviews.length > 0
+                          ? (count / craftman.reviews.length) * 100
+                          : 0;
+                      return (
+                        <div key={i} className="rating-bar">
+                          <span>{star}</span>
+                          <div className="bar">
+                            <div
+                              className="fill"
+                              style={{ width: `${percent}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+              <hr />
+              {craftman.reviews.length > 0 ? (
+                displayedReviews.map((r, i) => (
+                  <div key={i} className="review-card">
+                    <div className="review-card-content">
+                      <div className="review-header">
+                        <div className="review-avatar">
+                          <img src={r.avatar} alt="" />
+                        </div>
+                        <h4>{r.ctaftName}</h4>
+                      </div>
+                      <div className="rate-and-date">
+                        <span>{r.date}</span>
+                        <div className="review-stars">
+                          {[...Array(5)].map((_, si) => (
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
                             <span
-                              key={starIndex}
-                              className={
-                                starIndex < review.rating ? "filled" : ""
-                              }
+                              key={si}
+                              className={si < r.rating ? "filled" : ""}
                             >
                               ★
                             </span>
-                          );
-                        })}
+                          ))}
+                        </div>
                       </div>
                     </div>
+                    <p className="comment">{r.comment}</p>
                   </div>
-
-                  <p className="comment">{review.comment}</p>
+                ))
+              ) : (
+                <p className="no-reviews">لا توجد تقييمات حالياً</p>
+              )}
+              {craftman.reviews.length > 3 && (
+                <div className="show-all-reviews">
+                  <button onClick={() => setShowAllReviews(!showAllReviews)}>
+                    {showAllReviews ? <FaArrowUp /> : <FaArrowDown />}
+                    <span>
+                      {showAllReviews ? "عرض أقل" : "عرض كل التقييمات"}
+                    </span>
+                  </button>
                 </div>
+<<<<<<< HEAD
               );
             })
           ) : (
@@ -1096,28 +1300,25 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                 {showAllReviews ? <FaArrowUp /> : <FaArrowDown />}
                 <span>{showAllReviews ? "عرض أقل" : "عرض كل التقييمات"}</span>
               </button>
+=======
+              )}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
             </div>
           )}
-        </div>
+        </>
       )}
-
-      {/* --------------------------------------------- */}
       {selectedImage && (
         <div
           className="image-modal-overlay"
           onClick={() => setSelectedImage(null)}
         >
-          <div
-            className="image-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="image-modal-content">
             <button
               className="close-btn"
               onClick={() => setSelectedImage(null)}
             >
               ×
             </button>
-
             <img src={selectedImage} alt="preview" />
           </div>
         </div>
@@ -1126,26 +1327,51 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   );
 }
 
-/* ================= REQUEST MODAL COMPONENT ================= */
-const egyptianGovernorates = [
-  "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "البحر الأحمر", "البحيرة", "الفيوم", "الغربية", "الإسماعيلية", "المنوفية", "المنيا", "القليوبية", "الوادي الجديد", "السويس", "الشرقية", "دمياط", "بني سويف", "بورسعيد", "جنوب سيناء", "حلايب وشلاتين", "كفر الشيخ", "مطروح", "الأقصر", "قنا", "شمال سيناء", "سوهاج"
-];
+/* ================= REQUEST MODAL ================= */
 
+/* ================= REQUEST MODAL COMPONENT ================= */
 function RequestServiceModal({ craftmanName, onClose }) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-
-  const filteredGovs = egyptianGovernorates.filter(gov => gov.includes(searchTerm));
-
+  const egyptianGovernorates = [
+    "القاهرة",
+    "الجيزة",
+    "الإسكندرية",
+    "الدقهلية",
+    "الشرقية",
+    "الغربية",
+    "المنوفية",
+    "البحيرة",
+    "كفر الشيخ",
+    "الفيوم",
+    "بني سويف",
+    "المنيا",
+    "أسيوط",
+    "سوهاج",
+    "قنا",
+    "الأقصر",
+    "أسوان",
+    "البحر الأحمر",
+    "الوادي الجديد",
+    "مطروح",
+    "شمال سيناء",
+    "جنوب سيناء",
+    "الإسماعيلية",
+    "السويس",
+    "بورسعيد",
+    "دمياط",
+    "القليوبية",
+  ];
+  const filteredGovs = egyptianGovernorates.filter((gov) =>
+    gov.includes(searchTerm),
+  );
+  // this component is just a dummy form to show the success toast after submit, it doesn't actually send any data anywhere
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowSuccessMsg(true);
-    setTimeout(() => {
-      setShowSuccessMsg(false);
-      onClose();
-    }, 1500);
+    setTimeout(() => onClose(), 1500);
   };
 
   return (
@@ -1158,23 +1384,50 @@ function RequestServiceModal({ craftmanName, onClose }) {
           </div>
         ) : (
           <>
+<<<<<<< HEAD
             <h2 className="modal-title-request"> {craftmanName}</h2>
             <form className="request-form-custom" onSubmit={handleSubmit}>
+=======
+         <h2 className="modal-title">{craftmanName}</h2>
+            <form
+              className="request-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setShowSuccessMsg(true);
+                setTimeout(() => {
+                  setShowSuccessMsg(false);
+                  onClose();
+                }, 1500);
+              }}
+            >
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               <div className="form-group-modal">
                 <label>اسم العميل</label>
                 <input type="text" placeholder="أدخل اسمك" required />
               </div>
               <div className="form-group-modal custom-select-container">
                 <label>المحافظة</label>
-                <input 
-                  type="text" placeholder="المحافظة" value={searchTerm}
-                  onChange={(e) => {setSearchTerm(e.target.value); setIsOpen(true);}}
-                  onFocus={() => setIsOpen(true)} required
+                <input
+                  type="text"
+                  placeholder="المحافظة"
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setIsOpen(true);
+                  }}
+                  onFocus={() => setIsOpen(true)}
+                  required
                 />
                 {isOpen && filteredGovs.length > 0 && (
                   <ul className="gov-dropdown-list">
                     {filteredGovs.map((gov, index) => (
-                      <li key={index} onClick={() => {setSearchTerm(gov); setIsOpen(false);}}>
+                      <li
+                        key={index}
+                        onClick={() => {
+                          setSearchTerm(gov);
+                          setIsOpen(false);
+                        }}
+                      >
                         {gov}
                       </li>
                     ))}
@@ -1186,30 +1439,54 @@ function RequestServiceModal({ craftmanName, onClose }) {
                 <input type="text" placeholder="العنوان بالتفصيل" required />
               </div>
               <div className="form-group-modal">
-                <label>تاريخ الطلب</label>
-                <input type="date" value={today} readOnly className="readonly-input" />
+                <label>وصف الخدمة</label>
+                <input type="text" placeholder="وصف الخدمة" required />
               </div>
+              <div className="form-group-modal">
+                <label>تاريخ الطلب</label>
+                <input
+                  type="date"
+                  value={today}
+                  readOnly
+                  className="readonly-input"
+                />
+              </div>
+<<<<<<< HEAD
               <div className="modal-btns-group">
                 <button type="submit" className="confirm-btn">إرسال الطلب</button>
                 <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
+=======
+              <div className="modal-btns">
+                <button type="submit" className="confirm-btn">
+                  إرسال الطلب
+                </button>
+                <button type="button" className="cancel-btn" onClick={onClose}>
+                  إلغاء
+                </button>
+                <button type="button" className="close-btn" onClick={onClose}>
+                  ×
+                </button>
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
               </div>
             </form>
-          </>
+            </>
         )}
       </div>
     </div>
   );
 }
 
-/* =======================
-   Page Components
-======================= */
+/* ================= PAGE COMPONENT ================= */
 const ProfilePage = () => {
+<<<<<<< HEAD
   const { id } = useParams();
 // عشان نتحكم في وضع تعديل الملف الشخصي
+=======
+  const { id = 1 } = useParams();
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
   const [editMode, setEditMode] = useState(false);
-  // عشان نتحكم في عرض مودال طلب الخدمة
   const [showRequestModal, setShowRequestModal] = useState(false);
+<<<<<<< HEAD
   const [craftman, setCraftman] = useState(null);
 
   useEffect(() => {
@@ -1240,29 +1517,114 @@ const ProfilePage = () => {
   };
 
   if (!craftman) return <div style={{padding: "100px", textAlign: "center"}}><h2>جاري تحميل بيانات الحرفي...</h2></div>;
+=======
+  const [isAccountActive, setIsAccountActive] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [profileImg, setProfileImg] = useState("");
+  const [coverImg, setCoverImg] = useState("");
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  const handleDeleteAccount = () => {
+    setShowConfirmModal(false);
+    setShowDeleteToast(true);
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
+  };
+
+  const craftman = handiesData.find((e) => e.id === Number(id));
+  if (!craftman) return <p>Not Found</p>;
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
 
   return (
     <div className="professional-profile-container">
+      {showConfirmModal && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowConfirmModal(false)}
+        >
+          <div className="modal-box delete-confirm-modal">
+            <h3>تنبيه حذف الحساب</h3>
+            <p>
+              هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا
+              الإجراء.
+            </p>
+            <div className="modal-btns">
+              <button
+                className="confirm-btn"
+                style={{ backgroundColor: "#ff6b6b" }}
+                onClick={handleDeleteAccount}
+              >
+                نعم
+              </button>
+              <button
+                className="cancel-btn"
+                onClick={() => setShowConfirmModal(false)}
+              >
+                إلغاء
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showDeleteToast && (
+        <div className="modal-overlay" style={{ zIndex: 9999 }}>
+          <div
+            className="success-toast-container"
+            style={{
+              background: "#fff",
+              padding: "30px",
+              borderRadius: "15px",
+            }}
+          >
+            <div
+              className="success-icon"
+              style={{ backgroundColor: "#ff6b6b" }}
+            >
+              ✓
+            </div>
+            <p style={{ fontSize: "18px", fontWeight: "bold" }}>
+              تم حذف الحساب بنجاح
+            </p>
+          </div>
+        </div>
+      )}
+
       {showRequestModal && (
         <RequestServiceModal
           craftmanName={craftman.ctaftName || craftman.name}
           onClose={() => setShowRequestModal(false)}
         />
       )}
-      {/* مرر setEditMode */}
+
       <ProfileSummary
         craftman={craftman}
         editMode={editMode}
         setEditMode={setEditMode}
         setShowRequestModal={setShowRequestModal}
+<<<<<<< HEAD
         handleImageChange={handleImageChange}
+=======
+        setShowConfirmModal={setShowConfirmModal}
+        isAccountActive={isAccountActive}
+        profileImg={profileImg}
+        setProfileImg={setProfileImg}
+        coverImg={coverImg}
+        setCoverImg={setCoverImg}
+>>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
       />
 
-      {/* مرر editMode */}
       <ProfileSection
         craftman={craftman}
         editMode={editMode}
         setEditMode={setEditMode}
+        isAccountActive={isAccountActive}
+        setIsAccountActive={setIsAccountActive}
       />
     </div>
   );
