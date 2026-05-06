@@ -20,7 +20,7 @@ const Dashartisans = () => {
     return saved ? JSON.parse(saved) : [
       { id: 1, name: 'أحمد علي', location: 'الدقهلية', phone: '01034679766', email: 'ahmad@gmail.com', date: '2026-04-20', price: '150', job: 'كهربائي منازل وتشطيبات', nationalId: '29901011234567', rate: '4.9', img: '/images/Ellipse 321.png' },
       { id: 2, name: 'السيد محمد', location: 'القاهرة', phone: '01122334455', email: 'ali@gmail.com', date: '2026-04-21', price: '200', job: 'سباك', nationalId: '29805051234568', rate: '4.9', img: '/images/test.avif' },
-      { id: 7, name: 'ياسر القاضي', location: 'الغربية', phone: '01200998877', email: 'yasser@gmail.com', date: '2026-04-25', price: '280', job: 'نقاش', nationalId: '29508081234569', rate: '4.9', img: '/images/Artisans/Artisans7.svg' },
+      { id: 3, name: 'ياسر القاضي', location: 'الغربية', phone: '01200998877', email: 'yasser@gmail.com', date: '2026-04-25', price: '280', job: 'نقاش', nationalId: '29508081234569', rate: '4.9', img: '/images/Artisans/Artisans7.svg' },
     ];
   });
 
@@ -76,7 +76,10 @@ const Dashartisans = () => {
 
     const newArtisan = {
       ...formData,
-      id: Date.now(),
+      id:
+        artisans.length > 0
+          ? Math.max(...artisans.map((a) => a.id)) + 1
+          : 1,
       date: new Date().toISOString().split('T')[0],
       rate: '0.0',
       img: '/images/Virtual.jpeg' 
@@ -93,7 +96,7 @@ const Dashartisans = () => {
     .sort((a, b) => {
       if (sortBy === 'name') return a.name.localeCompare(b.name);
       if (sortBy === 'location') return a.location.localeCompare(b.location);
-      return new Date(b.date) - new Date(a.date); 
+      return new Date(a.date) - new Date(b.date); 
     });
 
   return (
@@ -139,9 +142,9 @@ const Dashartisans = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredArtisans.slice(0, visibleCount).map((artisan, index) => (
+            {filteredArtisans.slice(0, visibleCount).map((artisan) => (
               <tr key={artisan.id} data-aos="fade-up">
-                <td className="count-col">{index + 1}</td>
+                <td className="count-col">{artisan.id}</td>
                 <td>{artisan.name}</td>
                 <td>{artisan.location}</td>
                 <td>{artisan.phone}</td>
