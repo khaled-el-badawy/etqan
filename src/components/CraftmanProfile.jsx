@@ -17,7 +17,7 @@ import { BsPin } from "react-icons/bs";
 import { ImSpinner3 } from "react-icons/im";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { PiScrewdriverFill } from "react-icons/pi";
-import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp, FaCalendarAlt, FaCamera } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 /* =======================
@@ -139,7 +139,7 @@ const handiesData = [
         avatar: "/images/revewer (3).png",
       },
       {
-        id: 1,
+        id: 4,
         ctaftName: "محمد رفعت",
         date: "21/8/2025",
         rating: 5,
@@ -148,7 +148,7 @@ const handiesData = [
         avatar: "/images/revewer (1).png",
       },
       {
-        id: 2,
+        id: 5,
         ctaftName: "أحمد السيد",
         date: "21/8/2025",
         rating: 5,
@@ -157,7 +157,7 @@ const handiesData = [
         avatar: "/images/revewer (2).png",
       },
       {
-        id: 3,
+        id: 6,
         ctaftName: "سارة جمال",
         date: "21/8/2025",
         rating: 2,
@@ -233,7 +233,7 @@ const handiesData = [
 /* =======================
    Profile Summary
 ======================= */
-function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal }) {
+function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal, handleImageChange }) {
   // حساب التقييمات عشان نطلع المتوسط ونحسب النسبة لكل تقييم في بار التقييمات
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
@@ -244,11 +244,11 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal }
   return (
     <>
       <div className="coverBox" data-aos="fade-down">
-        <img src={craftman.cover} alt="cover" />
+        <img src={craftman.cover || "/images/profile-cover.png"} alt="cover" />
 
         {editMode && (
           <label className="edit-avatar-label">
-            <input type="file" accept="image/*" hidden />
+            <input type="file" accept="image/*" hidden onChange={(e) => handleImageChange(e, 'cover')} />
             تعديل صورة الغلاف
             <img src="/images/f7_camera-fill.svg" alt="" />
           </label>
@@ -263,12 +263,12 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal }
             <div className="profile-avatar" data-aos="fade-up">
               <img
                 className="avatar"
-                src={craftman.avatar}
+                src={craftman.avatar || craftman.img}
                 alt={craftman.ctaftName}
               />
               {editMode && (
                 <label className="edit-avatar-label">
-                  <input type="file" accept="image/*" hidden />
+                  <input type="file" accept="image/*" hidden onChange={(e) => handleImageChange(e, 'avatar')} />
                   <img src="/images/f7_camera-fill.svg" alt="" />
                 </label>
               )}
@@ -281,10 +281,9 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal }
                     src="/images/Verification.png"
                     alt="Verified"
                     className="verified-badge"
-                    style={{ display: craftman.verified ? "block" : "none" }}
                   />
                 )}
-                {craftman.ctaftName}
+                {craftman.ctaftName || craftman.name}
               </h2>
 
               <p>{craftman.job}</p>
@@ -299,7 +298,7 @@ function ProfileSummary({ craftman, editMode, setEditMode, setShowRequestModal }
         <div className="action-btns">
           <button
             className="edit-profile-btn"
-            onClick={() => setEditMode(true)}
+            onClick={() => setEditMode(!editMode)}
           >
             <MdModeEdit />
           </button>
@@ -334,10 +333,10 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
   //  عشان نتحكم في قيمة سعر الخدمة في نموذج تعديل الملف الشخصي بحيث يكون رقم فقط ويتقرب لأقرب 5 جنيه
   const [price, setPrice] = useState("");
   //  عشان نتحكم في صحة البريد الإلكتروني في نموذج تعديل الملف الشخصي
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(craftman.email || "");
   const [emailError, setEmailError] = useState("");
   //  عشان نتحكم في صحة رقم الهاتف في نموذج تعديل الملف الشخصي
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(craftman.phone || "");
   const [phoneError, setPhoneError] = useState("");
   //  عشان نتحكم في اظهار كلمة السر أو اخفائها في نموذج تعديل الملف الشخصي
   const [password, setPassword] = useState("");
@@ -496,8 +495,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
 
   // التحقق من صحة التاريخ مع شرط العمر 18 سنة
   const validateDob = (digits) => {
-    if (digits.length === 8) {
-      const day = parseInt(digits.slice(0, 2), 10);
+    if (digits.length === 8) {const day = parseInt(digits.slice(0, 2), 10);
       const month = parseInt(digits.slice(2, 4), 10);
       const year = parseInt(digits.slice(4, 8), 10);
       const currentYear = new Date().getFullYear();
@@ -592,7 +590,35 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
       return;
     }
 
-    console.log("form submitted");
+    // منطق الحفظ وتحديث الـ LocalStorage لمزامنة البيانات مع الداشبورد والبروفايل
+    const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
+    const updated = {
+        ...craftman,
+        name: e.target.name.value,
+        ctaftName: e.target.name.value,
+        email: email,
+        phone: phone,
+        location: e.target.address.value,
+        job: e.target.job.value,
+        about: {
+            ...craftman.about,
+            aboutInfo: e.target.job.value,
+            experience: e.target.years.value
+        },
+        services: e.target.services.value.split(',').map(s => s.trim()),
+        workInfo: {
+            ...craftman.workInfo,
+            area: e.target.area.value,
+            workingHours: e.target.working_hours.value,
+            speedOfResponse: e.target.speed_of_response.value,
+            emergencyService: e.target.emergency_service.value
+        }
+    };
+    const newList = saved.map(a => a.id === craftman.id ? updated : a);
+    localStorage.setItem('sharedArtisans', JSON.stringify(newList));
+    alert("تم تحديث البيانات بنجاح");
+    setEditMode(false);
+    window.location.reload(); 
   };
 
   //-------------------------------------------------------------
@@ -608,25 +634,30 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
     : craftman.reviews?.slice(0, 3);
 
   const renderSideContent = () => {
+    // تجهيز بيانات افتراضية لو الداتا جاية من الداشبورد ناقصة
+    const aboutData = craftman.about || { aboutInfo: "لا توجد معلومات متوفرة حالياً.", experience: craftman.experience || "غير محدد", area: craftman.location || "غير محدد", completedOrders: "0" };
+    const servicesData = craftman.services || ["تقديم خدمات عامة"];
+    const workData = craftman.workInfo || { area: craftman.location, workingHours: "غير محدد", speedOfResponse: "سريع", emergencyService: "متاحة" };
+
     switch (activeSideTab) {
       case "basic-info":
         return (
           <ul className="basic-info-content">
             <li className="about-info">
               <FaUser className="icon" />
-              {craftman.about.aboutInfo}
+              {aboutData.aboutInfo}
             </li>
             <li className="experience">
               <MdAccessTime className="icon" />
-              {craftman.about.experience}
+              {aboutData.experience}
             </li>
             <li className="area">
               <MdLocationPin className="icon" />
-              {craftman.about.area}
+              {aboutData.area}
             </li>
             <li className="completed-orders">
               <MdWork className="icon" />
-              {`عدد الطلبات المنفذة : ${craftman.about.completedOrders} طلب`}
+              {`عدد الطلبات المنفذة : ${aboutData.completedOrders} طلب`}
             </li>
           </ul>
         );
@@ -634,7 +665,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
       case "services":
         return (
           <ul className="services-content">
-            {craftman.services.map((service, index) => {
+            {servicesData.map((service, index) => {
               return (
                 <>
                   <li key={index}>
@@ -652,19 +683,19 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
           <ul className="work-info-content">
             <li>
               <BsPin className="icon" />
-              {`نطاق الخدمة : ${craftman.workInfo.area}`}
+              {`نطاق الخدمة : ${workData.area}`}
             </li>
             <li>
               <MdAccessTime className="icon" />
-              {`ساعات العمل : ${craftman.workInfo.workingHours}`}
+              {`ساعات العمل : ${workData.workingHours}`}
             </li>
             <li>
               <ImSpinner3 className="icon" />
-              {`سرعة الاستجابة : ${craftman.workInfo.speedOfResponse}`}
+              {`سرعة الاستجابة : ${workData.speedOfResponse}`}
             </li>
             <li>
               <AiOutlineExclamationCircle className="icon" />
-              {`خدمة الطوارئ : ${craftman.workInfo.emergencyService}`}
+              {`خدمة الطوارئ : ${workData.emergencyService}`}
             </li>
           </ul>
         );
@@ -687,7 +718,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
         >
           <div className="form-group top">
             <h3>البيانات الشخصية</h3>
-            <input type="text" id="name" placeholder="الاسم" />
+            <input type="text" id="name" name="name" placeholder="الاسم" defaultValue={craftman.ctaftName || craftman.name} />
             <div className="dob-field-wrapper">
               <input
                 type="text"
@@ -746,23 +777,24 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               maxLength={11}
             />
             {phoneError && <p className="phone error-msg">{phoneError}</p>}
-            <input type="text" id="address" placeholder="المحافظة" />
+            <input type="text" id="address" name="address" placeholder="المحافظة" defaultValue={craftman.location} />
           </div>
-          {/*  */}
+          {/* */}
           <div className="form-group middle">
             <h3>البيانات الأساسية</h3>
-            <input type="text" id="job" placeholder="عن الحرفي" />
-            <input type="text" id="years" placeholder="سنوات الخبرة" />
-            <input type="text" id="services" placeholder="الخدمات" />
+            <input type="text" id="job" name="job" placeholder="عن الحرفي" defaultValue={craftman.about?.aboutInfo || craftman.job} />
+            <input type="text" id="years" name="years" placeholder="سنوات الخبرة" defaultValue={craftman.about?.experience} />
+            <input type="text" id="services" name="services" placeholder="الخدمات (افصل بينها بفصلة)" defaultValue={craftman.services?.join(", ")} />
           </div>
-          {/*  */}
+          {/* */}
           <div className="form-group bottom">
             <h3>معلومات العمل</h3>
-            <input type="text" id="area" placeholder="نطاق الخدمة" />
+            <input type="text" id="area" name="area" placeholder="نطاق الخدمة" defaultValue={craftman.workInfo?.area} />
             <input
               type="number"
               inputMode="tel"
               id="price"
+              name="price"
               placeholder="سعر الخدمة"
               step={5}
               min={5}
@@ -770,13 +802,15 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               onChange={handlePriceChange}
               onBlur={handlePriceBlur}
             />
-            <input type="text" id="working-hours" placeholder="مواعيد العمل" />
+            <input type="text" id="working_hours" name="working_hours" placeholder="مواعيد العمل" defaultValue={craftman.workInfo?.workingHours} />
             <input
               type="text"
-              id="speed-of-response"
+              id="speed_of_response"
+              name="speed_of_response"
               placeholder="وقت الاستجابة"
+              defaultValue={craftman.workInfo?.speedOfResponse}
             />
-            <select id="emergency-service" placeholder="خدمة الطوارئ">
+            <select id="emergency-service" name="emergency_service">
               <option value="">اختر خدمة الطوارئ</option>
               <option value="متاحة">متاحة</option>
               <option value="غير متاحة">غير متاحة</option>
@@ -800,7 +834,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               </span>
             </div>
 
-            {/*  */}
+            {/* */}
 
             <div className="password-field">
               <input
@@ -817,7 +851,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               </span>
             </div>
 
-            {/*  */}
+            {/* */}
 
             <div className="password-field">
               <input
@@ -840,7 +874,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
             </div>
           </div>
 
-          {/*  */}
+          {/* */}
           <div className="form-btns">
             {/* <button type="submit" className="save-btn">
               حفظ
@@ -927,7 +961,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
           <div className="portfolio-grid">
             {/* upload box */}
             <label className="work-item upload-box">
-              <input type="file" accept="image/*" className="input-file" />
+              <input type="file" accept="image/*" className="input-file" hidden />
               <img
                 src="/images/upload.png"
                 alt="upload"
@@ -936,7 +970,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
             </label>
 
             {/* images map */}
-            {craftman.worksImages.map((image, index) => (
+            {(craftman.worksImages || []).map((image, index) => (
               <div
                 key={index}
                 className="work-item"
@@ -956,15 +990,13 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
         </div>
       )}
       {/* --------------------------------------------- */}
-      {activeMainTab === "reviews" && (
-        <div className="reviews-section">
+      {activeMainTab === "reviews" && (<div className="reviews-section">
           {/* ================= Rating Summary ================= */}
           <h1 className="reviews-title">التقييمات وآراء العملاء</h1>
           <div className="rating-summary">
             <div className="rating-summary-box">
               <div className="rating-score">
                 <h2>{avgRating.toFixed(1)}</h2>
-
                 <div className="review-stars">
                   {[...Array(5)].map((_, index) => {
                     return (
@@ -1033,7 +1065,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
                     <div className="rate-and-date">
                       <span>{review.date}</span>
                       <div className="review-stars">
-                        {[...Array(allRatings[index])].map((_, starIndex) => {
+                        {[...Array(5)].map((_, starIndex) => {
                           return (
                             <span
                               key={starIndex}
@@ -1058,7 +1090,7 @@ function ProfileSection({ craftman, editMode, setEditMode }) {
               <span>لا توجد تقييمات حتى الآن</span>
             </p>
           )}
-          {craftman.reviews.length > 3 && (
+          {(craftman.reviews || []).length > 3 && (
             <div className="show-all-reviews">
               <button onClick={() => setShowAllReviews(!showAllReviews)}>
                 {showAllReviews ? <FaArrowUp /> : <FaArrowDown />}
@@ -1126,8 +1158,8 @@ function RequestServiceModal({ craftmanName, onClose }) {
           </div>
         ) : (
           <>
-            <h2 className="modal-title"> {craftmanName}</h2>
-            <form className="request-form" onSubmit={handleSubmit}>
+            <h2 className="modal-title-request"> {craftmanName}</h2>
+            <form className="request-form-custom" onSubmit={handleSubmit}>
               <div className="form-group-modal">
                 <label>اسم العميل</label>
                 <input type="text" placeholder="أدخل اسمك" required />
@@ -1157,10 +1189,9 @@ function RequestServiceModal({ craftmanName, onClose }) {
                 <label>تاريخ الطلب</label>
                 <input type="date" value={today} readOnly className="readonly-input" />
               </div>
-              <div className="modal-btns">
+              <div className="modal-btns-group">
                 <button type="submit" className="confirm-btn">إرسال الطلب</button>
                 <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
-                <button type="button" className="close-btn" onClick={onClose}>×</button>
               </div>
             </form>
           </>
@@ -1174,27 +1205,47 @@ function RequestServiceModal({ craftmanName, onClose }) {
    Page Components
 ======================= */
 const ProfilePage = () => {
-  const { id = 1 } = useParams();
+  const { id } = useParams();
 // عشان نتحكم في وضع تعديل الملف الشخصي
   const [editMode, setEditMode] = useState(false);
   // عشان نتحكم في عرض مودال طلب الخدمة
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [craftman, setCraftman] = useState(null);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: false,
     });
-  }, []);
 
-  const craftman = handiesData.find((e) => e.id === Number(id));
+    const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
+    let found = saved.find(a => a.id === Number(id));
+    if (!found) found = handiesData.find(a => a.id === Number(id));
+    setCraftman(found);
+  }, [id]);
 
-  if (!craftman) return <p>Not Found</p>;
+  const handleImageChange = (e, type) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const updated = { ...craftman, [type === 'cover' ? 'cover' : 'avatar']: reader.result };
+        setCraftman(updated);
+        const saved = JSON.parse(localStorage.getItem('sharedArtisans')) || [];
+        const newList = saved.map(a => a.id === craftman.id ? updated : a);
+        localStorage.setItem('sharedArtisans', JSON.stringify(newList));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  if (!craftman) return <div style={{padding: "100px", textAlign: "center"}}><h2>جاري تحميل بيانات الحرفي...</h2></div>;
 
   return (
     <div className="professional-profile-container">
       {showRequestModal && (
         <RequestServiceModal
-          craftmanName={craftman.ctaftName}
+          craftmanName={craftman.ctaftName || craftman.name}
           onClose={() => setShowRequestModal(false)}
         />
       )}
@@ -1204,6 +1255,7 @@ const ProfilePage = () => {
         editMode={editMode}
         setEditMode={setEditMode}
         setShowRequestModal={setShowRequestModal}
+        handleImageChange={handleImageChange}
       />
 
       {/* مرر editMode */}

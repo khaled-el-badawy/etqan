@@ -1,34 +1,44 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './Artisans.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Artisans = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const [artisans, setArtisans] = useState(() => {
+    const saved = localStorage.getItem('sharedArtisans');
+    return saved ? JSON.parse(saved) : [
+      { id: 1, name: 'أحمد علي', price: '150 ج', rate: '4.9', img: '/images/Artisans/Artisans1.svg' },
+      { id: 2, name: 'السيد محمد', price: '200 ج', rate: '4.9', img: '/images/Artisans/Artisans2.svg' },
+      { id: 3, name: 'محمود طه', price: '120 ج', rate: '4.9', img: '/images/Artisans/Artisans3.svg' },
+      { id: 4, name: 'علي محمد', price: '300 ج', rate: '4.9', img: '/images/Artisans/Artisans4.svg' },
+      { id: 5, name: 'محمد ابراهيم', price: '310 ج', rate: '4.9', img: '/images/Artisans/Artisans5.svg' },
+      { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+      { id: 7, name: 'ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+      { id: 8, name: 'شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+    ];
+  });
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
+    const handleStorageChange = () => {
+      const saved = localStorage.getItem('sharedArtisans');
+      if (saved) setArtisans(JSON.parse(saved));
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
-   const [searchTerm, setSearchTerm] = useState("");
 
-  const artisansData = [
-    { id: 1, name: 'أحمد علي', price: '150 ج', rate: '4.9', img: '/images/Artisans/Artisans1.svg' },
-    { id: 2, name: 'السيد محمد', price: '200 ج', rate: '4.9', img: '/images/Artisans/Artisans2.svg' },
-    { id: 3, name: 'محمود طه', price: '120 ج', rate: '4.9', img: '/images/Artisans/Artisans3.svg' },
-    { id: 4, name: 'علي محمد', price: '300 ج', rate: '4.9', img: '/images/Artisans/Artisans4.svg' },
-    { id: 5, name: 'محمد ابراهيم', price: '310 ج', rate: '4.9', img: '/images/Artisans/Artisans5.svg' },
-    { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-    { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans7.svg' },
-    { id: 6, name: ' ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-    { id: 6, name: ' شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
-  ];
-  
-const filteredName = artisansData.filter((item) =>
-  item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  item.price.toString().includes(searchTerm)
-);
+  const filteredName = artisans.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.price.toString().includes(searchTerm)
+  );
+
   return (
     <div className="artisans-page">
       <section className="top-section">
@@ -43,8 +53,13 @@ const filteredName = artisansData.filter((item) =>
 
         <div className="search-section" data-aos="zoom-in">
           <div className="search-wrapper">
-            <input type="text" placeholder="ابحث عن السعر..."  value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} className="search-input" />
+            <input 
+              type="text" 
+              placeholder="ابحث عن الحرفي أو السعر..."  
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} 
+              className="search-input" 
+            />
             <div className="search-icon-box">
               <img src="/images/Artisans/Artisanssearchicon.svg" alt="search" />
             </div>
