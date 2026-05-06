@@ -11,6 +11,7 @@ import {
   FaEye,
   FaEyeSlash,
   FaCamera,
+  FaTrashAlt,
 } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -23,7 +24,7 @@ const ClientProfile = () => {
   const [showRateModal, setShowRateModal] = useState(false);
   const [showComplainModal, setShowComplainModal] = useState(false);
   const [showEditReviewModal, setShowEditReviewModal] = useState(false);
-
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [complainText, setComplainText] = useState("");
