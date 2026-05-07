@@ -35,15 +35,16 @@
     align-items: center;
     gap: 10px;
     font-weight: bold;
+    font-size: 26px;
 }
 
 .admin-container .user-icon {
-    font-size: 2.2rem;
+    font-size: 60px;
     color: #cbd5e1;
 }
 
 .admin-container .header-icon {
-    font-size: 1.3rem;
+    font-size: 30px;
     color: #4a5568;
     cursor: pointer;
     transition: 0.3s;
@@ -78,9 +79,7 @@
     border: 1px solid #e2e8f0;
 }
 
-.admin-container .header-left-logo-fixed img {
-    width: 110px;
-}
+
 
 .admin-container .notification-badge {
     position: relative;
