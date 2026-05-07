@@ -12,6 +12,7 @@ import {
   FaEyeSlash,
   FaCamera,
   FaTrashAlt,
+  FaCheckCircle,
 } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -25,6 +26,7 @@ const ClientProfile = () => {
   const [showComplainModal, setShowComplainModal] = useState(false);
   const [showEditReviewModal, setShowEditReviewModal] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isDeletedSuccessfully, setIsDeletedSuccessfully] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [complainText, setComplainText] = useState("");
@@ -138,8 +140,24 @@ const ClientProfile = () => {
       setClientData(updatedClient);
       alert("تم تحديث البيانات بنجاح");
       setActiveTab("about");
-    }
-  };
+      };
+    };
+    const confirmDeleteAccount = () => {
+      const savedCustomers = JSON.parse(localStorage.getItem("sharedCustomers")) || [];
+      const updatedList = savedCustomers.filter((c) => c.id !== Number(id));
+      localStorage.setItem("sharedCustomers", JSON.stringify(updatedList));
+      
+      setIsDeletedSuccessfully(true);
+    
+      setTimeout(() => {
+        setShowDeleteConfirm(false);
+        setIsDeletedSuccessfully(false);
+        
+        window.location.href = "/"; 
+      }, 1000);
+    };
+    
+
 
   const reviews = [
     {
@@ -242,6 +260,7 @@ const ClientProfile = () => {
           backgroundImage: `url(${clientData.cover || "/images/Client profile/hero.svg"})`,
         }}
       >
+        {activeTab === "edit" && (
         <label className="edit-cover-btn">
           <FaCamera />
           <span>تعديل صورة الغلاف</span>
@@ -252,6 +271,7 @@ const ClientProfile = () => {
             onChange={(e) => handleImageChange(e, "cover")}
           />
         </label>
+      )}
       </header>
 
       <div className="profile-identity-wrapper" data-aos="fade-left">
@@ -269,6 +289,7 @@ const ClientProfile = () => {
                 e.target.src = "/images/Client profile/Virtual.jpeg";
               }}
             />
+            {activeTab === "edit"&&(
             <label className="edit-avatar-badge">
               <FaCamera />
               <input
@@ -278,6 +299,7 @@ const ClientProfile = () => {
                 onChange={(e) => handleImageChange(e, "img")}
               />
             </label>
+          )}
           </div>
           <div className="name-verify-block">
             <h2 className="client-name">
@@ -299,22 +321,8 @@ const ClientProfile = () => {
           {activeTab === "edit" && (
             <button
               type="button"
-              className="btn-delete-white-area"
+              className="btn-delete-account"
               onClick={() => setShowDeleteConfirm(true)}
-              style={{
-                backgroundColor: "#ff6b6b",
-                color: "#fff",
-                border: "none",
-                padding: "10px 20px",
-                borderRadius: "8px",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                fontWeight: "bold",
-                fontSize: "18px",
-                marginLeft: "auto",
-              }}
             >
               <FaTrashAlt /> حذف الحساب
             </button>
@@ -636,6 +644,30 @@ const ClientProfile = () => {
               إرسال
             </button>
           </div>
+        </div>
+      )}
+      {showDeleteConfirm && (
+        <div className="modal-overlay">
+          {!isDeletedSuccessfully ? (
+            <div className="modal-content delete-modal-content" data-aos="zoom-in">
+              <button className="close-modal" onClick={() => setShowDeleteConfirm(false)}>
+                <FaTimes />
+              </button>
+              <h3 className="modal-title-delete">تنبيه حذف الحساب</h3>
+              <p className="modal-p-delete">هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا الإجراء.</p>
+              <div className="delete-modal-buttons">
+                <button className="btn-confirm-delete" onClick={confirmDeleteAccount}>نعم</button>
+                <button className="btn-cancel-delete" onClick={() => setShowDeleteConfirm(false)}>إلغاء</button>
+              </div>
+            </div>
+          ) : (
+            <div className="modal-content delete-modal-content" data-aos="zoom-in">
+              <div className="success-icon-wrapper">
+                <FaCheckCircle size={80} color="#ff6b6b" />
+              </div>
+              <h3 className="success-msg-delete">تم حذف الحساب بنجاح</h3>
+            </div>
+          )}
         </div>
       )}
     </div>

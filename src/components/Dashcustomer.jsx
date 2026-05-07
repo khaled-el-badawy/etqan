@@ -204,9 +204,9 @@ const Dashcustomer = () => {
             </tr>
           </thead>
           <tbody>
-            {displayedCustomers.map((customer) => (
+            {displayedCustomers.map((customer,index) => (
               <tr key={customer.id} data-aos="fade-up">
-                <td className="count-col">{customer.id}</td>
+                <td className="count-col">{customer,index+1}</td>
                 <td>{customer.name}</td>
                 <td>{customer.location}</td>
                 <td>{customer.phone}</td>
