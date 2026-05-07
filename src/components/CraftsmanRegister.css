@@ -257,8 +257,8 @@ right: 0;
 .craftsman-page-container .image {
   height: 100vh;
 }
-.craftsman-page-container .image img {
-}
+/* .craftsman-page-container .image img {
+} */
 @media (max-width: 1130px) {
   .craftsman-page-container .image {
     height: 150vh;
@@ -283,8 +283,8 @@ right: 0;
   .craftsman-page-container .form-fields form {
     min-height: 100vh;
   }
-  .craftsman-page-container .form-section {
-  }
+  /* .craftsman-page-container .form-section {
+  } */
 
   .craftsman-page-container .form-section,
   .craftsman-page-container .h4-login {

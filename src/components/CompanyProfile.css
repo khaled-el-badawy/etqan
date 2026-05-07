@@ -711,7 +711,7 @@
 }
 
 /* زر تعديل صورة الغلاف */
-.profile-container .edit-cover-btn {
+.profile-container .editcover-btn {
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -730,7 +730,7 @@
   font-size: 20px;
 }
 
-.profile-container .edit-cover-btn:hover {
+.profile-container .editcover-btn:hover {
   background: #f0f0f0;
 }
 
@@ -897,7 +897,7 @@
   .profile-container .review-card p {
     font-size: 22px;
   }
-  .profile-container .edit-cover-btn {
+  .profile-container .editcover-btn {
   position: absolute;
   bottom: 5px;
   left: 0;

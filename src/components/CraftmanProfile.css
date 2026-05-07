@@ -591,9 +591,9 @@
   font-weight: bold;
 }
 
-.professional-profile-container .portfolio-section .portfolio-grid .work-item {
-  /* background-color: rebeccapurple; */
-}
+/* .professional-profile-container .portfolio-section .portfolio-grid .work-item {
+  
+} */
 .professional-profile-container
   .portfolio-section
   .portfolio-grid
@@ -661,9 +661,9 @@
   font-weight: bold;
 }
 
-.professional-profile-container .reviews-section {
-  /* empty */
-}
+/* .professional-profile-container .reviews-section {
+  
+} */
 .professional-profile-container .reviews-section .reviews-title {
   font-size: 25px;
   font-weight: bold;
@@ -705,13 +705,13 @@
   color: #303030;
 }
 
-.professional-profile-container
+/* .professional-profile-container
   .reviews-section
   .rating-summary
   .rating-score
   .review-stars {
-  /* empty */
-}
+  
+} */
 
 .professional-profile-container
   .reviews-section
@@ -807,12 +807,12 @@
   border-radius: 20px;
 }
 
-.professional-profile-container
+/* .professional-profile-container
   .reviews-section
   .review-card
   .review-card-content {
-  /* empty */
-}
+  
+} */
 .professional-profile-container .reviews-section .review-card .review-header {
   display: flex;
   align-items: center;
@@ -1203,16 +1203,16 @@
   text-align: right;
 }
 /*  */
-.edit-form-container form.edit-profile-form .form-group.top {
+/* .edit-form-container form.edit-profile-form .form-group.top {
 }
 .edit-form-container form.edit-profile-form .form-group.top {
-}
+} */
 /*  */
-.edit-form-container form.edit-profile-form .form-group.middle {
-}
+/* .edit-form-container form.edit-profile-form .form-group.middle {
+} */
 /*  */
-.edit-form-container form.edit-profile-form .form-group.bottom {
-}
+/* .edit-form-container form.edit-profile-form .form-group.bottom {
+} */
 .edit-form-container form.edit-profile-form .form-btns {
   /* background-color: tomato; */
   height: 40px;
@@ -1239,7 +1239,7 @@
 .edit-form-container form.edit-profile-form .form-btns button.cancel-btn {
   background-color: #eeeeee;
   color: #40798c;
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }

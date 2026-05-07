@@ -120,6 +120,8 @@
     color: #64748b;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
 .admin-container .sidebar-item.active {

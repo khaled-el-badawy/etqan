@@ -134,7 +134,7 @@ function OrderCard({ order, setSelectedOrder }) {
       {/* للـ Back-End: التقييم → POST /api/reviews / الفاتورة → GET /api/invoices/:id */}
       {order.status === "completed" && (
         <div className="btnBox">
-          <Link to={`/Clientprofile`} className="link">
+          <Link to={`/Clientprofile/1`} className="link">
             تقييم الخدمة
           </Link>
           <Link to={`/Faturuh`} className="link">

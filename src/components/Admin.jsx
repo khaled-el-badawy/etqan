@@ -12,6 +12,10 @@ import Footer from './Footer';
 import Dashcustomer from './Dashcustomer';
 import Dashartisans from './Dashartisans'; 
 import Dashproducts from './Dashproducts'; 
+import Dashcompanies from './Dashcompanies'; 
+import DashRatings from './DashRatings'; 
+import DashComplaints from './DashComplaints'; 
+import Dashorders from './Dashorders'; 
 
 const Admin = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -58,7 +62,14 @@ const Admin = () => {
         return <Dashartisans />;
       case 'products':
         return <Dashproducts/>;
-      case 'home':
+      case 'companies':
+        return <Dashcompanies/>;
+      case 'Ratings':
+        return <DashRatings/>;
+        case 'Complaints':
+        return <DashComplaints/>;
+        case 'orders':
+        return <Dashorders/>;
       default:
         return (
           <>
@@ -175,11 +186,35 @@ const Admin = () => {
             <FaBoxOpen /> <span>المنتجات</span>
           </div>
 
+          <div 
+            className={`sidebar-item ${currentPage === 'companies' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('companies')}
+          >
+            <FaBuilding /> <span>الشركات</span>
+          </div>
+
+          <div 
+            className={`sidebar-item ${currentPage === 'Ratings' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('Ratings')}
+          >
+            <FaStar /> <span>التقييمات</span>
+          </div>
+
+          <div 
+            className={`sidebar-item ${currentPage === 'Complaints' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('Complaints')}
+          >
+            <FaExclamationTriangle /> <span>الشكاوي</span>
+          </div>
+
+          <div 
+            className={`sidebar-item ${currentPage === 'orders' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('orders')}
+          >
+            <FaClipboardList /> <span>الطلبات</span>
+          </div>
           
-          <div className="sidebar-item"><FaBuilding /> <span>الشركات</span></div>
-          <div className="sidebar-item"><FaStar /> <span>التقييمات</span></div>
-          <div className="sidebar-item"><FaExclamationTriangle /> <span>الشكاوي</span></div>
-          <div className="sidebar-item"><FaClipboardList /> <span>الطلبات</span></div>
+          
         </aside>
 
         <main className="main-dashboard-large">

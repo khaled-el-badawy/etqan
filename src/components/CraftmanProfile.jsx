@@ -19,7 +19,7 @@ import { BsPin } from "react-icons/bs";
 import { ImSpinner3 } from "react-icons/im";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { PiScrewdriverFill } from "react-icons/pi";
-import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp, FaCalendarAlt, FaCamera } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 /* =======================
@@ -202,7 +202,7 @@ function ProfileSummary({
                     className="verified-badge"
                   />
                 )}
-                {craftman.ctaftName}
+                {craftman.ctaftName || craftman.name}
               </h2>
               {isAccountActive && <p>{craftman.job}</p>}
               {isAccountActive && (
@@ -439,8 +439,7 @@ function ProfileSection({
 
   // التحقق من صحة التاريخ مع شرط العمر 18 سنة
   const validateDob = (digits) => {
-    if (digits.length === 8) {
-      const day = parseInt(digits.slice(0, 2), 10);
+    if (digits.length === 8) {const day = parseInt(digits.slice(0, 2), 10);
       const month = parseInt(digits.slice(2, 4), 10);
       const year = parseInt(digits.slice(4, 8), 10);
       const currentYear = new Date().getFullYear();
@@ -528,6 +527,11 @@ function ProfileSection({
     : craftman.reviews?.slice(0, 3);
 
   const renderSideContent = () => {
+    // تجهيز بيانات افتراضية لو الداتا جاية من الداشبورد ناقصة
+    const aboutData = craftman.about || { aboutInfo: "لا توجد معلومات متوفرة حالياً.", experience: craftman.experience || "غير محدد", area: craftman.location || "غير محدد", completedOrders: "0" };
+    const servicesData = craftman.services || ["تقديم خدمات عامة"];
+    const workData = craftman.workInfo || { area: craftman.location, workingHours: "غير محدد", speedOfResponse: "سريع", emergencyService: "متاحة" };
+
     switch (activeSideTab) {
       case "basic-info":
         return (
@@ -1182,7 +1186,7 @@ const ProfilePage = () => {
 
       {showRequestModal && (
         <RequestServiceModal
-          craftmanName={craftman.ctaftName}
+          craftmanName={craftman.ctaftName || craftman.name}
           onClose={() => setShowRequestModal(false)}
         />
       )}

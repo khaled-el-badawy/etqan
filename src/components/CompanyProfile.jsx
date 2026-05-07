@@ -281,7 +281,7 @@ export default function CompanyProfile() {
         {activeTab === "edit" && (
           <button 
             type="button"
-            className="edit-cover-btn" 
+            className="editcover-btn" 
             onClick={triggerCoverUpload}
             style={{ zIndex: 10 }}
           >

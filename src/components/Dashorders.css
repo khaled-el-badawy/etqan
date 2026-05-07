@@ -1,0 +1,228 @@
+.etqan-dash-orders-page {
+    direction: rtl;
+    background-color: #f8f9fa; 
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Katibeh', sans-serif;
+}
+
+.etqan-dash-orders-page .etqan-main-title {
+    color: #2d3748; 
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.etqan-dash-orders-page .etqan-search-section-wrapper {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+}
+
+.etqan-dash-orders-page .etqan-search-input-box {
+    position: relative;
+    width: 100%; 
+    display: flex;
+    align-items: center;
+}
+
+.etqan-dash-orders-page .etqan-search-input-field {
+    width: 100%;
+    padding: 12px 50px 12px 20px; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 10px;
+    outline: none;
+    text-align: right;
+    font-family: 'Cairo';
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.etqan-dash-orders-page .etqan-search-input-field:focus {
+    border-color: #608fa2; 
+    box-shadow: 0 4px 12px rgba(96, 143, 162, 0.15);
+}
+
+.etqan-dash-orders-page .etqan-search-icon-left {
+    position: absolute;
+    left: 18px ; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: 1.3rem ;
+    z-index: 5;
+    pointer-events: none;
+   
+}
+
+.etqan-dash-orders-page .etqan-order-card-box {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0; 
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.etqan-dash-orders-page .etqan-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.etqan-dash-orders-page .etqan-custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.etqan-dash-orders-page .etqan-custom-table th {
+    background: #edf2f7;
+    padding: 15px;
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+}
+
+.etqan-custom-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: middle;
+}
+
+.etqan-dash-orders-page .etqan-center-cell {
+    text-align: center ;
+}
+
+.etqan-dash-orders-page .etqan-p-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+.etqan-dash-orders-page .etqan-p-name {
+    color: #608fa2;
+    font-weight: bold;
+}
+
+.etqan-dash-orders-page .etqan-p-price {
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.etqan-dash-orders-page .etqan-order-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: #f9f7f0; 
+    padding: 20px;
+    text-align: center;
+}
+
+.etqan-dash-orders-page .etqan-info-item label {
+    display: block;
+    font-size: 1.4rem;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.etqan-dash-orders-page .etqan-info-item p {
+    margin: 0;
+    font-weight: bold;
+    color: #2d3748; 
+}
+
+.etqan-dash-orders-page .etqan-status-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.etqan-dash-orders-page .etqan-status-success {
+    color: #28a745; 
+    font-weight: bold;
+}
+
+.etqan-dash-orders-page .etqan-status-warning {
+    color: #C3CE2A; 
+    font-weight: bold;
+}
+
+.etqan-dash-orders-page .etqan-check-icon {
+    font-size: 1.1rem;
+}
+
+.etqan-dash-orders-page .etqan-btn-update {
+    display: block;
+    margin: 15px auto;
+    background: #edf2f7;
+    color: #608fa2; 
+    border: none;
+    padding: 10px 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.etqan-dash-orders-page .etqan-btn-update:hover {
+    background: #e2e8f0;
+}
+
+.etqan-dash-orders-page .etqan-load-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto;
+    background: none;
+    border: 1px solid #608fa2; 
+    color: #608fa2;
+    padding: 10px 40px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.etqan-dash-orders-page .etqan-load-more-btn:hover{
+    background: #608fa2;
+    color: #fff;
+}
+
+
+@media (max-width: 1024px) {
+    .etqan-dash-orders-page .etqan-order-info-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .etqan-dash-orders-page .etqan-main-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    .etqan-dash-orders-page .etqan-order-info-grid {
+        grid-template-columns: repeat(0, 1fr);
+        padding: 15px;
+    }
+    .etqan-dash-orders-page .etqan-p-name {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .etqan-dash-orders-page .etqan-order-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .etqan-dash-orders-page .etqan-custom-table thead {
+        display: none;
+    }
+    .etqan-dash-orders-page .etqan-custom-table td {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        text-align: right;
+    }
+}
