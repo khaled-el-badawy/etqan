@@ -91,6 +91,7 @@ function NewPassword() {
           
           // نوديه لصفحة اللوجن حسب دوره بعد ثانية واحدة
           setTimeout(() => {
+            setSuccessMessage("");
             navigate(`/home/${role}`);
           }, 1500);
         }

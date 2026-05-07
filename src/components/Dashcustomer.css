@@ -13,7 +13,8 @@
 
 .dashcustomer-page .page-title {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2,8rem;
+    font-weight: bold;
     color: #2d3748;
     text-align: right;
 }
@@ -301,23 +302,22 @@
             text-align: center;
         }
     
-        /* توحيد أحجام الانبوتس وتوسيطها */
         .dashcustomer-page .form-row-new {
             flex-direction: column;
             align-items: center;
             width: 100%;
-            gap: 0; /* الاعتماد على margin الخاص بالـ input-group */
+            gap: 0; 
         }
     
         .dashcustomer-page .input-group-valid {
             width: 100%;
-            max-width: 320px; /* تحديد عرض ثابت وموحد للكل */
+            max-width: 320px; 
             margin-bottom: 15px;
         }
     
         .dashcustomer-page .form-row-new input,
         .dashcustomer-page .password-input-wrapper {
-            width: 100%; /* ضمان ملء الحاوية بالكامل */
+            width: 100%; 
         }
     
         .dashcustomer-page .customers-data-table td {

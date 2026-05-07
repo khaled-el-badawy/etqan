@@ -120,15 +120,16 @@ function AppWrapper() {
         
   
         <Route path="/CheckOut" element={<CheckOut />} />
-
         <Route path="/Brands" element={<Brands />} />
 
         <Route path="/OrderDetails" element={<OrderDetails />} />
         <Route path="/Faturuh" element={<Faturuh />} />
 
-        <Route path="/Clientprofile" element={<Clientprofile />} />
+        <Route path="/Clientprofile/:id" element={<Clientprofile />} />
 
+        {/* هذا هو المسار المطلوب - تأكد من تطابقه تماماً */}
         <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
+        
         <Route path="/contactUs" element={<ContactUs />} />
 
         <Route 
@@ -141,6 +142,8 @@ function AppWrapper() {
         />
 
         <Route path="/Chat" element={<Chat />} />
+        
+        {/* صفحة 404 يجب أن تكون دائماً في آخر القائمة */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 

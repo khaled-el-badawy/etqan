@@ -1,15 +1,38 @@
+<<<<<<< HEAD
 import React, { useEffect,useState } from 'react';
 import { Link, useParams } from 'react-router-dom'; 
+=======
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; 
+>>>>>>> fb4d3f43fa13f5f538fc60575b3fb5ace2d9560b
 import './Artisans.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios'; // استيراد أكسيوس
 
 const Artisans = () => {
+<<<<<<< HEAD
   const { jobId } = useParams(); // لقط الـ ID من الرابط
   const [artisansData, setArtisansData] = useState([]); // داتا فاضية في البداية
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+=======
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const [artisans, setArtisans] = useState(() => {
+    const saved = localStorage.getItem('sharedArtisans');
+    return saved ? JSON.parse(saved) : [
+      { id: 1, name: 'أحمد علي', price: '150 ج', rate: '4.9', img: '/images/Artisans/Artisans1.svg' },
+      { id: 2, name: 'السيد محمد', price: '200 ج', rate: '4.9', img: '/images/Artisans/Artisans2.svg' },
+      { id: 3, name: 'محمود طه', price: '120 ج', rate: '4.9', img: '/images/Artisans/Artisans3.svg' },
+      { id: 4, name: 'علي محمد', price: '300 ج', rate: '4.9', img: '/images/Artisans/Artisans4.svg' },
+      { id: 5, name: 'محمد ابراهيم', price: '310 ج', rate: '4.9', img: '/images/Artisans/Artisans5.svg' },
+      { id: 6, name: 'خالد اسماعيل', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+      { id: 7, name: 'ياسين احمد', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+      { id: 8, name: 'شعبان عبدالرحيم', price: '280 ج', rate: '4.9', img: '/images/Artisans/Artisans6.svg' },
+    ];
+  });
+>>>>>>> fb4d3f43fa13f5f538fc60575b3fb5ace2d9560b
 
   useEffect(() => {
     // تشغيل الأنيميشن
@@ -17,6 +40,7 @@ const Artisans = () => {
       duration: 1000,
       once: true,
     });
+<<<<<<< HEAD
 
     // دالة جلب البيانات من الباك إند
     const fetchArtisans = async () => {
@@ -32,6 +56,21 @@ const Artisans = () => {
 
     fetchArtisans();
   }, [jobId]); // لو الـ ID اتغير، اطلب الداتا تاني
+=======
+    const handleStorageChange = () => {
+      const saved = localStorage.getItem('sharedArtisans');
+      if (saved) setArtisans(JSON.parse(saved));
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const filteredName = artisans.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.price.toString().includes(searchTerm)
+  );
+
+>>>>>>> fb4d3f43fa13f5f538fc60575b3fb5ace2d9560b
   return (
     <div className="artisans-page">
       <section className="top-section">
@@ -46,8 +85,13 @@ const Artisans = () => {
 
         <div className="search-section" data-aos="zoom-in">
           <div className="search-wrapper">
-            <input type="text" placeholder="ابحث عن السعر..."  value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} className="search-input" />
+            <input 
+              type="text" 
+              placeholder="ابحث عن الحرفي أو السعر..."  
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} 
+              className="search-input" 
+            />
             <div className="search-icon-box">
               <img src="/images/Artisans/Artisanssearchicon.svg" alt="search" />
             </div>
