@@ -784,6 +784,7 @@
   padding-left: 40px;
 }
 
+
 /* ===================== Responsive ===================== */
 
 /* لابتوب صغير */
@@ -876,21 +877,7 @@
   .profile-container .profile-info p {
     font-size: 24px;
   }
-/* 
-  .profile-container .btn {
-    width: 120px;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: -420px
-  } */
-/* .profile-container .btn-edit {
-  width: 50px;
-  font-size: 28px;
-  margin-left: 22%;
-   margin-bottom: -420px
-} */
+
   .profile-container .icon-circle {
     width: 70px;
     height: 70px;
@@ -937,4 +924,21 @@
     z-index: 100 ;
     transform: none ;
 }
+.profile-container .btn-delete{
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: auto 90px !important;
+  white-space: nowrap;
+  width: fit-content;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative ;
+  z-index: 10;
+font-size: 19px;
+ 
+}
+
 }

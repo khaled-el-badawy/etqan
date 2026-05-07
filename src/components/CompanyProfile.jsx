@@ -303,7 +303,7 @@ export default function CompanyProfile() {
               <button 
                 className="btn-delete" 
                 onClick={() => setShowConfirmModal(true)}
-                style={{ backgroundColor: '#ff6b6b', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
+                style={{ backgroundColor: '#ff6b6b', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold',fontSize: '20px' }}>
                 <FaTrashAlt /> حذف الحساب
               </button>
             ) : (

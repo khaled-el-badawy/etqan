@@ -44,15 +44,7 @@ const companyRef = useRef(null);
           opacity: 1,
         }}
         transition={{ duration: 1.8, ease: "easeOut" }}
-        style={{
-          // height: "100%",
-          // objectFit: "cover",
-          // display: "block",
-          // flexShrink: 0,
-          // position: "relative",
-          // zIndex: 1,
-          // left: 2,
-        }}
+     
       />
 
       {/* الإطارات الزرقاء حول الصورة */}

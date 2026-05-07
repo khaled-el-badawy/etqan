@@ -22,7 +22,7 @@ const ClientProfile = () => {
 
  
   const [showPass, setShowPass] = useState(false);
-  const [showNewPass, setShowNewPass] = useState(false);
+  const [showNewPass, setShowNewPassword] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
 
 
@@ -62,21 +62,21 @@ const ClientProfile = () => {
 
   
     if (!formData.city) {
-      newErrors.city = "ادخل المحافظه";
+      newErrors.city = "ادخل المحافظة";
     }
 
     if (!formData.password) {
-      newErrors.password = "ادخل كلمت السر";
+      newErrors.password = "ادخل كلمة السر";
     }
 
     if (!formData.newPassword) {
-      newErrors.newPassword = "ادخل كلمت السر الجديده";
+      newErrors.newPassword = "ادخل كلمة السر الجديدة";
     }
 
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = "ادخل التاكيد";
     } else if (formData.confirmPassword !== formData.newPassword) {
-      newErrors.confirmPassword = "كلمت السر غير صحيحة";
+      newErrors.confirmPassword = "كلمة السر غير صحيحة";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -200,6 +200,7 @@ const ClientProfile = () => {
                 alignItems: 'center', 
                 gap: '8px', 
                 fontWeight: 'bold',
+                fontSize: '18px',
                 marginLeft: 'auto'
               }}
             >
@@ -412,13 +413,13 @@ const ClientProfile = () => {
                   <input 
                     type={showPass ? "text" : "password"} 
                     name="password"
-                    placeholder="كلمه السر" 
+                    placeholder="كلمة السر" 
                     className={`form-input ${errors.password ? 'input-error' : ''}`}
                     value={formData.password}
                     onChange={handleInputChange}
                   />
                   <span className="eye-icon" onClick={() => setShowPass(!showPass)}>
-                    {showPass ? <FaEyeSlash /> : <FaEye />}
+                    {showPass ? <FaEye /> : < FaEyeSlash />}
                   </span>
                   {errors.password && <span className="error-msg">{errors.password}</span>}
                 </div>
@@ -433,7 +434,7 @@ const ClientProfile = () => {
                     onChange={handleInputChange}
                   />
                   <span className="eye-icon" onClick={() => setShowNewPassword(!showNewPass)}>
-                    {showNewPass ? <FaEyeSlash /> : <FaEye />}
+                    {showNewPass ? <FaEye /> : < FaEyeSlash />}
                   </span>
                   {errors.newPassword && <span className="error-msg">{errors.newPassword}</span>}
                 </div>
@@ -448,7 +449,7 @@ const ClientProfile = () => {
                     onChange={handleInputChange}
                   />
                   <span className="eye-icon" onClick={() => setShowConfirmPass(!showConfirmPass)}>
-                    {showConfirmPass ? <FaEyeSlash /> : <FaEye />}
+                    {showConfirmPass ? <FaEye /> : <FaEyeSlash />}
                   </span>
                   {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword}</span>}
                 </div>
