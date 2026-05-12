@@ -252,16 +252,7 @@ function CustomerRegister() {
               </div>
             </div>
 
-            <Link
-              to={isFormValid ? "/login-otp/customer" : "#"}
-              className={`link-button ${!isFormValid ? "disabled" : ""}`}
-              style={{
-                pointerEvents: !isFormValid ? "none" : "auto",
-                opacity: !isFormValid ? 0.5 : 1,
-              }}
-            >
-              تسجيل
-            </Link>
+  
                  <button
               type="button"
               className={`link-button ${!isFormValid ? "disabled" : ""}`}

@@ -279,16 +279,8 @@ function CompanyRegister() {
             </div>
 
             {/* زر التسجيل */}
-              <Link
-                        to={isFormValid ? "/login-otp/company" : "#"}
-                        className={`link-button ${!isFormValid ? "disabled" : ""}`}
-                        style={{
-                          pointerEvents: !isFormValid ? "none" : "auto",
-                          opacity: !isFormValid ? 0.5 : 1,
-                        }}
-                      >
-                        تسجيل
-                      </Link>
+         
+            
                       <button
               type="button"
               className={`link-button ${!isFormValid ? "disabled" : ""}`}

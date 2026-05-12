@@ -15,6 +15,7 @@ import Dashproducts from './Dashproducts';
 import Dashcompanies from './Dashcompanies'; 
 import DashRatings from './DashRatings'; 
 import DashComplaints from './DashComplaints'; 
+import Dashorders from './Dashorders'; 
 
 const Admin = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -67,6 +68,8 @@ const Admin = () => {
         return <DashRatings/>;
         case 'Complaints':
         return <DashComplaints/>;
+        case 'orders':
+        return <Dashorders/>;
       default:
         return (
           <>
@@ -204,9 +207,14 @@ const Admin = () => {
             <FaExclamationTriangle /> <span>الشكاوي</span>
           </div>
 
+          <div 
+            className={`sidebar-item ${currentPage === 'orders' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('orders')}
+          >
+            <FaClipboardList /> <span>الطلبات</span>
+          </div>
           
           
-          <div className="sidebar-item"><FaClipboardList /> <span>الطلبات</span></div>
         </aside>
 
         <main className="main-dashboard-large">

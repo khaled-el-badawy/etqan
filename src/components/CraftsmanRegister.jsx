@@ -344,18 +344,6 @@ function CraftsmanRegister() {
               </div>
             </div>
 
-            <button
-              type="button"
-              className={`link-button ${!isFormValid ? "disabled" : ""}`}
-              onClick={handleRegister}
-              disabled={!isFormValid}
-              style={{
-                pointerEvents: !isFormValid ? "none" : "auto",
-                opacity: !isFormValid ? 0.5 : 1,
-              }}
-            >
-              تسجيل
-            </button>
             <button type="button" className={`link-button ${!isFormValid ? "disabled" : ""}`} onClick={handleRegister} 
               disabled={!isFormValid || isLoading} style={{ pointerEvents: !isFormValid ? "none" : "auto", opacity: !isFormValid ? 0.5 : 1 }}>
              {isLoading ? "جاري إنشاء الحساب..." : "تسجيل"}

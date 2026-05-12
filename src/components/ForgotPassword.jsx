@@ -89,17 +89,8 @@ const [loading, setLoading] = useState(false);
               {loading ? "جاري الإرسال..." : "إرسال"}
             </button>
 
-            {/* الزرار يتحرك حسب صحة البريد */}
-            <Link
-              to={`/verify-otp/${role}`}  // :role customer / company / craftsman
-              className={`btn-container ${!isFormValid ? "disabled" : ""}`}
-              style={{
-                pointerEvents: !isFormValid ? "none" : "auto",
-                opacity: !isFormValid ? 0.5 : 1,
-              }}
-            >
-              إرسال
-            </Link>
+          
+    
           </form>
         </div>
       </motion.div>

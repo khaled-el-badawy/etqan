@@ -204,21 +204,7 @@ function NewPassword() {
               {loading ? "جاري الحفظ..." : "حفظ كلمة المرور"}
             </button>
 
-            {/* زر تغيير كلمة المرور */}
-            <button
-              type="button"
-              className="btn-container"
-              onClick={handleChangePassword}
-              disabled={!isFormValid}
-              style={{
-                pointerEvents: !isFormValid ? "none" : "auto",
-                opacity: !isFormValid ? 0.5 : 1,
-                transform: isFocused ? "translateY(80px)" : "translateY(0)",
-                transition: "transform 0.3s ease",
-              }}
-            >
-              حفظ كلمة المرور
-            </button>
+      
           </form>
         </div>
       </motion.div>

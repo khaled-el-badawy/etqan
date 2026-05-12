@@ -28,7 +28,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: 0.3s;
   z-index: 10;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .profile-container .edit-cover-btn:hover {
@@ -353,11 +353,7 @@
   color: #40798c; 
   font-weight: bold;
   cursor: pointer;
-<<<<<<< HEAD
-  font-size: 16px;
-=======
   font-size: 20px;
->>>>>>> 701e9b000554ed5ae146289a1511b3fee675e870
 }
 
 .profile-container .edit-details-card {
@@ -642,6 +638,106 @@
 .profile-container .modal-submit-btn-custom:hover {
   background-color: #336270;
   transform: translateY(-2px);
+}
+
+.profile-container .btn-delete-account {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: auto; 
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(255, 107, 107, 0.2);
+}
+
+.profile-container .btn-delete-account:hover {
+  background-color: #fa5252;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+}
+
+.delete-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.profile-container .btn-confirm-delete {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.profile-container .btn-confirm-delete:hover {
+  background-color: #e03131;
+}
+
+.profile-container .btn-cancel-delete {
+  background-color: #f1f3f5;
+  color: #495057;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.profile-container .btn-cancel-delete:hover {
+  background-color: #e9ecef;
+}
+
+.profile-container .success-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #ff6b6b; 
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-container .success-msg-delete {
+  color: #2d3436;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.profile-container .modal-title-delete {
+  color: #2d3436;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-container .modal-p-delete {
+  color: #636e72;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 16px;
+}
+@keyframes scaleUp {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }
 @media (max-width: 1024px) {
   .profile-container 
