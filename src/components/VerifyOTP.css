@@ -1,0 +1,206 @@
+.VerifyOTP-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+}
+.VerifyOTP-container .VerifyOTP-title {
+  color: #40798c;
+  text-align: center;
+  /* margin-top: 20px; */
+
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+.VerifyOTP-container .VerifyOTP-form {
+  width: 100%;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.VerifyOTP-container .VerifyOTP-form input {
+  /* margin: 15px 15px; */
+  width: 70px;
+  height: 70px;
+  color: rgb(30, 30, 30);
+  text-align: center;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 26px;
+  font-family: inter;
+}
+
+
+.otp-error {
+  color: rgb(235, 138, 138);
+
+  font-size: 1.2rem;
+  font-weight: 300;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+   /* position: relative; */
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+  animation: shake 0.4s ease-in-out;            
+}
+
+
+
+/* تأثير اهتزاز */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+
+
+.VerifyOTP-container .VerifyOTP-form-fields {
+  /* margin-top: 50px; */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: tomato; */
+}
+.VerifyOTP-container .VerifyOTP-form-fields form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  /* background-color: green; */
+}
+.VerifyOTP-container .VerifyOTP-form-fields form .otp-row {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 15px;
+}
+
+.VerifyOTP-container .btn-Link {
+  text-decoration: none;
+}
+.VerifyOTP-container .btn-VerifyOTP-container {
+  color: white;
+  background-color: #40798c;
+  border-radius: 35px;
+  width: 240px;
+  padding: 10px 0 12px;
+  font-size: 22px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  border: none;
+  border: 1px solid transparent;
+  box-shadow: 2px 2px 5px #a3a9a6;
+  position: relative;
+  top: 0;
+  transition: 0.1s;
+}
+
+.VerifyOTP-container .VerifyOTP-form button:hover {
+  border: 1px solid #40798c;
+  top: 2px;
+  box-shadow: 0px 0px 5px #a3a9a6;
+  color: white;
+}
+
+.VerifyOTP-container .resend-otp {
+  cursor: pointer;
+  color: #828181;
+  display: block;
+  /* margin-top: 40px; */
+}
+
+.VerifyOTP-container .resend-otp:hover {
+  color: #75a5b3;
+}
+
+.VerifyOTP-container .resend-otp.disabled {
+  cursor: not-allowed;
+  color: #75a5b3;
+}
+
+/* DESKTOP */
+
+/* ----------banner---------------------- */
+
+
+.VerifyOTP-container .image img {
+  width: 40vw;
+  height: 100%;
+}
+
+/* TABLET */
+@media (max-width: 991px) {
+  .VerifyOTP-container .VerifyOTP-form {
+    width: 100%;
+    height: auto;
+  }
+
+  .VerifyOTP-container .image {
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .VerifyOTP-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .VerifyOTP-container .VerifyOTP-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* margin-right: 25px; */
+  }
+  .VerifyOTP-container .VerifyOTP-form-fields form .otp-row {
+    width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  /* gap: 15px; */
+  gap:initial;
+  justify-content: space-evenly;
+}
+
+  .VerifyOTP-container .VerifyOTP-title {
+    width: 80%;
+    font-size: 30px;
+    line-height: 1.9;
+    text-align: center;
+    /* margin-left: 15%; */
+  }
+
+  .VerifyOTP-container input {
+    width: 70px;
+  }
+
+  .VerifyOTP-container .btn-VerifyOTP-container {
+    /* width: 40%; */
+    /* margin: 30px 120px 0 0; */
+  }
+
+  .VerifyOTP-container .image img {
+    display: none;
+  }
+  .VerifyOTP-container .resend-otp {
+    /* margin-right: 50px; */
+}
+}

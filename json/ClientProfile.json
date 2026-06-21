@@ -1,0 +1,42 @@
+{
+  "id": 1,
+  "ClientName": "احمد علي",
+  "email": "ahmed.ali@example.com",
+  "phone": "01012345678",
+  "location": "الدقهلية",
+  "verified": true,
+  "avatar": "/images/Ellipse 321.png",
+  "cover": "/images/profile-cover.png",
+  "givenReviews": [
+    {
+      "id": 1,
+      "name": "احمد علي",
+      "job": "سباك",
+      "date": "15/2/2025",
+      "rating": 5,
+      "img": "/images/Client profile/icon1.svg"
+    },
+    {
+      "id": 2,
+      "name": "محمد محمود",
+      "job": "كهربائي",
+      "date": "5/3/2025",
+      "rating": 5,
+      "img": "/images/Client profile/icon2.svg"
+    }
+  ],
+  "transactionsHistory": [
+    {
+      "id": 1,
+      "name": "احمد علي",
+      "job": "سباك",
+      "icon": "/images/Client profile/Client icon1.svg"
+    },
+    {
+      "id": 2,
+      "name": "محمد محمود",
+      "job": "كهربائي",
+      "icon": "/images/Client profile/Client icon2.svg"
+    }
+  ]
+}

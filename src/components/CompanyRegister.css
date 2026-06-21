@@ -1,0 +1,385 @@
+.company-page-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: row;
+}
+.company-page-container h1 {
+  font-size: 55px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.company-page-container h1,
+.company-page-container h3 {
+  color: #40798c;
+  text-align: center;
+  text-decoration: none;
+}
+.company-page-container h3 {
+  font-size: 20px;
+}
+
+.company-page-container .h4-login .Link {
+  text-decoration: none;
+  color: #40798c;
+}
+.company-page-container .h4-login .Link:hover {
+  color: #75a5b3;
+}
+
+.company-page-container .h4-login {
+  color: #828181;
+  text-align: center;
+  font-size: 18px;
+  margin-top: -30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.company-page-container .form-section {
+  direction: rtl;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 0;
+}
+.company-page-container .fields-row {
+ /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  flex-wrap: wrap;
+  gap: 10px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+}
+
+.company-page-container .field-container,
+.company-page-container .CompanyRegister-password-field-container {
+  /* -------------------------- */
+  display: flex;
+  flex-direction: column;
+  width: 318px;
+
+  margin: 10px;
+
+  position: relative;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .company-page-container .field-container,
+  .company-page-container .CompanyRegister-password-field-container {
+    width: 250px;
+  }
+}
+
+.company-page-container .eye {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 25px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  color: #40798c;
+}
+
+
+.company-page-container .folder-wrapper {
+  position: relative;
+}
+
+.company-page-container .folder-icon {
+  font-size: 24px;
+  color: #40798c;
+  margin-top: -20px;
+  position: absolute;
+  top: -15px;
+  left: 30px;   
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+}
+
+.company-page-container .plus-icon {
+  position: absolute;
+  top: -30px;
+  font-size: 22px;
+  background-color: white;
+  color: #40798c;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 36px;   
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+}
+
+
+
+
+.company-page-container .phone-errors {
+  color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 5px -10px;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+
+.company-page-container .error-msg {
+  color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+
+.company-page-container .form-section input {
+  width: 100%;
+  padding: 20px;
+  color: rgb(30, 30, 30);
+  text-align: right;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 20px;
+}
+
+.company-page-container input::-ms-reveal {
+  display: none;
+}
+.company-page-container .form-fields {
+  min-height: 100vh;
+  width: 150vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-page-container .form-fields form {
+  /* min-height: 100vh;
+
+  margin: 0 auto;
+
+  display: flex; */
+ 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.company-page-container .searchable-dropdown input {
+  padding: 20px;
+  text-align: right;
+  color: rgb(30, 30, 30);
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 20px;
+  direction: rtl;
+  appearance: none;
+}
+
+.company-page-container .dropdown-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 220px;
+  max-height: 120px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+.company-page-container .dropdown-list li {
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.company-page-container .dropdown-list li:hover {
+  background: #f2f2f2;
+}
+
+.company-page-container .no-result {
+  color: gray;
+  text-align: center;
+}
+
+
+
+.company-page-container .passwords-row {
+  display: flex;
+  gap: 80px;
+}
+
+.CompanyRegister-password-field-container {
+  position: relative; 
+}
+
+.company-page-container .password-error-msg {
+   color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+   position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+
+.password-rules {
+  position: absolute;
+  top: 100%; 
+  right: 0;
+  width: 100%;
+  /* margin-top: 4px; */
+   color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 5px -10px;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */ 
+}
+
+.company-page-container .link-button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin: 45px auto;
+  width: 250px;
+  max-width: 210px;
+  color: white;
+  background-color: #40798c;
+  padding: 12px;
+  border-radius: 35px;
+  font-size: 20px;
+  border: none;
+}
+.company-page-container .form-section button:hover {
+  box-shadow: 2px 2px 5px #a3a9a6;
+  border: 1px solid #40798c;
+}
+
+
+/* DESKTOP */
+
+.company-page-container .form-section input {
+}
+
+/* ----------banner---------------------- */
+.company-page-container .image {
+  height: 100vh;
+  
+}
+
+@media (max-width: 1130px) {
+  .company-page-container .image {
+    height: 150vh;
+  }
+}
+.company-page-container .image img {
+  width: 34vw;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* TABLET */
+@media (max-width: 991px) {
+  .company-page-container {
+    flex-direction: row;
+
+    overflow-y: auto;
+    justify-content: space-between;
+  }
+  .company-page-container .form-fields form {
+    min-height: 100vh;
+  }
+ 
+  .company-page-container .form-section,
+  .company-page-container .h4-login {
+    position: relative;
+    font-size: 18px;
+  }
+
+  .company-page-container .form-section input,
+  .company-page-container .password-field input {
+    /* width: 35vw; */
+    font-size: 20px;
+  }
+
+  .company-page-container .passwords-row {
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+  }
+
+  .company-page-container .password-field {
+    width: 100%;
+  }
+
+  .company-page-container .image img {
+    object-fit: initial;
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .company-page-container {
+    flex-direction: column;
+    align-items: center;
+    height: 140vh;
+  }
+
+ 
+
+  .company-page-container .form-section {
+    width: 100%;
+  }
+
+  .company-page-container h1,
+  .company-page-container h3 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .company-page-container .h4-customer-login {
+    margin-top: -20px;
+  }
+
+  .company-page-container .form-section input,
+  .company-page-container .password-field input {
+    /* width: 65vw; */
+    /* margin-right: 10%; */
+    display: block;
+    font-size: 20px;
+  }
+
+  .company-page-container .passwords-row {
+    flex-direction: column;
+    display: block;
+  }
+
+  .company-page-container .password-field {
+  }
+
+  .company-page-container .link-button{
+    width: 60%;
+     margin-top: 15px;
+  }
+  .company-page-container .image {
+    display: none;
+  }
+}

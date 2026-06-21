@@ -1,0 +1,141 @@
+.error-page-container{
+  min-height: 100vh;
+  background: #f8fbfc;
+  font-family: "Cairo", sans-serif;
+  direction: rtl;
+  padding: 30px 20px;
+  overflow: hidden;
+}
+
+
+/* CONTENT */
+
+.error-page-container .error-content{
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.error-page-container .error-content h1{
+  font-size: 130px;
+  line-height: 1;
+  color: #40798C;
+  font-weight: 800;
+  text-shadow: 0 10px 20px rgba(64,121,140,0.15);
+
+  
+  
+}
+
+.error-page-container .error-content h2{
+  margin-top: 10px;
+  font-size: 40px;
+  color: #244855;
+}
+
+.error-page-container .error-content p{
+  margin-top: 15px;
+  color: #6d8b96;
+  font-size: 22px;
+  line-height: 1.8;
+}
+
+.error-page-container .error-content img{
+  width: 100%;
+  max-width: 600px;
+  mix-blend-mode: multiply;
+  filter: contrast(1.1);
+}
+
+
+
+/* BUTTONS */
+
+.error-page-container .buttons{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.error-page-container .main-btn{
+  background: #40798C;
+  color: white;
+  text-decoration: none;
+  padding: 18px 40px;
+  border-radius: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+  width: fit-content;
+}
+
+.error-page-container .main-btn:hover{
+  background: #346575;
+}
+
+.error-page-container .back-btn{
+  border: 2px solid #75A5B3;
+  background: transparent;
+  color: #40798C;
+  padding: 16px 45px;
+  border-radius: 18px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.error-page-container .back-btn:hover{
+  background: #eef7fa;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px){
+
+  .error-page-container .error-content h1{
+    font-size: 120px;
+  }
+
+  .error-page-container .error-content h2{
+    font-size: 34px;
+  }
+
+  .error-page-container .error-content p{
+    font-size: 18px;
+  }
+
+ .error-page-container .main-btn,
+  .error-page-container .back-btn{
+    width: 100%;
+    max-width: 320px;
+    font-size: 18px;
+  }
+
+  .error-page-container .logo span{
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px){
+
+  .error-page-container .top-bar{
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .error-page-container .error-content h1{
+    font-size: 90px;
+  }
+
+  .error-page-container .error-content h2{
+    font-size: 28px;
+  }
+
+  .error-page-container .error-content p{
+    font-size: 16px;
+  }
+
+}

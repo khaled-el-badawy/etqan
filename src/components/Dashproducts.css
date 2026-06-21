@@ -1,0 +1,360 @@
+.dashproducts-page {
+    padding: 20px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+}
+
+.dashproducts-page .top-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.dashproducts-page .page-title {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.dashproducts-page .top-actions-left {
+    display: flex;
+    gap: 15px;
+}
+
+.dashproducts-page .add-btn-main {
+    background: #D9D9D9;
+    color: #40798C;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dashproducts-page .add-btn-main:hover {
+    background: #cfcfcf;
+}
+
+.dashproducts-page .filter-dropdown select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #D9D9D9;
+    color: #40798C;
+    outline: none;
+    font-family: 'Cairo';
+    cursor: pointer;
+}
+
+.dashproducts-page .search-section-wrapper {
+    margin-bottom: 25px;
+}
+
+.dashproducts-page .search-input-box {
+    position: relative;
+}
+
+.dashproducts-page .search-input-box input {
+    width: 100%;
+    padding: 12px 20px 12px 50px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    text-align: right;
+    font-family: 'Cairo';
+}
+
+.dashproducts-page .search-icon-left {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    font-size: 1.1rem;
+}
+
+.dashproducts-page .table-main-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.dashproducts-page .products-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashproducts-page .products-data-table th {
+    background: #edf2f7;
+    padding: 15px;
+    text-align: center;
+    color: #4a5568;
+    font-weight: 700;
+}
+
+.dashproducts-page .products-data-table tr {
+    border-bottom: 1px solid #edf2f7; 
+}
+
+.dashproducts-page .products-data-table td {
+    padding: 15px;
+    text-align: center;
+    color: #2d3748;
+    vertical-align: middle; 
+}
+
+.dashproducts-page .brand-tag {
+    font-size: 0.8rem;
+    color: #608fa2;
+    font-weight: bold;
+}
+
+.dashproducts-page .rating-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.dashproducts-page .star-icon {
+    color: #f6ad55;
+}
+
+.dashproducts-page .actions-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center; 
+}
+
+.dashproducts-page .edit-btn {
+    background: #608fa2;
+    color: #fff;
+    border: none;
+    padding: 6px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.dashproducts-page .delete-btn {
+    background: #cbd5e0;
+    color: #2d3748;
+    border: none;
+    padding: 6px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.dashproducts-page .edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
+}
+
+.dashproducts-page .footer-action {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.dashproducts-page .show-all-btn-styled {
+    background: none;
+    border: 1px solid #608fa2;
+    color: #608fa2;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.dashproducts-page .show-all-btn-styled:hover {
+    background: #608fa2;
+    color: #fff;
+}
+
+.dashproducts-page .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.dashproducts-page .product-modal {
+    background: #FFF;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.dashproducts-page .modal-title-new {
+    color: #608fa2;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.dashproducts-page .image-upload-wrapper {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #cbd5e0;
+    border-radius: 15px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #f9fafb;
+}
+
+.dashproducts-page .upload-placeholder p {
+    font-size: 0.8rem;
+    color: #a0aec0;
+    margin-top: 5px;
+}
+
+.dashproducts-page .camera-icon-upload {
+    font-size: 2rem;
+    color: #a0aec0;
+}
+
+.dashproducts-page .preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dashproducts-page .input-group-valid {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.dashproducts-page .input-group-valid input {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    font-family: 'Cairo';
+}
+
+.dashproducts-page .form-row-new {
+    display: flex;
+    gap: 10px;
+}
+
+.dashproducts-page .full-width {
+    width: 100%;
+}
+
+.dashproducts-page .error-text-msg {
+    color: #e53e3e;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.dashproducts-page .modal-btns-new {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dashproducts-page .confirm-btn-new {
+    background: #608fa2;
+    color: #fff;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.dashproducts-page .cancel-btn-new {
+    background: #edf2f7;
+    color: #4a5568;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    .dashproducts-page .product-modal {
+        max-width: 520px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashproducts-page .top-header-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dashproducts-page .products-data-table thead {
+        display: none;
+    }
+
+    .dashproducts-page .products-data-table td {
+        display: block;
+        text-align: center;
+        border: none;
+        padding: 10px 0;
+    }
+    .dashproducts-page .products-data-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: bold;
+        color: #608fa2;
+        margin-bottom: 5px;
+    }
+
+    .dashproducts-page .actions-btns {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding-bottom: 25px ;
+        border-bottom: 2px solid #edf2f7;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashproducts-page .page-title {
+        font-size: 1.5rem;
+    }
+
+    .dashproducts-page .form-row-new {
+        flex-direction: column;
+    }
+
+    .dashproducts-page .confirm-btn-new, 
+    .dashproducts-page .cancel-btn-new {
+        width: 100%;
+    }
+
+    .dashproducts-page .modal-btns-new {
+        flex-direction: column;
+    }
+}

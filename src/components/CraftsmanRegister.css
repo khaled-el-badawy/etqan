@@ -1,0 +1,417 @@
+.craftsman-page-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: row;
+}
+.craftsman-page-container h1 {
+  font-size: 55px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.craftsman-page-container h1,
+.craftsman-page-container h3 {
+  color: #40798c;
+  text-align: center;
+
+  text-decoration: none;
+}
+.craftsman-page-container h3 {
+  font-size: 20px;
+}
+.craftsman-page-container .Link {
+  text-decoration: none;
+  color: #40798c;
+}
+.craftsman-page-container .Link:hover {
+  color: #75a5b3;
+}
+
+.craftsman-page-container .h4-craftsman-login {
+  color: #828181;
+  text-align: center;
+  font-size: 18px;
+  margin-top: -20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.craftsman-page-container .form-section {
+  direction: rtl;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  padding: 50px 0;
+  
+}
+
+.craftsman-page-container .field-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  min-height: 60px;
+   
+}
+
+.craftsman-page-container .fields-row {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+
+.craftsman-page-container .field-container,
+.craftsman-page-container .CompanyRegister-password-field-container {
+  display: flex;
+  flex-direction: column;
+  width: 318px;
+  margin: 10px;
+  position: relative;
+  
+}
+
+
+/* //------------------------ */
+
+.craftsman-page-container .field-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  min-height: 70px;
+  
+}
+.craftsman-page-container .error-msg {
+  color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+     position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+
+
+
+.craftsman-page-container .form-section input {
+  width: 100%;
+  padding: 20px;
+  color: rgb(30, 30, 30);
+  text-align: right;
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 20px;
+  
+}
+
+.craftsman-page-container .form-fields {
+  display: flex;
+}
+
+.craftsman-page-container .form-fields form {
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-left: 50px;
+}
+
+.craftsman-page-container .field-container,
+.craftsman-page-container .password-field-container,
+.craftsman-page-container .searchable-dropdown {
+  /* -------------------------- */
+  display: flex;
+  flex-direction: column;
+  width: 318px;
+  position: relative;
+}
+
+
+
+
+
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .craftsman-page-container .field-container,
+  .craftsman-page-container .password-field-container,
+  .craftsman-page-container .searchable-dropdown {
+    width: 250px;
+  }
+}
+
+.craftsman-page-container .searchable-dropdown input {
+  padding: 20px;
+  text-align: right;
+  color: rgb(30, 30, 30);
+  border: 1px solid #a3a9a6;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px #40798c;
+  font-size: 20px;
+  direction: rtl;
+  appearance: none;
+}
+
+.craftsman-page-container .dropdown-list {
+  position: absolute;
+  top: 100%;
+right: 0;
+  width: 200px;
+  max-height: 120px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+.craftsman-page-container .dropdown-list li {
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.craftsman-page-container .dropdown-list li:hover {
+  background: #f2f2f2;
+}
+
+.craftsman-page-container .no-result {
+  color: gray;
+  text-align: center;
+}
+
+/* .craftsman-page-container .password-field-container {
+  position: relative;
+} */
+.craftsman-page-container .eye {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 25px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  color: #40798c;
+}
+.craftsman-page-container input::-ms-reveal {
+  display: none;
+}
+
+.craftsman-page-container .phone-errors {
+  color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 5px -10px;
+   position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+}
+.craftsman-page-container .password-error-msg {
+   color: rgb(235, 138, 138);
+  font-size: 0.9rem;
+  /* margin: 0; */
+  margin: 0 40px -10px;
+   position: absolute;
+  top: 100%;
+  right: 0;
+  /* line-height: 1.2rem;
+  min-height: 1.0rem; */
+  
+  
+}
+
+
+.craftsman-page-container button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin: 35px auto;
+  width: 250px;
+  max-width: 210px;
+  color: white;
+  background-color: #40798c;
+  padding: 12px;
+  border-radius: 35px;
+  font-size: 20px;
+  border: none;
+}
+.craftsman-page-container .form-section button:hover {
+  box-shadow: 2px 2px 5px #a3a9a6;
+  border: 1px solid #40798c;
+}
+
+/* DESKTOP */
+
+/* ----------banner---------------------- */
+.craftsman-page-container .image {
+  height: 100vh;
+}
+/* .craftsman-page-container .image img {
+} */
+@media (max-width: 1130px) {
+  .craftsman-page-container .image {
+    height: 150vh;
+  }
+}
+.craftsman-page-container .image img {
+  width: 31vw;
+  height: 100%;
+}
+
+
+
+
+/* TABLET */
+@media (max-width: 991px) {
+  .craftsman-page-container {
+    flex-direction: row;
+     height: 125vh;
+    overflow-y: auto;
+    justify-content: space-between;
+  }
+  .craftsman-page-container .form-fields form {
+    min-height: 100vh;
+  }
+  /* .craftsman-page-container .form-section {
+  } */
+
+  .craftsman-page-container .form-section,
+  .craftsman-page-container .h4-login {
+    position: relative;
+    font-size: 18px;
+    margin-top: -60px;
+   
+  }
+
+  .craftsman-page-container .form-section input,
+  .craftsman-page-container .password-field input {
+    /* width: 35vw; */
+    font-size: 20px;
+  
+  }
+
+
+  .craftsman-page-container .fields-row {
+    grid-template-columns:repeat(2,1fr);
+  }
+  .craftsman-page-container .passwords-row {
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+  }
+
+  .craftsman-page-container .password-field {
+    width: 100%;
+  }
+
+  .craftsman-page-container .image img {
+    object-fit: initial;
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .craftsman-page-container {
+    flex-direction: column;
+    align-items: center;
+    height: 180vh;
+  }
+
+
+
+  .craftsman-page-container .form-section {
+    width: 100%;
+    
+  }
+
+
+  .craftsman-page-container h1 {
+    margin-left: 0;
+    margin-top: 90px;
+    text-align: center;
+     margin-right: 30px;
+  }
+
+    .craftsman-page-container h3 {
+    text-align: center;
+     margin-right: 30px;
+  }
+  .craftsman-page-container .h4-craftsman-login {
+    margin: -20px 20px 0 0;
+   
+  }
+  .craftsman-page-container .h4-craftsman-login {
+   
+   transition: transform 0.3s ease; 
+  }
+  .craftsman-page-container .h4-craftsman-login {
+    transform: translateY(50px);
+   
+  }
+
+  .craftsman-page-container .form-section input,
+  .craftsman-page-container .password-field input {
+    display: block;
+    font-size: 20px;
+  }
+    .craftsman-page-container .fields-row {
+    grid-template-columns: 1fr;
+    margin-left: -50px;
+  }
+
+  .craftsman-page-container .passwords-row {
+    flex-direction: column;
+    display: block;
+  }
+
+    
+   .craftsman-page-container .confirm-password-field-container,
+  .craftsman-page-container .password-field-container,
+  .craftsman-page-container .link-button {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+
+  /* لو فوكس على رقم الهاتف */
+  .craftsman-page-container .phone-field:focus-within ~ .password-field-container,
+  .craftsman-page-container .phone-field:focus-within ~ .confirm-password-field-container,
+  .craftsman-page-container .phone-field:focus-within ~ .link-button {
+    transform: translateY(80px);
+  }
+
+  /* لو فوكس على كلمة السر */
+  .craftsman-page-container .password-field-container:focus-within ~ .confirm-password-field-container,
+  .craftsman-page-container .password-field-container:focus-within ~ .link-button {
+    transform: translateY(80px);
+  }
+  .craftsman-page-container .link-button  {
+    width: 60%;
+     margin-top: -15px;
+      margin-right: 80px;
+  }
+  .craftsman-page-container .link-button  {
+   
+   transition: transform 0.3s ease;
+
+  }
+  .craftsman-page-container .link-button  {
+    
+  transform: translateY(70px);
+  }
+  
+  .craftsman-page-container .image {
+    display: none;
+  }
+}
