@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-<<<<<<< HEAD
 import axios from "axios";
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 // animation library
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -23,7 +20,6 @@ import { BsPin } from "react-icons/bs";
 import { ImSpinner3 } from "react-icons/im";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { PiScrewdriverFill } from "react-icons/pi";
-<<<<<<< HEAD
 import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
@@ -204,99 +200,6 @@ const normalizeCraftmanProfile = (data) => {
     joinedDate: data.joinedDate || "",
   };
 };
-=======
-import { FaArrowDown, FaArrowUp, FaCalendarAlt, FaCamera } from "react-icons/fa";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-
-/* =======================
-   Mock Data
-======================= */
-const handiesData = [
-  {
-    id: 1,
-    ctaftName: "احمد علي",
-    job: "كهربائي منازل وتشطيبات",
-    rating: 0,
-    verified: true,
-    avatar: "/images/Ellipse 321.png",
-    cover: "/images/profile-cover.png",
-    about: {
-      aboutInfo:
-        "كهربائي متخصص في جميع أعمال الكهرباء المنزلية والتجارية، أعمل بدقة واهتمام بأدق التفاصيل، مع الالتزام التام بمعايير الأمان وجودة التنفيذ، وهدفي الأساسي هو تقديم خدمة مضمونة ترضي العميل.",
-      experience: "8 سنوات",
-      area: "القاهرة والجيزة",
-      completedOrders: "0",
-    },
-    services: [
-      "تأسيس كهرباء الشقق والفيلات",
-      "صيانة الأعطال الكهربائية",
-      "تركيب وحدات الإضاءة والنجف",
-      "فحص الأعطال ومعالجة القفلات",
-      "تركيب مفاتيح وبرايز",
-      "تركيب لوحات التوزيع",
-    ],
-    workInfo: {
-      area: " القاهرة - الجيزة - 6 أكتوبر - الشيخ زايد",
-      workingHours: "من 9 صباحًا حتى 9 مساءً",
-      speedOfResponse: "خلال ساعة",
-      emergencyService: "متاحة",
-    },
-    worksImages: [
-      "/images/work (1).png",
-      "/images/work (2).png",
-      "/images/work (6).png",
-      "/images/work (7).png",
-      "/images/work (8).png",
-      "/images/work (9).png",
-      "/images/work (1).png",
-      "/images/work (2).png",
-      "/images/work (6).png",
-      "/images/work (7).png",
-      "/images/work (8).png",
-      "/images/work (9).png",
-      "/images/work (2).png",
-    ],
-    reviews: [
-      {
-        id: 1,
-        ctaftName: "محمد رفعت",
-        date: "21/8/2025",
-        rating: 5,
-        comment:
-          "الحرفي وصل في الموعد المحدد بالضبط، وكان محترم جدًا في التعامل. فحص المشكلة الأول وشرح لي سببها قبل ما يبدأ الشغل، وبعدها نفّذ الإصلاح بسرعة ونظافة. بصراحة تجربة مريحة وموثوقة",
-        avatar: "/images/revewer (1).png",
-      },
-      {
-        id: 2,
-        ctaftName: "أحمد السيد",
-        date: "21/8/2025",
-        rating: 4,
-        comment:
-          "عجبني جدًا أسلوب التعامل، كان صبور وشرح لي كل خطوة قبل التنفيذ. عرض عليّ أكثر من حل وخلاني أختار الأنسب، وده خلاني أحس بثقة كبيرة في الخدمة.",
-        avatar: "/images/revewer (2).png",
-      },
-      {
-        id: 3,
-        ctaftName: "سارة جمال",
-        date: "21/8/2025",
-        rating: 5,
-        comment:
-          "كنت محتاجة الإصلاح يتم بسرعة، والحرفي لبّى الطلب في نفس اليوم. الشغل كان مرتب ومحترف، وحسّيت إن فيه اهتمام حقيقي بالتفاصيل.",
-        avatar: "/images/revewer (3).png",
-      },
-      {
-        id: 4,
-        ctaftName: "محمد عبد الله",
-        date: "21/8/2025",
-        rating: 2,
-        comment:
-          "كنت محتاجة الإصلاح يتم بسرعة، والحرفي لبّى الطلب في نفس اليوم. الشغل كان مرتب ومحترف، وحسّيت إن فيه اهتمام حقيقي بالتفاصيل.",
-        avatar: "/images/revewer (1).png",
-      },
-    ],
-  },
-];
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
 /* =======================
    Profile Summary
@@ -310,31 +213,21 @@ function ProfileSummary({
   isAccountActive,
   profileImg,
   setProfileImg,
-<<<<<<< HEAD
   setProfileFile,
   coverImg,
   setCoverImg,
   setCoverFile,
-=======
-  coverImg,
-  setCoverImg,
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }) {
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
       ? allRatings.reduce((acc, curr) => acc + curr, 0) / allRatings.length
-<<<<<<< HEAD
       : Number(craftman.rating) || 0;
-=======
-      : 0;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   const handleImageChange = (e, type) => {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-<<<<<<< HEAD
       if (type === "profile") {
         setProfileImg(url);
         setProfileFile(file);
@@ -342,10 +235,6 @@ function ProfileSummary({
         setCoverImg(url);
         setCoverFile(file);
       }
-=======
-      if (type === "profile") setProfileImg(url);
-      else setCoverImg(url);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     }
   };
 
@@ -354,11 +243,7 @@ function ProfileSummary({
       <div
         className="coverBox"
         data-aos="fade-down"
-<<<<<<< HEAD
         style={{ backgroundColor: isAccountActive ? "" : "#f0f2f5" }}
-=======
-        style={{ backgroundColor: isAccountActive ? "transparent" : "#f0f2f5" }}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       >
         {(isAccountActive || coverImg) && (
           <img src={coverImg || craftman.cover} alt="cover" />
@@ -383,11 +268,7 @@ function ProfileSummary({
               className="profile-avatar"
               data-aos="fade-up"
               style={{
-<<<<<<< HEAD
                 backgroundColor: isAccountActive ? "" : "#e0e0e0",
-=======
-                backgroundColor: isAccountActive ? "transparent" : "#e0e0e0",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               }}
             >
               {(isAccountActive || profileImg) && (
@@ -487,19 +368,15 @@ function ProfileSection({
   setEditMode,
   isAccountActive,
   setIsAccountActive,
-<<<<<<< HEAD
   onUpdateProfile,
   profileFile,
   coverFile,
   profileImg,
   coverImg,
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }) {
   const [activeMainTab, setActiveMainTab] = useState("about");
   const [activeSideTab, setActiveSideTab] = useState("basic-info");
   const [selectedImage, setSelectedImage] = useState(null);
-<<<<<<< HEAD
 
   // ===== حالات البورتفوليو =====
   const [isUploadingPortfolio, setIsUploadingPortfolio] = useState(false);
@@ -517,14 +394,6 @@ function ProfileSection({
     normalizeMaritalStatus(craftman.maritalStatus),
   );
   const [selectedJob, setSelectedJob] = useState(craftman.job || "");
-=======
-  const [showAllReviews, setShowAllReviews] = useState(false);
-
-  // States الحقول
-  
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const [password, setPassword] = useState("");
   const [showCurrentPassword, setShowPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
@@ -532,7 +401,6 @@ function ProfileSection({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-<<<<<<< HEAD
   const [serviceTags, setServiceTags] = useState(craftman.services || []);
   const [serviceInput, setServiceInput] = useState("");
   const [aboutInfo, setAboutInfo] = useState(craftman.about?.aboutInfo || "");
@@ -547,16 +415,6 @@ function ProfileSection({
   const [dobError, setDobError] = useState("");
   const dobRef = useRef(null);
   const dobDateRef = useRef(null);
-=======
-
-  //  عشان نتحكم في تاريخ الميلاد في نموذج تعديل الملف الشخصي مع ماسك DD/MM/YYYY
-  const DOB_MASK = "--/--/----";
-  const [dob, setDob] = useState("");
-  const [dobFocused, setDobFocused] = useState(false);
-  const [dobError, setDobError] = useState("");
-  const dobRef = React.useRef(null);
-  const dobDateRef = React.useRef(null);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   // حساب أقصى تاريخ مسموح (العمر لازم يكون 18 سنة على الأقل)
   const getMaxDateForAge18 = () => {
@@ -660,10 +518,6 @@ function ProfileSection({
 
   // عند الضغط على الحقل، نعرض الماسك ونحرك الكيرسور لأول خانة فاضية
   const handleDobFocus = () => {
-<<<<<<< HEAD
-=======
-    setDobFocused(true);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     if (!dob) {
       setDob(DOB_MASK);
     }
@@ -675,10 +529,6 @@ function ProfileSection({
 
   // عند مغادرة الحقل، لو مفيش أرقام نرجع للحالة الفاضية (placeholder)
   const handleDobBlur = () => {
-<<<<<<< HEAD
-=======
-    setDobFocused(false);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     const currentDisplay = dob || DOB_MASK;
     const digits = getDigitsFromMask(currentDisplay);
     if (digits.length === 0) {
@@ -706,12 +556,8 @@ function ProfileSection({
 
   // التحقق من صحة التاريخ مع شرط العمر 18 سنة
   const validateDob = (digits) => {
-<<<<<<< HEAD
     if (digits.length === 8) {
       const day = parseInt(digits.slice(0, 2), 10);
-=======
-    if (digits.length === 8) {const day = parseInt(digits.slice(0, 2), 10);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       const month = parseInt(digits.slice(2, 4), 10);
       const year = parseInt(digits.slice(4, 8), 10);
       const currentYear = new Date().getFullYear();
@@ -750,7 +596,6 @@ function ProfileSection({
     }
   };
 
-<<<<<<< HEAD
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitMessage({ type: "", text: "" });
@@ -774,14 +619,6 @@ function ProfileSection({
       errors.fullName = "الاسم مطلوب";
     }
 
-=======
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const errors = {};
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     // 1. Phone: Required & must start with a valid Egyptian prefix
     if (!phone.trim()) {
       errors.phone = "رقم الهاتف مطلوب";
@@ -797,11 +634,8 @@ function ProfileSection({
       }
       if (!newPassword.trim()) {
         errors.newPassword = "أدخل كلمة السر الجديدة";
-<<<<<<< HEAD
       } else if (newPassword.length < 8) {
         errors.newPassword = "كلمة السر الجديدة يجب ألا تقل عن 8 أحرف";
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       }
       if (newPassword !== confirmPassword) {
         errors.confirmPassword = "كلمة السر الجديدة وتأكيدها غير متطابقتين";
@@ -814,7 +648,6 @@ function ProfileSection({
       return;
     }
 
-<<<<<<< HEAD
     const normalizedServiceTags = serviceInput.trim()
       ? [...serviceTags, serviceInput.trim()]
       : serviceTags;
@@ -1152,30 +985,19 @@ function ProfileSection({
     } finally {
       setDeletingImageId(null);
     }
-=======
-    // All good — clear errors and save
-    setFormErrors({});
-    setIsAccountActive(true);
-    setEditMode(false);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   };
 
   const allRatings = craftman.reviews?.map((review) => review.rating) || [];
   const avgRating =
     allRatings.length > 0
       ? allRatings.reduce((acc, curr) => acc + curr, 0) / allRatings.length
-<<<<<<< HEAD
       : Number(craftman.rating) || 0;
-=======
-      : 0;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const displayedReviews = showAllReviews
     ? craftman.reviews
     : craftman.reviews?.slice(0, 3);
 
   const renderSideContent = () => {
     // تجهيز بيانات افتراضية لو الداتا جاية من الداشبورد ناقصة
-<<<<<<< HEAD
     const aboutData = craftman.about || {
       aboutInfo: "لا توجد معلومات متوفرة حالياً.",
       experience: craftman.experience || "غير محدد",
@@ -1189,18 +1011,12 @@ function ProfileSection({
       speedOfResponse: "سريع",
       emergencyService: "متاحة",
     };
-=======
-    const aboutData = craftman.about || { aboutInfo: "لا توجد معلومات متوفرة حالياً.", experience: craftman.experience || "غير محدد", area: craftman.location || "غير محدد", completedOrders: "0" };
-    const servicesData = craftman.services || ["تقديم خدمات عامة"];
-    const workData = craftman.workInfo || { area: craftman.location, workingHours: "غير محدد", speedOfResponse: "سريع", emergencyService: "متاحة" };
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
     switch (activeSideTab) {
       case "basic-info":
         return (
           <ul className="basic-info-content">
             <li className="about-info">
-<<<<<<< HEAD
               <FaUser className="icon" /> {aboutData.aboutInfo}
             </li>
             <li className="experience">
@@ -1212,30 +1028,13 @@ function ProfileSection({
             <li className="completed-orders">
               <MdWork className="icon" />{" "}
               {`عدد الطلبات المنفذة : ${aboutData.completedOrders} طلب`}
-=======
-              <FaUser className="icon" /> {craftman.about.aboutInfo}
-            </li>
-            <li className="experience">
-              <MdAccessTime className="icon" /> {craftman.about.experience}
-            </li>
-            <li className="area">
-              <MdLocationPin className="icon" /> {craftman.about.area}
-            </li>
-            <li className="completed-orders">
-              <MdWork className="icon" />{" "}
-              {`عدد الطلبات المنفذة : ${craftman.about.completedOrders} طلب`}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </li>
           </ul>
         );
       case "services":
         return (
           <ul className="services-content">
-<<<<<<< HEAD
             {servicesData.map((s, i) => (
-=======
-            {craftman.services.map((s, i) => (
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               <li key={i}>
                 <PiScrewdriverFill className="icon" /> {s}
               </li>
@@ -1246,7 +1045,6 @@ function ProfileSection({
         return (
           <ul className="work-info-content">
             <li>
-<<<<<<< HEAD
               <BsPin className="icon" /> {`نطاق الخدمة : ${workData.area}`}
             </li>
             <li>
@@ -1260,22 +1058,6 @@ function ProfileSection({
             <li>
               <AiOutlineExclamationCircle className="icon" />{" "}
               {`خدمة الطوارئ : ${workData.emergencyService}`}
-=======
-              <BsPin className="icon" />{" "}
-              {`نطاق الخدمة : ${craftman.workInfo.area}`}
-            </li>
-            <li>
-              <MdAccessTime className="icon" />{" "}
-              {`ساعات العمل : ${craftman.workInfo.workingHours}`}
-            </li>
-            <li>
-              <ImSpinner3 className="icon" />{" "}
-              {`سرعة الاستجابة : ${craftman.workInfo.speedOfResponse}`}
-            </li>
-            <li>
-              <AiOutlineExclamationCircle className="icon" />{" "}
-              {`خدمة الطوارئ : ${craftman.workInfo.emergencyService}`}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </li>
           </ul>
         );
@@ -1290,16 +1072,12 @@ function ProfileSection({
         <h2>
           {isAccountActive ? "تعديل الملف الشخصي" : "إكمال بيانات الحرفي"}
         </h2>
-<<<<<<< HEAD
         {/* 159 */}
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         <form className="edit-profile-form" onSubmit={handleSubmit}>
           <div className="form-group top">
             <h3>البيانات الشخصية</h3>
             <input
               type="text"
-<<<<<<< HEAD
               name="fullName"
               placeholder="الاسم"
               defaultValue={craftman.ctaftName}
@@ -1310,13 +1088,6 @@ function ProfileSection({
               <p className="dob error-msg">{formErrors.fullName}</p>
             )}
 
-=======
-              placeholder="الاسم"
-              defaultValue={craftman.ctaftName}
-              required
-            />
-            
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             {/* -------- */}
             <div className="dob-field-wrapper">
               <input
@@ -1351,7 +1122,6 @@ function ProfileSection({
             </div>
             {dobError && <p className="dob error-msg">{dobError}</p>}
             {/* -------- */}
-<<<<<<< HEAD
             <select
               name="maritalStatus"
               value={maritalStatus}
@@ -1365,14 +1135,6 @@ function ProfileSection({
               <option value="2">متزوج</option>
               <option value="3">ارمل</option>
               <option value="4">مطلق</option>
-=======
-            <select>
-              <option value="">الحالة الاجتماعية</option>
-              <option>متزوج</option>
-              <option>أعزب</option>
-              <option>ارمل</option>
-              <option>مطلق</option>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </select>
             <input
               type="email"
@@ -1384,7 +1146,6 @@ function ProfileSection({
               type="tel"
               placeholder="رقم الهاتف"
               value={phone}
-<<<<<<< HEAD
               onChange={(e) => {
                 setPhone(e.target.value);
                 setFormErrors((prev) => ({ ...prev, phone: "" }));
@@ -1398,22 +1159,12 @@ function ProfileSection({
             <input
               type="text"
               name="governorate"
-=======
-              onChange={(e) => { setPhone(e.target.value); setFormErrors((prev) => ({ ...prev, phone: "" })); }}
-              maxLength={11}
-              style={formErrors.phone ? { borderColor: "#ff6b6b" } : {}}
-            />
-            {formErrors.phone && <p className="dob error-msg">{formErrors.phone}</p>}
-            <input
-              type="text"
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               placeholder="المحافظة"
               defaultValue={craftman.about.area}
             />
           </div>
           <div className="form-group middle">
             <h3>البيانات الأساسية</h3>
-<<<<<<< HEAD
             <select
               name="job"
               value={selectedJob}
@@ -1465,30 +1216,11 @@ function ProfileSection({
             <input
               type="text"
               name="serviceArea"
-=======
-            <input
-              type="text"
-              placeholder="عن الحرفي"
-              defaultValue={craftman.job}
-            />
-            <input
-              type="text"
-              placeholder="سنوات الخبرة"
-              defaultValue={craftman.about.experience}
-            />
-            <input type="text" placeholder="الخدمات" />
-          </div>
-          <div className="form-group bottom">
-            <h3>معلومات العمل</h3>
-            <input
-              type="text"
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               placeholder="نطاق الخدمة"
               defaultValue={craftman.workInfo.area}
             />
             <input
               type="text"
-<<<<<<< HEAD
               name="workHours"
               placeholder="مواعيد العمل"
               defaultValue={craftman.workInfo.workingHours}
@@ -1497,12 +1229,6 @@ function ProfileSection({
               name="emergencyService"
               defaultValue={craftman.workInfo.emergencyService || ""}
             >
-=======
-              placeholder="مواعيد العمل"
-              defaultValue={craftman.workInfo.workingHours}
-            />
-            <select>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               <option value="">خدمة الطوارئ</option>
               <option>متاحة</option>
               <option>غير متاحة</option>
@@ -1515,14 +1241,10 @@ function ProfileSection({
                 type={showCurrentPassword ? "text" : "password"}
                 placeholder="كلمة السر الحالية"
                 value={password}
-<<<<<<< HEAD
                 onChange={(e) => {
                   setPassword(e.target.value);
                   setFormErrors((prev) => ({ ...prev, password: "" }));
                 }}
-=======
-                onChange={(e) => { setPassword(e.target.value); setFormErrors((prev) => ({ ...prev, password: "" })); }}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 style={formErrors.password ? { borderColor: "#ff6b6b" } : {}}
               />
               <span
@@ -1532,26 +1254,18 @@ function ProfileSection({
                 {showCurrentPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
-<<<<<<< HEAD
             {formErrors.password && (
               <p className="dob error-msg">{formErrors.password}</p>
             )}
-=======
-            {formErrors.password && <p className="dob error-msg">{formErrors.password}</p>}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <div className="password-field">
               <input
                 type={showNewPassword ? "text" : "password"}
                 placeholder="كلمة السر الجديدة"
                 value={newPassword}
-<<<<<<< HEAD
                 onChange={(e) => {
                   setNewPassword(e.target.value);
                   setFormErrors((prev) => ({ ...prev, newPassword: "" }));
                 }}
-=======
-                onChange={(e) => { setNewPassword(e.target.value); setFormErrors((prev) => ({ ...prev, newPassword: "" })); }}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 style={formErrors.newPassword ? { borderColor: "#ff6b6b" } : {}}
               />
               <span
@@ -1561,19 +1275,14 @@ function ProfileSection({
                 {showNewPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
-<<<<<<< HEAD
             {formErrors.newPassword && (
               <p className="dob error-msg">{formErrors.newPassword}</p>
             )}
-=======
-            {formErrors.newPassword && <p className="dob error-msg">{formErrors.newPassword}</p>}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <div className="password-field">
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="تأكيد كلمة السر"
                 value={confirmPassword}
-<<<<<<< HEAD
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
                   setFormErrors((prev) => ({ ...prev, confirmPassword: "" }));
@@ -1581,10 +1290,6 @@ function ProfileSection({
                 style={
                   formErrors.confirmPassword ? { borderColor: "#ff6b6b" } : {}
                 }
-=======
-                onChange={(e) => { setConfirmPassword(e.target.value); setFormErrors((prev) => ({ ...prev, confirmPassword: "" })); }}
-                style={formErrors.confirmPassword ? { borderColor: "#ff6b6b" } : {}}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               />
               <span
                 className="password-eye"
@@ -1593,7 +1298,6 @@ function ProfileSection({
                 {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
               </span>
             </div>
-<<<<<<< HEAD
             {formErrors.confirmPassword && (
               <p className="dob error-msg">{formErrors.confirmPassword}</p>
             )}
@@ -1606,21 +1310,11 @@ function ProfileSection({
           <div className="form-btns">
             <button type="submit" className="save-btn" disabled={isSubmitting}>
               {isSubmitting ? "جاري الحفظ..." : "حفظ"}
-=======
-            {formErrors.confirmPassword && <p className="dob error-msg">{formErrors.confirmPassword}</p>}
-          </div>
-          <div className="form-btns">
-            <button type="submit" className="save-btn">
-              حفظ
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </button>
             <button
               type="button"
               className="cancel-btn"
-<<<<<<< HEAD
               disabled={isSubmitting}
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               onClick={() => setEditMode(false)}
             >
               إلغاء
@@ -1677,13 +1371,8 @@ function ProfileSection({
             </button>
           </div>
           {activeMainTab === "about" && (
-<<<<<<< HEAD
             <div className="about-section" data-aos="fade-up">
               <div className="side-tabs">
-=======
-            <div className="about-section">
-              <div className="side-tabs" data-aos="fade-up">
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 <button
                   className={activeSideTab === "basic-info" ? "active" : ""}
                   onClick={() => setActiveSideTab("basic-info")}
@@ -1708,7 +1397,6 @@ function ProfileSection({
           )}
           {activeMainTab === "works" && (
             <div className="portfolio-section">
-<<<<<<< HEAD
               {/* رسالة حالة البورتفوليو */}
               {portfolioMessage.text && (
                 <p
@@ -1805,24 +1493,6 @@ function ProfileSection({
                         </div>
                       </div>
                     )}
-=======
-              <div className="portfolio-grid">
-                <label className="work-item upload-box">
-                  <input type="file" accept="image/*" hidden />
-                  <img
-                    src="/images/upload.png"
-                    alt="upload"
-                    className="upload-icon"
-                  />
-                </label>
-                {craftman.worksImages.map((img, i) => (
-                  <div
-                    key={i}
-                    className="work-item"
-                    onClick={() => setSelectedImage(img)}
-                  >
-                    <img src={img} alt="work" className="work-image" />
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                   </div>
                 ))}
               </div>
@@ -1975,16 +1645,6 @@ function RequestServiceModal({ craftmanName, onClose }) {
   const filteredGovs = egyptianGovernorates.filter((gov) =>
     gov.includes(searchTerm),
   );
-<<<<<<< HEAD
-=======
-  // this component is just a dummy form to show the success toast after submit, it doesn't actually send any data anywhere
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowSuccessMsg(true);
-    setTimeout(() => onClose(), 1500);
-  };
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
@@ -1995,11 +1655,7 @@ function RequestServiceModal({ craftmanName, onClose }) {
           </div>
         ) : (
           <>
-<<<<<<< HEAD
             <h2 className="modal-title">{craftmanName}</h2>
-=======
-         <h2 className="modal-title">{craftmanName}</h2>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <form
               className="request-form"
               onSubmit={(e) => {
@@ -2073,11 +1729,7 @@ function RequestServiceModal({ craftmanName, onClose }) {
                 </button>
               </div>
             </form>
-<<<<<<< HEAD
           </>
-=======
-            </>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         )}
       </div>
     </div>
@@ -2085,7 +1737,6 @@ function RequestServiceModal({ craftmanName, onClose }) {
 }
 
 /* ================= PAGE COMPONENT ================= */
-<<<<<<< HEAD
 /* ================= PAGE COMPONENT ================= */
 const ProfilePage = () => {
   // جلب الـ ID من اللوكل ستوريدج بدلاً من الرابط
@@ -2097,28 +1748,17 @@ const ProfilePage = () => {
   const [editMode, setEditMode] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [isAccountActive, setIsAccountActive] = useState(true);
-=======
-const ProfilePage = () => {
-  const { id = 1 } = useParams();
-  const [editMode, setEditMode] = useState(false);
-  const [showRequestModal, setShowRequestModal] = useState(false);
-  const [isAccountActive, setIsAccountActive] = useState(false);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [profileImg, setProfileImg] = useState("");
   const [coverImg, setCoverImg] = useState("");
-<<<<<<< HEAD
   const [profileFile, setProfileFile] = useState(null);
   const [coverFile, setCoverFile] = useState(null);
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-<<<<<<< HEAD
   useEffect(() => {
     const fetchCraftmanProfile = async () => {
       // التحقق من وجود الـ userId لتجنب إرسال طلب API فارغ
@@ -2226,42 +1866,23 @@ const ProfilePage = () => {
       </div>
     );
   }
-=======
-  const handleDeleteAccount = () => {
-    setShowConfirmModal(false);
-    setShowDeleteToast(true);
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 2000);
-  };
-
-  const craftman = handiesData.find((e) => e.id === Number(id));
-  if (!craftman) return <p>Not Found</p>;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   return (
     <div className="professional-profile-container">
       {showConfirmModal && (
         <div
           className="modal-overlay"
-<<<<<<< HEAD
           onClick={() => !isDeleting && setShowConfirmModal(false)}
         >
           <div
             className="modal-box delete-confirm-modal"
             onClick={(e) => e.stopPropagation()}
           >
-=======
-          onClick={() => setShowConfirmModal(false)}
-        >
-          <div className="modal-box delete-confirm-modal">
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <h3>تنبيه حذف الحساب</h3>
             <p>
               هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا
               الإجراء.
             </p>
-<<<<<<< HEAD
             {deleteError && (
               <p
                 style={{ color: "#ff6b6b", fontSize: "14px", margin: "8px 0" }}
@@ -2269,29 +1890,19 @@ const ProfilePage = () => {
                 {deleteError}
               </p>
             )}
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <div className="modal-btns">
               <button
                 className="confirm-btn"
                 style={{ backgroundColor: "#ff6b6b" }}
                 onClick={handleDeleteAccount}
-<<<<<<< HEAD
                 disabled={isDeleting}
               >
                 {isDeleting ? "جاري الحذف..." : "نعم، احذف الحساب"}
-=======
-              >
-                نعم
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               </button>
               <button
                 className="cancel-btn"
                 onClick={() => setShowConfirmModal(false)}
-<<<<<<< HEAD
                 disabled={isDeleting}
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               >
                 إلغاء
               </button>
@@ -2339,7 +1950,6 @@ const ProfilePage = () => {
         isAccountActive={isAccountActive}
         profileImg={profileImg}
         setProfileImg={setProfileImg}
-<<<<<<< HEAD
         setProfileFile={setProfileFile}
         coverImg={coverImg}
         setCoverImg={setCoverImg}
@@ -2348,33 +1958,19 @@ const ProfilePage = () => {
 
       <ProfileSection
         key={craftman.id}
-=======
-        coverImg={coverImg}
-        setCoverImg={setCoverImg}
-      />
-
-      <ProfileSection
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         craftman={craftman}
         editMode={editMode}
         setEditMode={setEditMode}
         isAccountActive={isAccountActive}
         setIsAccountActive={setIsAccountActive}
-<<<<<<< HEAD
         onUpdateProfile={setCraftman}
         profileFile={profileFile}
         coverFile={coverFile}
         profileImg={profileImg}
         coverImg={coverImg}
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       />
     </div>
   );
 };
 
-<<<<<<< HEAD
 export default ProfilePage;
-=======
-export default ProfilePage;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

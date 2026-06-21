@@ -6,7 +6,6 @@
 }
 
 .profile-container .profile-header {
-<<<<<<< HEAD
   height: 200px;
   background-size: cover;
   background-position: center;
@@ -15,15 +14,6 @@
 }
 
 .profile-container .edit-cover-btn {
-=======
-  height: 380px;
-  background-size: cover;
-  background-position: center;
-  position: relative; 
-}
-
-.profile-container  .edit-cover-btn {
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   position: absolute;
   bottom: 20px;
   left: 40px;
@@ -361,11 +351,7 @@
   margin: 20px auto 0;
   border: none;
   background: none;
-<<<<<<< HEAD
   color: #40798c;
-=======
-  color: #40798c; 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   font-weight: bold;
   cursor: pointer;
   font-size: 20px;
@@ -596,31 +582,18 @@
 }
 
 .profile-container .edit-review-modal {
-<<<<<<< HEAD
   max-width: 650px;
   padding: 40px;
   border-radius: 12px;
-=======
-  max-width: 650px ;
-  padding: 40px ;
-  border-radius: 12px ;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   background: #fff;
   position: relative;
 }
 
 .profile-container .modal-title-custom {
-<<<<<<< HEAD
   color: #40798c;
   font-size: 28px;
   margin-bottom: 30px;
   font-weight: bold;
-=======
-  color: #40798c ;
-  font-size: 28px ;
-  margin-bottom: 30px ;
-  font-weight: bold ;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   text-align: center;
 }
 
@@ -680,11 +653,7 @@
   gap: 8px;
   font-weight: bold;
   font-size: 18px;
-<<<<<<< HEAD
   margin-right: auto;
-=======
-  margin-left: auto; 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(255, 107, 107, 0.2);
 }
@@ -738,11 +707,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-<<<<<<< HEAD
   color: #ff6b6b;
-=======
-  color: #ff6b6b; 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -754,7 +719,6 @@
 }
 
 @keyframes popIn {
-<<<<<<< HEAD
   0% {
     transform: scale(0.5);
     opacity: 0;
@@ -764,10 +728,6 @@
     transform: scale(1);
     opacity: 1;
   }
-=======
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .profile-container .modal-title-delete {
@@ -783,7 +743,6 @@
   line-height: 1.6;
   font-size: 16px;
 }
-<<<<<<< HEAD
 
 @keyframes scaleUp {
   from {
@@ -798,15 +757,6 @@
 @media (max-width: 1024px) {
 
   .profile-container .profile-identity-wrapper,
-=======
-@keyframes scaleUp {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-@media (max-width: 1024px) {
-  .profile-container 
-  .profile-identity-wrapper,
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .reviews-section-card,
   .about-content-card,
   .edit-details-card {
@@ -820,68 +770,44 @@
     gap: 30px;
     text-align: center;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .bars-side {
     width: 100%;
     max-width: 100%;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .review-card-item,
   .history-item-row {
     flex-direction: column;
     gap: 20px;
     text-align: center;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .user-meta,
   .history-user-info {
     width: 100%;
     justify-content: center;
     flex-direction: column;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .identity-content {
     flex-direction: column;
     align-items: center;
   }
-<<<<<<< HEAD
 
   .profile-container .profile-identity-wrapper {
     margin-top: -80px;
   }
 
-=======
-  .profile-container .profile-identity-wrapper {
-    margin-top: -80px;
-  }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .review-btns {
     width: 100%;
     justify-content: center;
   }
-<<<<<<< HEAD
 
   .profile-container .personal-data-form {
     width: 100%;
   }
 
-=======
-  .profile-container .personal-data-form {
-    width: 100%;
-  }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .edit-cover-btn {
     left: 20px;
     padding: 5px 10px;
@@ -893,15 +819,11 @@
   .profile-container .profile-header {
     height: 180px;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .main-avatar {
     width: 110px;
     height: 110px;
   }
-<<<<<<< HEAD
 
   .profile-container .client-name {
     font-size: 20px;
@@ -911,23 +833,12 @@
     font-size: 45px;
   }
 
-=======
-  .profile-container  .client-name {
-    font-size: 20px;
-  }
-  .profile-container .big-score {
-    font-size: 45px;
-  }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .review-btns,
   .form-buttons {
     flex-direction: column;
     width: 100%;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .btn-edit-rev,
   .btn-complain,
   .btn-save,
@@ -935,7 +846,6 @@
     justify-content: center;
     width: 100%;
   }
-<<<<<<< HEAD
 
   .profile-container .edit-nav-tab {
     margin: 0 auto 20px;
@@ -949,17 +859,6 @@
     font-size: 28px;
   }
 
-=======
-  .profile-container .edit-nav-tab {
-    margin: 0 auto 20px;
-  }
-  .profile-container  .modal-content {
-    padding: 20px;
-  }
-  .profile-container .interactive-stars-row {
-    font-size: 28px;
-  }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .edit-cover-btn {
     left: 10px;
     bottom: 10px;

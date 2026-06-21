@@ -22,24 +22,16 @@
   width: 100%;
   margin: 0 auto;
 }
-<<<<<<< HEAD
 
 .profile-container .activation-content h3 {
-=======
-.profile-container .activation-content h3{
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   color: #40798C;
   font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-<<<<<<< HEAD
 
 .profile-container .activation-content p {
-=======
-.profile-container .activation-content p{
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   font-size: 24px;
 }
 
@@ -59,11 +51,7 @@
   cursor: pointer;
   margin-top: 15px;
   transition: 0.3s;
-<<<<<<< HEAD
   margin: 0 auto;
-=======
-   margin: 0 auto;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .profile-container .activate-btn:hover {
@@ -77,7 +65,6 @@
   margin: 35px auto;
 }
 
-<<<<<<< HEAD
 /* Cover Box — نفس شكل بروفايل الحرفي */
 .profile-container .coverBox {
   width: 100%;
@@ -285,41 +272,6 @@
 }
 
 /* Profile Info (for non-summary sections) */
-=======
-/* Cover */
-.profile-container .cover-container {
-    position: relative ;
-    height: 250px ;   
-}
-
-
-.profile-container .cover-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 95%;
-}
-
-/* Profile */
-.profile-container .profile-img-container {
-  display: flex;
-  justify-content: center;
-  margin-top: -100px;
-  position: relative;
-  z-index: 2;
-
-}
-
-.profile-container .profile-img {
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Info */
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .profile-container .profile-info {
   text-align: center;
   margin-top: 15px;
@@ -334,7 +286,6 @@
   font-size: 30px;
 }
 
-<<<<<<< HEAD
 /* No-wrap text */
 .profile-container .no-wrap-text {
   white-space: normal;
@@ -404,63 +355,6 @@
     width: 35px;
     height: 35px;
   }
-=======
-/* Buttons */
-.profile-container .btn {
-  width: 170px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
- 
-}
-
-
-.profile-container .buttons {
-    position: absolute !important;
-    top: 235px ; 
-    left: 40px ; 
-    display: flex ;
-    gap: 10px ;
-    z-index: 100 ;
-    transform: none ;
-}
-
-
-/* تنسيق زر طلب خدمة */
-.profile-container .btn.primary {
-    background-color: #40798C ;
-    color: white ;
-    border-radius: 8px ;
-    border: none ;
-    cursor: pointer ;
-    font-weight: bold ;
-}
-
-.profile-container .buttons button {
-
-  border-radius: 10px;
-  font-weight: bold;
-  border: none;
-  height: 100%;
-  cursor: pointer;
-  transition: 0.2s ease;
-  color: #40798c;
-  margin-top: 40px;
-}
-
-.profile-container .btn-edit {
-  width: 50px;
-  font-size: 28px;
-}
-
-.profile-container .buttons button:hover {
-  opacity: 0.8;
-}
-
-.profile-container .buttons.left {
-  justify-content: flex-end;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .profile-container .work-info {
@@ -518,24 +412,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
   gap: 100px;
   border-radius: 16px;
   margin-top: 30px;
-=======
-  gap: 50px;
-  border-radius: 16px;
-  margin-top: 100px;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .profile-container .stat {
   flex: unset;
-<<<<<<< HEAD
   /* min-width: 250px; */
-=======
-  min-width: 250px;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   text-align: center;
 }
 
@@ -734,10 +618,6 @@
 .profile-container .avatar {
   width: 40px;
   height: 40px;
-<<<<<<< HEAD
-=======
-  background: #A9D1DB;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -831,7 +711,6 @@
   max-height: 95vh;
   overflow-y: auto;
   overflow-x: hidden;
-<<<<<<< HEAD
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -840,14 +719,6 @@
   width: 7px;
 }
 
-=======
-   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-.profile-container .modal-box::-webkit-scrollbar{
-  width: 7px;
-}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .profile-container .modal-box::-webkit-scrollbar-thumb {
   background: #40798C;
   border-radius: 10px;
@@ -887,24 +758,15 @@
   gap: 10px;
   margin-top: 20px;
   font-size: 18px;
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .profile-container .modal-btns :hover {
   box-shadow: 2px 2px 5px #a3a9a6;
 }
-<<<<<<< HEAD
 
 .profile-container .confirm-btn {
   /* width: 50%; */
-=======
- .profile-container .confirm-btn{
-   /* width: 50%; */
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   padding: 12px;
   /* margin: 15px auto 0 auto; */
   display: block;
@@ -915,17 +777,10 @@
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
-<<<<<<< HEAD
 }
 
 .profile-container .edit-cancel-btn {
   width: 50%;
-=======
- }
-
- .profile-container .edit-cancel-btn{
-     width: 50%;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   display: block;
   border: none;
   border-radius: 8px;
@@ -933,16 +788,10 @@
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
-<<<<<<< HEAD
 }
 
 .profile-container .cancel-btn {
   /* width: 50%; */
-=======
- }
- .profile-container .cancel-btn{
-     /* width: 50%; */
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   padding: 12px;
   /* margin: 15px auto 0 auto; */
   display: block;
@@ -953,12 +802,8 @@
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
-<<<<<<< HEAD
 }
 
-=======
- }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .profile-container .close-btn {
   position: absolute;
   top: 10px;
@@ -1053,76 +898,15 @@
     transform: scale(0.7);
     opacity: 0;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   to {
     transform: scale(1);
     opacity: 1;
   }
 }
 
-<<<<<<< HEAD
 
 
-=======
-/* زر تعديل صورة الغلاف */
-.profile-container .editcover-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: 185px;
-  height: 45px;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: #EEE;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: .3s;
-  font-size: 20px;
-}
-
-.profile-container .editcover-btn:hover {
-  background: #f0f0f0;
-}
-
-/* أيقونة الكاميرا على الصورة الشخصية */
-.profile-container .profile-camera-icon {
-  position: absolute;
-  background: #f0f0f0;
-  color: #333;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 2px solid white;
-  z-index: 10;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  bottom: 10px;
-  left: 10px;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: #EEE;
-  gap: 10px;
-  font-weight: bold;
-  font-size: 24px;
-  transition: .3s;
-}  
-
-.profile-container .profile-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
 .profile-container .custom-select {
   width: 100%;
@@ -1222,23 +1006,6 @@
 
 
 @media (max-width: 768px) {
-<<<<<<< HEAD
-=======
-  .profile-container .profile-img {
-    width: 170px;
-    height: 170px;
-  }
-
-  .profile-container .profile-info h2 {
-    font-size: 30px;
-  }
-
- 
-  .profile-container .profile-info p {
-    font-size: 24px;
-  }
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .profile-container .icon-circle {
     width: 70px;
     height: 70px;
@@ -1254,58 +1021,7 @@
     font-size: 22px;
   }
 
-<<<<<<< HEAD
   .profile-container .review-card p {
     font-size: 22px;
   }
-=======
-
-  .profile-container .review-card p {
-    font-size: 22px;
-  }
-  .profile-container .editcover-btn {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: auto;
-  height: 45px;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: #EEE;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: .3s;
-  font-size: 15px;
-}
-.profile-container .buttons {
-    /* position: absolute !important; */
-    top: 480px ; 
-    left: 85px ; 
-    display: flex ;
-    gap: 10px ;
-    z-index: 100 ;
-    transform: none ;
-}
-.profile-container .btn-delete{
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: auto 90px !important;
-  white-space: nowrap;
-  width: fit-content;
-  padding: 12px 25px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  position: relative ;
-  z-index: 10;
-font-size: 19px;
- 
-}
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }

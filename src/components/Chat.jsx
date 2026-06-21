@@ -16,11 +16,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 0,
 //     online: true,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/75.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/75.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 //   {
 //     id: 2,
@@ -29,11 +25,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 3,
 //     online: false,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/32.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 //   {
 //     id: 3,
@@ -42,11 +34,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 1,
 //     online: false,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/45.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 //   {
 //     id: 4,
@@ -55,11 +43,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 0,
 //     online: true,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/22.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/22.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 //   {
 //     id: 5,
@@ -68,11 +52,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 0,
 //     online: false,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/60.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/60.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 //   {
 //     id: 6,
@@ -81,11 +61,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 0,
 //     online: false,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/64.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/64.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 //   {
 //     id: 7,
@@ -94,11 +70,7 @@ import { GrAttachment } from "react-icons/gr";
 //     unread: 0,
 //     online: false,
 //     time: "11:27",
-<<<<<<< HEAD
 //     avatar: "http://randomuser.me/api/portraits/men/36.jpg",
-=======
-//     avatar: "https://randomuser.me/api/portraits/men/36.jpg",
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 //   },
 // ];
 
@@ -235,14 +207,8 @@ const MessagesList = ({ messages }) => {
       {messages.map((msg) => (
         <div
           key={msg.id}
-<<<<<<< HEAD
           className={`chat-messages__bubble ${msg.mine ? "chat-messages__bubble--mine" : "chat-messages__bubble--other"
             }`}
-=======
-          className={`chat-messages__bubble ${
-            msg.mine ? "chat-messages__bubble--mine" : "chat-messages__bubble--other"
-          }`}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         >
           {msg.text && <span>{msg.text}</span>}
           {msg.image && (

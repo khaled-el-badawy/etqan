@@ -1,21 +1,12 @@
 import Navbar from "./Navbar";
 import React, { useState, useEffect, useRef } from 'react';
 // استيراد أيقونات React
-<<<<<<< HEAD
 import {
   FaUserCircle, FaBell, FaBars, FaTimes, FaChevronDown,
   FaStar, FaArrowLeft, FaWrench, FaFacebookF, FaTwitter,
   FaInstagram, FaLinkedinIn, FaEnvelope, FaPhoneAlt,
   FaHammer
 } from 'react-icons/fa';
-=======
-import { 
-  FaUserCircle, FaBell, FaBars, FaTimes, FaChevronDown, 
-  FaStar, FaArrowLeft, FaWrench, FaFacebookF, FaTwitter, 
-  FaInstagram, FaLinkedinIn, FaEnvelope, FaPhoneAlt, 
-  FaHammer
-} from 'react-icons/fa'; 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
 //  استيراد Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -44,11 +35,7 @@ const AnimatedNumber = ({ target, isFloat = false }) => {
         let start = 0;
         const duration = 2000;
         const steps = 60;
-<<<<<<< HEAD
         const increment = target / (duration / 1000 * steps);
-=======
-        const increment = target / (duration / 1000 * steps); 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         const timer = setInterval(() => {
           start += increment;
           if (start >= target) { setCount(target); clearInterval(timer); }
@@ -73,13 +60,8 @@ const HeroSection = () => {
         <div className="hero-text" data-aos="fade-up" data-aos-duration="1000">
           <h1>خدمات حرفية موثوقة في مكان واحد</h1>
           <p className="no-break">نوفر لك منصة تجمع أفضل الحرفيين في مختلف المجالات،لتسهيل
-<<<<<<< HEAD
             <br />الوصول إلى خدمات عالية الجودة بطريقة آمنة وسريعة، مع ضمان
             <br />تجربة استخدام سهلة وموثوقة</p>
-=======
-          <br />الوصول إلى خدمات عالية الجودة بطريقة آمنة وسريعة، مع ضمان
-          <br/>تجربة استخدام سهلة وموثوقة</p>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         </div>
       </div>
       <div className="stats-bar" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
@@ -106,15 +88,9 @@ const HeroSection = () => {
 
 // 3. Main Services
 const servicesData = [
-<<<<<<< HEAD
   { id: 1, title: 'خدمات الحرفيين', description: 'نوفر لك نخبة من الحرفيين المحترفين في مختلف التخصصات، لتنفيذ أعمال الصيانة والتشطيبات بجودة عالية وسهولة في التواصل.', icon: '/images/icons/servicesicon1.svg', link: '/Service' },
   { id: 2, title: 'شركات مقاولات', description: 'نربطك بشركات نقل موثوقة لنقل الأثاث ومواد البناء بأمان وسرعة، مع خيارات تناسب مختلف الاحتياجات.', icon: '/images/icons/servicesicon3.svg', link: '/Companies' },
   { id: 3, title: 'المنتجات', description: 'متجر متكامل يوفر الأدوات والمعدات التي يحتاجها الحرفيون، بمنتجات موثوقة وأسعار مناسبة مع سهولة الطلب.', icon: '/images/icons/servicesicon2.svg', link: '/Products' }
-=======
-  {id: 1, title: 'خدمات الحرفيين', description: 'نوفر لك نخبة من الحرفيين المحترفين في مختلف التخصصات، لتنفيذ أعمال الصيانة والتشطيبات بجودة عالية وسهولة في التواصل.', icon: '/images/icons/servicesicon1.svg', link: '/Service' },
-  {id: 2, title: 'شركات مقاولات', description: 'نربطك بشركات نقل موثوقة لنقل الأثاث ومواد البناء بأمان وسرعة، مع خيارات تناسب مختلف الاحتياجات.', icon: '/images/icons/servicesicon3.svg', link: '/Companies' },
-  {id: 3, title: 'المنتجات', description: 'متجر متكامل يوفر الأدوات والمعدات التي يحتاجها الحرفيون، بمنتجات موثوقة وأسعار مناسبة مع سهولة الطلب.', icon: '/images/icons/servicesicon2.svg', link: '/Products' }
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 ];
 
 const MainServices = () => {
@@ -141,7 +117,6 @@ const MainServices = () => {
 
 // 4. Top Craftsmen
 const craftsmenData = [
-<<<<<<< HEAD
   { id: 1, name: 'محمد طه', job: 'نجار', rate: 4.9, img: '/images/user/user1.svg' },
   { id: 2, name: 'عمر احمد', job: 'كهربائي', rate: 4.8, img: '/images/user/user2.svg' },
   { id: 3, name: 'محمد علي', job: 'حداد', rate: 4.8, img: '/images/user/user3.svg' },
@@ -149,15 +124,6 @@ const craftsmenData = [
   { id: 5, name: 'وليد محمد', job: 'كهربائي', rate: 4.7, img: '/images/user/user5.svg' },
   { id: 6, name: 'علي حسن', job: 'نقاش', rate: 4.6, img: '/images/user/user6.jfif' },
   { id: 7, name: 'سعد محمد', job: 'نجار', rate: 4.7, img: '/images/user/user7.jfif' },
-=======
-  {id: 1, name: 'محمد طه', job: 'نجار', rate: 4.9, img: '/images/user/user1.svg' },
-  {id: 2, name: 'عمر احمد', job: 'كهربائي', rate: 4.8, img: '/images/user/user2.svg' },
-  {id: 3, name: 'محمد علي', job: 'حداد', rate: 4.8, img: '/images/user/user3.svg' },
-  {id: 4, name: 'محمد خالد', job: 'سباك', rate: 4.5, img: '/images/user/user4.svg' },
-  {id: 5, name: 'وليد محمد', job: 'كهربائي', rate: 4.7, img: '/images/user/user5.svg' },
-  {id: 6, name: 'علي حسن', job: 'نقاش', rate: 4.6, img: '/images/user/user6.jfif' },
-  {id: 7, name: 'سعد محمد', job: 'نجار', rate: 4.7, img: '/images/user/user7.jfif' },
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 ];
 
 const TopCraftsmen = () => {
@@ -191,7 +157,6 @@ const TopCraftsmen = () => {
 
 // 5. Testimonials
 const reviewsData = [
-<<<<<<< HEAD
   { id: 1, name: "إبراهيم محمد", text: "بصراحة وفر علي وقت ومجهود، التقييمات فرقت معايا في الاختيار وحسيت بأمان", rate: 5, img: "/images/clients/client1.png" },
   { id: 2, name: " سارة محمود", text: "الموقع سهل جداً، وصلت للحرفي اللي محتاجه بسرعة، والشغل اتعمل كويس وفي ميعاده", rate: 5, img: "/images/clients/client2.png" },
   { id: 3, name: "أحمد حسين", text: "التجربة عامة كويسة جدًا، الحرفي كان فاهم شغله وخلص بسرعة، والسعر زي ما اتفقنا من الأول", rate: 5, img: "/images/clients/client3.png" },
@@ -199,15 +164,6 @@ const reviewsData = [
   { id: 5, name: "مريم حسن", text: "تجربة حلوة، التعامل كان سهل والتواصل مع الحرفي كان سريع، أكيد هستخدمه تاني", rate: 5, img: "/images/clients/client7.jfif" },
   { id: 6, name: "أحمد ناصر", text: "الميزة في الموقع ده إنك بتشوف تقييمات الناس قبل ما تختار، وده خلاني أختار نجار كويس جدًا، شغله طلع مظبوط الحمد لله", rate: 5, img: "/images/clients/client6.jfif" },
   { id: 7, name: "محمود كمال", text: "أكتر حاجة عجبتني إن التواصل سهل، دخلت كلمت الحرفي على طول واتفقنا، مفيش لف ودوران", rate: 5, img: "/images/clients/client5.jfif" },
-=======
-  {id: 1, name: "إبراهيم محمد", text: "بصراحة وفر علي وقت ومجهود، التقييمات فرقت معايا في الاختيار وحسيت بأمان", rate: 5, img: "/images/clients/client1.png" },
-  {id: 2, name: " سارة محمود", text: "الموقع سهل جداً، وصلت للحرفي اللي محتاجه بسرعة، والشغل اتعمل كويس وفي ميعاده", rate: 5, img: "/images/clients/client2.png" },
-  {id: 3, name: "أحمد حسين", text: "التجربة عامة كويسة جدًا، الحرفي كان فاهم شغله وخلص بسرعة، والسعر زي ما اتفقنا من الأول", rate: 5, img: "/images/clients/client3.png" },
-  {id: 4, name: "سامي محمد", text: "الصراحة أول مرة أطلب من موقع زي ده وكنت قلقان، بس الكهربائي جه في المعاد بالظبط واشتغل شغل نضيف جدًا، أكيد هكرر التجربة", rate: 5, img: "/images/clients/client4.jfif" },
-  {id: 5, name: "مريم حسن", text: "تجربة حلوة، التعامل كان سهل والتواصل مع الحرفي كان سريع، أكيد هستخدمه تاني", rate: 5, img: "/images/clients/client7.jfif"},
-  {id: 6, name: "أحمد ناصر", text: "الميزة في الموقع ده إنك بتشوف تقييمات الناس قبل ما تختار، وده خلاني أختار نجار كويس جدًا، شغله طلع مظبوط الحمد لله", rate: 5, img: "/images/clients/client6.jfif" },
-  {id: 7, name: "محمود كمال", text: "أكتر حاجة عجبتني إن التواصل سهل، دخلت كلمت الحرفي على طول واتفقنا، مفيش لف ودوران", rate: 5, img: "/images/clients/client5.jfif"},
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 ];
 
 const Testimonials = () => {
@@ -282,15 +238,9 @@ const ContactUs = () => {
     e.preventDefault();
     if (validate()) {
       console.log("تم إرسال الرسالة بنجاح!", formData);
-<<<<<<< HEAD
       // alert("تم الإرسال بنجاح");
       setFormData({ name: '', email: '', message: '' });
       setErrors({ name: '', email: '', message: '' });
-=======
-      alert("تم الإرسال بنجاح");
-      setFormData({ name: '', email: '', message: '' });
-      setErrors({ name: '', email: '', message: '' }); 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     }
   };
 
@@ -309,7 +259,6 @@ const ContactUs = () => {
           </div>
           <div className="contact-form-side" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <h2 className="contact-main-title">تواصل معنا</h2>
-<<<<<<< HEAD
 
             <form onSubmit={handleSubmit} className="contact-form" noValidate>
 
@@ -321,25 +270,11 @@ const ContactUs = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-=======
-            
-            <form onSubmit={handleSubmit} className="contact-form" noValidate>
-              
-              <div className="input-group">
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="الاسم" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  required 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 />
                 {errors.name && <span className="error-message">{errors.name}</span>}
               </div>
 
               <div className="input-group">
-<<<<<<< HEAD
                 <input
                   type="email"
                   name="email"
@@ -347,44 +282,22 @@ const ContactUs = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-=======
-                <input 
-                  type="email" 
-                  name="email" 
-                  placeholder="البريد الالكتروني" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  required 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 />
                 {errors.email && <span className="error-message">{errors.email}</span>}
               </div>
 
               <div className="input-group">
-<<<<<<< HEAD
                 <textarea
                   name="message"
                   placeholder="اكتب رسالتك"
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-=======
-                <textarea 
-                  name="message" 
-                  placeholder="اكتب رسالتك" 
-                  rows="5" 
-                  value={formData.message} 
-                  onChange={handleChange} 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                   required
                 ></textarea>
                 {errors.message && <span className="error-message">{errors.message}</span>}
               </div>
-<<<<<<< HEAD
 
-=======
-              
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               <button type="submit" className="send-btn">إرسال</button>
             </form>
           </div>
@@ -404,11 +317,7 @@ const Home = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-<<<<<<< HEAD
       <div style={{ flex: 1 }}></div>
-=======
-      <div style={{flex:1}}></div>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       <div className="home-page-wrapper">
         <HeroSection />
         <MainServices />

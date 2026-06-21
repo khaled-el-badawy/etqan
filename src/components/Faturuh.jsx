@@ -34,15 +34,9 @@ const Faturuh = () => {
           </div>
           <div className="card-fields">
              <div className="field"><span>اسم الحرفي:</span> <strong>محمد حسن</strong></div>
-<<<<<<< HEAD
              {/* <div className="field"><span>الهاتف:</span> <strong>01056871308</strong></div> */}
              {/* <div className="field"><span>العنوان:</span> <strong>المنصورة</strong></div> */}
              {/* <div className="field"><span>البريد الالكتروني:</span> <strong>Mohmed hassan@gmail.com</strong></div> */}
-=======
-             <div className="field"><span>الهاتف:</span> <strong>01056871308</strong></div>
-             <div className="field"><span>العنوان:</span> <strong>المنصورة</strong></div>
-             <div className="field"><span>البريد الالكتروني:</span> <strong>Mohmed hassan@gmail.com</strong></div>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           </div>
         </div>
 

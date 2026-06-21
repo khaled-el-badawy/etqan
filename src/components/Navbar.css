@@ -58,35 +58,20 @@
 }
 
 .navbar .nav-icons {
-<<<<<<< HEAD
   /* background-color: violet; */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
   gap: 15px;
-=======
-  display: flex;
-  gap: 35px;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   color: #555;
   font-size: 20px;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .navbar .nav-icons :hover {
   color: #40798c;
 }
 .navbar .nav-icons-area {
-=======
-.navbar .nav-icons :hover{
-   color: #40798c;
- 
-}
-.navbar .nav-icons-area{
-  margin-right: 70px; 
-  
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .navbar .mobile-menu-icon {
@@ -100,10 +85,6 @@
     display: block;
   }
   .navbar .nav-links {
-<<<<<<< HEAD
-=======
-    
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     position: fixed;
     top: 80px;
     right: -100%;
@@ -116,16 +97,8 @@
     justify-content: flex-start;
     padding-top: 20px;
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
   }
 
-=======
-    
-    
-    
-  }
-  
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   .navbar .nav-links.active {
     right: 0;
   }
@@ -141,13 +114,8 @@
   margin: 0;
   padding: 0;
 }
-<<<<<<< HEAD
 .navbar .logout-btn button {
   color: white;
-=======
-.navbar .logout-btn button{
-   color: white;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   background-color: #40798c;
   padding: 10px 10px;
   width: 120px;
@@ -155,22 +123,12 @@
   font-size: 16px;
   border: none;
 }
-<<<<<<< HEAD
 .navbar .logout-btn :hover {
   background: #40798c;
   box-shadow: 2px 2px 5px #a3a9a6;
 }
 .navbar .nav-links .logout-btn {
   position: relative;
-=======
-.navbar .logout-btn :hover{
-   background: #40798c;
-  box-shadow: 2px 2px 5px #a3a9a6;
-}
-.navbar .nav-links .logout-btn{
-position: relative;
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .navbar .nav-links li {
@@ -180,11 +138,7 @@ position: relative;
 .navbar .nav-links a,
 .navbar .dropbtn {
   text-decoration: none;
-<<<<<<< HEAD
   color: rgba(0, 0, 0, 0.731);
-=======
-  color: rgba(0, 0, 0, 0.731) ;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   font-size: 20px;
   transition: 0.3s;
   background: none;
@@ -196,10 +150,6 @@ position: relative;
   white-space: nowrap;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .navbar .dropbtn {
   display: inline-flex;
   align-items: center;
@@ -209,10 +159,6 @@ position: relative;
   flex-direction: row-reverse;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .navbar .dropbtn svg {
   width: 20px;
   height: 15px;
@@ -220,11 +166,7 @@ position: relative;
 }
 
 .navbar .nav-links a:hover,
-<<<<<<< HEAD
 .navbar .nav-links a.active {
-=======
-.navbar .nav-links a.active{
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   color: #40798c;
 }
 
@@ -242,10 +184,6 @@ position: relative;
   margin-top: 15px;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .navbar .dropdown-content li a {
   font-size: 18px;
   padding: 12px 2px;
@@ -260,27 +198,15 @@ position: relative;
 }
 
 .navbar .logo {
-<<<<<<< HEAD
   width: 150px;
   cursor: pointer;
   /* background-color: tomato; */
-=======
-  width: 200px;
-  cursor: pointer;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 .navbar .logo img {
   width: 100%;
   max-width: 100%;
   display: block;
 }
-<<<<<<< HEAD
 .navbar .nav-icons-area {
   /* margin-right: 1px;  */
 }
-=======
-.navbar .nav-icons-area{
-  margin-right: 1px; 
-
-}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

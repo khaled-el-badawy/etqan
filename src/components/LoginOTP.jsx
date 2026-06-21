@@ -2,29 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./LoginOTP.css";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-<<<<<<< HEAD
 import axios from "axios"; // استيراد أكسيوس للربط
 
 function LoginOTP() {
   const { role } = useParams(); // بياخد "craftsman" أو "customer" من الرابط
-=======
-import axios from "axios"; 
-
-function LoginOTP() {
-  const { role } = useParams();
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get("type");
-<<<<<<< HEAD
 
   // 1. استلام الإيميل من الصفحة اللي فاتت (عن طريق الـ Navigation State)
   const userEmail = location.state?.email || "";
 
-=======
-  const userEmail = location.state?.email || "";
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(60);
   const [active, setActive] = useState(true);
@@ -40,31 +29,16 @@ function LoginOTP() {
 
   const currentImage = images[role] || images.craftsman;
 
-<<<<<<< HEAD
   // 2. دالة التحقق المربوطة بالباك إند (طريقتنا بـ Axios)
-=======
-
-
-  
-    // 2. دالة التحقق المربوطة بالباك إند (طريقتنا بـ Axios)
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const handleLogin = async () => {
     const enteredOtp = otp.join(""); // تجميع الـ 4 أرقام
 
     // تحديد الرابط بناءً على نوع المستخدم (Role)
-<<<<<<< HEAD
     const apiUrls = {
       craftsman: "https://etqanproject.runasp.net/api/ArtisanAccount/register-step2-verify",
       customer: "https://etqanproject.runasp.net/api/ClientAccount/register-step2-verify",
       company: "https://etqanproject.runasp.net/api/CompanyAccount/register-step2-verify", // ضيف السطر ده
     };
-=======
-   const apiUrls = {
-  craftsman: "http://localhost:5036/api/ArtisanAccount/register-step2-verify",
-  customer: "http://localhost:5036/api/ClientAccount/register-step2-verify",
-  company: "http://localhost:5036/api/CompanyAccount/register-step2-verify", // ضيف السطر ده
-};
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
     const targetUrl = apiUrls[role];
 
@@ -76,11 +50,7 @@ function LoginOTP() {
       });
 
       if (response.status === 200) {
-<<<<<<< HEAD
         // alert(response.data.message || "تم تفعيل الحساب بنجاح!");
-=======
-        alert(response.data.message || "تم تفعيل الحساب بنجاح!");
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         navigate("/home"); // التوجه للرئيسية بعد النجاح
       }
     } catch (err) {
@@ -92,12 +62,8 @@ function LoginOTP() {
       }
     }
   };
-<<<<<<< HEAD
 
   // التايمر (نفس المنطق بتاعك)
-=======
-  // التايمر
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   useEffect(() => {
     let interval;
     if (active && timer > 0) {
@@ -109,28 +75,17 @@ function LoginOTP() {
   }, [active, timer]);
 
   // إعادة إرسال الرمز
-<<<<<<< HEAD
   const handleResend = async () => {
     // alert("جاري إعادة إرسال الرمز...");
-=======
-  const handleResend = () => {
-    alert("جاري إعادة إرسال الرمز");
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     setTimer(60);
     setActive(true);
     setOtp(["", "", "", ""]);
     setError("");
-<<<<<<< HEAD
 
     // ملاحظة: هنا ممكن تنادي نفس API الـ step1 لو حبيت تبعت كود جديد فعلاً
   };
 
   // إدخال الـ OTP والتنقل بين الـ Inputs
-=======
-  };
-
-  // إدخال OTP
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const handleChange = (value, index) => {
     if (/^\d?$/.test(value)) {
       const newOtp = [...otp];
@@ -160,12 +115,8 @@ function LoginOTP() {
             <h3 className="LoginOTP-title">
               يرجى تفقد بريدك الإلكتروني وكتابة رمز التحقق
               <br />
-<<<<<<< HEAD
               الذي أرسلناه للتو لإتمام تفعيل الحساب {type === "reset" ? "تغيير كلمة المرور" : "تفعيل الحساب"}
               {userEmail && <small className="user-email">"{userEmail}"</small>}
-=======
-              الذي أرسلناه للتو لإتمام {type === "reset" ? "تغيير كلمة المرور" : "تفعيل الحساب"}
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </h3>
 
             <div className="otp-row">
@@ -204,11 +155,7 @@ function LoginOTP() {
               تأكيد
             </button>
 
-<<<<<<< HEAD
             <div className="resend-section">
-=======
-            <div>
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               <span
                 className={`resend-otp ${timer > 0 ? "disabled" : ""}`}
                 onClick={() => {

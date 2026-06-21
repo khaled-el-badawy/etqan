@@ -1,31 +1,17 @@
 import React, { useState } from "react";
 import "./ForgotPassword.css";
 import { motion } from "framer-motion";
-<<<<<<< HEAD
 import { Link, useParams, useNavigate } from "react-router-dom";
-=======
-import { Link, useParams, useNavigate } from "react-router-dom"; 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 import axios from "axios";
 
 function ForgotPassword() {
   const { role } = useParams(); // customer / company / craftsman
-<<<<<<< HEAD
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-=======
-   const navigate = useNavigate();
-  const [email, setEmail] = useState(""); 
-  const [emailError, setEmailError] = useState(""); 
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-  
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const images = {
     customer: "/images/Frame 19.svg",
     company: "/images/Frame 20.svg",
@@ -36,11 +22,7 @@ function ForgotPassword() {
 
   // تحقق من صحة البريد (للتأكد من تنسيق البريد فقط)
   const isFormValid = emailRegex.test(email);
-<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
-=======
-const [loading, setLoading] = useState(false);
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const handleEmailChange = (e) => {
     const val = e.target.value;
     setEmail(val);
@@ -53,7 +35,6 @@ const [loading, setLoading] = useState(false);
       setEmailError("");
     }
   };
-<<<<<<< HEAD
   const handleCheckEmail = async () => {
     setLoading(true);
     try {
@@ -66,20 +47,6 @@ const [loading, setLoading] = useState(false);
       }
     } catch (error) {
       // alert(error.response?.data?.message || "حدث خطأ ما");
-=======
-   const handleCheckEmail = async () => {
-    setLoading(true);
-    try {
-
-      const response = await axios.post(`http://localhost:5036/api/ForgetPassword/forgot-password-check-email?email=${email}`);
-      
-      if (response.status === 200) {
-       
-        navigate(`/verify-otp/${role}?type=reset`, { state: { email: email } });
-      }
-    } catch (error) {
-      alert(error.response?.data?.message || "حدث خطأ ما");
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     } finally {
       setLoading(false);
     }
@@ -104,19 +71,10 @@ const [loading, setLoading] = useState(false);
                 onChange={handleEmailChange}
               />
               {emailError && (
-<<<<<<< HEAD
                 <p className="ForgotPassword-error-msg">{emailError}</p>
               )}
             </div>
             <button
-=======
-                <p className="ForgotPassword-error-msg">
-                  {emailError}
-                </p>
-              )}
-            </div>
-                <button
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               type="button"
               onClick={handleCheckEmail}
               className={`btn-container ${!isFormValid || loading ? "disabled" : ""}`}
@@ -127,12 +85,6 @@ const [loading, setLoading] = useState(false);
             >
               {loading ? "جاري الإرسال..." : "إرسال"}
             </button>
-<<<<<<< HEAD
-=======
-
-          
-    
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           </form>
         </div>
       </motion.div>
@@ -154,8 +106,4 @@ const [loading, setLoading] = useState(false);
   );
 }
 
-<<<<<<< HEAD
 export default ForgotPassword;
-=======
-export default ForgotPassword;
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { FaStar, FaHeart, FaShoppingCart, FaMinus, FaPlus } from "react-icons/fa";
-<<<<<<< HEAD
 import { useLocation, useNavigate } from "react-router-dom";
-=======
-import { useLocation, useNavigate } from "react-router-dom"; 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 import "./ProductsDetails.css";
 
 export default function ProductDetails() {
   const location = useLocation();
-<<<<<<< HEAD
   const navigate = useNavigate();
-=======
-  const navigate = useNavigate(); 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const productFromStore = location.state?.product;
   const [selectedImage, setSelectedImage] = useState(0);
   const [userName, setUserName] = useState("");
@@ -23,29 +15,19 @@ export default function ProductDetails() {
   const [commentText, setCommentText] = useState("");
   const [rateMessage, setRateMessage] = useState("");
 
-<<<<<<< HEAD
   const product = {
-=======
-const product = {
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     id: productFromStore?.id || 1,
     name: productFromStore?.name || "مثقاب ماكيتا اللاسلكي - Makita",
     brand: "Makita Professional",
     price: productFromStore?.price || 1200,
     oldPrice: productFromStore?.oldPrice,
-<<<<<<< HEAD
     discount: productFromStore?.discount,
     description: productFromStore?.description || `مثقاب لاسلكي عالي الأداء من ماكيتا، مثالي للاستخدام في الأعمال الخفيفة والمتوسطة.
-=======
-    discount: productFromStore?.discount, 
-  description: productFromStore?.description || `مثقاب لاسلكي عالي الأداء من ماكيتا، مثالي للاستخدام في الأعمال الخفيفة والمتوسطة.
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
      يتميز بمحرك قوي وبطارية طويلة العمر لتوفير أداء مستمر وفعال.
      تصميم مريح لسهولة الاستخدام والتحكم،
       مع مجموعة من السرعات وخيارات الحفر المتعددة لتلبية جميع احتياجاتك في العمل.`,
     stock: 5,
     rating: productFromStore?.rating || 4.0,
-<<<<<<< HEAD
     images: productFromStore?.image
       ? [productFromStore.image, "/images/img11.jpg", "/images/img12.jpg"]
       : ["/images/image1.jpg", "/images/img11.jpg", "/images/img12.jpg"]
@@ -56,43 +38,21 @@ const product = {
     let savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     const itemIndex = savedCart.findIndex(item => item.id === product.id);
 
-=======
-    images: productFromStore?.image 
-        ? [productFromStore.image, "/images/img11.jpg", "/images/img12.jpg"]
-        : ["/images/image1.jpg", "/images/img11.jpg", "/images/img12.jpg"]
-};
-
- 
-  const addToCart = () => {
-    let savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const itemIndex = savedCart.findIndex(item => item.id === product.id);
-    
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     if (itemIndex !== -1) {
       savedCart[itemIndex].quantity += 1;
     } else {
       savedCart.push({ ...product, quantity: 1, image: product.images[0] });
     }
-<<<<<<< HEAD
 
     localStorage.setItem("cart", JSON.stringify(savedCart));
 
-=======
-    
-    localStorage.setItem("cart", JSON.stringify(savedCart));
-    
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     navigate("/CartPage");
   };
 
 
   const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem("favorites")) || []);
   const isFavorite = favorites.some(fav => fav.id === product.id);
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const toggleFavorite = () => {
     let updatedFavs = [...favorites];
     if (isFavorite) {
@@ -113,7 +73,6 @@ const product = {
   ];
 
   const comments = [
-<<<<<<< HEAD
     {
       id: 1,
       user: "أحمد فتحي",
@@ -137,31 +96,6 @@ const product = {
       text: "عجبني منتج كويس جدا",
       rating: 4,
       userImg: "http://ui-avatars.com/api/?name=Mamdouh+Samy&background=FF9800&color=fff"
-=======
-    { 
-      id: 1, 
-      user: "أحمد فتحي", 
-      date: "1/5/2026",
-      text: "منتج كويس جدا وماتريال تستحمل الشغل", 
-      rating: 4,
-      userImg: "https://ui-avatars.com/api/?name=Ahmed+Fathy&background=40798C&color=fff" 
-    },
-    { 
-      id: 2, 
-      user: "محمد ياسر", 
-      date: "10/6/2026",
-      text: "منتج كويس جدا", 
-      rating: 4,
-      userImg: "https://ui-avatars.com/api/?name=Mohamed+Yasser&background=E91E63&color=fff" 
-    },
-    { 
-      id: 3, 
-      user: "ممدوح سامي", 
-      date: "1/7/2026",
-      text: "عجبني منتج كويس جدا", 
-      rating: 4,
-      userImg: "https://ui-avatars.com/api/?name=Mamdouh+Samy&background=FF9800&color=fff" 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     },
   ];
 
@@ -213,21 +147,12 @@ const product = {
           </div>
           <div className="buttons-group">
             <button className="cart-btn" onClick={addToCart}><FaShoppingCart /> إضافة إلى السلة</button>
-<<<<<<< HEAD
             <button
               className="fav-btn"
               onClick={toggleFavorite}
               style={{
                 color: isFavorite ? "#f44336" : "#888",
                 borderColor: isFavorite ? "#f44336" : "#ccc"
-=======
-            <button 
-              className="fav-btn" 
-              onClick={toggleFavorite}
-              style={{ 
-                color: isFavorite ? "#f44336" : "#888",
-                borderColor: isFavorite ? "#f44336" : "#ccc" 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               }}
             >
               <FaHeart /> المفضلة
@@ -238,30 +163,17 @@ const product = {
 
       <div className="comments-section">
         <div className="description-box"></div>
-<<<<<<< HEAD
         <h4 className="section-title" data-aos="fade-up">وصف المنتج</h4>
         <p className="description-text" data-aos="fade-up">
           {product.description}
         </p>
 
-=======
-          <h4 className="section-title" data-aos="fade-up">وصف المنتج</h4>
-          <p className="description-text" data-aos="fade-up">
-            {product.description}
-          </p>
-        
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
         <div className="section-divider"></div>
 
         <h3 className="rating-section-title" data-aos="fade-right">التقييمات</h3>
-<<<<<<< HEAD
 
         <div className="rating-summary-container" data-aos="fade-right">
-=======
-        
-        <div className="rating-summary-container"data-aos="fade-right">
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           <div className="rating-average-box" data-aos="fade-right">
             <h1 className="average-num">{product.rating}</h1>
             <div className="stars-row">
@@ -270,11 +182,7 @@ const product = {
               ))}
             </div>
           </div>
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           <div className="rating-bars-container" >
             {ratingDistribution.map((item) => (
               <div key={item.stars} className="rating-bar-item">
@@ -287,11 +195,7 @@ const product = {
           </div>
         </div>
 
-<<<<<<< HEAD
         <div className="comments-list" data-aos="fade-right">
-=======
-        <div className="comments-list"data-aos="fade-right">
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           {comments.map((c) => (
             <div key={c.id} className="comment-item-box">
               <div className="comment-top-row">
@@ -341,30 +245,20 @@ const product = {
                     />
                   ))}
                 </div>
-<<<<<<< HEAD
                 <input type="text"
-=======
-                 <input type="text"
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                   placeholder="الاسم"
                   required
                   className="modal-input"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                 />
-<<<<<<< HEAD
                 <textarea
                   placeholder="اكتب رأيك هنا"
-=======
-                <textarea 
-                  placeholder="اكتب رأيك هنا" 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                   required
                   className="modal-textarea"
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
                 ></textarea>
-<<<<<<< HEAD
 
                 <button
                   className="submit-btn"
@@ -372,15 +266,6 @@ const product = {
                   style={{
                     backgroundColor: isFormValid ? "#40798C" : "#ccc",
                     cursor: isFormValid ? "pointer" : "not-allowed"
-=======
-               
-                <button 
-                  className="submit-btn" 
-                  onClick={handleSubmitRate}
-                  style={{ 
-                    backgroundColor: isFormValid ? "#40798C" : "#ccc", 
-                    cursor: isFormValid ? "pointer" : "not-allowed" 
->>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                   }}
                   disabled={!isFormValid}
                 >
