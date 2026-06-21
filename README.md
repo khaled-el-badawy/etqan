@@ -9,12 +9,21 @@
 </p>
 
 <p align="center">
+<<<<<<< HEAD
   <img src="http://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
   <img src="http://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
   <img src="http://img.shields.io/badge/TailwindCSS-4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img src="http://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" />
   <img src="http://img.shields.io/badge/Framer_Motion-12-FF0050?style=for-the-badge&logo=framer&logoColor=white" />
   <img src="http://img.shields.io/badge/React_Router-7.13-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
+=======
+  <img src="https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12-FF0050?style=for-the-badge&logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/React_Router-7.13-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 </p>
 
 ---
@@ -249,7 +258,11 @@
 
 1. **استنساخ المشروع:**
    ```bash
+<<<<<<< HEAD
    git clone http://github.com/khaled-el-badawy/etqan.git
+=======
+   git clone https://github.com/khaled-el-badawy/etqan.git
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
    cd etqan
    ```
 

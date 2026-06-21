@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+<<<<<<< HEAD
     "axios": "^0.27.2",
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     "bootstrap": "^5.3.8",
     "framer-motion": "^12.29.2",
     "leaflet": "^1.9.4",

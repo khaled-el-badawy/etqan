@@ -12,6 +12,10 @@
 .company-page-container h3 {
   color: #40798c;
   text-align: center;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   text-decoration: none;
 }
 .company-page-container h3 {
@@ -43,6 +47,7 @@
   padding: 50px 0;
 }
 .company-page-container .fields-row {
+<<<<<<< HEAD
  /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -50,6 +55,13 @@
   gap: 10px;
   display:grid;
   grid-template-columns:repeat(2,1fr);
+=======
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .company-page-container .field-container,
@@ -156,6 +168,7 @@
 }
 .company-page-container .form-fields {
   min-height: 100vh;
+<<<<<<< HEAD
   width: 150vh;
   display: flex;
   justify-content: center;
@@ -168,12 +181,21 @@
 
   display: flex; */
  
+=======
+}
+.company-page-container .form-fields form {
+  min-height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
 
+<<<<<<< HEAD
 .company-page-container .searchable-dropdown input {
   padding: 20px;
   text-align: right;
@@ -216,6 +238,8 @@
 }
 
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
 .company-page-container .passwords-row {
   display: flex;

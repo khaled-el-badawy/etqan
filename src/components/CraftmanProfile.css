@@ -59,7 +59,10 @@
   overflow: hidden;
   position: relative;
   background-color: #b4b4b4;
+<<<<<<< HEAD
   /* box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.434); */
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .professional-profile-container .coverBox img {
@@ -104,7 +107,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.434);
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   /* background-color: red; */
   /* overflow: hidden; */
 }
@@ -218,9 +224,12 @@
   height: 100%;
   cursor: pointer;
   transition: 0.2s ease;
+<<<<<<< HEAD
   display: flex;
   justify-content: center;
   align-items: center;
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 }
 
 .professional-profile-container .profile-summary .action-btns button:hover {
@@ -284,7 +293,11 @@
   }
 
   .professional-profile-container .profile-summary .craftman-info h2 {
+<<<<<<< HEAD
     font-size: 25px;
+=======
+    font-size: 30px;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     white-space: nowrap;
   }
 
@@ -308,10 +321,17 @@
 .professional-profile-container .profile-wrapper {
   max-width: 1400px;
   margin: 20px auto;
+<<<<<<< HEAD
   width: 95%;
   min-height: calc(100vh);
   direction: rtl;
   background-color: #efefef;
+=======
+  width: 100%;
+  min-height: calc(100vh);
+  direction: rtl;
+  background-color: #f9f9f9;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   padding: 20px;
   border-radius: 12px;
   display: flex;
@@ -395,7 +415,11 @@
   }
   .professional-profile-container .side-tabs button {
     font-size: 16px;
+<<<<<<< HEAD
     /* white-space: nowrap; */
+=======
+    white-space: nowrap;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   }
 }
 
@@ -1196,6 +1220,7 @@
   font-weight: bold;
   text-align: right;
 }
+<<<<<<< HEAD
 .edit-form-container form.edit-profile-form .form-group textarea {
   width: 80%;
   padding: 10px;
@@ -1207,6 +1232,8 @@
   font-weight: bold;
   text-align: right;
 }
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .edit-form-container form.edit-profile-form .form-group select {
   width: 80%;
   padding: 10px;
@@ -1218,6 +1245,7 @@
   font-weight: bold;
   text-align: right;
 }
+<<<<<<< HEAD
 
 .edit-form-container form.edit-profile-form .services-tags-input {
   width: 80%;
@@ -1300,6 +1328,8 @@
     width: 100%;
   }
 }
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 /*  */
 /* .edit-form-container form.edit-profile-form .form-group.top {
 }
@@ -1342,6 +1372,7 @@
   justify-content: center;
 }
 
+<<<<<<< HEAD
 .edit-form-container form.edit-profile-form .form-btns button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
@@ -1375,6 +1406,8 @@
   }
 }
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 .btn-delete-account {
   white-space: nowrap;
   min-width: fit-content;
@@ -1706,6 +1739,7 @@ input[type="password"]::-ms-clear {
   }
 }
 /*  */
+<<<<<<< HEAD
 
 /* ===== Portfolio Actions CSS Extensions ===== */
 .professional-profile-container .portfolio-section .upload-box.uploading {
@@ -1816,3 +1850,5 @@ input[type="password"]::-ms-clear {
 .portfolio-delete-confirm-btns .confirm-no:hover {
   background-color: #bbb;
 }
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

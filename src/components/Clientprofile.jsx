@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+import { useParams } from "react-router-dom";
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 import "./ClientProfile.css";
 import {
   FaStar,
@@ -17,6 +21,7 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+<<<<<<< HEAD
 const API_BASE = "https://etqanproject.runasp.net";
 
 const getApiImageUrl = (path) => {
@@ -68,6 +73,10 @@ const normalizeClientProfile = (data) => {
 };
 
 const ClientProfile = () => {
+=======
+const ClientProfile = () => {
+  const { id } = useParams();
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const [activeTab, setActiveTab] = useState("about");
   const [clientData, setClientData] = useState(null);
 
@@ -99,16 +108,20 @@ const ClientProfile = () => {
   });
 
   const [errors, setErrors] = useState({});
+<<<<<<< HEAD
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const [profileFile, setProfileFile] = useState(null);
   const [coverFile, setCoverFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
     loadClientData();
+<<<<<<< HEAD
   }, []);
 
   const loadClientData = async () => {
@@ -143,6 +156,26 @@ const ClientProfile = () => {
       setError("تعذر تحميل بيانات العميل");
     } finally {
       setLoading(false);
+=======
+  }, [id]);
+
+  const loadClientData = () => {
+    const savedCustomers =
+      JSON.parse(localStorage.getItem("sharedCustomers")) || [];
+    const foundClient = savedCustomers.find((c) => c.id === Number(id));
+
+    if (foundClient) {
+      setClientData(foundClient);
+      setFormData({
+        name: foundClient.name || "",
+        email: foundClient.email || "",
+        phone: foundClient.phone || "",
+        city: foundClient.location || "",
+        password: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     }
   };
 
@@ -155,6 +188,7 @@ const ClientProfile = () => {
   const handleImageChange = (e, type) => {
     const file = e.target.files[0];
     if (file) {
+<<<<<<< HEAD
       if (type === "img") setProfileFile(file);
       if (type === "cover") setCoverFile(file);
       const preview = URL.createObjectURL(file);
@@ -163,6 +197,25 @@ const ClientProfile = () => {
   };
 
   const handleSavePersonalData = async (e) => {
+=======
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const updatedClient = { ...clientData, [type]: reader.result };
+        setClientData(updatedClient);
+
+        const savedCustomers =
+          JSON.parse(localStorage.getItem("sharedCustomers")) || [];
+        const updatedList = savedCustomers.map((c) =>
+          c.id === Number(id) ? updatedClient : c,
+        );
+        localStorage.setItem("sharedCustomers", JSON.stringify(updatedList));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSavePersonalData = (e) => {
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     e.preventDefault();
     let newErrors = {};
     if (!formData.name) newErrors.name = "يرجى إدخال الاسم";
@@ -170,6 +223,7 @@ const ClientProfile = () => {
     if (!formData.phone) newErrors.phone = "ادخل رقم الهاتف";
     if (!formData.city) newErrors.city = "ادخل المحافظه";
 
+<<<<<<< HEAD
     if (formData.password || formData.newPassword || formData.confirmPassword) {
       if (!formData.password) newErrors.password = "ادخل كلمة السر الحالية";
       if (!formData.newPassword) newErrors.newPassword = "ادخل كلمة السر الجديدة";
@@ -236,6 +290,134 @@ const ClientProfile = () => {
       // alert(err.response?.data?.message || "تعذر حذف الحساب");
     }
   };
+=======
+    const savedCustomers =
+      JSON.parse(localStorage.getItem("sharedCustomers")) || [];
+    const isNameTaken = savedCustomers.some(
+      (c) => c.name === formData.name && c.id !== Number(id),
+    );
+    if (isNameTaken) newErrors.name = "هذا الاسم موجود بالفعل";
+    const isEmailTaken = savedCustomers.some(
+      (c) => c.email === formData.email && c.id !== Number(id),
+    );
+    if (isEmailTaken) newErrors.email = "هذا البريد الإلكتروني مستخدم من قبل";
+    const isPhoneTaken = savedCustomers.some(
+      (c) => c.phone === formData.phone && c.id !== Number(id),
+    );
+    if (isPhoneTaken) newErrors.phone = "رقم الهاتف هذا مسجل مسبقاً";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      const updatedClient = {
+        ...clientData,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        location: formData.city,
+      };
+      const updatedList = savedCustomers.map((c) =>
+        c.id === Number(id) ? updatedClient : c,
+      );
+      localStorage.setItem("sharedCustomers", JSON.stringify(updatedList));
+      setClientData(updatedClient);
+      alert("تم تحديث البيانات بنجاح");
+      setActiveTab("about");
+      };
+    };
+    const confirmDeleteAccount = () => {
+      const savedCustomers = JSON.parse(localStorage.getItem("sharedCustomers")) || [];
+      const updatedList = savedCustomers.filter((c) => c.id !== Number(id));
+      localStorage.setItem("sharedCustomers", JSON.stringify(updatedList));
+      
+      setIsDeletedSuccessfully(true);
+    
+      setTimeout(() => {
+        setShowDeleteConfirm(false);
+        setIsDeletedSuccessfully(false);
+        
+        window.location.href = "/"; 
+      }, 1000);
+    };
+    
+
+
+  const reviews = [
+    {
+      id: 1,
+      name: "احمد علي",
+      job: "سباك",
+      date: "15/2/2025",
+      rating: 5,
+      img: "/images/Client profile/icon1.svg",
+    },
+    {
+      id: 2,
+      name: "محمد محمود",
+      job: "كهربائي",
+      date: "5/3/2025",
+      rating: 5,
+      img: "/images/Client profile/icon2.svg",
+    },
+    {
+      id: 3,
+      name: "شركة مكة",
+      job: "شركة نقل",
+      date: "1/5/2025",
+      rating: 4,
+      img: "/images/Client profile/icon3.svg",
+    },
+    {
+      id: 4,
+      name: "علي محمود",
+      job: "فني كاميرات",
+      date: "1/5/2025",
+      rating: 4,
+      img: "/images/Client profile/icon1.svg",
+    },
+    {
+      id: 5,
+      name: "سامح حسن",
+      job: "نجار",
+      date: "10/5/2025",
+      rating: 5,
+      img: "/images/Client profile/icon2.svg",
+    },
+  ];
+
+  const historyData = [
+    {
+      id: 1,
+      name: "احمد علي",
+      job: "سباك",
+      icon: "/images/Client profile/Client icon1.svg",
+    },
+    {
+      id: 2,
+      name: "محمد محمود",
+      job: "كهربائي",
+      icon: "/images/Client profile/Client icon2.svg",
+    },
+    {
+      id: 3,
+      name: "شركة مكة",
+      job: "شركة نقل",
+      icon: "/images/Client profile/Client icon3.svg",
+    },
+    {
+      id: 4,
+      name: "علي محمود",
+      job: "فني كاميرات",
+      icon: "/images/Client profile/Client icon4.svg",
+    },
+    {
+      id: 5,
+      name: "ياسر محمد",
+      job: "نقاش",
+      icon: "/images/Client profile/Client icon1.svg",
+    },
+  ];
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   const handleCloseModals = () => {
     setShowRateModal(false);
@@ -247,13 +429,18 @@ const ClientProfile = () => {
     setEditReviewText("");
   };
 
+<<<<<<< HEAD
   if (loading)
+=======
+  if (!clientData)
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     return (
       <div style={{ padding: "100px", textAlign: "center" }}>
         <h2>جاري تحميل بيانات العميل...</h2>
       </div>
     );
 
+<<<<<<< HEAD
   if (error || !clientData)
     return (
       <div style={{ padding: "100px", textAlign: "center", color: "#ff6b6b" }}>
@@ -261,6 +448,8 @@ const ClientProfile = () => {
       </div>
     );
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   return (
     <div className="profile-container">
       <header
@@ -270,6 +459,7 @@ const ClientProfile = () => {
         }}
       >
         {activeTab === "edit" && (
+<<<<<<< HEAD
           <label className="edit-cover-btn">
             <FaCamera />
             <span>تعديل صورة الغلاف</span>
@@ -281,19 +471,41 @@ const ClientProfile = () => {
             />
           </label>
         )}
+=======
+        <label className="edit-cover-btn">
+          <FaCamera />
+          <span>تعديل صورة الغلاف</span>
+          <input
+            type="file"
+            accept="image/*"
+            hidden
+            onChange={(e) => handleImageChange(e, "cover")}
+          />
+        </label>
+      )}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       </header>
 
       <div className="profile-identity-wrapper" data-aos="fade-left">
         <div className="identity-content">
           <div className="avatar-container">
             <img
+<<<<<<< HEAD
               src={clientData.img || "/images/Client profile/Virtual.jpeg"}
+=======
+              src={
+                clientData.img ||
+                clientData.avatar ||
+                "/images/Client profile/Virtual.jpeg"
+              }
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               alt={clientData.name}
               className="main-avatar"
               onError={(e) => {
                 e.target.src = "/images/Client profile/Virtual.jpeg";
               }}
             />
+<<<<<<< HEAD
             {activeTab === "edit" && (
               <label className="edit-avatar-badge">
                 <FaCamera />
@@ -305,10 +517,24 @@ const ClientProfile = () => {
                 />
               </label>
             )}
+=======
+            {activeTab === "edit"&&(
+            <label className="edit-avatar-badge">
+              <FaCamera />
+              <input
+                type="file"
+                accept="image/*"
+                hidden
+                onChange={(e) => handleImageChange(e, "img")}
+              />
+            </label>
+          )}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           </div>
           <div className="name-verify-block">
             <h2 className="client-name">
               {clientData.name}
+<<<<<<< HEAD
               {clientData.verified && (
                 <img
                   src="/images/Client profile/profilelogo1.svg"
@@ -316,6 +542,13 @@ const ClientProfile = () => {
                   className="verify-tick"
                 />
               )}
+=======
+              <img
+                src="/images/Client profile/profilelogo1.svg"
+                alt="Verified"
+                className="verify-tick"
+              />
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               <img
                 src="/images/Client profile/profilelogo2.svg"
                 alt="Edit"
@@ -358,6 +591,7 @@ const ClientProfile = () => {
         <div className="about-content-card" data-aos="fade-up">
           <div className="history-label-box">السجلات السابقه</div>
           <div className="history-list">
+<<<<<<< HEAD
             {clientData.history && clientData.history.length > 0 ? (
               clientData.history.slice(0, visibleHistory).map((item) => (
                 <div key={item.id} className="history-item-row">
@@ -384,6 +618,30 @@ const ClientProfile = () => {
             )}
           </div>
           {clientData.history && visibleHistory < clientData.history.length && (
+=======
+            {historyData.slice(0, visibleHistory).map((item) => (
+              <div key={item.id} className="history-item-row">
+                <div className="history-user-info">
+                  <img src={item.icon} alt="icon" className="category-icon" />
+                  <div className="user-text">
+                    <h4>{item.name}</h4>
+                    <p>{item.job}</p>
+                  </div>
+                </div>
+                <div className="history-rating-side">
+                  <button
+                    className="small-rate-btn"
+                    onClick={() => setShowRateModal(true)}
+                  >
+                    <span>تقييم </span>
+                    <span>★★★</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          {visibleHistory < historyData.length && (
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <button
               className="show-more-arrow"
               onClick={() => setVisibleHistory(visibleHistory + 4)}
@@ -413,7 +671,11 @@ const ClientProfile = () => {
                 ))}
               </div>
               <div className="score-side">
+<<<<<<< HEAD
                 <span className="big-score">{clientData.rating ? clientData.rating.toFixed(1) : "0.0"}</span>
+=======
+                <span className="big-score">4.8</span>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 <div className="stars-icons-rtl">
                   <FaStarHalfAlt />
                   <FaStar />
@@ -425,6 +687,7 @@ const ClientProfile = () => {
             </div>
           </div>
           <div className="reviews-feed">
+<<<<<<< HEAD
             {clientData.reviews && clientData.reviews.length > 0 ? (
               clientData.reviews.slice(0, visibleReviews).map((rev) => (
                 <div key={rev.id} className="review-card-item">
@@ -476,6 +739,50 @@ const ClientProfile = () => {
             <button
               className="load-more"
               onClick={() => setVisibleReviews(clientData.reviews.length)}
+=======
+            {reviews.slice(0, visibleReviews).map((rev) => (
+              <div key={rev.id} className="review-card-item">
+                <div className="user-meta">
+                  <img src={rev.img} alt={rev.name} />
+                  <div className="user-text">
+                    <h4>{rev.name}</h4>
+                    <p>{rev.job}</p>
+                  </div>
+                </div>
+                <div className="review-status">
+                  <span className="date-stamp">{rev.date}</span>
+                  <div className="stars-group">
+                    {[...Array(5)].map((_, i) =>
+                      i < rev.rating ? (
+                        <FaStar key={i} />
+                      ) : (
+                        <FaRegStar key={i} />
+                      ),
+                    )}
+                  </div>
+                </div>
+                <div className="review-btns">
+                  <button
+                    className="btn-edit-rev"
+                    onClick={() => setShowEditReviewModal(true)}
+                  >
+                    <FaEdit /> تعديل
+                  </button>
+                  <button
+                    className="btn-complain"
+                    onClick={() => setShowComplainModal(true)}
+                  >
+                    <FaExclamationTriangle /> شكوي
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          {visibleReviews < reviews.length && (
+            <button
+              className="load-more"
+              onClick={() => setVisibleReviews(reviews.length)}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             >
               عرض كل التقييمات ↓
             </button>
@@ -539,10 +846,17 @@ const ClientProfile = () => {
               />
               {errors.city && <span className="error-msg">{errors.city}</span>}
             </div>
+<<<<<<< HEAD
 
             <h3 className="form-title-pas" style={{ display: 'block', width: '100%', textAlign: 'right', marginRight: '-28%' }}>تغيير كلمة السر</h3>
             <div className="input-group-wrapper password-wrapper">
 
+=======
+       
+          <h3 className="form-title-pas" style={{display:'block',width:'100%',textAlign:'right',marginRight:'-28%'}}>تغيير كلمة السر</h3>
+            <div className="input-group-wrapper password-wrapper">
+              
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               <input
                 type={showPass ? "text" : "password"}
                 name="password"
@@ -552,6 +866,7 @@ const ClientProfile = () => {
                 onChange={handleInputChange}
               />
               <span className="eye-icon" onClick={() => setShowPass(!showPass)}>
+<<<<<<< HEAD
                 {showPass ? <FaEye /> : < FaEyeSlash />}
               </span>
             </div>
@@ -587,6 +902,43 @@ const ClientProfile = () => {
             <div className="form-buttons">
               <button type="submit" className="btn-save" disabled={isSubmitting}>
                 {isSubmitting ? "جاري الحفظ..." : "حفظ"}
+=======
+                {showPass ? <FaEye /> : < FaEyeSlash/>}
+              </span>
+            </div>
+             <div className="input-group-wrapper password-wrapper">
+                              <input 
+                                type={showNewPass ? "text" : "password"} 
+                                name="newPassword"
+                                placeholder="كلمة السر الجديدة" 
+                                className={`form-input ${errors.newPassword ? 'input-error' : ''}`}
+                                value={formData.newPassword}
+                                onChange={handleInputChange}
+                              />
+                              <span className="eye-icon" onClick={() => setShowNewPassword(!showNewPass)}>
+                                {showNewPass ? <FaEye /> : < FaEyeSlash />}
+                              </span>
+                              {errors.newPassword && <span className="error-msg">{errors.newPassword}</span>}
+                            </div>
+            
+                            <div className="input-group-wrapper password-wrapper">
+                              <input 
+                                type={showConfirmPass ? "text" : "password"} 
+                                name="confirmPassword"
+                                placeholder="تأكيد كلمة السر" 
+                                className={`form-input ${errors.confirmPassword ? 'input-error' : ''}`}
+                                value={formData.confirmPassword}
+                                onChange={handleInputChange}
+                              />
+                              <span className="eye-icon" onClick={() => setShowConfirmPass(!showConfirmPass)}>
+                                {showConfirmPass ? <FaEye /> : <FaEyeSlash />}
+                              </span>
+                              {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword}</span>}
+                            </div>
+            <div className="form-buttons">
+              <button type="submit" className="btn-save">
+                حفظ
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               </button>
               <button
                 type="button"
@@ -628,10 +980,16 @@ const ClientProfile = () => {
               className="modal-submit-btn"
               onClick={() => {
                 if (selectedRating && reviewText) {
+<<<<<<< HEAD
                   // alert("تم التقييم");
                   handleCloseModals();
                 } else
                   alert("أكمل التقييم");
+=======
+                  alert("تم التقييم");
+                  handleCloseModals();
+                } else alert("أكمل التقييم");
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               }}
             >
               إرسال
@@ -727,4 +1085,8 @@ const ClientProfile = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ClientProfile;
+=======
+export default ClientProfile;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

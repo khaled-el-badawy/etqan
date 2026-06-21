@@ -24,6 +24,7 @@ function VerifyOTP() {
   };
   const currentImage = images[role] || images.craftsman;
 
+<<<<<<< HEAD
   const handleVerify = async () => {
     const enteredOtp = otp.join("");
     try {
@@ -36,6 +37,21 @@ function VerifyOTP() {
       );
 
       if (response.status === 200) {
+=======
+
+
+
+ const handleVerify = async () => {
+    const enteredOtp = otp.join("");
+    try {
+      const response = await axios.post("http://localhost:5036/api/ForgetPassword/verify-otp", {
+        email: userEmail,
+        otp: enteredOtp
+      });
+
+      if (response.status === 200) {
+      
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         navigate(`/new-password/${role}`, { state: { email: userEmail } });
       }
     } catch (err) {
@@ -54,17 +70,27 @@ function VerifyOTP() {
   }, [active, timer]);
 
   const handleResend = async () => {
+<<<<<<< HEAD
     // alert("جاري إعادة إرسال الرمز...");
     try {
       await axios.post(
         `https://etqanproject.runasp.net/api/ForgetPassword/forgot-password-check-email?email=${userEmail}`,
       );
+=======
+    alert("جاري إعادة إرسال الرمز...");
+    try {
+      await axios.post(`http://localhost:5036/api/ForgetPassword/forgot-password-check-email?email=${userEmail}`);
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       setTimer(60);
       setActive(true);
       setOtp(["", "", "", ""]);
       setError("");
     } catch (err) {
+<<<<<<< HEAD
       // alert("فشل إعادة الإرسال");
+=======
+      alert("فشل إعادة الإرسال");
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     }
   };
   // إدخال OTP
@@ -96,9 +122,14 @@ function VerifyOTP() {
             <h3 className="VerifyOTP-title">
               يرجى تفقد بريدك الإلكتروني وكتابة رمز التحقق
               <br />
+<<<<<<< HEAD
               الذي أرسلناه للتو لإتمام{" "}
               {type === "reset" ? "تغيير كلمة المرور" : "تفعيل الحساب"}
               {userEmail && <small className="user-email">"{userEmail}"</small>}
+=======
+              الذي أرسلناه للتو لإتمام {type === "reset" ? "تغيير كلمة المرور" : "تفعيل الحساب"}
+               {userEmail && <small className="user-email">"{userEmail}"</small>}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </h3>
 
             <div className="otp-row">
@@ -175,4 +206,8 @@ function VerifyOTP() {
   );
 }
 
+<<<<<<< HEAD
 export default VerifyOTP;
+=======
+export default VerifyOTP;
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 @import url("http://fonts.googleapis.com/css2?family=Lateef:wght@200;300;400;500;600;700;800&family=Ubuntu&display=swap");
 @import url("http://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=El+Messiri:wght@400..700&family=Manufacturing+Consent&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@1,300;1,400;1,500&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+=======
+@import url("https://fonts.googleapis.com/css2?family=Lateef:wght@200;300;400;500;600;700;800&family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=El+Messiri:wght@400..700&family=Manufacturing+Consent&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@1,300;1,400;1,500&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 /*khaled*/
 ::selection {
   color: #fff;
@@ -12,17 +17,26 @@
 ::-webkit-scrollbar {
   width: 10px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 ::-webkit-scrollbar-track {
   background-color: #f9f9f9;
   box-shadow: 0 0 10px #c7c7c7 inset;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 ::-webkit-scrollbar-thumb {
   background-color: #3e7c87;
   /* border-radius: 10px; */
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 ::-webkit-scrollbar-thumb:hover {
   background-color: #3e7c87c2;
 }
@@ -118,4 +132,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+<<<<<<< HEAD
 } */
+=======
+} */
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

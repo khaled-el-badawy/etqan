@@ -3,7 +3,11 @@ import "./NewPassword.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+import axios from "axios"; 
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
 function NewPassword() {
   const { role } = useParams(); // customer / company / craftsman
@@ -43,12 +47,21 @@ function NewPassword() {
     checkRule(rules.minLength) &&
     password === confirmPassword;
 
+<<<<<<< HEAD
 
 
 
 
 
   // --- الدالة المصلحة للربط بالباك إند ---
+=======
+  
+
+   
+
+
+    // --- الدالة المصلحة للربط بالباك إند ---
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const handleChangePassword = async () => {
     let valid = true;
 
@@ -76,13 +89,20 @@ function NewPassword() {
     if (valid) {
       setLoading(true);
       try {
+<<<<<<< HEAD
         const response = await axios.post("https://etqanproject.runasp.net/api/ForgetPassword/reset-password", {
+=======
+        const response = await axios.post("http://localhost:5036/api/ResetPassword/reset-password", {
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           email: userEmail,
           newPassword: password
         });
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         if (response.status === 200) {
           setSuccessMessage("تم تغيير كلمة المرور بنجاح");
           setPassword("");
@@ -90,11 +110,19 @@ function NewPassword() {
 
 
 
+<<<<<<< HEAD
 
           // نوديه لصفحة اللوجن حسب دوره بعد ثانية واحدة
           setTimeout(() => {
             setSuccessMessage("");
             navigate(`/login/${role}`);
+=======
+          
+          // نوديه لصفحة اللوجن حسب دوره بعد ثانية واحدة
+          setTimeout(() => {
+            setSuccessMessage("");
+            navigate(`/home/${role}`);
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           }, 1500);
         }
       } catch (error) {
@@ -189,7 +217,11 @@ function NewPassword() {
               {confirmPasswordError && <p className="NewPassword-error-msg">{confirmPasswordError}</p>}
             </div>
 
+<<<<<<< HEAD
             <button
+=======
+             <button
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
               type="button"
               className="btn-container"
               onClick={handleChangePassword}
@@ -206,7 +238,11 @@ function NewPassword() {
               {loading ? "جاري الحفظ..." : "حفظ كلمة المرور"}
             </button>
 
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           </form>
         </div>
       </motion.div>

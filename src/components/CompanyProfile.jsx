@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 // CompanyProfile.jsx — متصل بالـ API زي CraftmanProfile
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+=======
+import React, { useState, useRef } from "react";
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./CompanyProfile.css";
@@ -26,6 +30,7 @@ import {
   FaTrashAlt,
 } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+<<<<<<< HEAD
 import { ImSpinner3 } from "react-icons/im";
 
 /* =======================
@@ -106,6 +111,21 @@ const normalizeCompanyProfile = (data) => {
 
 /* ================= EDIT PROFILE COMPONENT ================= */
 function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setCompanyData, companyData, profileFile, coverFile, profileImg, coverImg, setProfileFile, setCoverFile, setProfileImg, setCoverImg }) {
+=======
+
+const reviews = [
+  { id: 1, rating: 0, name: "أحمد محمد", text: "خدمة ممتازة جدًا والتعامل محترم ." },
+  { id: 2, rating: 0, name: "سارة علي", text: "من الشركات المميزة فعلا في المجال." },
+  { id: 3, rating: 0, name: "محمد خالد", text: "أفضل شركة مقاولات تعاملت معها بصراحة." },
+];
+
+const totalRatings = reviews.length;
+const avgRating =
+  reviews.reduce((sum, r) => sum + r.rating, 0) / totalRatings;
+
+/* ================= EDIT PROFILE COMPONENT ================= */
+function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setCompanyData, companyData }) {
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const [formData, setFormData] = useState({ ...companyData });
   const [errors, setErrors] = useState({});
   const [password, setPassword] = useState("");
@@ -114,6 +134,7 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+<<<<<<< HEAD
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState({ type: "", text: "" });
 
@@ -136,6 +157,8 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
   const removeServiceTag = (indexToRemove) => {
     setServiceTags((prev) => prev.filter((_, index) => index !== indexToRemove));
   };
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -151,6 +174,7 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
     if (!formData.email || !emailRegex.test(formData.email)) newErrors.email = "يرجى إدخال بريد إلكتروني صحيح ومكتمل";
     const phoneRegex = /^(010|011|012|015)[0-9]{8}$/;
     if (!formData.phone || !phoneRegex.test(formData.phone)) newErrors.phone = "يجب أن يكون 11 رقم ويبدأ بـ 010, 011, 012, أو 015";
+<<<<<<< HEAD
 
     // التحقق من كلمة السر
     const isChangingPassword = password || newPassword || confirmPassword;
@@ -161,10 +185,15 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
       if (newPassword !== confirmPassword) newErrors.confirmPassword = "كلمة السر غير متطابقة";
     }
 
+=======
+    if (newPassword && newPassword !== confirmPassword) newErrors.confirmPassword = "كلمة السر غير متطابقة";
+    
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+<<<<<<< HEAD
   const handleSave = async (e) => {
     e.preventDefault();
     if (!validate()) return;
@@ -302,6 +331,17 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
     }
   };
 // -------------------------------------------
+=======
+  const handleSave = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      setCompanyData(formData);
+      setIsAccountActive(true);
+      setEditMode("profile");
+    }
+  };
+
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   return (
     <div className="edit-form-container">
       <h2>{isAccountActive ? "تعديل ملف الشركة" : "إكمال بيانات الشركة"}</h2>
@@ -309,11 +349,19 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
         <div className="form-group">
           <h3>بيانات الشركة</h3>
           <input name="name" placeholder="اسم الشركة" value={formData.name} onChange={handleInputChange} />
+<<<<<<< HEAD
           {errors.name && <p style={{ color: 'red', fontSize: '12px' }}>{errors.name}</p>}
           <input name="email" placeholder="البريد الإلكتروني" value={formData.email} onChange={handleInputChange} />
           {errors.email && <p style={{ color: 'red', fontSize: '12px' }}>{errors.email}</p>}
           <input name="phone" placeholder="رقم الهاتف" value={formData.phone} maxLength={11} onChange={handleInputChange} />
           {errors.phone && <p style={{ color: 'red', fontSize: '12px' }}>{errors.phone}</p>}
+=======
+          {errors.name && <p style={{color: 'red', fontSize: '12px'}}>{errors.name}</p>}
+          <input name="email" placeholder="البريد الإلكتروني" value={formData.email} onChange={handleInputChange} />
+          {errors.email && <p style={{color: 'red', fontSize: '12px'}}>{errors.email}</p>}
+          <input name="phone" placeholder="رقم الهاتف" value={formData.phone} maxLength={11} onChange={handleInputChange} />
+          {errors.phone && <p style={{color: 'red', fontSize: '12px'}}>{errors.phone}</p>}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         </div>
 
         <div className="form-group">
@@ -321,6 +369,7 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
           <input name="about" placeholder="عن الشركة" value={formData.about} onChange={handleInputChange} />
           <input name="experience" placeholder="سنوات الخبرة" value={formData.experience} onChange={handleInputChange} />
           <input name="governorate" placeholder="المحافظة" value={formData.governorate} onChange={handleInputChange} />
+<<<<<<< HEAD
 
           <div className="services-tags-input">
             {serviceTags.map((tag, index) => (
@@ -343,6 +392,22 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
               onKeyDown={handleServiceInputKeyDown}
             />
           </div>
+=======
+        
+          <select 
+  name="services" 
+  value={formData.services} 
+  onChange={handleInputChange}
+  className="custom-select" 
+>
+  <option value="" disabled hidden>اختر نوع الشركة</option>
+  <option value="لنقل مخلفات البناء"> نقل مخلفات البناء</option>
+  <option value="لنقل الرمل والزلط ">نقل الرمل والزلط </option>
+  <option value="للمقاولات والبناء">مقاولات وبناء</option>
+  <option value="لنقل الأثاث">نقل الأثاث</option>
+  <option value="لتأجير قلابات ولود">تأجير قلابات ولودر</option>
+</select>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         </div>
 
         <div className="form-group">
@@ -363,11 +428,15 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
             <input type={showCurrentPassword ? "text" : "password"} placeholder="كلمة السر الحالية" value={password} onChange={(e) => setPassword(e.target.value)} />
             <span className="password-eye" onClick={() => setShowPassword(!showCurrentPassword)}>{showCurrentPassword ? <FiEye /> : <FiEyeOff />}</span>
           </div>
+<<<<<<< HEAD
           {errors.password && <p style={{ color: 'red', fontSize: '12px' }}>{errors.password}</p>}
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
           <div className="password-field">
             <input type={showNewPassword ? "text" : "password"} placeholder="كلمة السر الجديدة" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
             <span className="password-eye" onClick={() => setShowNewPassword(!showNewPassword)}>{showNewPassword ? <FiEye /> : <FiEyeOff />}</span>
           </div>
+<<<<<<< HEAD
           {errors.newPassword && <p style={{ color: 'red', fontSize: '12px' }}>{errors.newPassword}</p>}
           <div className="password-field">
             <input type={showConfirmPassword ? "text" : "password"} placeholder="تأكيد كلمة السر" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
@@ -396,6 +465,18 @@ function ProfileSection({ setEditMode, setIsAccountActive, isAccountActive, setC
             {isSubmitting ? <><ImSpinner3 className="spinner-icon" /> جاري الحفظ...</> : "حفظ"}
           </button>
           <button type="button" className="edit-cancel-btn" disabled={isSubmitting} onClick={() => setEditMode("profile")}>إلغاء</button>
+=======
+          <div className="password-field">
+            <input type={showConfirmPassword ? "text" : "password"} placeholder="تأكيد كلمة السر" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <span className="password-eye" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>{showConfirmPassword ? <FiEye /> : <FiEyeOff />}</span>
+            {errors.confirmPassword && <p style={{color: 'red', fontSize: '12px'}}>{errors.confirmPassword}</p>}
+          </div>
+        </div>
+
+        <div className="form-btns">
+          <button type="submit" className="save-btn">حفظ</button>
+          <button type="button" className="edit-cancel-btn" onClick={() => setEditMode("profile")}>إلغاء</button>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         </div>
       </form>
     </div>
@@ -409,11 +490,19 @@ function RequestServiceModal({ companyName, onClose }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
   const egyptianGovernorates = [
+<<<<<<< HEAD
     "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "الشرقية", "الغربية",
     "المنوفية", "البحيرة", "كفر الشيخ", "الفيوم", "بني سويف", "المنيا",
     "أسيوط", "سوهاج", "قنا", "الأقصر", "أسوان", "البحر الأحمر",
     "الوادي الجديد", "مطروح", "شمال سيناء", "جنوب سيناء", "الإسماعيلية",
     "السويس", "بورسعيد", "دمياط", "القليوبية"
+=======
+    "القاهرة","الجيزة","الإسكندرية","الدقهلية","الشرقية","الغربية",
+    "المنوفية","البحيرة","كفر الشيخ","الفيوم","بني سويف","المنيا",
+    "أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر",
+    "الوادي الجديد","مطروح","شمال سيناء","جنوب سيناء","الإسماعيلية",
+    "السويس","بورسعيد","دمياط","القليوبية"
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   ];
   const filteredGovs = egyptianGovernorates.filter(gov => gov.includes(searchTerm));
 
@@ -425,6 +514,7 @@ function RequestServiceModal({ companyName, onClose }) {
         ) : (
           <>
             <h2 className="modal-title">{companyName}</h2>
+<<<<<<< HEAD
             <form className="request-form" onSubmit={(e) => { e.preventDefault(); setShowSuccessMsg(true); setTimeout(() => { setShowSuccessMsg(false); onClose(); }, 1500); }}>
               <div className="form-group-modal"><label>اسم العميل</label><input type="text" placeholder="أدخل اسمك" required /></div>
               <div className="form-group-modal custom-select-container">
@@ -433,17 +523,35 @@ function RequestServiceModal({ companyName, onClose }) {
                 {isOpen && filteredGovs.length > 0 && (
                   <ul className="gov-dropdown-list">
                     {filteredGovs.map((gov, index) => (<li key={index} onClick={() => { setSearchTerm(gov); setIsOpen(false); }}>{gov}</li>))}
+=======
+            <form className="request-form" onSubmit={(e) => {e.preventDefault(); setShowSuccessMsg(true); setTimeout(() => {setShowSuccessMsg(false); onClose();}, 1500);}}>
+              <div className="form-group-modal"><label>اسم العميل</label><input type="text" placeholder="أدخل اسمك" required /></div>
+              <div className="form-group-modal custom-select-container">
+                <label>المحافظة</label>
+                <input type="text" placeholder="المحافظة" value={searchTerm} onChange={(e) => {setSearchTerm(e.target.value); setIsOpen(true);}} onFocus={() => setIsOpen(true)} required />
+                {isOpen && filteredGovs.length > 0 && (
+                  <ul className="gov-dropdown-list">
+                    {filteredGovs.map((gov, index) => (<li key={index} onClick={() => {setSearchTerm(gov); setIsOpen(false);}}>{gov}</li>))}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                   </ul>
                 )}
               </div>
               <div className="form-group-modal"><label>العنوان</label><input type="text" placeholder="العنوان بالتفصيل" required /></div>
               <div className="form-group-modal"><label>وصف الخدمة</label><input type="text" placeholder="وصف الخدمة" required /></div>
               <div className="form-group-modal"><label>تاريخ الطلب</label><input type="date" value={today} readOnly className="readonly-input" /></div>
+<<<<<<< HEAD
               <div className="modal-btns">
                 <button type="submit" className="confirm-btn">إرسال الطلب</button>
                 <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
                 <button type="button" className="close-btn" onClick={onClose}>×</button>
               </div>
+=======
+                <div className="modal-btns">
+                  <button type="submit" className="confirm-btn">إرسال الطلب</button>
+                  <button type="button" className="cancel-btn" onClick={onClose}>إلغاء</button>
+                  <button type="button" className="close-btn" onClick={onClose}>×</button>
+                </div>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </form>
           </>
         )}
@@ -454,6 +562,7 @@ function RequestServiceModal({ companyName, onClose }) {
 
 /* ================= MAIN COMPONENT ================= */
 export default function CompanyProfile() {
+<<<<<<< HEAD
   const { id: urlId } = useParams();
   const userId = urlId || localStorage.getItem("userId");
   const [activeTab, setActiveTab] = useState("profile");
@@ -532,10 +641,60 @@ export default function CompanyProfile() {
     ? companyData.reviews.reduce((sum, r) => sum + r.rating, 0) / companyData.reviews.length
     : Number(companyData.rating) || 0;
   const servicesDisplay = Array.isArray(companyData.services) ? companyData.services.join("، ") : companyData.services || "";
+=======
+  const [activeTab, setActiveTab] = useState("profile");
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [isAccountActive, setIsAccountActive] = useState(false); 
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false); 
+
+  const initialData = {
+    name: "شركة أبناء سيناء",
+    about: "شركة أبناء سيناء للتجارة والمقاولات العامة من الشركات العريقة في مجال التجارة والتشييد والبناء، وصُنفت بكونها أفضل شركة مقاولات عامة، ويرجع السبب إلى المميزات التي تتمتع بها الشركة بالإضافة إلى مجموعة الخدمات التي تتولى الشركة أمر تنفيذها بأعلى دقة، وتُعد هذه الشركة من أقدم الشركات في هذا المجال، إليكم الكثير من التفاصيل حولها.",
+    email: "", phone: "", governorate: "القاهرة", experience: "16 سنة", scope: "داخل القاهرة والجيزة", hours: "من 9 صباحًا إلى 10 مساءً", responseTime: "خلال 30 دقيقة", emergency: "available", services: ""
+  };
+
+  const [companyData, setCompanyData] = useState(initialData);
+  const [profileImg, setProfileImg] = useState("");
+  const [coverImg, setCoverImg] = useState("");
+  
+
+  const profileInputRef = useRef(null);
+  const coverInputRef = useRef(null);
+
+  const handleImageUpload = (e, type) => {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      if (type === "profile") {
+        setProfileImg(url);
+      } else {
+        setCoverImg(url);
+      }
+    }
+  };
+
+  const triggerCoverUpload = () => {
+    if (coverInputRef.current) {
+      coverInputRef.current.click();
+    }
+  };
+
+ 
+  const confirmDelete = () => {
+    setShowConfirmModal(false);
+    setShowDeleteToast(true);
+    setTimeout(() => {
+      setShowDeleteToast(false);
+      window.location.href = "/"; 
+    }, 2000);
+  };
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
   return (
     <div className="profile-container">
       {showRequestModal && <RequestServiceModal companyName={companyData.name} onClose={() => setShowRequestModal(false)} />}
+<<<<<<< HEAD
 
       {showConfirmModal && (
         <div className="modal-overlay" onClick={() => !isDeleting && setShowConfirmModal(false)}>
@@ -546,6 +705,18 @@ export default function CompanyProfile() {
             <div className="modal-btns" style={{ justifyContent: 'center', gap: '15px' }}>
               <button className="confirm-btn" style={{ backgroundColor: '#ff6b6b', padding: '10px 20px' }} onClick={handleDeleteAccount} disabled={isDeleting}>{isDeleting ? "جاري الحذف..." : "نعم، احذف الحساب"}</button>
               <button className="cancel-btn" style={{ backgroundColor: '#eaeaea' }} onClick={() => setShowConfirmModal(false)} disabled={isDeleting}>إلغاء</button>
+=======
+      
+
+      {showConfirmModal && (
+        <div className="modal-overlay" onClick={() => setShowConfirmModal(false)}>
+          <div className="modal-box delete-confirm-modal" onClick={(e) => e.stopPropagation()}>
+            <h3 style={{ marginBottom: '20px', color: '#40798C' }}>تنبيه حذف الحساب</h3>
+            <p style={{ marginBottom: '30px', color: '#666' }}>هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا الإجراء.</p>
+            <div className="modal-btns" style={{ justifyContent: 'center', gap: '15px' }}>
+              <button className="confirm-btn" style={{ backgroundColor: '#ff6b6b', padding: '10px 20px' }} onClick={confirmDelete}>نعم</button>
+              <button className="cancel-btn" style={{ backgroundColor: '#eaeaea' }} onClick={() => setShowConfirmModal(false)}>إلغاء</button>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             </div>
           </div>
         </div>
@@ -560,6 +731,7 @@ export default function CompanyProfile() {
         </div>
       )}
 
+<<<<<<< HEAD
       {/* COVER */}
       <div
         className="coverBox"
@@ -653,10 +825,43 @@ export default function CompanyProfile() {
                   fontWeight: "bold",
                 }}
               >
+=======
+      {/* COVER SECTION */}
+      <div className="cover-container" style={{ backgroundColor: coverImg ? 'transparent' : '#f0f2f5', height: '250px', position: 'relative' }}>
+        {coverImg && <img src={coverImg} alt="cover" className="cover-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+        
+        {activeTab === "edit" && (
+          <button 
+            type="button"
+            className="editcover-btn" 
+            onClick={triggerCoverUpload}
+            style={{ zIndex: 10 }}
+          >
+            <MdPhotoCamera /> تعديل صورة الغلاف
+          </button>
+        )}
+        
+        <input 
+          type="file" 
+          ref={coverInputRef} 
+          style={{ display: "none" }} 
+          onChange={(e) => handleImageUpload(e, "cover")} 
+          accept="image/*" 
+        />
+        
+        {isAccountActive && (
+          <div className="buttons left">
+            {activeTab === "edit" ? (
+              <button 
+                className="btn-delete" 
+                onClick={() => setShowConfirmModal(true)}
+                style={{ backgroundColor: '#ff6b6b', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold',fontSize: '20px' }}>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
                 <FaTrashAlt /> حذف الحساب
               </button>
             ) : (
               <>
+<<<<<<< HEAD
                 <button
                   className="edit-profile-btn"
                   onClick={() => setActiveTab("edit")}
@@ -675,11 +880,50 @@ export default function CompanyProfile() {
       </section>
 
       {/* TABS */}
+=======
+                <button className="btn primary" onClick={() => setShowRequestModal(true)}>طلب خدمة</button>
+                <button onClick={() => setActiveTab("edit")} className="btn-edit"><MdModeEdit /></button>
+              </>
+            )}
+          </div>
+        )}
+        <div className="cover-overlay"></div>
+      </div>
+
+      {/* PROFILE HEADER */}
+      <div className="profile-header" style={{ textAlign: 'center', marginTop: '-75px', position: 'relative', zIndex: '5' }}>
+        <div style={{ position: 'relative', width: '190px', height: '190px', margin: '0 auto' }}>
+          <div className="profile-img" style={{ backgroundColor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '5px solid #fff', overflow: 'hidden', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            {profileImg ? <img src={profileImg} alt="profile" className="profile-img"  /> : <FaBuilding style={{ fontSize: '60px', color: '#ccc' }} />}
+          </div>
+          {activeTab === "edit" && (
+            <div 
+              onClick={() => profileInputRef.current.click()} 
+              className="profile-camera-icon "
+            >
+              <MdPhotoCamera />
+            </div>
+          )}
+        </div>
+        <input type="file" ref={profileInputRef} style={{ display: "none" }} onChange={(e) => handleImageUpload(e, "profile")} accept="image/*" />
+        <div className="profile-info" style={{ marginTop: '15px' }}>
+          <h2>{companyData.name}</h2>
+          <p>{companyData.services}</p>
+          {isAccountActive && <div className="rating"><div className="star-icon"><FaStar /><span>{avgRating.toFixed(1)}</span></div></div>}
+        </div>
+      </div>
+
+      {/* RENDER TABS */}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
       {!isAccountActive && activeTab !== "edit" ? (
         <div className="activation-required-section">
           <div className="activation-content">
             <FaUserCheck className="activation-icon" />
+<<<<<<< HEAD
             <h3>أهلاً بك في منصتنا <img src="/images/hand.svg" alt="hand" style={{ width: '50px' }} /></h3>
+=======
+            <h3>أهلاً بك في منصتنا <img src="/images/hand.svg" alt="hand" style={{ width: '50px' }}/></h3>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <p className="no-wrap-text">يرجى إكمال تفعيل حسابك وإضافة بيانات الشركة لتظهر للعملاء بشكل احترافي.</p>
             <button className="activate-btn" onClick={() => setActiveTab("edit")}>فعل حسابك الآن</button>
           </div>
@@ -687,8 +931,13 @@ export default function CompanyProfile() {
       ) : activeTab === "profile" ? (
         <div>
           <div className="stats-box">
+<<<<<<< HEAD
             <div className="stat"><div className="icon-circle blue"><FaCalendarAlt /></div><span>{companyData.joinedDate || "2026"}</span><p>تاريخ الانضمام</p></div>
             <div className="stat"><div className="icon-circle green"><FaTasks /></div><span>{companyData.completedOrders || 0}</span><p>عدد الطلبات</p></div>
+=======
+            <div className="stat"><div className="icon-circle blue"><FaCalendarAlt /></div><span>2026</span><p>تاريخ الانضمام</p></div>
+            <div className="stat"><div className="icon-circle green"><FaTasks /></div><span>0</span><p>عدد الطلبات</p></div>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <div className="stat"><div className="icon-circle purple"><FaMapMarkerAlt /></div><span>{companyData.governorate}</span><p>الموقع</p></div>
             <div className="stat"><div className="icon-circle orange"><FaBriefcase /></div><span>{companyData.experience}</span><p>سنوات الخبرة</p></div>
           </div>
@@ -705,7 +954,11 @@ export default function CompanyProfile() {
             </div>
           </div>
           <div className="section-divider"></div>
+<<<<<<< HEAD
           <div className="section"><h3 className="section-title"><FaCogs className="title-icon" /> الخدمات الأساسية</h3>
+=======
+          <div className="section"><h3 className="section-title"><FaCogs className="title-icon" /> الخدمات الأساسية للشركة</h3>
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
             <div className="services">
               <div className="service-card"><div className="icon-circle blue"><FaBuilding /></div><h4>المقاولات العامة</h4><p>تنفيذ كافة المشروعات السكنية والتجارية بأعلى جودة</p></div>
               <div className="service-card"><div className="icon-circle green"><FaTools /></div><h4>أعمال التشطيبات</h4><p>تشطيبات داخلية وخارجية عصرية تناسب جميع الأذواق</p></div>
@@ -716,6 +969,7 @@ export default function CompanyProfile() {
           <div className="section-divider"></div>
           <div className="section reviews-section">
             <div className="reviews-header"><h3 className="section-title"><FaStar className="title-icon" /> تقييمات العملاء</h3></div>
+<<<<<<< HEAD
             <div className="reviews">{companyData.reviews.map(r => (<div className="review-card" key={r.id}><div className="user"><div className="avatar">{r.name[0]}</div><div><h4>{r.name}</h4><FaStar className="stars" /> {r.rating.toFixed(1)}</div></div><p>{r.text}</p></div>))}</div>
           </div>
         </div>
@@ -725,3 +979,14 @@ export default function CompanyProfile() {
     </div>
   );
 }
+=======
+            <div className="reviews">{reviews.map(r => (<div className="review-card" key={r.id}><div className="user"><div className="avatar">{r.name[0]}</div><div><h4>{r.name}</h4><FaStar className="stars" /> {r.rating.toFixed(1)}</div></div><p>{r.text}</p></div>))}</div>
+          </div>
+        </div>
+      ) : (
+        <ProfileSection setEditMode={setActiveTab} setIsAccountActive={setIsAccountActive} isAccountActive={isAccountActive} setCompanyData={setCompanyData} companyData={companyData} />
+      )}
+    </div>
+  );
+}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb

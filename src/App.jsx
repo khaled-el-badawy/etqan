@@ -10,7 +10,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { CartProvider } from "./components/CartContext";
 
+<<<<<<< HEAD
 // استيراد المكونات (تأكد من صحة المسارات في مشروعك)
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 import Login from "./components/Login";
 import LoginOTP from "./components/LoginOTP";
 import Index from "./components/Index";
@@ -48,7 +51,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Admin from "./components/Admin";
 import ProtectedRoute from "./components/ProtectedRoute";
+<<<<<<< HEAD
 import ScrollTopButton from "./components/ScrollTopButton";
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
 
 function AppWrapper() {
   const location = useLocation();
@@ -57,7 +63,10 @@ function AppWrapper() {
     AOS.init({ duration: 1000, once: false });
   }, []);
 
+<<<<<<< HEAD
   // تحديد الصفحات التي سيختفي منها الـ Navbar والـ Footer
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
   const isLoginPage = location.pathname.startsWith("/login");
   const isForgotPage = location.pathname.startsWith("/forgot-password");
   const isVerifyPage = location.pathname.startsWith("/verify-otp");
@@ -82,6 +91,7 @@ function AppWrapper() {
 
   return (
     <>
+<<<<<<< HEAD
       {/* ظهور الـ Navbar بشكل ذكي */}
       {!hideNavbar && <Navbar />}
 
@@ -99,21 +109,42 @@ function AppWrapper() {
         <Route path="/new-password/:role" element={<NewPassword />} />
 
         {/* بوابات تسجيل الحسابات الجديدة */}
+=======
+      {!hideNavbar && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/index" element={<Index />} />
+
+        <Route path="/login/:role" element={<Login />} />
+        <Route path="/login-otp/:role" element={<LoginOTP />} />
+
+        <Route path="/forgot-password/:role" element={<ForgotPassword />} />
+        <Route path="/new-password/:role" element={<NewPassword />} />
+
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         <Route path="/CraftsmanRegister" element={<CraftsmanRegister />} />
         <Route path="/verify-otp/:role" element={<VerifyOTP />} />
         <Route path="/CustomerRegister" element={<CustomerRegister />} />
         <Route path="/CompanyRegister" element={<CompanyRegister />} />
 
+<<<<<<< HEAD
         {/* الصفحة الرئيسية ومن نحن */}
         <Route path="/home" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
 
         {/* صفحات تتبع الطلبات للأدوار المختلفة */}
+=======
+        <Route path="/home" element={<Home />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         <Route path="/CraftmanOrdersPage" element={<CraftmanOrdersPage />} />
         <Route path="/CompanyOrdersPage" element={<CompanyOrdersPage />} />
         <Route path="/CustomerOrdersPage" element={<CustomerOrdersPage />} />
         <Route path="/NotificationsPage" element={<NotificationsPage />} />
 
+<<<<<<< HEAD
         {/* صفحات الشركات ومقدمي الخدمة */}
         <Route path="/Companies" element={<Companies />} />
         <Route path="/providers" element={<Providers />} />
@@ -150,6 +181,34 @@ function AppWrapper() {
         <Route path="/Chat" element={<Chat />} />
 
         {/* لوحة تحكم الأدمن (محمية بـ ProtectedRoute) */}
+=======
+        <Route path="/Companies" element={<Companies />} />
+        <Route path="/providers" element={<Providers />} />
+        <Route path="/CompanyProfile/:id" element={<CompanyProfile />} />
+
+        <Route path="/Service" element={<Service />} />
+        <Route path="/Artisans" element={<Artisans />} />
+
+        <Route path="/Products" element={<Products />} />
+        <Route path="/ProductsDetails" element={<ProductsDetails />} />
+
+        <Route path="/FavoritesPage" element={<FavoritesPage />} />
+        <Route path="/CartPage" element={<CartPage />} />
+
+        <Route path="/CheckOut" element={<CheckOut />} />
+        <Route path="/Brands" element={<Brands />} />
+
+        <Route path="/OrderDetails" element={<OrderDetails />} />
+        <Route path="/Faturuh" element={<Faturuh />} />
+
+        <Route path="/Clientprofile/:id" element={<Clientprofile />} />
+
+        {/* هذا هو المسار المطلوب - تأكد من تطابقه تماماً */}
+        <Route path="/CraftmanProfile/:id" element={<CraftmanProfile />} />
+
+        <Route path="/contactUs" element={<ContactUs />} />
+
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         <Route
           path="/admin"
           element={
@@ -159,12 +218,21 @@ function AppWrapper() {
           }
         />
 
+<<<<<<< HEAD
         {/* صفحة 404 (دائماً في النهاية) */}
+=======
+        <Route path="/Chat" element={<Chat />} />
+
+        {/* صفحة 404 يجب أن تكون دائماً في آخر القائمة */}
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       {!hideNavbar && <Footer />}
+<<<<<<< HEAD
       <ScrollTopButton />
+=======
+>>>>>>> 1b00c8c897c61f99d56360806679863f648487fb
     </>
   );
 }
