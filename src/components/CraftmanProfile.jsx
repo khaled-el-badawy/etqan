@@ -55,10 +55,13 @@ const JOBS_LIST = [
 const getApiImageUrl = (path) => {
   if (!path) return "";
   let formattedPath = path.replace(/\\/g, "/");
-  if (formattedPath.startsWith("https") || formattedPath.startsWith("blob:")) return formattedPath;
+  if (formattedPath.startsWith("https") || formattedPath.startsWith("blob:"))
+    return formattedPath;
 
   // If no global baseURL is set, use the hardcoded backend domain
-  const baseUrl = (axios.defaults.baseURL || "https://etqanproject.runasp.net").replace(/\/$/, "");
+  const baseUrl = (
+    axios.defaults.baseURL || "https://etqanproject.runasp.net"
+  ).replace(/\/$/, "");
 
   if (!formattedPath.startsWith("/")) {
     formattedPath = "/" + formattedPath;
@@ -122,10 +125,17 @@ const normalizeCraftmanProfile = (data) => {
   }
 
   // استخراج البورتفوليو من أكثر من اسم محتمل في الـ API
-  const apiPortfolio = data.portfolioImages || data.portfolios || data.portfolio || data.images || data.works || [];
+  const apiPortfolio =
+    data.portfolioImages ||
+    data.portfolios ||
+    data.portfolio ||
+    data.images ||
+    data.works ||
+    [];
 
   return {
     id: data.id || "",
+    isOwner: Boolean(data?.permissions?.isOwner ?? data?.isOwner ?? false),
     ctaftName: data.fullName || data.ctaftName || data.name || "",
     job: data.jobName || data.job || "",
     rating: Number(data.rating ?? 0),
@@ -167,35 +177,37 @@ const normalizeCraftmanProfile = (data) => {
     worksImages:
       Array.isArray(apiPortfolio) && apiPortfolio.length > 0
         ? apiPortfolio.map((img) =>
-          getApiImageUrl(img?.url || img?.imageUrl || img?.imagePath || img),
-        )
+            getApiImageUrl(img?.url || img?.imageUrl || img?.imagePath || img),
+          )
         : [],
     // حفظ بيانات البورتفوليو الكاملة (مع الـ id) عشان نقدر نحذف
     portfolioData:
       Array.isArray(apiPortfolio) && apiPortfolio.length > 0
         ? apiPortfolio.map((img) => ({
-          id: img?.id ?? img?.imageId ?? null,
-          url: getApiImageUrl(img?.url || img?.imageUrl || img?.imagePath || img),
-          description: img?.description || "",
-        }))
+            id: img?.id ?? img?.imageId ?? null,
+            url: getApiImageUrl(
+              img?.url || img?.imageUrl || img?.imagePath || img,
+            ),
+            description: img?.description || "",
+          }))
         : [],
     reviews: Array.isArray(data.reviews)
       ? data.reviews.map((review, index) => ({
-        id: review.id ?? index,
-        ctaftName:
-          review.ctaftName ||
-          review.fullName ||
-          review.name ||
-          review.clientName ||
-          "عميل",
-        date: review.date || review.createdAt || "",
-        rating: Number(review.rating ?? 0),
-        comment: review.comment || review.review || "",
-        avatar:
-          getApiImageUrl(
-            review.avatar || review.profilePicture || review.imageUrl,
-          ) || "/images/revewer (1).png",
-      }))
+          id: review.id ?? index,
+          ctaftName:
+            review.ctaftName ||
+            review.fullName ||
+            review.name ||
+            review.clientName ||
+            "عميل",
+          date: review.date || review.createdAt || "",
+          rating: Number(review.rating ?? 0),
+          comment: review.comment || review.review || "",
+          avatar:
+            getApiImageUrl(
+              review.avatar || review.profilePicture || review.imageUrl,
+            ) || "/images/revewer (1).png",
+        }))
       : [],
     joinedDate: data.joinedDate || "",
   };
@@ -206,6 +218,7 @@ const normalizeCraftmanProfile = (data) => {
 ======================= */
 function ProfileSummary({
   craftman,
+  isOwner,
   editMode,
   setEditMode,
   setShowRequestModal,
@@ -248,7 +261,7 @@ function ProfileSummary({
         {(isAccountActive || coverImg) && (
           <img src={coverImg || craftman.cover} alt="cover" />
         )}
-        {editMode && (
+        {editMode && isOwner && (
           <label className="edit-cover-label">
             <input
               type="file"
@@ -278,7 +291,7 @@ function ProfileSummary({
                   alt={craftman.ctaftName}
                 />
               )}
-              {editMode && (
+              {editMode && isOwner && (
                 <label className="edit-avatar-label">
                   <input
                     type="file"
@@ -318,6 +331,7 @@ function ProfileSummary({
 
         <div className="action-btns">
           {isAccountActive &&
+            isOwner &&
             (editMode ? (
               <button
                 className="btn-delete-account"
@@ -345,14 +359,17 @@ function ProfileSummary({
                 >
                   <MdModeEdit />
                 </button>
-                <button
-                  className="request-service-btn"
-                  onClick={() => setShowRequestModal(true)}
-                >
-                  طلب خدمة
-                </button>
               </>
             ))}
+
+          {isAccountActive && !isOwner && (
+            <button
+              className="request-service-btn"
+              onClick={() => setShowRequestModal(true)}
+            >
+              طلب خدمة
+            </button>
+          )}
         </div>
       </section>
     </>
@@ -364,6 +381,7 @@ function ProfileSummary({
 ======================= */
 function ProfileSection({
   craftman,
+  isOwner,
   editMode,
   setEditMode,
   isAccountActive,
@@ -380,7 +398,10 @@ function ProfileSection({
 
   // ===== حالات البورتفوليو =====
   const [isUploadingPortfolio, setIsUploadingPortfolio] = useState(false);
-  const [portfolioMessage, setPortfolioMessage] = useState({ type: "", text: "" });
+  const [portfolioMessage, setPortfolioMessage] = useState({
+    type: "",
+    text: "",
+  });
   const [deletingImageId, setDeletingImageId] = useState(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(null); // imageId المراد حذفه
   const [showAllReviews, setShowAllReviews] = useState(false);
@@ -610,8 +631,8 @@ function ProfileSection({
     const workHours = String(formData.get("workHours") || "").trim();
     const emergencyService = String(
       formData.get("emergencyService") ||
-      craftman.workInfo?.emergencyService ||
-      "",
+        craftman.workInfo?.emergencyService ||
+        "",
     ).trim();
     const errors = {};
 
@@ -727,7 +748,8 @@ function ProfileSection({
 
       // إعادة جلب البيانات من ال API بعد التحديث عشان نضمن البيانات متزامنة
       try {
-        const artisanId = craftman.id || TEST_ARTISAN_ID;
+        const artisanId = craftman?.id;
+        if (!artisanId) throw new Error("Missing artisan id for refresh");
         const refreshResponse = await axios.get(
           `/api/Artisans/${artisanId}/profile`,
           config, // لازم نبعت التوكن مع طلب الجلب
@@ -737,7 +759,9 @@ function ProfileSection({
         try {
           const portRes = await axios.get("/api/Artisans/portfolio", config);
           profileData.portfolioImages = portRes.data || [];
-        } catch (e) { console.warn("Failed to fetch portfolio:", e); }
+        } catch (e) {
+          console.warn("Failed to fetch portfolio:", e);
+        }
 
         const refreshed = normalizeCraftmanProfile(profileData);
         if (refreshed) {
@@ -853,28 +877,37 @@ function ProfileSection({
       formData.append("Image", file);
       formData.append("Description", ""); // وصف اختياري
 
-      const response = await axios.post("/api/Artisans/portfolio/add", formData, {
-        headers: {
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      const response = await axios.post(
+        "/api/Artisans/portfolio/add",
+        formData,
+        {
+          headers: {
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          },
         },
-      });
+      );
 
       console.log("✅ تم رفع صورة البورتفوليو:", response.data);
 
       // إعادة جلب البيانات من ال API بعد الرفع عشان نحدث الصور
       try {
-        const artisanId = craftman.id || TEST_ARTISAN_ID;
-        const config = { headers: token ? { Authorization: `Bearer ${token}` } : {} };
+        const artisanId = craftman?.id;
+        if (!artisanId) throw new Error("Missing artisan id for refresh");
+        const config = {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        };
         const refreshResponse = await axios.get(
           `/api/Artisans/${artisanId}/profile`,
-          config
+          config,
         );
         let profileData = refreshResponse.data;
 
         try {
           const portRes = await axios.get("/api/Artisans/portfolio", config);
           profileData.portfolioImages = portRes.data || [];
-        } catch (e) { console.warn("Failed to fetch portfolio:", e); }
+        } catch (e) {
+          console.warn("Failed to fetch portfolio:", e);
+        }
 
         const refreshed = normalizeCraftmanProfile(profileData);
         if (refreshed) {
@@ -889,7 +922,11 @@ function ProfileSection({
           worksImages: [...(prev.worksImages || []), newImgUrl],
           portfolioData: [
             ...(prev.portfolioData || []),
-            { id: response.data?.id || Date.now(), url: newImgUrl, description: "" },
+            {
+              id: response.data?.id || Date.now(),
+              url: newImgUrl,
+              description: "",
+            },
           ],
         }));
       }
@@ -917,7 +954,10 @@ function ProfileSection({
   const handlePortfolioDelete = async (imageId) => {
     if (!imageId && imageId !== 0) {
       console.error("لا يوجد ID للصورة المراد حذفها");
-      setPortfolioMessage({ type: "error", text: "لا يمكن حذف هذه الصورة (لا يوجد معرف)" });
+      setPortfolioMessage({
+        type: "error",
+        text: "لا يمكن حذف هذه الصورة (لا يوجد معرف)",
+      });
       setTimeout(() => setPortfolioMessage({ type: "", text: "" }), 3000);
       return;
     }
@@ -939,18 +979,23 @@ function ProfileSection({
 
       // إعادة جلب البيانات بعد الحذف
       try {
-        const artisanId = craftman.id || TEST_ARTISAN_ID;
-        const config = { headers: token ? { Authorization: `Bearer ${token}` } : {} };
+        const artisanId = craftman?.id;
+        if (!artisanId) throw new Error("Missing artisan id for refresh");
+        const config = {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        };
         const refreshResponse = await axios.get(
           `/api/Artisans/${artisanId}/profile`,
-          config
+          config,
         );
         let profileData = refreshResponse.data;
 
         try {
           const portRes = await axios.get("/api/Artisans/portfolio", config);
           profileData.portfolioImages = portRes.data || [];
-        } catch (e) { console.warn("Failed to fetch portfolio:", e); }
+        } catch (e) {
+          console.warn("Failed to fetch portfolio:", e);
+        }
 
         const refreshed = normalizeCraftmanProfile(profileData);
         if (refreshed) {
@@ -961,7 +1006,9 @@ function ProfileSection({
         // fallback: نحذف الصورة محلياً
         onUpdateProfile?.((prev) => ({
           ...prev,
-          portfolioData: (prev.portfolioData || []).filter((img) => img.id !== imageId),
+          portfolioData: (prev.portfolioData || []).filter(
+            (img) => img.id !== imageId,
+          ),
           worksImages: (prev.worksImages || []).filter(
             (_, idx) => (prev.portfolioData || [])[idx]?.id !== imageId,
           ),
@@ -1066,7 +1113,7 @@ function ProfileSection({
     }
   };
 
-  if (editMode) {
+  if (editMode && isOwner) {
     return (
       <div className="edit-form-container">
         <h2>
@@ -1343,9 +1390,14 @@ function ProfileSection({
               يرجى إكمال تفعيل حسابك وإضافة بياناتك المهنية لتظهر للعملاء بشكل
               احترافي.
             </p>
-            <button className="activate-btn" onClick={() => setEditMode(true)}>
-              فعل حسابك الآن
-            </button>
+            {isOwner && (
+              <button
+                className="activate-btn"
+                onClick={() => setEditMode(true)}
+              >
+                فعل حسابك الآن
+              </button>
+            )}
           </div>
         </div>
       ) : (
@@ -1408,30 +1460,32 @@ function ProfileSection({
               )}
               <div className="portfolio-grid">
                 {/* زر رفع صورة جديدة */}
-                <label
-                  className={`work-item upload-box ${isUploadingPortfolio ? "uploading" : ""}`}
-                  style={{ position: "relative" }}
-                >
-                  <input
-                    type="file"
-                    accept="image/*"
-                    hidden
-                    onChange={handlePortfolioUpload}
-                    disabled={isUploadingPortfolio}
-                  />
-                  {isUploadingPortfolio ? (
-                    <div className="upload-spinner">
-                      <ImSpinner3 className="spinning" />
-                      <span>جاري الرفع...</span>
-                    </div>
-                  ) : (
-                    <img
-                      src="/images/upload.png"
-                      alt="upload"
-                      className="upload-icon"
+                {isOwner && (
+                  <label
+                    className={`work-item upload-box ${isUploadingPortfolio ? "uploading" : ""}`}
+                    style={{ position: "relative" }}
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      hidden
+                      onChange={handlePortfolioUpload}
+                      disabled={isUploadingPortfolio}
                     />
-                  )}
-                </label>
+                    {isUploadingPortfolio ? (
+                      <div className="upload-spinner">
+                        <ImSpinner3 className="spinning" />
+                        <span>جاري الرفع...</span>
+                      </div>
+                    ) : (
+                      <img
+                        src="/images/upload.png"
+                        alt="upload"
+                        className="upload-icon"
+                      />
+                    )}
+                  </label>
+                )}
                 {/* عرض صور البورتفوليو مع زر الحذف */}
                 {(craftman.portfolioData || []).map((imgData, i) => (
                   <div
@@ -1447,7 +1501,7 @@ function ProfileSection({
                       style={{ cursor: "pointer" }}
                     />
                     {/* زر حذف الصورة */}
-                    {imgData.id != null && (
+                    {isOwner && imgData.id != null && (
                       <button
                         type="button"
                         className="portfolio-delete-btn"
@@ -1739,8 +1793,7 @@ function RequestServiceModal({ craftmanName, onClose }) {
 /* ================= PAGE COMPONENT ================= */
 /* ================= PAGE COMPONENT ================= */
 const ProfilePage = () => {
-  // جلب الـ ID من اللوكل ستوريدج بدلاً من الرابط
-  const userId = localStorage.getItem("userId");
+  const { id: profileId } = useParams();
 
   const [craftman, setCraftman] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -1754,6 +1807,7 @@ const ProfilePage = () => {
   const [coverImg, setCoverImg] = useState("");
   const [profileFile, setProfileFile] = useState(null);
   const [coverFile, setCoverFile] = useState(null);
+  const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -1761,9 +1815,9 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchCraftmanProfile = async () => {
-      // التحقق من وجود الـ userId لتجنب إرسال طلب API فارغ
-      if (!userId) {
-        setError("يرجى تسجيل الدخول أولاً لعرض الملف الشخصي");
+      // التحقق من وجود profileId القادم من route
+      if (!profileId) {
+        setError("تعذر تحديد الحرفي المطلوب عرضه");
         setLoading(false);
         return;
       }
@@ -1772,21 +1826,30 @@ const ProfilePage = () => {
         setLoading(true);
         setError("");
         const token = localStorage.getItem("token");
-        const config = { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) } };
+        const config = {
+          headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+        };
 
-        // استخدام userId في مسار الـ API
-        const response = await axios.get(`/api/Artisans/${userId}/profile`, config);
+        const response = await axios.get(
+          `/api/Artisans/${profileId}/profile`,
+          config,
+        );
         let profileData = response.data;
 
         // جلب البورتفوليو من المسار المنفصل
         try {
-          const portRes = await axios.get(`https://etqanproject.runasp.net/api/Artisans/portfolio`, config);
+          const portRes = await axios.get(
+            `https://etqanproject.runasp.net/api/Artisans/portfolio`,
+            config,
+          );
           profileData.portfolioImages = portRes.data || [];
         } catch (e) {
           console.warn("Failed to fetch portfolio data:", e);
         }
 
-        setCraftman(normalizeCraftmanProfile(profileData));
+        const normalized = normalizeCraftmanProfile(profileData);
+        setIsOwner(Boolean(normalized?.isOwner));
+        setCraftman(normalized);
       } catch (err) {
         console.error("Error fetching craftman profile:", err);
         setError("تعذر تحميل بيانات الحرفي حالياً");
@@ -1796,7 +1859,7 @@ const ProfilePage = () => {
     };
 
     fetchCraftmanProfile();
-  }, [userId]); // إضافة userId كمراقب
+  }, [profileId]);
 
   const [isDeleting, setIsDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState("");
@@ -1869,7 +1932,7 @@ const ProfilePage = () => {
 
   return (
     <div className="professional-profile-container">
-      {showConfirmModal && (
+      {isOwner && showConfirmModal && (
         <div
           className="modal-overlay"
           onClick={() => !isDeleting && setShowConfirmModal(false)}
@@ -1911,7 +1974,7 @@ const ProfilePage = () => {
         </div>
       )}
 
-      {showDeleteToast && (
+      {isOwner && showDeleteToast && (
         <div className="modal-overlay" style={{ zIndex: 9999 }}>
           <div
             className="success-toast-container"
@@ -1934,7 +1997,7 @@ const ProfilePage = () => {
         </div>
       )}
 
-      {showRequestModal && (
+      {!isOwner && showRequestModal && (
         <RequestServiceModal
           craftmanName={craftman.ctaftName || craftman.name}
           onClose={() => setShowRequestModal(false)}
@@ -1943,6 +2006,7 @@ const ProfilePage = () => {
 
       <ProfileSummary
         craftman={craftman}
+        isOwner={isOwner}
         editMode={editMode}
         setEditMode={setEditMode}
         setShowRequestModal={setShowRequestModal}
@@ -1959,6 +2023,7 @@ const ProfilePage = () => {
       <ProfileSection
         key={craftman.id}
         craftman={craftman}
+        isOwner={isOwner}
         editMode={editMode}
         setEditMode={setEditMode}
         isAccountActive={isAccountActive}

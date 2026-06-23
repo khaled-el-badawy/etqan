@@ -111,8 +111,8 @@ const Service = () => {
                   onClick={() => handleNavigate(service.title)}
                   className="service-cards"
                   style={{ cursor: 'pointer' }}
-                  data-aos="zoom-in-up"
-                  data-aos-delay={service.delay}
+                  // data-aos="zoom-in-up"
+                  // data-aos-delay={service.delay}
                 >
                   <div className="cards-icon">
                     <img src={service.icon} alt={service.title} />

@@ -1,15 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import './Artisans.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import "./Artisans.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import axios from "axios";
+
+const getApiImageUrl = (path) => {
+  if (!path) return "";
+  let formattedPath = path.replace(/\\/g, "/");
+  if (
+    formattedPath.startsWith("http://") ||
+    formattedPath.startsWith("https://") ||
+    formattedPath.startsWith("blob:")
+  ) {
+    return formattedPath;
+  }
+
+  const baseUrl = (
+    axios.defaults.baseURL || "https://etqanproject.runasp.net"
+  ).replace(/\/$/, "");
+
+  if (!formattedPath.startsWith("/")) {
+    formattedPath = `/${formattedPath}`;
+  }
+
+  return `${baseUrl}${formattedPath}`;
+};
+
+const getProfileId = (artisan) =>
+  artisan?.artisanId ||
+  artisan?.id ||
+  artisan?.applicationUserId ||
+  artisan?.userId ||
+  "";
 
 const Artisans = () => {
   const { jobId } = useParams(); // لقط الـ ID من الرابط (مثلاً: 9 للمنجد)
   const [artisansData, setArtisansData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // تشغيل الأنيميشن عند فتح الصفحة
@@ -19,15 +48,21 @@ const Artisans = () => {
       try {
         setLoading(true);
         // نداء الباك إند لجلب الحرفيين التابعين لهذه المهنة
-        const response = await axios.get(`https://etqanproject.runasp.net//api/Jobs/${jobId}/artisans`);
+        const response = await axios.get(
+          `https://etqanproject.runasp.net/api/Jobs/${jobId}/artisans`,
+        );
 
         // تحويل البيانات لتناسب التصميم (Mapping)
-        const formattedData = response.data.map(a => ({
-          id: a.id,          // معرف الحرفي الفريد (ApplicationUserId)
-          name: a.name,      // اسمه بالكامل
+        const formattedData = response.data.map((a) => ({
+          profileId: getProfileId(a),
+          id: a.id, // معرف الحرفي الفريد (ApplicationUserId)
+          name: a.name, // اسمه بالكامل
           price: a.price || "حسب الاتفاق",
           rate: a.rate || "4.8",
-          img: a.img || "/images/Artisans/user-default.png"
+          img:
+            a.img && a.img.trim() !== ""
+              ? getApiImageUrl(a.img)
+              : "/images/Artisans/user-default.png",
         }));
 
         setArtisansData(formattedData);
@@ -42,8 +77,8 @@ const Artisans = () => {
   }, [jobId]);
 
   // دالة البحث المفلترة (آمنة من الـ Undefined)
-  const filteredArtisans = artisansData.filter(a =>
-    (a.name || "").toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredArtisans = artisansData.filter((a) =>
+    (a.name || "").toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -51,7 +86,11 @@ const Artisans = () => {
       {/* القسم العلوي: الهيرو والبحث */}
       <section className="top-section">
         <div className="artisans-hero" data-aos="fade-down">
-          <img src="/images/Artisans/Artisanshero.svg" alt="Hero" className="hero-image" />
+          <img
+            src="/images/Artisans/Artisanshero.svg"
+            alt="Hero"
+            className="hero-image"
+          />
           <hr className="artisans-line" />
         </div>
 
@@ -75,16 +114,30 @@ const Artisans = () => {
       <section className="artisans-main-wrapper">
         <div className="container">
           {loading ? (
-            <p style={{ textAlign: 'center', padding: '50px' }}>جاري البحث عن أمهر الحرفيين...</p>
+            <p style={{ textAlign: "center", padding: "50px" }}>
+              جاري البحث عن أمهر الحرفيين...
+            </p>
           ) : (
             <div className="artisans-grid">
               {filteredArtisans.length > 0 ? (
                 filteredArtisans.map((item) => (
                   /* ✅ الزتونة هنا: الرابط يوجه لـ CraftmanProfile مع تمرير الـ ID */
-                  <Link to={`/CraftmanProfile/${item.id}`} key={item.id} className="card-link">
+                  <Link
+                    to={`/CraftmanProfile/${item.profileId || item.id}`}
+                    key={item.profileId || item.id}
+                    className="card-link"
+                  >
                     <div className="artisan-card" data-aos="fade-up">
                       <div className="artisan-img-wrapper">
-                        <img src={item.img} alt={item.name} />
+                        <img
+                          src={item.img}
+                          alt={item.name}
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src =
+                              "/images/Artisans/user-default.png";
+                          }}
+                        />
                       </div>
                       <div className="artisan-info">
                         <h3>{item.name}</h3>
@@ -98,7 +151,13 @@ const Artisans = () => {
                   </Link>
                 ))
               ) : (
-                <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '50px' }}>
+                <div
+                  style={{
+                    gridColumn: "1/-1",
+                    textAlign: "center",
+                    padding: "50px",
+                  }}
+                >
                   <h3>عذراً، لا يوجد حرفيون متاحون لهذه المهنة حالياً</h3>
                 </div>
               )}
