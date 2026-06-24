@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useOrders } from "./OrdersContext";
 import axios from "axios";
 // animation library
 import AOS from "aos";
@@ -1662,43 +1663,122 @@ function ProfileSection({
 /* ================= REQUEST MODAL ================= */
 
 /* ================= REQUEST MODAL COMPONENT ================= */
-function RequestServiceModal({ craftmanName, onClose }) {
-  const today = new Date().toISOString().split("T")[0];
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+/*
+  📌 الهدف:
+  Modal لإنشاء طلب خدمة جديد من العميل للحرفي.
+  - الخدمة: dropdown من خدمات الحرفي الفعلية (craftmanServices)
+  - اسم العميل: يتم جلبه تلقائياً من الـ API (لا يكتبه العميل)
+  - العنوان: يكتبه العميل
+  - التاريخ: يتم توليده تلقائياً
+  - artisanId: يتم إرساله مع الطلب
+
+  📌 للـ Back-End:
+  عند الربط مع الـ API، استبدل addCraftmanOrder بـ POST /api/craftman/orders
+  وتأكد من إرسال artisanId في الـ Request Body.
+*/
+function RequestServiceModal({ craftmanName, craftmanServices, craftmanId, onClose }) {
+  const { addCraftmanOrder } = useOrders();
+  const navigate = useNavigate();
+
+  /* ---- حالات النموذج ---- */
+  const [selectedService, setSelectedService] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-  const egyptianGovernorates = [
-    "القاهرة",
-    "الجيزة",
-    "الإسكندرية",
-    "الدقهلية",
-    "الشرقية",
-    "الغربية",
-    "المنوفية",
-    "البحيرة",
-    "كفر الشيخ",
-    "الفيوم",
-    "بني سويف",
-    "المنيا",
-    "أسيوط",
-    "سوهاج",
-    "قنا",
-    "الأقصر",
-    "أسوان",
-    "البحر الأحمر",
-    "الوادي الجديد",
-    "مطروح",
-    "شمال سيناء",
-    "جنوب سيناء",
-    "الإسماعيلية",
-    "السويس",
-    "بورسعيد",
-    "دمياط",
-    "القليوبية",
-  ];
-  const filteredGovs = egyptianGovernorates.filter((gov) =>
-    gov.includes(searchTerm),
-  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  /* ---- جلب اسم العميل الحالي من الـ API ---- */
+  /*
+    📌 للـ Back-End:
+    هذا الـ endpoint يجب أن يرجع بيانات المستخدم المسجل حالياً
+    بناءً على الـ Token المرسل في الـ Authorization header.
+    الـ Response المتوقع: { fullName: "...", ... }
+  */
+  const [clientName, setClientName] = useState("");
+  const [isLoadingClient, setIsLoadingClient] = useState(true);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        setIsLoadingClient(true);
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("userId");
+        if (!token || !userId) {
+          setClientName("");
+          setIsLoadingClient(false);
+          return;
+        }
+        const config = { headers: { Authorization: `Bearer ${token}` } };
+        const res = await axios.get(`/api/ClientProfile/${userId}`, config);
+        const name = res.data?.fullName || res.data?.FullName || res.data?.clientName || res.data?.name || "";
+        setClientName(name);
+      } catch (err) {
+        console.warn("تعذر جلب بيانات العميل الحالي:", err);
+        setClientName("");
+      } finally {
+        setIsLoadingClient(false);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
+  /* ---- منع التمرير في الخلفية ---- */
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  /* ---- إرسال الطلب ---- */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitError("");
+
+    // التحقق من الحقول
+    if (!selectedService) {
+      setSubmitError("يرجى اختيار الخدمة المطلوبة");
+      return;
+    }
+    if (!clientAddress.trim()) {
+      setSubmitError("يرجى إدخال العنوان");
+      return;
+    }
+    if (!clientName) {
+      setSubmitError("تعذر تحديد بيانات العميل، يرجى تسجيل الدخول مرة أخرى");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // إنشاء الطلب عبر OrdersContext
+      // 📌 للـ Back-End: استبدل هذا بـ POST /api/craftman/orders
+      addCraftmanOrder({
+        artisanId: craftmanId,
+        service: selectedService,
+        clientName: clientName,
+        location: clientAddress.trim(),
+        date: new Date().toLocaleDateString("ar-EG"),
+        status: "pending",
+      });
+
+      // عرض رسالة النجاح
+      setShowSuccessMsg(true);
+      setTimeout(() => {
+        setShowSuccessMsg(false);
+        onClose();
+        // الانتقال لصفحة تتبع الطلبات بعد الإنشاء
+        navigate("/CustomerOrdersPage");
+      }, 1500);
+    } catch (err) {
+      console.error("خطأ في إنشاء الطلب:", err);
+      setSubmitError("تعذر إرسال الطلب، حاول مرة أخرى");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
@@ -1710,75 +1790,67 @@ function RequestServiceModal({ craftmanName, onClose }) {
         ) : (
           <>
             <h2 className="modal-title">{craftmanName}</h2>
-            <form
-              className="request-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setShowSuccessMsg(true);
-                setTimeout(() => {
-                  setShowSuccessMsg(false);
-                  onClose();
-                }, 1500);
-              }}
-            >
+            <form className="request-form" onSubmit={handleSubmit}>
+
+              {/* ---- الخدمة المطلوبة (Dropdown من خدمات الحرفي) ---- */}
+              <div className="form-group-modal">
+                <label>الخدمة المطلوبة</label>
+                <select
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                  required
+                >
+                  <option value="" disabled>
+                    اختر الخدمة
+                  </option>
+                  {(craftmanServices || []).map((service, index) => (
+                    <option key={index} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* ---- اسم العميل (محمّل مسبقاً من الـ API — قابل للتعديل) ---- */}
               <div className="form-group-modal">
                 <label>اسم العميل</label>
-                <input type="text" placeholder="أدخل اسمك" required />
-              </div>
-              <div className="form-group-modal custom-select-container">
-                <label>المحافظة</label>
                 <input
                   type="text"
-                  placeholder="المحافظة"
-                  value={searchTerm}
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                    setIsOpen(true);
-                  }}
-                  onFocus={() => setIsOpen(true)}
+                  placeholder="أدخل اسمك"
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   required
                 />
-                {isOpen && filteredGovs.length > 0 && (
-                  <ul className="gov-dropdown-list">
-                    {filteredGovs.map((gov, index) => (
-                      <li
-                        key={index}
-                        onClick={() => {
-                          setSearchTerm(gov);
-                          setIsOpen(false);
-                        }}
-                      >
-                        {gov}
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </div>
+
+              {/* ---- عنوان العميل ---- */}
               <div className="form-group-modal">
                 <label>العنوان</label>
-                <input type="text" placeholder="العنوان بالتفصيل" required />
-              </div>
-              <div className="form-group-modal">
-                <label>وصف الخدمة</label>
-                <input type="text" placeholder="وصف الخدمة" required />
-              </div>
-              <div className="form-group-modal">
-                <label>تاريخ الطلب</label>
                 <input
-                  type="date"
-                  value={today}
-                  readOnly
-                  className="readonly-input"
+                  type="text"
+                  placeholder="العنوان بالتفصيل"
+                  value={clientAddress}
+                  onChange={(e) => setClientAddress(e.target.value)}
+                  required
                 />
               </div>
+
+              {/* ---- رسالة الخطأ ---- */}
+              {submitError && (
+                <p style={{ color: "#ff6b6b", fontSize: "14px", textAlign: "center", margin: "8px 0" }}>
+                  {submitError}
+                </p>
+              )}
+
+              {/* ---- أزرار الإرسال والإلغاء ---- */}
               <div className="modal-btns">
-                <button type="submit" className="confirm-btn">
-                  إرسال الطلب
+                <button type="submit" className="confirm-btn" disabled={isSubmitting}>
+                  {isSubmitting ? "جاري الإرسال..." : "إرسال الطلب"}
                 </button>
-                <button type="button" className="cancel-btn" onClick={onClose}>
+                <button type="button" className="cancel-btn" onClick={onClose} disabled={isSubmitting}>
                   إلغاء
                 </button>
-                <button type="button" className="close-btn" onClick={onClose}>
+                <button type="button" className="close-btn" onClick={onClose} disabled={isSubmitting}>
                   ×
                 </button>
               </div>
@@ -2000,6 +2072,8 @@ const ProfilePage = () => {
       {!isOwner && showRequestModal && (
         <RequestServiceModal
           craftmanName={craftman.ctaftName || craftman.name}
+          craftmanServices={craftman.services}
+          craftmanId={craftman.id}
           onClose={() => setShowRequestModal(false)}
         />
       )}

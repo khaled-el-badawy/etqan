@@ -1,7 +1,7 @@
 .company-page-container {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   flex-direction: row;
 }
 .company-page-container h1 {
